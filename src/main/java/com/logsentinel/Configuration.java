@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://logsentinel.com/docs
+ * Read more at https://docs.logsentinel.com/en/latest/index.html
  *
  * OpenAPI spec version: 1
  * 
@@ -13,7 +13,7 @@
 
 package com.logsentinel;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-24T18:34:16.973Z")
+
 public class Configuration {
     private static ApiClient defaultApiClient = new ApiClient();
 

@@ -1,5 +1,7 @@
 package com.logsentinel;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 public class JsonBodySerializer implements BodySerializer {
     private JSON json;
     
@@ -9,7 +11,16 @@ public class JsonBodySerializer implements BodySerializer {
     
     @Override
     public String serialize(Object object) {
-        return json.serialize(object);
+        try {
+            return json.getContext(null).writeValueAsString(object);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public String getContentType() {
+        return "application/json;charset=UTF-8";
     }
 
 }

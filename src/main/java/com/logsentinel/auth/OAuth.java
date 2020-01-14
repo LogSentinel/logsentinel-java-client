@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://logsentinel.com/docs
+ * Read more at https://docs.logsentinel.com/en/latest/index.html
  *
  * OpenAPI spec version: 1
  * 
@@ -18,7 +18,7 @@ import com.logsentinel.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-24T18:34:16.973Z")
+
 public class OAuth implements Authentication {
   private String accessToken;
 

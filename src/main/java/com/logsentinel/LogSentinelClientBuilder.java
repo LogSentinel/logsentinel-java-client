@@ -1,8 +1,20 @@
 package com.logsentinel;
 
-import com.logsentinel.client.*;
-
 import java.security.PrivateKey;
+
+import com.logsentinel.api.AlertsApi;
+import com.logsentinel.api.ApplicationsApi;
+import com.logsentinel.api.GdprLoggingApi;
+import com.logsentinel.api.GdprRegisterApi;
+import com.logsentinel.api.HashApi;
+import com.logsentinel.api.LogHealthcareApi;
+import com.logsentinel.api.LogSpecialApi;
+import com.logsentinel.api.LoggingApi;
+import com.logsentinel.api.OrganizationUsersApi;
+import com.logsentinel.api.PartnersApi;
+import com.logsentinel.api.SavedSearchesApi;
+import com.logsentinel.api.SearchApi;
+import com.logsentinel.api.VerificationApi;
 
 /**
  * Builder used to create an instance of the LogSentinel client.
@@ -19,8 +31,8 @@ public class LogSentinelClientBuilder {
     private PrivateKey signingKey;
     private BodySerializer bodySerializer;
     private String basePath;
-    private String contentType;
     private EncryptingKeywordExtractor encryptingKeywordExtractor;
+    private boolean async;
 
     public static LogSentinelClientBuilder create(String applicationId, String organizationId, String secret) {
         LogSentinelClientBuilder builder = new LogSentinelClientBuilder();
@@ -50,19 +62,24 @@ public class LogSentinelClientBuilder {
         if (signingKey != null) {
             signer = new BodySigner(signingKey);
         }
-        if (contentType == null) {
-            contentType = "application/json;charsets=UTF-8";
-        }
 
-        AuditLogControllerApi auditLogActions = new AuditLogControllerApi(apiClient, serializer, signer, contentType, encryptingKeywordExtractor);
-        HashControllerApi hashActions = new HashControllerApi(apiClient, serializer, signer, contentType);
-        OrganizationUsersControllerApi userActions = new OrganizationUsersControllerApi(apiClient);
-        ManageApplicationControllerApi applicationActions = new ManageApplicationControllerApi(apiClient);
-        AuditLogSearchControllerApi searchActions = new AuditLogSearchControllerApi(apiClient);
-        ApiVerificationControllerApi verificationActions = new ApiVerificationControllerApi(apiClient);
+        LoggingApi auditLogApi = new LoggingApi(apiClient, serializer, signer, encryptingKeywordExtractor);
+        HashApi hashApi = new HashApi(apiClient, serializer, signer, encryptingKeywordExtractor);
+        OrganizationUsersApi userApi = new OrganizationUsersApi(apiClient);
+        ApplicationsApi applicationApi = new ApplicationsApi(apiClient);
+        SearchApi searchApi = new SearchApi(apiClient);
+        VerificationApi verificationApi = new VerificationApi(apiClient);
+        GdprRegisterApi registerApi = new GdprRegisterApi(apiClient);
+        GdprLoggingApi gdprLoggingApi = new GdprLoggingApi(apiClient);
+        AlertsApi alertsApi = new AlertsApi(apiClient);
+        LogHealthcareApi healthcareApi = new LogHealthcareApi(apiClient);
+        LogSpecialApi logSpecialApi = new LogSpecialApi(apiClient);
+        PartnersApi partnersApi = new PartnersApi(apiClient);
+        SavedSearchesApi savedSearchApi = new SavedSearchesApi(apiClient);
 
-        LogSentinelClient client = new LogSentinelClient(auditLogActions, hashActions, userActions,
-                applicationActions, searchActions, verificationActions);
+        LogSentinelClient client = new LogSentinelClient(auditLogApi, hashApi, userApi,
+                applicationApi, searchApi, verificationApi, healthcareApi, gdprLoggingApi, 
+                registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi);
         return client;
     }
 
@@ -157,17 +174,6 @@ public class LogSentinelClientBuilder {
         return this;
     }
 
-    /**
-     * Sets the content type for sending requests
-     *
-     * @param contentType the value for the Content-Type header
-     * @return the builder
-     */
-    public LogSentinelClientBuilder setContentType(String contentType) {
-        this.contentType = contentType;
-        return this;
-    }
-
     private void validateEncryptionKeyPhraseLength(String keyPhrase) {
         if (keyPhrase.length() != 8 && keyPhrase.length() != 16) {
             throw new IllegalArgumentException("Illegal key phrase length: " + keyPhrase.length()
@@ -181,5 +187,12 @@ public class LogSentinelClientBuilder {
                     + ". Must be 16 or 32");
         }
     }
+
+    public LogSentinelClientBuilder setAsync(boolean async) {
+        this.async = async;
+        return this;
+    }
+    
+    
 
 }

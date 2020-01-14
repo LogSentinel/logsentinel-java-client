@@ -1,16 +1,18 @@
 package com.logsentinel.logging;
 
-import com.logsentinel.ApiCallbackAdapter;
-import com.logsentinel.ApiException;
-import com.logsentinel.LogSentinelClient;
-import com.logsentinel.LogSentinelClientBuilder;
-import com.logsentinel.client.model.ActionData;
-import com.logsentinel.client.model.ActorData;
-import com.logsentinel.client.model.LogResponse;
-
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import com.logsentinel.ApiException;
+import com.logsentinel.JSON;
+import com.logsentinel.JsonBodySerializer;
+import com.logsentinel.LogSentinelClient;
+import com.logsentinel.LogSentinelClientBuilder;
+import com.logsentinel.model.ActionData;
+import com.logsentinel.model.ActorData;
+import com.logsentinel.model.LogResponse;
 
 public class LogSentinelAppender {
 
@@ -68,7 +70,10 @@ public class LogSentinelAppender {
         LogSentinelClientBuilder builder;
         builder = LogSentinelClientBuilder.create(applicationId, organizationId, secret);
         builder.setBasePath(basePath);
-        builder.setContentType("application/json");
+        builder.setBodySerializer(new JsonBodySerializer(new JSON()));
+        if (async) {
+            builder.setAsync(true);
+        }
         client = builder.build();
 
         if (actorIdRegex != null) {
@@ -97,20 +102,21 @@ public class LogSentinelAppender {
             msg = hideIP(msg);
         }
 
-        ActorData actorData = new ActorData(extractActorId(msg))
-                .setActorDisplayName(extractActorName(msg))
-                .setActorRoles(new ArrayList<>());
+        ActorData actorData = new ActorData()
+                .actorId(extractActorId(msg))
+                .actorDisplayName(extractActorName(msg))
+                .actorRoles(new ArrayList<>());
 
-        ActionData actionData = new ActionData(msg)
-                .setAction(extractAction(msg))
-                .setEntityId(extractEntity(msg))
-                .setBinaryContent(false);
+        ActionData<String> actionData = new ActionData<String>().details(msg)
+                .action(extractAction(msg))
+                .entityId(extractEntity(msg))
+                .binaryContent(false);
 
         try {
             if (async) {
-                client.getAuditLogActions().logAsync(actorData, actionData, new ApiCallbackAdapter());
+                client.getAuditLogActions().log(actorData, actionData, UUID.fromString(applicationId));
             } else {
-                LogResponse r = client.getAuditLogActions().log(actorData, actionData);
+                LogResponse r = client.getAuditLogActions().log(actorData, actionData, UUID.fromString(applicationId));
             }
         } catch (ApiException e) {
             e.printStackTrace();

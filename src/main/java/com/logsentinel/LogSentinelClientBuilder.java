@@ -33,6 +33,7 @@ public class LogSentinelClientBuilder {
     private String basePath;
     private EncryptingKeywordExtractor encryptingKeywordExtractor;
     private boolean async;
+    private boolean trustAllCertificates;
 
     public static LogSentinelClientBuilder create(String applicationId, String organizationId, String secret) {
         LogSentinelClientBuilder builder = new LogSentinelClientBuilder();
@@ -42,12 +43,13 @@ public class LogSentinelClientBuilder {
     }
 
     public LogSentinelClient build() {
-        ApiClient apiClient = new ApiClient();
+        ApiClient apiClient = new ApiClient(trustAllCertificates);
         if (basePath != null) {
             apiClient.setBasePath(basePath);
         }
         apiClient.setUsername(organizationId.trim());
         apiClient.setPassword(secret.trim());
+        apiClient.setAsync(async);
 
 
         if (applicationId != null) {
@@ -192,7 +194,10 @@ public class LogSentinelClientBuilder {
         this.async = async;
         return this;
     }
-    
-    
+
+    public LogSentinelClientBuilder setTrustAllCertificates(boolean trustAllCertificates) {
+        this.trustAllCertificates = trustAllCertificates;
+        return this;
+    }
 
 }

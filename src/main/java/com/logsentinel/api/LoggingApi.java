@@ -198,11 +198,12 @@ public class LoggingApi {
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
+ * @param map 
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse log(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process) throws ApiException {
-    return logWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process).getData();
+  public LogResponse log(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process, Map<String, String> additionalParams) throws ApiException {
+    return logWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process, additionalParams).getData();
       }
 
   /**
@@ -223,10 +224,11 @@ public class LoggingApi {
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
+ * @param additionalParams 
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process) throws ApiException {
+  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'action' is set
@@ -258,7 +260,11 @@ public class LoggingApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-
+    
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -303,8 +309,8 @@ if (signature != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String process) throws ApiException {
-    return logAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, process).getData();
+  public LogResponse logAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String process, Map<String, String> additionalParams) throws ApiException {
+    return logAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, process, additionalParams).getData();
       }
 
   /**
@@ -328,7 +334,7 @@ if (signature != null)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String process) throws ApiException {
+  public ApiResponse<LogResponse> logAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String process, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -364,7 +370,10 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "encryptedKeywords", encryptedKeywords));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (signature != null)
@@ -479,8 +488,8 @@ if (userPublicKey != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logDocument(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, String process) throws ApiException {
-    return logDocumentWithHttpInfo(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, process).getData();
+  public LogResponse logDocument(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, String process, Map<String, String> additionalParams) throws ApiException {
+    return logDocumentWithHttpInfo(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, process, additionalParams).getData();
       }
 
   /**
@@ -502,10 +511,11 @@ if (userPublicKey != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param process process (optional)
+ * @param additionalParams 
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logDocumentWithHttpInfo(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, String process) throws ApiException {
+  public ApiResponse<LogResponse> logDocumentWithHttpInfo(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, String process, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -554,7 +564,10 @@ if (userPublicKey != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "encryptedKeywords", encryptedKeywords));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (signature != null)
@@ -599,8 +612,8 @@ if (signature != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process) throws ApiException {
-    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process).getData();
+  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process, Map<String, String> additionalParams) throws ApiException {
+    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process, additionalParams).getData();
       }
 
   /**
@@ -626,7 +639,7 @@ if (signature != null)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process) throws ApiException {
+  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, String process, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -675,7 +688,9 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -796,9 +811,10 @@ if (signature != null)
       if (actionData.getEntryType() != null) {
           entryType = actionData.getEntryType().getValue();
       }
-      return log(applicationId, actionData.getAction(), actorData.getActorId(), entryType, signature, actorData.getDepartment(), 
+      return logFull(applicationId, actionData.getAction(), actorData.getActorId(), actionData.getEntityId(), actionData.getEntityType(), 
+              entryType, signature, actorData.getDepartment(), 
               actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
-              body, null, bodyAndKeywords.getKeywords(), null, null, null);
+              body, null, bodyAndKeywords.getKeywords(), null, null, null, actionData.getAdditionalParams());
   }
   
   private <T> BodyAndKeywords preProcessBody(ActionData<T> actionData) {

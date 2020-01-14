@@ -13,6 +13,8 @@
 
 package com.logsentinel.model;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import org.javers.core.diff.Diff;
@@ -49,6 +51,9 @@ public class ActionData<T> {
   
   @JsonIgnore
   private boolean binaryContent;
+  
+  @JsonIgnore
+  private Map<String, String> additionalParams = new HashMap<>();
   
   /**
    * Gets or Sets entryType
@@ -218,6 +223,25 @@ public class ActionData<T> {
       return this;
   }
 
+
+  /**
+   * Gets the additional params
+   * @return map of params
+   */
+  public Map<String, String> getAdditionalParams() {
+      return additionalParams;
+  }
+  
+  /**
+   * Adds an additional param
+   * @param name the param name
+   * @param value the param value
+   */
+  public ActionData<?> addAdditionalParam(String name, String value) {
+     additionalParams.put(name, value);
+     return this;
+  }
+  
 @Override
   public boolean equals(java.lang.Object o) {
     if (this == o) {

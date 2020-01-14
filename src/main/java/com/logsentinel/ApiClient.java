@@ -7,6 +7,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
+import java.security.cert.X509Certificate;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -20,6 +21,11 @@ import java.util.concurrent.Future;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import javax.ws.rs.client.AsyncInvoker;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -64,9 +70,11 @@ public class ApiClient {
   protected DateFormat dateFormat;
   
   private boolean async;
+  private boolean trustAll;
 
-  public ApiClient() {
+  public ApiClient(boolean trustAll) {
     json = new JSON();
+    this.trustAll = trustAll;
     httpClient = buildHttpClient(debugging);
 
     this.dateFormat = new RFC3339DateFormat();
@@ -766,7 +774,45 @@ public class ApiClient {
       java.util.logging.Logger.getLogger(LoggingFeature.DEFAULT_LOGGER_NAME).setLevel(java.util.logging.Level.ALL);
     }
     performAdditionalClientConfiguration(clientConfig);
-    return ClientBuilder.newClient(clientConfig);
+    ClientBuilder builder = ClientBuilder.newBuilder().withConfig(clientConfig);
+    if (trustAll) {
+        builder.sslContext(trustAllSslContext());
+        builder.hostnameVerifier(trustAllHostnameVerifier());
+    }
+    return builder.build();
+  }
+
+  private HostnameVerifier trustAllHostnameVerifier() {
+      // Create all-trusting host name verifier
+      HostnameVerifier allHostsValid = new HostnameVerifier() {
+          public boolean verify(String hostname, SSLSession session) {
+              return true;
+          }
+      };
+      return allHostsValid;
+  }
+
+  private SSLContext trustAllSslContext() {
+      try {
+          TrustManager[] trustAllCerts = new TrustManager[] {
+                  new X509TrustManager() {
+                      public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                          return null;
+                      }
+                      public void checkClientTrusted(X509Certificate[] certs, String authType) {
+                      }
+                      public void checkServerTrusted(X509Certificate[] certs, String authType) {
+                      }
+                  }
+              };
+       
+              // Install the all-trusting trust manager
+          SSLContext sc = SSLContext.getInstance("TLS");
+          sc.init(null, trustAllCerts, new java.security.SecureRandom());
+          return sc;
+      } catch (Exception ex) {
+          throw new RuntimeException(ex);
+      }
   }
 
   protected void performAdditionalClientConfiguration(ClientConfig clientConfig) {

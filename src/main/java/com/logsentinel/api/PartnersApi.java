@@ -52,6 +52,7 @@ public class PartnersApi {
    * Cancels organization by Id and deletes all users
    * 
    * @param organizationId organizationId (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> cancelOrganizationWithHttpInfo(UUID organizationId) throws ApiException {

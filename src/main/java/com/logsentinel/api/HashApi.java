@@ -11,7 +11,6 @@ import com.logsentinel.Pair;
 import com.logsentinel.client.BodyAndKeywords;
 import com.logsentinel.model.ActionData;
 import com.logsentinel.model.ActorData;
-import com.logsentinel.model.LogResponse;
 import com.logsentinel.model.ActionData.EntryTypeEnum;
 
 import javax.ws.rs.core.GenericType;
@@ -21,7 +20,6 @@ import java.util.UUID;
 import static com.logsentinel.util.EncryptUtil.base64Encode;
 import static com.logsentinel.util.EncryptUtil.encrypt;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -133,11 +131,12 @@ public class HashApi {
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContent(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel) throws ApiException {
-    return getHashableContentWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel).getData();
+  public String getHashableContent(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, additionalParams).getData();
       }
 
   /**
@@ -153,10 +152,11 @@ public class HashApi {
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel) throws ApiException {
+  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -189,6 +189,10 @@ public class HashApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "actorRoles", actorRoles));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
 
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -225,11 +229,12 @@ if (signature != null)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
+   * @param additionalParams additionalParams (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentForAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details) throws ApiException {
-    return getHashableContentForAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details).getData();
+  public String getHashableContentForAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentForAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, additionalParams).getData();
       }
 
   /**
@@ -245,10 +250,11 @@ if (signature != null)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentForAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details) throws ApiException {
+  public ApiResponse<String> getHashableContentForAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -320,11 +326,12 @@ if (userPublicKey != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel) throws ApiException {
-    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel).getData();
+  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, additionalParams).getData();
       }
 
   /**
@@ -342,10 +349,11 @@ if (userPublicKey != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel) throws ApiException {
+  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -421,11 +429,12 @@ if (signature != null)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentSimple(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel) throws ApiException {
-    return getHashableContentSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, details, logLevel).getData();
+  public String getHashableContentSimple(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, details, logLevel, additionalParams).getData();
       }
 
   /**
@@ -436,10 +445,11 @@ if (signature != null)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additional params
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel) throws ApiException {
+  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -493,7 +503,7 @@ if (signature != null)
           entryType = actionData.getEntryType().getValue();
       }
       return getHashableContent(applicationId, actionData.getAction(), actorData.getActorId(), entryType, signature, actorData.getDepartment(), 
-              actorData.getActorDisplayName(), actorData.getActorRoles(), bodyAndKeywords.getBody(), null);
+              actorData.getActorDisplayName(), actorData.getActorRoles(), bodyAndKeywords.getBody(), null, actionData.getAdditionalParams());
   }
   
   private <T> BodyAndKeywords preProcessBody(ActionData<T> actionData) {

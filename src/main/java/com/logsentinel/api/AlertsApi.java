@@ -212,6 +212,7 @@ public class AlertsApi {
    * Deletes Action chain Alert rule
    * 
    * @param id id (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteActionChainRuleWithHttpInfo(String id) throws ApiException {
@@ -264,6 +265,7 @@ public class AlertsApi {
    * Deletes Alert destination
    * 
    * @param id id (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteDestinationWithHttpInfo(String id) throws ApiException {
@@ -316,6 +318,7 @@ public class AlertsApi {
    * Deletes Alert rule
    * 
    * @param id id (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> deleteRuleWithHttpInfo(String id) throws ApiException {
@@ -728,6 +731,7 @@ public class AlertsApi {
    * Updates the working hours for the organization
    * 
    * @param workingHoursDto workingHoursDto (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> updateWorkingHoursWithHttpInfo(WorkingHoursDto workingHoursDto) throws ApiException {

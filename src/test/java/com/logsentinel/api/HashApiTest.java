@@ -69,7 +69,7 @@ public class HashApiTest {
         List<String> actorRoles = null;
         String details = null;
         String logLevel = null;
-        String response = api.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel);
+        String response = api.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, null);
 
         // TODO: test validations
     }
@@ -94,7 +94,7 @@ public class HashApiTest {
         String actorDisplayName = null;
         List<String> actorRoles = null;
         String details = null;
-        String response = api.getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details);
+        String response = api.getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, null);
 
         // TODO: test validations
     }
@@ -121,7 +121,7 @@ public class HashApiTest {
         List<String> actorRoles = null;
         String details = null;
         String logLevel = null;
-        String response = api.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel);
+        String response = api.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, null);
 
         // TODO: test validations
     }
@@ -141,7 +141,7 @@ public class HashApiTest {
         String signature = null;
         String details = null;
         String logLevel = null;
-        String response = api.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel);
+        String response = api.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, null);
 
         // TODO: test validations
     }

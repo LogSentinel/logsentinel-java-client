@@ -198,7 +198,7 @@ public class LoggingApi {
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
- * @param map 
+   * @param additionalParams additionalParams (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -224,7 +224,7 @@ public class LoggingApi {
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
- * @param additionalParams 
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
@@ -306,6 +306,7 @@ if (signature != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param process process (optional)
+   * @param additionalParams additionalParams (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -331,6 +332,7 @@ if (signature != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param process process (optional)
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
@@ -485,6 +487,7 @@ if (userPublicKey != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param process process (optional)
+   * @param additionalParams additionalParams (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -511,7 +514,7 @@ if (userPublicKey != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param process process (optional)
- * @param additionalParams 
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
@@ -609,6 +612,7 @@ if (signature != null)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
+   * @param additionalParams additionalParams (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -636,6 +640,7 @@ if (signature != null)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
    * @param process process (optional)
+   * @param additionalParams additionalParams (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
@@ -725,11 +730,12 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logSimple(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel) throws ApiException {
-    return logSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel).getData();
+  public LogResponse logSimple(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Map<String, String> additionalParams) throws ApiException {
+    return logSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, additionalParams).getData();
       }
 
   /**
@@ -743,10 +749,11 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param logLevel logLevel (optional)
+   * @param additionalParams additionalParams (optional) 
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel) throws ApiException {
+  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -767,6 +774,10 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "encryptedKeywords", encryptedKeywords));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
 
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)

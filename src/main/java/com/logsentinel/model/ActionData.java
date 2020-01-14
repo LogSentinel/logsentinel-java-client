@@ -236,6 +236,7 @@ public class ActionData<T> {
    * Adds an additional param
    * @param name the param name
    * @param value the param value
+   * @return this object
    */
   public ActionData<?> addAdditionalParam(String name, String value) {
      additionalParams.put(name, value);

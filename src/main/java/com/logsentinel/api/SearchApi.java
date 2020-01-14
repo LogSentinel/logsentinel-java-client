@@ -196,8 +196,8 @@ public class SearchApi {
    * @return List&lt;AuditLogEntry&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<AuditLogEntry> search(String applicationId, Long endTime, Integer page, Integer pageSize, String query, Long startTime) throws ApiException {
-    return searchWithHttpInfo(applicationId, endTime, page, pageSize, query, startTime).getData();
+  public List<AuditLogEntry> search(String query, String applicationId, Long startTime, Long endTime, Integer page, Integer pageSize) throws ApiException {
+    return searchWithHttpInfo(query, applicationId, startTime, endTime, page, pageSize).getData();
       }
 
   /**
@@ -212,7 +212,7 @@ public class SearchApi {
    * @return ApiResponse&lt;List&lt;AuditLogEntry&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<AuditLogEntry>> searchWithHttpInfo(String applicationId, Long endTime, Integer page, Integer pageSize, String query, Long startTime) throws ApiException {
+  public ApiResponse<List<AuditLogEntry>> searchWithHttpInfo(String query, String applicationId, Long startTime, Long endTime, Integer page, Integer pageSize) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'applicationId' is set

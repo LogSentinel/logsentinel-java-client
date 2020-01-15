@@ -1,13 +1,19 @@
 package com.logsentinel;
 
-import com.logsentinel.client.ManageApplicationControllerApi;
-import com.logsentinel.client.OrganizationUsersControllerApi;
-import com.logsentinel.client.model.*;
-import org.junit.Before;
-import org.junit.Test;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+
+import java.util.UUID;
+
+import org.junit.Before;
+
+import com.logsentinel.api.ApplicationsApi;
+import com.logsentinel.api.OrganizationUsersApi;
+import com.logsentinel.model.Application;
+import com.logsentinel.model.UpdateApplicationRequest;
+import com.logsentinel.model.UpdateUserRequest;
+import com.logsentinel.model.UserDetails;
+import com.logsentinel.model.UserRegistrationRequest;
 
 public class ManagementApisTest {
 
@@ -19,8 +25,8 @@ public class ManagementApisTest {
     private static final String EMAIL = "aaaa@bbb.ccc";
     private String applicationId;
 
-    OrganizationUsersControllerApi userActions;
-    ManageApplicationControllerApi applicationActions;
+    OrganizationUsersApi userActions;
+    ApplicationsApi applicationActions;
 
     @Before
     public void init() {
@@ -48,7 +54,7 @@ public class ManagementApisTest {
 
 
             // init again with applicationId set, so Application-Id header is present for users api
-            applicationId = app.getId();
+            applicationId = app.getId().toString();
             init();
 
 
@@ -78,7 +84,7 @@ public class ManagementApisTest {
         }
     }
 
-    private UpdateApplicationRequest buildApplicationRequest(String id, String name) {
+    private UpdateApplicationRequest buildApplicationRequest(UUID id, String name) {
 
         UpdateApplicationRequest request = new UpdateApplicationRequest();
         request.setId(id);
@@ -97,7 +103,6 @@ public class ManagementApisTest {
         registrationRequest.setTimezone("GMT");
         registrationRequest.setSubscriptionPlanCode("FREE");
         registrationRequest.setPosition("boss");
-        registrationRequest.setApplicationId(applicationId);
         registrationRequest.setRole(UserRegistrationRequest.RoleEnum.ADMIN);
 
         return registrationRequest;
@@ -109,7 +114,6 @@ public class ManagementApisTest {
         request.setUserId(userDetails.getId());
         request.setEmail("new" + userDetails.getEmail());
         request.setNames(userDetails.getNames());
-        request.setProfilePicturePath(null);
         request.setPosition(userDetails.getPosition());
         request.setLanguage(UpdateUserRequest.LanguageEnum.EN);
 

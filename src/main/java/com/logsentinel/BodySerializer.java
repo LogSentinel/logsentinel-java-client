@@ -12,4 +12,6 @@ package com.logsentinel;
 public interface BodySerializer {
 
     String serialize(Object object);
+    
+    String getContentType();
 }

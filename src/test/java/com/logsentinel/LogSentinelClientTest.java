@@ -1,21 +1,28 @@
 package com.logsentinel;
 
-import com.logsentinel.client.model.*;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
+import java.util.UUID;
+
+import org.apache.commons.codec.digest.DigestUtils;
+import org.junit.Assert;
+
 import com.logsentinel.merkletree.utils.ArrayUtils;
 import com.logsentinel.merkletree.utils.CryptoUtils;
 import com.logsentinel.merkletree.utils.TreeUtils;
 import com.logsentinel.merkletree.verification.ConsistencyProofVerifier;
 import com.logsentinel.merkletree.verification.InclusionProofVerifier;
-import com.logsentinel.util.StringUtil;
+import com.logsentinel.model.AuditLogEntry;
+import com.logsentinel.model.ConsistencyProof;
+import com.logsentinel.model.InclusionProof;
+import com.logsentinel.model.MerkleTreeInfo;
+import com.logsentinel.model.TreeHead;
 import com.logsentinel.util.TimeStampUtil;
-import org.apache.commons.codec.digest.DigestUtils;
-import org.junit.Assert;
-
-import java.util.*;
 
 @SuppressWarnings("SpellCheckingInspection")
 public class LogSentinelClientTest {
-    final String applicationId = "ae37f8c0-7f38-11e8-bf35-cbf6b8eea46f";
+    final UUID applicationId = UUID.fromString("ae37f8c0-7f38-11e8-bf35-cbf6b8eea46f");
     final String organizationId = "ae1c3360-7f38-11e8-bf35-cbf6b8eea46f";
     final String secret = "846b72776182fe44a9e31dc009f9d97989b64e251d323acff43dc3d665e6ac15";
 
@@ -24,7 +31,7 @@ public class LogSentinelClientTest {
         // Test the audit log verification controller
 
         LogSentinelClientBuilder builder = LogSentinelClientBuilder
-                .create(applicationId, organizationId, secret);
+                .create(applicationId.toString(), organizationId, secret);
         builder.setBasePath("http://localhost:8080");
 
         LogSentinelClient client = builder.build();
@@ -59,15 +66,15 @@ public class LogSentinelClientTest {
             Assert.assertNotEquals(treeHead.getRootHash(), "");
 
             // Verify the time stamp token over the latest Merkle Tree Head (MTH)
-            Assert.assertTrue(TimeStampUtil.verifyMthTimeStamp(treeHead.getRootHash(), treeHead.getTimestampToken(),
-                    logSentinelTsCert));
+            Assert.assertTrue(TimeStampUtil.verifyMthTimeStamp(Base64.getEncoder().encodeToString(treeHead.getRootHash()), 
+                    treeHead.getTimestampToken(), logSentinelTsCert));
 
             // List of standalone hashes that are going to be verified for inclusion
             List<String> entriesForVerification = new ArrayList<>();
 
             // Retrieve all entries between two hashes
-            List<AuditLogEntry> logEntries = client.getVerificationActions().getEntriesBetweenHashes(hash1,
-                    hash2, applicationId);
+            List<AuditLogEntry> logEntries = client.getVerificationActions().getEntriesBetweenHashes(applicationId, 
+                    hash1, hash2);
 
             Assert.assertNotNull(logEntries);
             Assert.assertTrue(logEntries.size() > 0);
@@ -97,8 +104,7 @@ public class LogSentinelClientTest {
                         expectedEntryStandaloneData + prevEntryHash));
 
                 // Retrieve the standalone hash of the given audit log entry from the server
-                String entryStandaloneHash = client.getHashActions().getHash(applicationId,
-                        UUID.fromString(logEntries.get(i).getId()));
+                String entryStandaloneHash = client.getHashActions().getHash(applicationId, logEntries.get(i).getId());
 
                 // The calculated expected standalone hash of the given audit log entry should match the one on the
                 // server
@@ -122,8 +128,8 @@ public class LogSentinelClientTest {
             for (String entryForVerification : entriesForVerification) {
                 // Retrieve the inclusion proof data and the latest MTH from the server
                 InclusionProof inclusionProof = client.getVerificationActions().getInclusionProof(
-                        entryForVerification,
-                        applicationId);
+                        applicationId,
+                        entryForVerification);
 
                 Assert.assertNotNull(inclusionProof);
                 Assert.assertEquals(entryForVerification,
@@ -158,11 +164,12 @@ public class LogSentinelClientTest {
             // Retrieve the consistency proof data between two historical Merkle Tree Heads (MTHs) or between a
             // historical MTH and the latest MTH
             ConsistencyProof consistencyProof = client.getVerificationActions().getConsistencyProof(
-                    historicalMth, applicationId, StringUtil.base64StringAddPadding(treeHead.getRootHash()));
+                    applicationId, historicalMth, 
+                    StringUtil.base64StringAddPadding(Base64.getEncoder().encodeToString(treeHead.getRootHash())));
 
             Assert.assertNotNull(consistencyProof);
             Assert.assertEquals(historicalMth, consistencyProof.getFirstHash());
-            Assert.assertEquals(StringUtil.base64StringAddPadding(treeHead.getRootHash()),
+            Assert.assertEquals(StringUtil.base64StringAddPadding(Base64.getEncoder().encodeToString(treeHead.getRootHash())),
                     consistencyProof.getSecondHash());
             Assert.assertTrue(consistencyProof.getFirstTreeSize() > 0);
             Assert.assertTrue(consistencyProof.getSecondTreeSize() > 0);

@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://logsentinel.com/docs
+ * Read more at https://docs.logsentinel.com/en/latest/index.html
  *
  * OpenAPI spec version: 1
  * 
@@ -16,9 +16,8 @@ package com.logsentinel;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2017-05-24T18:34:16.973Z")
 public class ApiException extends RuntimeException {
-    private static final long serialVersionUID = -3765046749508783243L;
+
     private int code = 0;
     private Map<String, List<String>> responseHeaders = null;
     private String responseBody = null;

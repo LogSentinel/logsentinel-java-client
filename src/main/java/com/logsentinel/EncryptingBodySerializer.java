@@ -34,5 +34,10 @@ public class EncryptingBodySerializer implements BodySerializer {
             throw new RuntimeException("Failed to perform symmetric encryption", ex);
         }
     }
+    
+    @Override
+    public String getContentType() {
+        return "text/plain";
+    }
 
 }

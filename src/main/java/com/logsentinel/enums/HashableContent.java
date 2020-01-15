@@ -1,9 +1,10 @@
 package com.logsentinel.enums;
 
-import com.logsentinel.client.model.AuditLogEntry;
+import java.util.function.Function;
+
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.function.Function;
+import com.logsentinel.model.AuditLogEntry;
 
 /**
  * Enum that maps integer version to function that extracts hashable content from AuditLogEntry.
@@ -34,7 +35,7 @@ public enum HashableContent {
 
     private static Function<AuditLogEntry, String> baseHashableContent() {
         return entry -> StringUtils.trimToEmpty(entry.getActorId())
-                + StringUtils.trimToEmpty(entry.getActorRole() == null ? "" : StringUtils.join(entry.getActorRole(), ","))
+                + StringUtils.trimToEmpty(entry.getActorRoles() == null ? "" : StringUtils.join(entry.getActorRoles(), ","))
                 + StringUtils.trimToEmpty(entry.getAction())
                 + StringUtils.trimToEmpty(entry.getEntityId()) + StringUtils.trimToEmpty(entry.getEntityType())
                 + StringUtils.trimToEmpty(entry.getDetails()) + StringUtils.trimToEmpty(String.valueOf(entry.getTimestamp()))

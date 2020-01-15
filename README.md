@@ -10,7 +10,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>com.logsentinel</groupId>
     <artifactId>logsentinel-java-client</artifactId>
-    <version>0.1.1</version>
+    <version>0.2.0</verion>
 </dependency>
 ```
 
@@ -38,8 +38,8 @@ public class AuditLogControllerApiExample {
         
         try {
             LogResponse result = client.getAuditLogActions().log(
-                new ActorData(actorId).setActorDisplayName(username).setActorRoles(roles), 
-                new ActionData(details).setAction(action)
+                new ActorData().actorId(actorId).actorDisplayName(username).actorRoles(roles), 
+                new ActionData().details(details).action(action)
             );
             System.out.println(result);
         } catch (ApiException e) {

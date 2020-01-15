@@ -14,13 +14,9 @@
 package com.logsentinel.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonValue;
 import com.logsentinel.model.ActionData;
 import com.logsentinel.model.ActorData;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,9 +27,9 @@ import java.util.Map;
  * BatchLogRequestEntry
  */
 
-public class BatchLogRequestEntry {
+public class BatchLogRequestEntry<T> {
   @JsonProperty("actionData")
-  private ActionData actionData = null;
+  private ActionData<T> actionData = null;
 
   @JsonProperty("actorData")
   private ActorData actorData = null;
@@ -50,7 +46,7 @@ public class BatchLogRequestEntry {
   @JsonProperty("signature")
   private String signature = null;
 
-  public BatchLogRequestEntry actionData(ActionData actionData) {
+  public BatchLogRequestEntry<T> actionData(ActionData<T> actionData) {
     this.actionData = actionData;
     return this;
   }
@@ -60,15 +56,15 @@ public class BatchLogRequestEntry {
    * @return actionData
   **/
   @ApiModelProperty(value = "")
-  public ActionData getActionData() {
+  public ActionData<T> getActionData() {
     return actionData;
   }
 
-  public void setActionData(ActionData actionData) {
+  public void setActionData(ActionData<T> actionData) {
     this.actionData = actionData;
   }
 
-  public BatchLogRequestEntry actorData(ActorData actorData) {
+  public BatchLogRequestEntry<T> actorData(ActorData actorData) {
     this.actorData = actorData;
     return this;
   }
@@ -86,12 +82,12 @@ public class BatchLogRequestEntry {
     this.actorData = actorData;
   }
 
-  public BatchLogRequestEntry additionalParams(Map<String, String> additionalParams) {
+  public BatchLogRequestEntry<T> additionalParams(Map<String, String> additionalParams) {
     this.additionalParams = additionalParams;
     return this;
   }
 
-  public BatchLogRequestEntry putAdditionalParamsItem(String key, String additionalParamsItem) {
+  public BatchLogRequestEntry<T> putAdditionalParamsItem(String key, String additionalParamsItem) {
     if (this.additionalParams == null) {
       this.additionalParams = new HashMap<>();
     }
@@ -112,7 +108,7 @@ public class BatchLogRequestEntry {
     this.additionalParams = additionalParams;
   }
 
-  public BatchLogRequestEntry binaryContent(Boolean binaryContent) {
+  public BatchLogRequestEntry<T> binaryContent(Boolean binaryContent) {
     this.binaryContent = binaryContent;
     return this;
   }
@@ -130,12 +126,12 @@ public class BatchLogRequestEntry {
     this.binaryContent = binaryContent;
   }
 
-  public BatchLogRequestEntry encryptedKeywordsList(List<String> encryptedKeywordsList) {
+  public BatchLogRequestEntry<T> encryptedKeywordsList(List<String> encryptedKeywordsList) {
     this.encryptedKeywordsList = encryptedKeywordsList;
     return this;
   }
 
-  public BatchLogRequestEntry addEncryptedKeywordsListItem(String encryptedKeywordsListItem) {
+  public BatchLogRequestEntry<T> addEncryptedKeywordsListItem(String encryptedKeywordsListItem) {
     if (this.encryptedKeywordsList == null) {
       this.encryptedKeywordsList = new ArrayList<>();
     }
@@ -156,7 +152,7 @@ public class BatchLogRequestEntry {
     this.encryptedKeywordsList = encryptedKeywordsList;
   }
 
-  public BatchLogRequestEntry signature(String signature) {
+  public BatchLogRequestEntry<T> signature(String signature) {
     this.signature = signature;
     return this;
   }
@@ -183,7 +179,7 @@ public class BatchLogRequestEntry {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    BatchLogRequestEntry batchLogRequestEntry = (BatchLogRequestEntry) o;
+    BatchLogRequestEntry<T> batchLogRequestEntry = (BatchLogRequestEntry<T>) o;
     return Objects.equals(this.actionData, batchLogRequestEntry.actionData) &&
         Objects.equals(this.actorData, batchLogRequestEntry.actorData) &&
         Objects.equals(this.additionalParams, batchLogRequestEntry.additionalParams) &&

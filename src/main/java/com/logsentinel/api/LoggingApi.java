@@ -409,7 +409,7 @@ if (userPublicKey != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logBatch(UUID applicationId, List<BatchLogRequestEntry> requestData) throws ApiException {
+  public <T> LogResponse logBatch(UUID applicationId, List<BatchLogRequestEntry<T>> requestData) throws ApiException {
     return logBatchWithHttpInfo(applicationId, requestData).getData();
       }
   
@@ -420,7 +420,7 @@ if (userPublicKey != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logBatch(List<BatchLogRequestEntry> requestData) throws ApiException {
+  public <T> LogResponse logBatch(List<BatchLogRequestEntry<T>> requestData) throws ApiException {
     return logBatchWithHttpInfo(null, requestData).getData();
       }
 
@@ -432,7 +432,7 @@ if (userPublicKey != null)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logBatchWithHttpInfo(UUID applicationId, List<BatchLogRequestEntry> requestData) throws ApiException {
+  public <T> ApiResponse<LogResponse> logBatchWithHttpInfo(UUID applicationId, List<BatchLogRequestEntry<T>> requestData) throws ApiException {
     Object localVarPostBody = requestData;
     
     // verify the required parameter 'requestData' is set
@@ -465,6 +465,14 @@ if (userPublicKey != null)
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
+    requestData.forEach(e -> {
+      if (e.getAdditionalParams() == null) {
+          e.setAdditionalParams(new HashMap<>());
+      }
+      if (e.getActionData() != null && e.getActionData().getAdditionalParams() != null) {
+          e.getActionData().getAdditionalParams().forEach((k, v) -> e.getAdditionalParams().put(k, v));
+      }
+    });
     GenericType<LogResponse> localVarReturnType = new GenericType<LogResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }

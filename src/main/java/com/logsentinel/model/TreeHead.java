@@ -27,7 +27,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class TreeHead {
   @JsonProperty("rootHash")
-  private byte[] rootHash = null;
+  private String rootHash = null;
 
   @JsonProperty("timestampToken")
   private String timestampToken = null;
@@ -35,7 +35,7 @@ public class TreeHead {
   @JsonProperty("treeSize")
   private Integer treeSize = null;
 
-  public TreeHead rootHash(byte[] rootHash) {
+  public TreeHead rootHash(String rootHash) {
     this.rootHash = rootHash;
     return this;
   }
@@ -45,11 +45,11 @@ public class TreeHead {
    * @return rootHash
   **/
   @ApiModelProperty(value = "")
-  public byte[] getRootHash() {
+  public String getRootHash() {
     return rootHash;
   }
 
-  public void setRootHash(byte[] rootHash) {
+  public void setRootHash(String rootHash) {
     this.rootHash = rootHash;
   }
 
@@ -99,14 +99,14 @@ public class TreeHead {
       return false;
     }
     TreeHead treeHead = (TreeHead) o;
-    return Arrays.equals(this.rootHash, treeHead.rootHash) &&
+    return Objects.equals(this.rootHash, treeHead.rootHash) &&
         Objects.equals(this.timestampToken, treeHead.timestampToken) &&
         Objects.equals(this.treeSize, treeHead.treeSize);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(Arrays.hashCode(rootHash), timestampToken, treeSize);
+    return Objects.hash(rootHash, timestampToken, treeSize);
   }
 
 

@@ -139,7 +139,7 @@ public class LoggingApiTest {
     @Test
     public void logBatchTest() throws ApiException {
         UUID applicationId = null;
-        List<BatchLogRequestEntry> requestData = null;
+        List<BatchLogRequestEntry<String>> requestData = null;
         LogResponse response = api.logBatch(applicationId, requestData);
 
         // TODO: test validations

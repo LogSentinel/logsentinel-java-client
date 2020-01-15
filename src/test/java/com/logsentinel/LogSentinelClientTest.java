@@ -66,7 +66,7 @@ public class LogSentinelClientTest {
             Assert.assertNotEquals(treeHead.getRootHash(), "");
 
             // Verify the time stamp token over the latest Merkle Tree Head (MTH)
-            Assert.assertTrue(TimeStampUtil.verifyMthTimeStamp(Base64.getEncoder().encodeToString(treeHead.getRootHash()), 
+            Assert.assertTrue(TimeStampUtil.verifyMthTimeStamp(treeHead.getRootHash(), 
                     treeHead.getTimestampToken(), logSentinelTsCert));
 
             // List of standalone hashes that are going to be verified for inclusion
@@ -165,11 +165,11 @@ public class LogSentinelClientTest {
             // historical MTH and the latest MTH
             ConsistencyProof consistencyProof = client.getVerificationActions().getConsistencyProof(
                     applicationId, historicalMth, 
-                    StringUtil.base64StringAddPadding(Base64.getEncoder().encodeToString(treeHead.getRootHash())));
+                    StringUtil.base64StringAddPadding(treeHead.getRootHash()));
 
             Assert.assertNotNull(consistencyProof);
             Assert.assertEquals(historicalMth, consistencyProof.getFirstHash());
-            Assert.assertEquals(StringUtil.base64StringAddPadding(Base64.getEncoder().encodeToString(treeHead.getRootHash())),
+            Assert.assertEquals(StringUtil.base64StringAddPadding(treeHead.getRootHash()),
                     consistencyProof.getSecondHash());
             Assert.assertTrue(consistencyProof.getFirstTreeSize() > 0);
             Assert.assertTrue(consistencyProof.getSecondTreeSize() > 0);

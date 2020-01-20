@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getBatch**](SearchApi.md#getBatch) | **GET** /api/search/batch | Search entries in batches by field
 [**getEntityHistory**](SearchApi.md#getEntityHistory) | **GET** /api/search/entityHistory | Get entity history
-[**search**](SearchApi.md#search) | **GET** /api/search | Search logged entries
+[**search**](SearchApi.md#search) | **POST** /api/search | Search logged entries
 
 
 <a name="getBatch"></a>
@@ -133,7 +133,7 @@ Name | Type | Description  | Notes
 
 <a name="search"></a>
 # **search**
-> List&lt;AuditLogEntry&gt; search(applicationId, endTime, page, pageSize, query, startTime)
+> List&lt;AuditLogEntry&gt; search(applicationId, searchRequest)
 
 Search logged entries
 
@@ -157,13 +157,9 @@ basicAuth.setPassword("YOUR PASSWORD");
 
 SearchApi apiInstance = new SearchApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
-Long endTime = 789L; // Long | endTime
-Integer page = 56; // Integer | page
-Integer pageSize = 56; // Integer | pageSize
-String query = "query_example"; // String | query
-Long startTime = 789L; // Long | startTime
+SearchRequest searchRequest = new SearchRequest(); // SearchRequest | searchRequest
 try {
-    List<AuditLogEntry> result = apiInstance.search(applicationId, endTime, page, pageSize, query, startTime);
+    List<AuditLogEntry> result = apiInstance.search(applicationId, searchRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SearchApi#search");
@@ -176,11 +172,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **endTime** | **Long**| endTime |
- **page** | **Integer**| page |
- **pageSize** | **Integer**| pageSize |
- **query** | **String**| query |
- **startTime** | **Long**| startTime |
+ **searchRequest** | [**SearchRequest**](SearchRequest.md)| searchRequest |
 
 ### Return type
 
@@ -192,6 +184,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: */*
+ - **Content-Type**: application/json
  - **Accept**: application/xml, application/json
 

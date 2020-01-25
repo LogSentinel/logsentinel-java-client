@@ -87,7 +87,7 @@ public class SearchApiTest {
         Integer pageSize = null;
         String query = null;
         Long startTime = null;
-        List<AuditLogEntry> response = api.search(applicationId, query, startTime, endTime, page, pageSize);
+        List<AuditLogEntry> response = api.search(applicationId, null);
 
         // TODO: test validations
     }

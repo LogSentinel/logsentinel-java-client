@@ -815,10 +815,21 @@ if (signature != null)
       if (actionData.getEntryType() != null) {
           entryType = actionData.getEntryType().getValue();
       }
-      return logFull(applicationId, actionData.getAction(), actorData.getActorId(), actionData.getEntityId(), actionData.getEntityType(), 
+      
+      if (actionData.getEntityType() != null && actionData.getEntityId() != null) {
+          return logFull(applicationId, actionData.getAction(), actorData.getActorId(), actionData.getEntityId(), actionData.getEntityType(), 
               entryType, signature, actorData.getDepartment(), 
               actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
               body, null, bodyAndKeywords.getKeywords(), null, null, null, actionData.getAdditionalParams());
+      } else if (actionData.getAction() != null && actorData.getActorId() != null) {
+          return log(applicationId, actionData.getAction(), actorData.getActorId(), 
+                  entryType, signature, actorData.getDepartment(), 
+                  actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
+                  body, null, bodyAndKeywords.getKeywords(), null, null, null, actionData.getAdditionalParams());
+      } else {
+          return logSimple(applicationId, entryType, signature, actionData.isBinaryContent(), 
+                  body, null, bodyAndKeywords.getKeywords(), null, actionData.getAdditionalParams());
+      }
   }
   
   private <T> BodyAndKeywords preProcessBody(ActionData<T> actionData) {

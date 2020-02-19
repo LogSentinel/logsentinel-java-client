@@ -8,6 +8,7 @@ import com.logsentinel.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import com.logsentinel.model.APICredentialsOrganization;
 import com.logsentinel.model.OrganizationDto;
 import com.logsentinel.model.RegistrationResponse;
 import java.util.UUID;

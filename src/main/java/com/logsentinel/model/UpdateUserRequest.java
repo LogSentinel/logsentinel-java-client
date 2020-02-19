@@ -18,7 +18,6 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.logsentinel.model.ByteBuffer;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.UUID;
@@ -76,7 +75,7 @@ public class UpdateUserRequest {
   private String position = null;
 
   @JsonProperty("profilePicture")
-  private ByteBuffer profilePicture = null;
+  private byte[] profilePicture = null;
 
   @JsonProperty("receiveUpdates")
   private Boolean receiveUpdates = null;
@@ -159,7 +158,7 @@ public class UpdateUserRequest {
     this.position = position;
   }
 
-  public UpdateUserRequest profilePicture(ByteBuffer profilePicture) {
+  public UpdateUserRequest profilePicture(byte[] profilePicture) {
     this.profilePicture = profilePicture;
     return this;
   }
@@ -169,11 +168,11 @@ public class UpdateUserRequest {
    * @return profilePicture
   **/
   @ApiModelProperty(value = "")
-  public ByteBuffer getProfilePicture() {
+  public byte[] getProfilePicture() {
     return profilePicture;
   }
 
-  public void setProfilePicture(ByteBuffer profilePicture) {
+  public void setProfilePicture(byte[] profilePicture) {
     this.profilePicture = profilePicture;
   }
 

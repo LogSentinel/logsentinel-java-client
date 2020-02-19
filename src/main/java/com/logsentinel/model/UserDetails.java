@@ -18,7 +18,6 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.logsentinel.model.ByteBuffer;
 import com.logsentinel.model.WhitelabelStyling;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -175,7 +174,7 @@ public class UserDetails {
   private String position = null;
 
   @JsonProperty("profilePicture")
-  private ByteBuffer profilePicture = null;
+  private byte[] profilePicture = null;
 
   @JsonProperty("publicUser")
   private Boolean publicUser = null;
@@ -592,7 +591,7 @@ public class UserDetails {
     this.position = position;
   }
 
-  public UserDetails profilePicture(ByteBuffer profilePicture) {
+  public UserDetails profilePicture(byte[] profilePicture) {
     this.profilePicture = profilePicture;
     return this;
   }
@@ -602,11 +601,11 @@ public class UserDetails {
    * @return profilePicture
   **/
   @ApiModelProperty(value = "")
-  public ByteBuffer getProfilePicture() {
+  public byte[] getProfilePicture() {
     return profilePicture;
   }
 
-  public void setProfilePicture(ByteBuffer profilePicture) {
+  public void setProfilePicture(byte[] profilePicture) {
     this.profilePicture = profilePicture;
   }
 

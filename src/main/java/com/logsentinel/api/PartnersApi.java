@@ -1,21 +1,22 @@
 package com.logsentinel.api;
 
+import com.logsentinel.ApiException;
+import com.logsentinel.ApiClient;
+import com.logsentinel.ApiResponse;
+import com.logsentinel.Configuration;
+import com.logsentinel.Pair;
+
+import javax.ws.rs.core.GenericType;
+
+import com.logsentinel.model.OrganizationDto;
+import com.logsentinel.model.RegistrationResponse;
+import java.util.UUID;
+import com.logsentinel.model.UserRegistrationRequest;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
-
-import javax.ws.rs.core.GenericType;
-
-import com.logsentinel.ApiClient;
-import com.logsentinel.ApiException;
-import com.logsentinel.ApiResponse;
-import com.logsentinel.Configuration;
-import com.logsentinel.Pair;
-import com.logsentinel.model.APICredentialsOrganization;
-import com.logsentinel.model.RegistrationResponse;
-import com.logsentinel.model.UserRegistrationRequest;
 
 
 public class PartnersApi {
@@ -52,7 +53,6 @@ public class PartnersApi {
    * Cancels organization by Id and deletes all users
    * 
    * @param organizationId organizationId (required)
-   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> cancelOrganizationWithHttpInfo(UUID organizationId) throws ApiException {
@@ -178,6 +178,59 @@ public class PartnersApi {
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
     GenericType<Map<String, List<APICredentialsOrganization>>> localVarReturnType = new GenericType<Map<String, List<APICredentialsOrganization>>>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * Get the organization for the supplied email
+   * 
+   * @param email email (required)
+   * @return OrganizationDto
+   * @throws ApiException if fails to make API call
+   */
+  public OrganizationDto getOrganizationByUserEmail(String email) throws ApiException {
+    return getOrganizationByUserEmailWithHttpInfo(email).getData();
+      }
+
+  /**
+   * Get the organization for the supplied email
+   * 
+   * @param email email (required)
+   * @return ApiResponse&lt;OrganizationDto&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<OrganizationDto> getOrganizationByUserEmailWithHttpInfo(String email) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'email' is set
+    if (email == null) {
+      throw new ApiException(400, "Missing the required parameter 'email' when calling getOrganizationByUserEmail");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/api/partner/organizationByUserEmail";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "email", email));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/xml", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<OrganizationDto> localVarReturnType = new GenericType<OrganizationDto>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

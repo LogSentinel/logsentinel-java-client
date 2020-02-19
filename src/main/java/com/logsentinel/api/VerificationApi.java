@@ -10,6 +10,7 @@ import javax.ws.rs.core.GenericType;
 
 import com.logsentinel.model.AuditLogEntry;
 import com.logsentinel.model.ConsistencyProof;
+import com.logsentinel.model.EthereumData;
 import com.logsentinel.model.InclusionProof;
 import com.logsentinel.model.MerkleTreeInfo;
 import com.logsentinel.model.ResolvedVerificationFailureResponse;
@@ -178,6 +179,59 @@ public class VerificationApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Fetch all hashes pushed to Ethereum for a given application
+   * 
+   * @param applicationId applicationId (required)
+   * @return List&lt;EthereumData&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<EthereumData> getEthereumEntries(UUID applicationId) throws ApiException {
+    return getEthereumEntriesWithHttpInfo(applicationId).getData();
+      }
+
+  /**
+   * Fetch all hashes pushed to Ethereum for a given application
+   * 
+   * @param applicationId applicationId (required)
+   * @return ApiResponse&lt;List&lt;EthereumData&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<EthereumData>> getEthereumEntriesWithHttpInfo(UUID applicationId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling getEthereumEntries");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/api/verification/ethereumEntries";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "applicationId", applicationId));
+
+    
+    
+    final String[] localVarAccepts = {
+      "*/*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<List<EthereumData>> localVarReturnType = new GenericType<List<EthereumData>>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Get inclusion proof for the application merkle tree. Async operation, as the generation may be slow
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
@@ -296,7 +350,7 @@ public class VerificationApi {
   /**
    * Get general info about merkle tree parameters
    * 
-   * @return TreeHead
+   * @return MerkleTreeInfo
    * @throws ApiException if fails to make API call
    */
   public MerkleTreeInfo getMerkleTreeInfo() throws ApiException {
@@ -306,7 +360,7 @@ public class VerificationApi {
   /**
    * Get general info about merkle tree parameters
    * 
-   * @return ApiResponse&lt;TreeHead&gt;
+   * @return ApiResponse&lt;MerkleTreeInfo&gt;
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<MerkleTreeInfo> getMerkleTreeInfoWithHttpInfo() throws ApiException {

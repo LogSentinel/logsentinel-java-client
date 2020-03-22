@@ -42,7 +42,7 @@ public class ActionData<T> {
 
   @JsonProperty("entityType")
   private String entityType = null;
-  
+
   @JsonIgnore
   private byte[] encryptionKey;
 
@@ -54,7 +54,7 @@ public class ActionData<T> {
   
   @JsonIgnore
   private Map<String, String> additionalParams = new HashMap<>();
-  
+
   /**
    * Gets or Sets entryType
    */
@@ -108,7 +108,28 @@ public class ActionData<T> {
     return this;
   }
 
-   /**
+  @JsonProperty("originalEventTimestamp")
+  private Long originalEventTimestamp = null;
+
+  /**
+   * Get originalEventTimestamp
+   * @return originalEventTimestamp
+   **/
+  @ApiModelProperty(value = "")
+  public Long getOriginalEventTimestamp() {
+    return originalEventTimestamp;
+  }
+
+  public void setOriginalEventTimestamp(Long originalEventTimestamp) {
+    this.originalEventTimestamp = originalEventTimestamp;
+  }
+
+  public ActionData<T> originalEventTimestamp(Long originalEventTimestamp) {
+    this.originalEventTimestamp = originalEventTimestamp;
+    return this;
+  }
+
+  /**
    * Get action
    * @return action
   **/

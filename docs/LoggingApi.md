@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="log"></a>
 # **log**
-> LogResponse log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process)
+> LogResponse log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process)
 
 Log an event by a given actor
 
@@ -161,9 +161,10 @@ List<String> directExternalPush = Arrays.asList("directExternalPush_example"); /
 List<String> encryptedKeywords = Arrays.asList("encryptedKeywords_example"); // List<String> | If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text
 String gdprCorrelationKey = "gdprCorrelationKey_example"; // String | If the event is about GDPR-related action, you can correlate it with a process in the GDPR register
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 String process = "process_example"; // String | process
 try {
-    LogResponse result = apiInstance.log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process);
+    LogResponse result = apiInstance.log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#log");
@@ -189,6 +190,7 @@ Name | Type | Description  | Notes
  **encryptedKeywords** | [**List&lt;String&gt;**](String.md)| If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text | [optional]
  **gdprCorrelationKey** | **String**| If the event is about GDPR-related action, you can correlate it with a process in the GDPR register | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
  **process** | **String**| process | [optional]
 
 ### Return type
@@ -206,7 +208,7 @@ Name | Type | Description  | Notes
 
 <a name="logAuthAction"></a>
 # **logAuthAction**
-> LogResponse logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, process)
+> LogResponse logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process)
 
 Log an authentication event with the option to pass actor public key and signature
 
@@ -243,9 +245,10 @@ byte[] details = BINARY_DATA_HERE; // byte[] | Any details in any format about t
 List<String> directExternalPush = Arrays.asList("directExternalPush_example"); // List<String> | directExternalPush
 List<String> encryptedKeywords = Arrays.asList("encryptedKeywords_example"); // List<String> | If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text
 String gdprCorrelationKey = "gdprCorrelationKey_example"; // String | If the event is about GDPR-related action, you can correlate it with a process in the GDPR register
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 String process = "process_example"; // String | process
 try {
-    LogResponse result = apiInstance.logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, process);
+    LogResponse result = apiInstance.logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logAuthAction");
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
  **directExternalPush** | [**List&lt;String&gt;**](String.md)| directExternalPush | [optional] [enum: ETHEREUM, QTSA, EMAIL, TWITTER]
  **encryptedKeywords** | [**List&lt;String&gt;**](String.md)| If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text | [optional]
  **gdprCorrelationKey** | **String**| If the event is about GDPR-related action, you can correlate it with a process in the GDPR register | [optional]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
  **process** | **String**| process | [optional]
 
 ### Return type
@@ -342,7 +346,7 @@ Name | Type | Description  | Notes
 
 <a name="logDocument"></a>
 # **logDocument**
-> LogResponse logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, process)
+> LogResponse logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process)
 
 Log an event by providing full details. Action can be INSERT/UPDATE/DELETE/GET or any custom action
 
@@ -380,9 +384,10 @@ String documentName = "documentName_example"; // String | documentName
 String documentType = "documentType_example"; // String | documentType
 List<String> encryptedKeywords = Arrays.asList("encryptedKeywords_example"); // List<String> | If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text
 String gdprCorrelationKey = "gdprCorrelationKey_example"; // String | If the event is about GDPR-related action, you can correlate it with a process in the GDPR register
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 String process = "process_example"; // String | process
 try {
-    LogResponse result = apiInstance.logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, process);
+    LogResponse result = apiInstance.logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logDocument");
@@ -409,6 +414,7 @@ Name | Type | Description  | Notes
  **documentType** | **String**| documentType | [optional]
  **encryptedKeywords** | [**List&lt;String&gt;**](String.md)| If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text | [optional]
  **gdprCorrelationKey** | **String**| If the event is about GDPR-related action, you can correlate it with a process in the GDPR register | [optional]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
  **process** | **String**| process | [optional]
 
 ### Return type
@@ -426,7 +432,7 @@ Name | Type | Description  | Notes
 
 <a name="logFull"></a>
 # **logFull**
-> LogResponse logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process)
+> LogResponse logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process)
 
 Log an event by providing full details. Action can be INSERT/UPDATE/DELETE/GET or any custom action
 
@@ -465,9 +471,10 @@ List<String> directExternalPush = Arrays.asList("directExternalPush_example"); /
 List<String> encryptedKeywords = Arrays.asList("encryptedKeywords_example"); // List<String> | If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text
 String gdprCorrelationKey = "gdprCorrelationKey_example"; // String | If the event is about GDPR-related action, you can correlate it with a process in the GDPR register
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 String process = "process_example"; // String | process
 try {
-    LogResponse result = apiInstance.logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, process);
+    LogResponse result = apiInstance.logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logFull");
@@ -495,6 +502,7 @@ Name | Type | Description  | Notes
  **encryptedKeywords** | [**List&lt;String&gt;**](String.md)| If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text | [optional]
  **gdprCorrelationKey** | **String**| If the event is about GDPR-related action, you can correlate it with a process in the GDPR register | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
  **process** | **String**| process | [optional]
 
 ### Return type
@@ -512,7 +520,7 @@ Name | Type | Description  | Notes
 
 <a name="logSimple"></a>
 # **logSimple**
-> LogResponse logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel)
+> LogResponse logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp)
 
 Log an event by providing just the body without any additional metadata. The body can be fully encrypted or can represent just the hash of the data/document
 
@@ -543,8 +551,9 @@ byte[] details = BINARY_DATA_HERE; // byte[] | Any details in any format about t
 List<String> directExternalPush = Arrays.asList("directExternalPush_example"); // List<String> | directExternalPush
 List<String> encryptedKeywords = Arrays.asList("encryptedKeywords_example"); // List<String> | If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 try {
-    LogResponse result = apiInstance.logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel);
+    LogResponse result = apiInstance.logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logSimple");
@@ -564,6 +573,7 @@ Name | Type | Description  | Notes
  **directExternalPush** | [**List&lt;String&gt;**](String.md)| directExternalPush | [optional] [enum: ETHEREUM, QTSA, EMAIL, TWITTER]
  **encryptedKeywords** | [**List&lt;String&gt;**](String.md)| If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
 
 ### Return type
 

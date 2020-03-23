@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.MachineLearningSettings;
 import com.logsentinel.model.MetadataExtractionPaths;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -69,11 +70,17 @@ public class Application {
   @JsonProperty("logLevelRegexes")
   private Map<String, String> logLevelRegexes = null;
 
+  @JsonProperty("machineLearningSettings")
+  private MachineLearningSettings machineLearningSettings = null;
+
   @JsonProperty("merkleTreeGenerationMinutes")
   private Integer merkleTreeGenerationMinutes = null;
 
   @JsonProperty("metadataExtractionPaths")
   private MetadataExtractionPaths metadataExtractionPaths = null;
+
+  @JsonProperty("missingLogsAlertId")
+  private UUID missingLogsAlertId = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -416,6 +423,24 @@ public class Application {
     this.logLevelRegexes = logLevelRegexes;
   }
 
+  public Application machineLearningSettings(MachineLearningSettings machineLearningSettings) {
+    this.machineLearningSettings = machineLearningSettings;
+    return this;
+  }
+
+   /**
+   * Get machineLearningSettings
+   * @return machineLearningSettings
+  **/
+  @ApiModelProperty(value = "")
+  public MachineLearningSettings getMachineLearningSettings() {
+    return machineLearningSettings;
+  }
+
+  public void setMachineLearningSettings(MachineLearningSettings machineLearningSettings) {
+    this.machineLearningSettings = machineLearningSettings;
+  }
+
   public Application merkleTreeGenerationMinutes(Integer merkleTreeGenerationMinutes) {
     this.merkleTreeGenerationMinutes = merkleTreeGenerationMinutes;
     return this;
@@ -450,6 +475,24 @@ public class Application {
 
   public void setMetadataExtractionPaths(MetadataExtractionPaths metadataExtractionPaths) {
     this.metadataExtractionPaths = metadataExtractionPaths;
+  }
+
+  public Application missingLogsAlertId(UUID missingLogsAlertId) {
+    this.missingLogsAlertId = missingLogsAlertId;
+    return this;
+  }
+
+   /**
+   * Get missingLogsAlertId
+   * @return missingLogsAlertId
+  **/
+  @ApiModelProperty(value = "")
+  public UUID getMissingLogsAlertId() {
+    return missingLogsAlertId;
+  }
+
+  public void setMissingLogsAlertId(UUID missingLogsAlertId) {
+    this.missingLogsAlertId = missingLogsAlertId;
   }
 
   public Application name(String name) {
@@ -802,8 +845,10 @@ public class Application {
         Objects.equals(this.latestHashRecipientEmails, application.latestHashRecipientEmails) &&
         Objects.equals(this.logLevelErrorReportRecipientEmails, application.logLevelErrorReportRecipientEmails) &&
         Objects.equals(this.logLevelRegexes, application.logLevelRegexes) &&
+        Objects.equals(this.machineLearningSettings, application.machineLearningSettings) &&
         Objects.equals(this.merkleTreeGenerationMinutes, application.merkleTreeGenerationMinutes) &&
         Objects.equals(this.metadataExtractionPaths, application.metadataExtractionPaths) &&
+        Objects.equals(this.missingLogsAlertId, application.missingLogsAlertId) &&
         Objects.equals(this.name, application.name) &&
         Objects.equals(this.openDataAnonymizationRegexes, application.openDataAnonymizationRegexes) &&
         Objects.equals(this.openDataAnonymizeBodyFields, application.openDataAnonymizeBodyFields) &&
@@ -824,7 +869,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(containsPersonalData, created, detailsTransformationScript, displayedDetailsFields, genesisEntryId, id, ipWhiteList, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logLevelErrorReportRecipientEmails, logLevelRegexes, merkleTreeGenerationMinutes, metadataExtractionPaths, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, retentionMonths, signatureVerificationPublicKeys, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(containsPersonalData, created, detailsTransformationScript, displayedDetailsFields, genesisEntryId, id, ipWhiteList, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logLevelErrorReportRecipientEmails, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, retentionMonths, signatureVerificationPublicKeys, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -845,8 +890,10 @@ public class Application {
     sb.append("    latestHashRecipientEmails: ").append(toIndentedString(latestHashRecipientEmails)).append("\n");
     sb.append("    logLevelErrorReportRecipientEmails: ").append(toIndentedString(logLevelErrorReportRecipientEmails)).append("\n");
     sb.append("    logLevelRegexes: ").append(toIndentedString(logLevelRegexes)).append("\n");
+    sb.append("    machineLearningSettings: ").append(toIndentedString(machineLearningSettings)).append("\n");
     sb.append("    merkleTreeGenerationMinutes: ").append(toIndentedString(merkleTreeGenerationMinutes)).append("\n");
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
+    sb.append("    missingLogsAlertId: ").append(toIndentedString(missingLogsAlertId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");

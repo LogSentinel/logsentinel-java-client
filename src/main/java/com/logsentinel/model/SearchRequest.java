@@ -20,12 +20,18 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * SearchRequest
  */
 
 public class SearchRequest {
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
+
   @JsonProperty("end")
   private Long end = null;
 
@@ -40,6 +46,70 @@ public class SearchRequest {
 
   @JsonProperty("start")
   private Long start = null;
+
+  /**
+   * Gets or Sets timestampField
+   */
+  public enum TimestampFieldEnum {
+    RECEIVED("RECEIVED"),
+    
+    ORIGINAL("ORIGINAL");
+
+    private String value;
+
+    TimestampFieldEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TimestampFieldEnum fromValue(String text) {
+      for (TimestampFieldEnum b : TimestampFieldEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("timestampField")
+  private TimestampFieldEnum timestampField = null;
+
+  public SearchRequest applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public SearchRequest addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * Get applicationIds
+   * @return applicationIds
+  **/
+  @ApiModelProperty(value = "")
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
+  }
+
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+  }
 
   public SearchRequest end(Long end) {
     this.end = end;
@@ -131,6 +201,24 @@ public class SearchRequest {
     this.start = start;
   }
 
+  public SearchRequest timestampField(TimestampFieldEnum timestampField) {
+    this.timestampField = timestampField;
+    return this;
+  }
+
+   /**
+   * Get timestampField
+   * @return timestampField
+  **/
+  @ApiModelProperty(value = "")
+  public TimestampFieldEnum getTimestampField() {
+    return timestampField;
+  }
+
+  public void setTimestampField(TimestampFieldEnum timestampField) {
+    this.timestampField = timestampField;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -141,16 +229,18 @@ public class SearchRequest {
       return false;
     }
     SearchRequest searchRequest = (SearchRequest) o;
-    return Objects.equals(this.end, searchRequest.end) &&
+    return Objects.equals(this.applicationIds, searchRequest.applicationIds) &&
+        Objects.equals(this.end, searchRequest.end) &&
         Objects.equals(this.page, searchRequest.page) &&
         Objects.equals(this.pageSize, searchRequest.pageSize) &&
         Objects.equals(this.query, searchRequest.query) &&
-        Objects.equals(this.start, searchRequest.start);
+        Objects.equals(this.start, searchRequest.start) &&
+        Objects.equals(this.timestampField, searchRequest.timestampField);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(end, page, pageSize, query, start);
+    return Objects.hash(applicationIds, end, page, pageSize, query, start, timestampField);
   }
 
 
@@ -159,11 +249,13 @@ public class SearchRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class SearchRequest {\n");
     
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    page: ").append(toIndentedString(page)).append("\n");
     sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");
+    sb.append("    timestampField: ").append(toIndentedString(timestampField)).append("\n");
     sb.append("}");
     return sb.toString();
   }

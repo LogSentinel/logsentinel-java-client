@@ -277,12 +277,13 @@ public class ActionData<T> {
         Objects.equals(this.details, actionData.details) &&
         Objects.equals(this.entityId, actionData.entityId) &&
         Objects.equals(this.entityType, actionData.entityType) &&
-        Objects.equals(this.entryType, actionData.entryType);
+        Objects.equals(this.entryType, actionData.entryType) &&
+        Objects.equals(this.originalEventTimestamp, actionData.originalEventTimestamp);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, details, entityId, entityType, entryType);
+    return Objects.hash(action, details, entityId, entityType, entryType, originalEventTimestamp);
   }
 
 
@@ -296,6 +297,7 @@ public class ActionData<T> {
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
+    sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **awsCustomerId** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
 **expirationDate** | **String** |  |  [optional]
+**industry** | **String** |  |  [optional]
 **names** | **String** |  |  [optional]
 **organizationName** | **String** |  |  [optional]
 **password** | **String** |  |  [optional]

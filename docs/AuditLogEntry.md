@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ipAddress** | **String** |  |  [optional]
 **logLevel** | [**LogLevelEnum**](#LogLevelEnum) |  |  [optional]
 **numericParams** | **Map&lt;String, Double&gt;** |  |  [optional]
+**originalEventTimestamp** | **Long** |  |  [optional]
 **previousEntryId** | [**UUID**](UUID.md) |  |  [optional]
 **standaloneHash** | **String** |  |  [optional]
 **timestamp** | **Long** |  |  [optional]

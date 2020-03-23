@@ -119,7 +119,7 @@ public class HashApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Get the content over which to compute the hash of a request for simple (minimial metadata) actions
+   * Get the content over which to compute the hash of a request for simple (minimal metadata) actions
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
@@ -132,15 +132,16 @@ public class HashApi {
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContent(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, additionalParams).getData();
+  public String getHashableContent(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
-   * Get the content over which to compute the hash of a request for simple (minimial metadata) actions
+   * Get the content over which to compute the hash of a request for simple (minimal metadata) actions
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
@@ -153,10 +154,11 @@ public class HashApi {
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -188,6 +190,7 @@ public class HashApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "actorDisplayName", actorDisplayName));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "actorRoles", actorRoles));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
 
     if (additionalParams != null && !additionalParams.isEmpty()) {
         additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
@@ -230,11 +233,12 @@ if (signature != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentForAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentForAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, additionalParams).getData();
+  public String getHashableContentForAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentForAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
@@ -251,10 +255,11 @@ if (signature != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentForAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentForAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -285,7 +290,12 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "actorDepartment", actorDepartment));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "actorDisplayName", actorDisplayName));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "actorRoles", actorRoles));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
 
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (signature != null)
@@ -327,11 +337,12 @@ if (userPublicKey != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, additionalParams).getData();
+  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
@@ -350,10 +361,11 @@ if (userPublicKey != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -397,7 +409,12 @@ if (userPublicKey != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "actorDisplayName", actorDisplayName));
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "actorRoles", actorRoles));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
 
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -430,11 +447,12 @@ if (signature != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentSimple(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, details, logLevel, additionalParams).getData();
+  public String getHashableContentSimple(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
@@ -446,10 +464,11 @@ if (signature != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additional params
+   * @param originalEventTimestamp originalEventTimestamp (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -466,7 +485,12 @@ if (signature != null)
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
 
+    if (additionalParams != null && !additionalParams.isEmpty()) {
+        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    }
+    
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -503,7 +527,8 @@ if (signature != null)
           entryType = actionData.getEntryType().getValue();
       }
       return getHashableContent(applicationId, actionData.getAction(), actorData.getActorId(), entryType, signature, actorData.getDepartment(), 
-              actorData.getActorDisplayName(), actorData.getActorRoles(), bodyAndKeywords.getBody(), null, actionData.getAdditionalParams());
+              actorData.getActorDisplayName(), actorData.getActorRoles(), 
+              bodyAndKeywords.getBody(), null, actionData.getOriginalEventTimestamp(), actionData.getAdditionalParams());
   }
   
   private <T> BodyAndKeywords preProcessBody(ActionData<T> actionData) {

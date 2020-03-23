@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **entityId** | **String** |  |  [optional]
 **entityType** | **String** |  |  [optional]
 **entryType** | [**EntryTypeEnum**](#EntryTypeEnum) |  |  [optional]
+**originalEventTimestamp** | **Long** |  |  [optional]
 
 
 <a name="EntryTypeEnum"></a>

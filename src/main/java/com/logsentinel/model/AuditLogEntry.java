@@ -133,6 +133,9 @@ public class AuditLogEntry {
   @JsonProperty("numericParams")
   private Map<String, Double> numericParams = null;
 
+  @JsonProperty("originalEventTimestamp")
+  private Long originalEventTimestamp = null;
+
   @JsonProperty("previousEntryId")
   private UUID previousEntryId = null;
 
@@ -510,6 +513,24 @@ public class AuditLogEntry {
     this.numericParams = numericParams;
   }
 
+  public AuditLogEntry originalEventTimestamp(Long originalEventTimestamp) {
+    this.originalEventTimestamp = originalEventTimestamp;
+    return this;
+  }
+
+   /**
+   * Get originalEventTimestamp
+   * @return originalEventTimestamp
+  **/
+  @ApiModelProperty(value = "")
+  public Long getOriginalEventTimestamp() {
+    return originalEventTimestamp;
+  }
+
+  public void setOriginalEventTimestamp(Long originalEventTimestamp) {
+    this.originalEventTimestamp = originalEventTimestamp;
+  }
+
   public AuditLogEntry previousEntryId(UUID previousEntryId) {
     this.previousEntryId = previousEntryId;
     return this;
@@ -664,6 +685,7 @@ public class AuditLogEntry {
         Objects.equals(this.ipAddress, auditLogEntry.ipAddress) &&
         Objects.equals(this.logLevel, auditLogEntry.logLevel) &&
         Objects.equals(this.numericParams, auditLogEntry.numericParams) &&
+        Objects.equals(this.originalEventTimestamp, auditLogEntry.originalEventTimestamp) &&
         Objects.equals(this.previousEntryId, auditLogEntry.previousEntryId) &&
         Objects.equals(this.standaloneHash, auditLogEntry.standaloneHash) &&
         Objects.equals(this.timestamp, auditLogEntry.timestamp) &&
@@ -675,7 +697,7 @@ public class AuditLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, actorDisplayName, actorId, actorRoles, additionalParams, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, logLevel, numericParams, previousEntryId, standaloneHash, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
+    return Objects.hash(action, actorDisplayName, actorId, actorRoles, additionalParams, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, logLevel, numericParams, originalEventTimestamp, previousEntryId, standaloneHash, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
   }
 
 
@@ -702,6 +724,7 @@ public class AuditLogEntry {
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
     sb.append("    numericParams: ").append(toIndentedString(numericParams)).append("\n");
+    sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
     sb.append("    previousEntryId: ").append(toIndentedString(previousEntryId)).append("\n");
     sb.append("    standaloneHash: ").append(toIndentedString(standaloneHash)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");

@@ -1,15 +1,12 @@
 
-# SearchRequest
+# MachineLearningSettings
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
-**end** | **Long** |  |  [optional]
-**page** | **Integer** |  |  [optional]
-**pageSize** | **Integer** |  |  [optional]
-**query** | **String** |  |  [optional]
-**start** | **Long** |  |  [optional]
+**anomalyDetectionEnabled** | **Boolean** |  |  [optional]
+**anomalyDetectionEnabledDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**includeEntityFields** | **Boolean** |  |  [optional]
 **timestampField** | [**TimestampFieldEnum**](#TimestampFieldEnum) |  |  [optional]
 
 

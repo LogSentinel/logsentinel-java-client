@@ -46,6 +46,9 @@ public class UserRegistrationRequest {
   @JsonProperty("expirationDate")
   private String expirationDate = null;
 
+  @JsonProperty("industry")
+  private String industry = null;
+
   @JsonProperty("names")
   private String names = null;
 
@@ -219,6 +222,24 @@ public class UserRegistrationRequest {
     this.expirationDate = expirationDate;
   }
 
+  public UserRegistrationRequest industry(String industry) {
+    this.industry = industry;
+    return this;
+  }
+
+   /**
+   * Get industry
+   * @return industry
+  **/
+  @ApiModelProperty(value = "")
+  public String getIndustry() {
+    return industry;
+  }
+
+  public void setIndustry(String industry) {
+    this.industry = industry;
+  }
+
   public UserRegistrationRequest names(String names) {
     this.names = names;
     return this;
@@ -378,6 +399,7 @@ public class UserRegistrationRequest {
         Objects.equals(this.awsCustomerId, userRegistrationRequest.awsCustomerId) &&
         Objects.equals(this.email, userRegistrationRequest.email) &&
         Objects.equals(this.expirationDate, userRegistrationRequest.expirationDate) &&
+        Objects.equals(this.industry, userRegistrationRequest.industry) &&
         Objects.equals(this.names, userRegistrationRequest.names) &&
         Objects.equals(this.organizationName, userRegistrationRequest.organizationName) &&
         Objects.equals(this.password, userRegistrationRequest.password) &&
@@ -390,7 +412,7 @@ public class UserRegistrationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(allowedApplicationIds, attributes, awsCustomerId, email, expirationDate, names, organizationName, password, position, role, serverName, subscriptionPlanCode, timezone);
+    return Objects.hash(allowedApplicationIds, attributes, awsCustomerId, email, expirationDate, industry, names, organizationName, password, position, role, serverName, subscriptionPlanCode, timezone);
   }
 
 
@@ -404,6 +426,7 @@ public class UserRegistrationRequest {
     sb.append("    awsCustomerId: ").append(toIndentedString(awsCustomerId)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
+    sb.append("    industry: ").append(toIndentedString(industry)).append("\n");
     sb.append("    names: ").append(toIndentedString(names)).append("\n");
     sb.append("    organizationName: ").append(toIndentedString(organizationName)).append("\n");
     sb.append("    password: ").append(toIndentedString(password)).append("\n");

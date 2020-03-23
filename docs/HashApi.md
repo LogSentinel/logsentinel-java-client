@@ -5,7 +5,7 @@ All URIs are relative to *https://localhost:8080*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getHash**](HashApi.md#getHash) | **POST** /api/getStandaloneHash | Get the standalone (non-chained) hash for an entry
-[**getHashableContent**](HashApi.md#getHashableContent) | **POST** /api/getHashableContent/{actorId}/{action} | Get the content over which to compute the hash of a request for simple (minimial metadata) actions
+[**getHashableContent**](HashApi.md#getHashableContent) | **POST** /api/getHashableContent/{actorId}/{action} | Get the content over which to compute the hash of a request for simple (minimal metadata) actions
 [**getHashableContentForAuthAction**](HashApi.md#getHashableContentForAuthAction) | **POST** /api/getHashableContent/{actorId}/auth/{authAction} | Get the content over which to compute the hash of a request for auth actions
 [**getHashableContentForStandardAction**](HashApi.md#getHashableContentForStandardAction) | **POST** /api/getHashableContent/{actorId}/{action}/{entityType}/{entityId} | Get the content over which to compute the hash of a request for standard actions
 [**getHashableContentSimple**](HashApi.md#getHashableContentSimple) | **POST** /api/getHashableContent | Get the content over which to compute the hash of a request without any additional metadata (including encrypted request bodies)
@@ -67,9 +67,9 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContent"></a>
 # **getHashableContent**
-> String getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel)
+> String getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
 
-Get the content over which to compute the hash of a request for simple (minimial metadata) actions
+Get the content over which to compute the hash of a request for simple (minimal metadata) actions
 
 ### Example
 ```java
@@ -98,8 +98,9 @@ String actorDisplayName = "actorDisplayName_example"; // String | Display name o
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 try {
-    String result = apiInstance.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel);
+    String result = apiInstance.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContent");
@@ -121,6 +122,7 @@ Name | Type | Description  | Notes
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
 
 ### Return type
 
@@ -137,7 +139,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContentForAuthAction"></a>
 # **getHashableContentForAuthAction**
-> String getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details)
+> String getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request for auth actions
 
@@ -168,8 +170,9 @@ String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 try {
-    String result = apiInstance.getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details);
+    String result = apiInstance.getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContentForAuthAction");
@@ -191,6 +194,7 @@ Name | Type | Description  | Notes
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
 
 ### Return type
 
@@ -207,7 +211,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContentForStandardAction"></a>
 # **getHashableContentForStandardAction**
-> String getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel)
+> String getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request for standard actions
 
@@ -240,8 +244,9 @@ String actorDisplayName = "actorDisplayName_example"; // String | Display name o
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 try {
-    String result = apiInstance.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel);
+    String result = apiInstance.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContentForStandardAction");
@@ -265,6 +270,7 @@ Name | Type | Description  | Notes
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
 
 ### Return type
 
@@ -281,7 +287,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContentSimple"></a>
 # **getHashableContentSimple**
-> String getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel)
+> String getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request without any additional metadata (including encrypted request bodies)
 
@@ -307,8 +313,9 @@ String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the e
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
+Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
 try {
-    String result = apiInstance.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel);
+    String result = apiInstance.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContentSimple");
@@ -325,6 +332,7 @@ Name | Type | Description  | Notes
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
+ **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
 
 ### Return type
 

@@ -474,9 +474,6 @@ if (userPublicKey != null)
       if (e.getActionData() != null && e.getActionData().getAdditionalParams() != null) {
           e.getActionData().getAdditionalParams().forEach((k, v) -> e.getAdditionalParams().put(k, v));
       }
-      if (e.getActionData().getOriginalEventTimestamp() != null) {
-          e.getAdditionalParams().put("originalEventTimestamp", String.valueOf(e.getActionData().getOriginalEventTimestamp()));
-      }
     });
     GenericType<LogResponse> localVarReturnType = new GenericType<LogResponse>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);

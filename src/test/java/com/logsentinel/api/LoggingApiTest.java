@@ -13,17 +13,25 @@
 
 package com.logsentinel.api;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mockito;
 
+import com.logsentinel.ApiClient;
 import com.logsentinel.ApiException;
+import com.logsentinel.model.ActionData;
 import com.logsentinel.model.AuditLogEntry;
 import com.logsentinel.model.BatchLogRequestEntry;
 import com.logsentinel.model.LogResponse;
+
+import static org.mockito.Mockito.*;
 
 /**
  * API tests for LoggingApi
@@ -138,10 +146,24 @@ public class LoggingApiTest {
      */
     @Test
     public void logBatchTest() throws ApiException {
-        UUID applicationId = null;
-        List<BatchLogRequestEntry<String>> requestData = null;
-        LogResponse response = api.logBatch(applicationId, requestData);
+        UUID applicationId = UUID.randomUUID();
+        List<BatchLogRequestEntry<String>> requestData = new ArrayList<>();
+        BatchLogRequestEntry<String> entry = new BatchLogRequestEntry<String>();
+        entry.setActionData(new ActionData<>());
+        entry.getActionData().setOriginalEventTimestamp(System.currentTimeMillis());
+        entry.getActionData().setAction("tets");
+        requestData.add(entry);
+        
+        ApiClient apiClient = Mockito.mock(ApiClient.class);
+        api.setApiClient(apiClient);
+        api.logBatchWithHttpInfo(applicationId, requestData);
+        
+        ArgumentCaptor<List> captor = ArgumentCaptor.forClass(List.class);
+        Mockito.verify(apiClient).invokeAPI(anyString(), anyString(), any(), captor.capture(), any(), any(), any(), any(), any(), any());
 
+        List<BatchLogRequestEntry<String>> request = captor.getValue();
+        Assert.assertEquals(entry.getActionData().getOriginalEventTimestamp(), request.get(0).getActionData().getOriginalEventTimestamp());
+        
         // TODO: test validations
     }
     

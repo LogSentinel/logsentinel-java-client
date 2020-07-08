@@ -17,7 +17,9 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.logsentinel.enums.HashableContent;
 
 import io.swagger.annotations.ApiModel;
@@ -32,7 +34,7 @@ import java.util.UUID;
 /**
  * AuditLogEntry
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class AuditLogEntry {
   @JsonProperty("action")
   private String action = null;

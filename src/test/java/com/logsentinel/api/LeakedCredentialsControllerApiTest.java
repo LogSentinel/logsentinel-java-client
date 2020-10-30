@@ -28,7 +28,7 @@ import java.util.Map;
 @Ignore
 public class LeakedCredentialsControllerApiTest {
 
-    private final LeakedCredentialsControllerApi api = new LeakedCredentialsControllerApi();
+    private final LeakedCredentialsApi api = new LeakedCredentialsApi();
 
     
     /**

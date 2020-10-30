@@ -7,6 +7,7 @@ import com.logsentinel.api.ApplicationsApi;
 import com.logsentinel.api.GdprLoggingApi;
 import com.logsentinel.api.GdprRegisterApi;
 import com.logsentinel.api.HashApi;
+import com.logsentinel.api.LeakedCredentialsApi;
 import com.logsentinel.api.LogHealthcareApi;
 import com.logsentinel.api.LogSpecialApi;
 import com.logsentinel.api.LoggingApi;
@@ -14,6 +15,7 @@ import com.logsentinel.api.OrganizationUsersApi;
 import com.logsentinel.api.PartnersApi;
 import com.logsentinel.api.SavedSearchesApi;
 import com.logsentinel.api.SearchApi;
+import com.logsentinel.api.ThreatIntelligenceApi;
 import com.logsentinel.api.VerificationApi;
 
 /**
@@ -78,10 +80,13 @@ public class LogSentinelClientBuilder {
         LogSpecialApi logSpecialApi = new LogSpecialApi(apiClient);
         PartnersApi partnersApi = new PartnersApi(apiClient);
         SavedSearchesApi savedSearchApi = new SavedSearchesApi(apiClient);
+        LeakedCredentialsApi leakedCredentialsApi = new LeakedCredentialsApi(apiClient);
+        ThreatIntelligenceApi threatIntelligenceApi = new ThreatIntelligenceApi(apiClient);
 
         LogSentinelClient client = new LogSentinelClient(auditLogApi, hashApi, userApi,
                 applicationApi, searchApi, verificationApi, healthcareApi, gdprLoggingApi, 
-                registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi);
+                registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi,
+                leakedCredentialsApi, threatIntelligenceApi);
         return client;
     }
 

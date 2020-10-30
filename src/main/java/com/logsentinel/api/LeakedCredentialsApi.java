@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Map;
 
 
-public class LeakedCredentialsControllerApi {
+public class LeakedCredentialsApi {
   private ApiClient apiClient;
 
-  public LeakedCredentialsControllerApi() {
+  public LeakedCredentialsApi() {
     this(Configuration.getDefaultApiClient());
   }
 
-  public LeakedCredentialsControllerApi(ApiClient apiClient) {
+  public LeakedCredentialsApi(ApiClient apiClient) {
     this.apiClient = apiClient;
   }
 

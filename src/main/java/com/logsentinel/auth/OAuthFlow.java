@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 

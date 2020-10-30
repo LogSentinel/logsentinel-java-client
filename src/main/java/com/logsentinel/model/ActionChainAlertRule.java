@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -42,8 +42,8 @@ public class ActionChainAlertRule {
   @JsonProperty("alertDestinationIds")
   private List<UUID> alertDestinationIds = null;
 
-  @JsonProperty("applicationId")
-  private UUID applicationId = null;
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
 
   @JsonProperty("count")
   private List<Integer> count = null;
@@ -77,6 +77,9 @@ public class ActionChainAlertRule {
 
   @JsonProperty("percentage")
   private Integer percentage = null;
+
+  @JsonProperty("queries")
+  private List<String> queries = null;
 
   @JsonProperty("searchPeriod")
   private String searchPeriod = null;
@@ -198,22 +201,30 @@ public class ActionChainAlertRule {
     this.alertDestinationIds = alertDestinationIds;
   }
 
-  public ActionChainAlertRule applicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public ActionChainAlertRule applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public ActionChainAlertRule addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
    /**
-   * Get applicationId
-   * @return applicationId
+   * Get applicationIds
+   * @return applicationIds
   **/
   @ApiModelProperty(value = "")
-  public UUID getApplicationId() {
-    return applicationId;
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
   }
 
-  public void setApplicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
   }
 
   public ActionChainAlertRule count(List<Integer> count) {
@@ -430,6 +441,32 @@ public class ActionChainAlertRule {
     this.percentage = percentage;
   }
 
+  public ActionChainAlertRule queries(List<String> queries) {
+    this.queries = queries;
+    return this;
+  }
+
+  public ActionChainAlertRule addQueriesItem(String queriesItem) {
+    if (this.queries == null) {
+      this.queries = new ArrayList<>();
+    }
+    this.queries.add(queriesItem);
+    return this;
+  }
+
+   /**
+   * Get queries
+   * @return queries
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getQueries() {
+    return queries;
+  }
+
+  public void setQueries(List<String> queries) {
+    this.queries = queries;
+  }
+
   public ActionChainAlertRule searchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
     return this;
@@ -596,7 +633,7 @@ public class ActionChainAlertRule {
         Objects.equals(this.advancedFilters, actionChainAlertRule.advancedFilters) &&
         Objects.equals(this.aggregationPeriod, actionChainAlertRule.aggregationPeriod) &&
         Objects.equals(this.alertDestinationIds, actionChainAlertRule.alertDestinationIds) &&
-        Objects.equals(this.applicationId, actionChainAlertRule.applicationId) &&
+        Objects.equals(this.applicationIds, actionChainAlertRule.applicationIds) &&
         Objects.equals(this.count, actionChainAlertRule.count) &&
         Objects.equals(this.created, actionChainAlertRule.created) &&
         Objects.equals(this.enabled, actionChainAlertRule.enabled) &&
@@ -608,6 +645,7 @@ public class ActionChainAlertRule {
         Objects.equals(this.name, actionChainAlertRule.name) &&
         Objects.equals(this.organizationId, actionChainAlertRule.organizationId) &&
         Objects.equals(this.percentage, actionChainAlertRule.percentage) &&
+        Objects.equals(this.queries, actionChainAlertRule.queries) &&
         Objects.equals(this.searchPeriod, actionChainAlertRule.searchPeriod) &&
         Objects.equals(this.sumAction, actionChainAlertRule.sumAction) &&
         Objects.equals(this.sumActionTypes, actionChainAlertRule.sumActionTypes) &&
@@ -620,7 +658,7 @@ public class ActionChainAlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, advancedFilters, aggregationPeriod, alertDestinationIds, applicationId, count, created, enabled, entityType, id, initialAction, insideWorkingHours, less, name, organizationId, percentage, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, timeFrames, updated, withActorsOnly);
+    return Objects.hash(actions, advancedFilters, aggregationPeriod, alertDestinationIds, applicationIds, count, created, enabled, entityType, id, initialAction, insideWorkingHours, less, name, organizationId, percentage, queries, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, timeFrames, updated, withActorsOnly);
   }
 
 
@@ -633,7 +671,7 @@ public class ActionChainAlertRule {
     sb.append("    advancedFilters: ").append(toIndentedString(advancedFilters)).append("\n");
     sb.append("    aggregationPeriod: ").append(toIndentedString(aggregationPeriod)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
@@ -645,6 +683,7 @@ public class ActionChainAlertRule {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
+    sb.append("    queries: ").append(toIndentedString(queries)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
     sb.append("    sumAction: ").append(toIndentedString(sumAction)).append("\n");
     sb.append("    sumActionTypes: ").append(toIndentedString(sumActionTypes)).append("\n");

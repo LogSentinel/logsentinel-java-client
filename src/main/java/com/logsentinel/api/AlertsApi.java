@@ -42,7 +42,7 @@ public class AlertsApi {
   }
 
   /**
-   * Creates Action Chain Alert Rule
+   * Creates Action Chain (Correlation) Alert Rule
    * 
    * @param alertRule alertRule (required)
    * @return ActionChainAlertRule
@@ -53,7 +53,7 @@ public class AlertsApi {
       }
 
   /**
-   * Creates Action Chain Alert Rule
+   * Creates Action Chain (Correlation) Alert Rule
    * 
    * @param alertRule alertRule (required)
    * @return ApiResponse&lt;ActionChainAlertRule&gt;
@@ -198,7 +198,7 @@ public class AlertsApi {
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Deletes Action chain Alert rule
+   * Deletes Action Chain (Correlation) Alert rule
    * 
    * @param id id (required)
    * @throws ApiException if fails to make API call
@@ -209,7 +209,7 @@ public class AlertsApi {
   }
 
   /**
-   * Deletes Action chain Alert rule
+   * Deletes Action Chain (Correlation) Alert rule
    * 
    * @param id id (required)
    * @return api response
@@ -357,7 +357,7 @@ public class AlertsApi {
     return apiClient.invokeAPI(localVarPath, "DELETE", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
   }
   /**
-   * Gets all Action Chain Alert rules in the organization
+   * Gets all Action Chain (Correlation) Alert rules in the organization
    * 
    * @return List&lt;ActionChainAlertRule&gt;
    * @throws ApiException if fails to make API call
@@ -367,7 +367,7 @@ public class AlertsApi {
       }
 
   /**
-   * Gets all Action Chain Alert rules in the organization
+   * Gets all Action Chain (Correlation) Alert rules in the organization
    * 
    * @return ApiResponse&lt;List&lt;ActionChainAlertRule&gt;&gt;
    * @throws ApiException if fails to make API call
@@ -537,7 +537,7 @@ public class AlertsApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
-   * Updates Action Chain Alert Rule
+   * Updates Action Chain (Correlation) Alert Rule
    * 
    * @param id id (required)
    * @param rule rule (required)
@@ -549,7 +549,7 @@ public class AlertsApi {
       }
 
   /**
-   * Updates Action Chain Alert Rule
+   * Updates Action Chain (Correlation) Alert Rule
    * 
    * @param id id (required)
    * @param rule rule (required)

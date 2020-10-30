@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -75,8 +75,8 @@ public class AlertRuleRequest {
   @JsonProperty("alertDestinationIds")
   private List<UUID> alertDestinationIds = null;
 
-  @JsonProperty("applicationId")
-  private UUID applicationId = null;
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
 
   @JsonProperty("enabled")
   private Boolean enabled = null;
@@ -195,22 +195,30 @@ public class AlertRuleRequest {
     this.alertDestinationIds = alertDestinationIds;
   }
 
-  public AlertRuleRequest applicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public AlertRuleRequest applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public AlertRuleRequest addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
    /**
-   * Get applicationId
-   * @return applicationId
+   * Get applicationIds
+   * @return applicationIds
   **/
   @ApiModelProperty(value = "")
-  public UUID getApplicationId() {
-    return applicationId;
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
   }
 
-  public void setApplicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
   }
 
   public AlertRuleRequest enabled(Boolean enabled) {
@@ -334,7 +342,7 @@ public class AlertRuleRequest {
     return Objects.equals(this.aggregationPeriod, alertRuleRequest.aggregationPeriod) &&
         Objects.equals(this.aggregationType, alertRuleRequest.aggregationType) &&
         Objects.equals(this.alertDestinationIds, alertRuleRequest.alertDestinationIds) &&
-        Objects.equals(this.applicationId, alertRuleRequest.applicationId) &&
+        Objects.equals(this.applicationIds, alertRuleRequest.applicationIds) &&
         Objects.equals(this.enabled, alertRuleRequest.enabled) &&
         Objects.equals(this.groupByField, alertRuleRequest.groupByField) &&
         Objects.equals(this.name, alertRuleRequest.name) &&
@@ -345,7 +353,7 @@ public class AlertRuleRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationId, enabled, groupByField, name, searchPeriod, thresholdValue, type);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, enabled, groupByField, name, searchPeriod, thresholdValue, type);
   }
 
 
@@ -357,7 +365,7 @@ public class AlertRuleRequest {
     sb.append("    aggregationPeriod: ").append(toIndentedString(aggregationPeriod)).append("\n");
     sb.append("    aggregationType: ").append(toIndentedString(aggregationType)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

@@ -4,17 +4,17 @@ All URIs are relative to *https://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createActionChainRule**](AlertsApi.md#createActionChainRule) | **POST** /api/alerts/actionChainRule | Creates Action Chain Alert Rule
+[**createActionChainRule**](AlertsApi.md#createActionChainRule) | **POST** /api/alerts/actionChainRule | Creates Action Chain (Correlation) Alert Rule
 [**createDestination**](AlertsApi.md#createDestination) | **POST** /api/alerts/destination | Creates Alert destination. Type is EMAIL or TELEGRAM
 [**createRule**](AlertsApi.md#createRule) | **POST** /api/alerts/rule | Creates Alert rule. Type is ST_DEV or FIXED. Aggregation type is COUNT, AVG or SUM
-[**deleteActionChainRule**](AlertsApi.md#deleteActionChainRule) | **DELETE** /api/alerts/actionChainRule | Deletes Action chain Alert rule
+[**deleteActionChainRule**](AlertsApi.md#deleteActionChainRule) | **DELETE** /api/alerts/actionChainRule | Deletes Action Chain (Correlation) Alert rule
 [**deleteDestination**](AlertsApi.md#deleteDestination) | **DELETE** /api/alerts/destination | Deletes Alert destination
 [**deleteRule**](AlertsApi.md#deleteRule) | **DELETE** /api/alerts/rule | Deletes Alert rule
-[**getActionChainAlertRules**](AlertsApi.md#getActionChainAlertRules) | **GET** /api/alerts/actionChainRules | Gets all Action Chain Alert rules in the organization
+[**getActionChainAlertRules**](AlertsApi.md#getActionChainAlertRules) | **GET** /api/alerts/actionChainRules | Gets all Action Chain (Correlation) Alert rules in the organization
 [**getAlertDestinations**](AlertsApi.md#getAlertDestinations) | **GET** /api/alerts/destinations | Gets all Alert destinations in the organization
 [**getAlertRuleRuns**](AlertsApi.md#getAlertRuleRuns) | **GET** /api/alerts/runs | Gets all Alert rule runs in the organization
 [**getAlertRules**](AlertsApi.md#getAlertRules) | **GET** /api/alerts/rules | Gets all Alert rules in the organization
-[**updateActionChainRule**](AlertsApi.md#updateActionChainRule) | **PUT** /api/alerts/actionChainRule | Updates Action Chain Alert Rule
+[**updateActionChainRule**](AlertsApi.md#updateActionChainRule) | **PUT** /api/alerts/actionChainRule | Updates Action Chain (Correlation) Alert Rule
 [**updateDestination**](AlertsApi.md#updateDestination) | **PUT** /api/alerts/destination | Updates Alert destination. Type cannot be changed
 [**updateRule**](AlertsApi.md#updateRule) | **PUT** /api/alerts/rule | Updates Alert rule. Type is ST_DEV or FIXED. Aggregation type is COUNT, AVG or SUM
 [**updateWorkingHours**](AlertsApi.md#updateWorkingHours) | **POST** /api/alerts/updateWorkingHours | Updates the working hours for the organization
@@ -24,7 +24,7 @@ Method | HTTP request | Description
 # **createActionChainRule**
 > ActionChainAlertRule createActionChainRule(alertRule)
 
-Creates Action Chain Alert Rule
+Creates Action Chain (Correlation) Alert Rule
 
 ### Example
 ```java
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
 # **deleteActionChainRule**
 > deleteActionChainRule(id)
 
-Deletes Action chain Alert rule
+Deletes Action Chain (Correlation) Alert rule
 
 ### Example
 ```java
@@ -333,7 +333,7 @@ null (empty response body)
 # **getActionChainAlertRules**
 > List&lt;ActionChainAlertRule&gt; getActionChainAlertRules()
 
-Gets all Action Chain Alert rules in the organization
+Gets all Action Chain (Correlation) Alert rules in the organization
 
 ### Example
 ```java
@@ -525,7 +525,7 @@ This endpoint does not need any parameter.
 # **updateActionChainRule**
 > ActionChainAlertRule updateActionChainRule(id, rule)
 
-Updates Action Chain Alert Rule
+Updates Action Chain (Correlation) Alert Rule
 
 ### Example
 ```java

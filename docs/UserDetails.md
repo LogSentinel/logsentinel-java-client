@@ -52,6 +52,7 @@ AUDITOR | &quot;AUDITOR&quot;
 DEVELOPER | &quot;DEVELOPER&quot;
 MANAGER | &quot;MANAGER&quot;
 IT | &quot;IT&quot;
+BUSINESS_ANALYST | &quot;BUSINESS_ANALYST&quot;
 PUBLIC_USER | &quot;PUBLIC_USER&quot;
 
 

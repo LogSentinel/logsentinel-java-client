@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -15,8 +15,6 @@ package com.logsentinel.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.logsentinel.model.ActionData;
-import com.logsentinel.model.ActorData;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,8 +41,15 @@ public class BatchLogRequestEntry<T> {
   @JsonProperty("encryptedKeywordsList")
   private List<String> encryptedKeywordsList = null;
 
+  @JsonProperty("params")
+  private Map<String, String> params = null;
+
   @JsonProperty("signature")
   private String signature = null;
+
+  
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   public BatchLogRequestEntry<T> actionData(ActionData<T> actionData) {
     this.actionData = actionData;
@@ -152,6 +157,32 @@ public class BatchLogRequestEntry<T> {
     this.encryptedKeywordsList = encryptedKeywordsList;
   }
 
+  public BatchLogRequestEntry<T> params(Map<String, String> params) {
+    this.params = params;
+    return this;
+  }
+
+  public BatchLogRequestEntry<T> putParamsItem(String key, String paramsItem) {
+    if (this.params == null) {
+      this.params = new HashMap<>();
+    }
+    this.params.put(key, paramsItem);
+    return this;
+  }
+
+   /**
+   * Get params
+   * @return params
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getParams() {
+    return params;
+  }
+
+  public void setParams(Map<String, String> params) {
+    this.params = params;
+  }
+
   public BatchLogRequestEntry<T> signature(String signature) {
     this.signature = signature;
     return this;
@@ -169,6 +200,33 @@ public class BatchLogRequestEntry<T> {
   public void setSignature(String signature) {
     this.signature = signature;
   }
+  
+
+  public BatchLogRequestEntry<T> tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public BatchLogRequestEntry<T> addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
 
 
   @Override
@@ -185,12 +243,14 @@ public class BatchLogRequestEntry<T> {
         Objects.equals(this.additionalParams, batchLogRequestEntry.additionalParams) &&
         Objects.equals(this.binaryContent, batchLogRequestEntry.binaryContent) &&
         Objects.equals(this.encryptedKeywordsList, batchLogRequestEntry.encryptedKeywordsList) &&
-        Objects.equals(this.signature, batchLogRequestEntry.signature);
+        Objects.equals(this.params, batchLogRequestEntry.params) &&
+        Objects.equals(this.signature, batchLogRequestEntry.signature) &&
+        Objects.equals(this.tags, batchLogRequestEntry.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionData, actorData, additionalParams, binaryContent, encryptedKeywordsList, signature);
+    return Objects.hash(actionData, actorData, additionalParams, binaryContent, encryptedKeywordsList, params, signature, tags);
   }
 
 
@@ -204,7 +264,9 @@ public class BatchLogRequestEntry<T> {
     sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
     sb.append("    binaryContent: ").append(toIndentedString(binaryContent)).append("\n");
     sb.append("    encryptedKeywordsList: ").append(toIndentedString(encryptedKeywordsList)).append("\n");
+    sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    signature: ").append(toIndentedString(signature)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -35,6 +35,9 @@ public class UpdateApplicationRequest {
   @JsonProperty("containsPersonalData")
   private Boolean containsPersonalData = null;
 
+  @JsonProperty("dataMaskingPatterns")
+  private List<String> dataMaskingPatterns = null;
+
   @JsonProperty("detailsTransformationScript")
   private String detailsTransformationScript = null;
 
@@ -49,6 +52,9 @@ public class UpdateApplicationRequest {
 
   @JsonProperty("latestHashRecipientEmails")
   private List<String> latestHashRecipientEmails = null;
+
+  @JsonProperty("logGroupingEnabled")
+  private Boolean logGroupingEnabled = null;
 
   @JsonProperty("logLevelErrorReportRecipientEmails")
   private List<String> logLevelErrorReportRecipientEmails = null;
@@ -77,11 +83,78 @@ public class UpdateApplicationRequest {
   @JsonProperty("partialVerificationPeriodMinutes")
   private Integer partialVerificationPeriodMinutes = null;
 
+  @JsonProperty("propertiesForIdenticalEntries")
+  private List<String> propertiesForIdenticalEntries = null;
+
   @JsonProperty("retentionMonths")
   private Integer retentionMonths = null;
 
   @JsonProperty("signatureVerificationPublicKeys")
   private List<String> signatureVerificationPublicKeys = null;
+
+  /**
+   * Gets or Sets sourceCategory
+   */
+  public enum SourceCategoryEnum {
+    CLOUD_INFRASTRUCTURE("CLOUD_INFRASTRUCTURE"),
+    
+    NETWORK_APPLIANCE("NETWORK_APPLIANCE"),
+    
+    DATABASE("DATABASE"),
+    
+    ACTIVE_DIRECTORY("ACTIVE_DIRECTORY"),
+    
+    ERP("ERP"),
+    
+    ACCOUNTING("ACCOUNTING"),
+    
+    HR_AND_PAYROLL("HR_AND_PAYROLL"),
+    
+    SERVER_OS("SERVER_OS"),
+    
+    WORKSTATION("WORKSTATION"),
+    
+    WEB_SERVER("WEB_SERVER"),
+    
+    ANTIVIRUS("ANTIVIRUS"),
+    
+    VPN("VPN"),
+    
+    DOMAIN_SPECIFIC_APPLICATION("DOMAIN_SPECIFIC_APPLICATION"),
+    
+    OTHER_SAAS("OTHER_SAAS"),
+    
+    OTHER("OTHER");
+
+    private String value;
+
+    SourceCategoryEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SourceCategoryEnum fromValue(String text) {
+      for (SourceCategoryEnum b : SourceCategoryEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("sourceCategory")
+  private SourceCategoryEnum sourceCategory = null;
 
   @JsonProperty("storeHashesInEthereum")
   private Boolean storeHashesInEthereum = null;
@@ -156,6 +229,32 @@ public class UpdateApplicationRequest {
 
   public void setContainsPersonalData(Boolean containsPersonalData) {
     this.containsPersonalData = containsPersonalData;
+  }
+
+  public UpdateApplicationRequest dataMaskingPatterns(List<String> dataMaskingPatterns) {
+    this.dataMaskingPatterns = dataMaskingPatterns;
+    return this;
+  }
+
+  public UpdateApplicationRequest addDataMaskingPatternsItem(String dataMaskingPatternsItem) {
+    if (this.dataMaskingPatterns == null) {
+      this.dataMaskingPatterns = new ArrayList<>();
+    }
+    this.dataMaskingPatterns.add(dataMaskingPatternsItem);
+    return this;
+  }
+
+   /**
+   * Get dataMaskingPatterns
+   * @return dataMaskingPatterns
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getDataMaskingPatterns() {
+    return dataMaskingPatterns;
+  }
+
+  public void setDataMaskingPatterns(List<String> dataMaskingPatterns) {
+    this.dataMaskingPatterns = dataMaskingPatterns;
   }
 
   public UpdateApplicationRequest detailsTransformationScript(String detailsTransformationScript) {
@@ -262,6 +361,24 @@ public class UpdateApplicationRequest {
 
   public void setLatestHashRecipientEmails(List<String> latestHashRecipientEmails) {
     this.latestHashRecipientEmails = latestHashRecipientEmails;
+  }
+
+  public UpdateApplicationRequest logGroupingEnabled(Boolean logGroupingEnabled) {
+    this.logGroupingEnabled = logGroupingEnabled;
+    return this;
+  }
+
+   /**
+   * Get logGroupingEnabled
+   * @return logGroupingEnabled
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isLogGroupingEnabled() {
+    return logGroupingEnabled;
+  }
+
+  public void setLogGroupingEnabled(Boolean logGroupingEnabled) {
+    this.logGroupingEnabled = logGroupingEnabled;
   }
 
   public UpdateApplicationRequest logLevelErrorReportRecipientEmails(List<String> logLevelErrorReportRecipientEmails) {
@@ -466,6 +583,32 @@ public class UpdateApplicationRequest {
     this.partialVerificationPeriodMinutes = partialVerificationPeriodMinutes;
   }
 
+  public UpdateApplicationRequest propertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
+    this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
+    return this;
+  }
+
+  public UpdateApplicationRequest addPropertiesForIdenticalEntriesItem(String propertiesForIdenticalEntriesItem) {
+    if (this.propertiesForIdenticalEntries == null) {
+      this.propertiesForIdenticalEntries = new ArrayList<>();
+    }
+    this.propertiesForIdenticalEntries.add(propertiesForIdenticalEntriesItem);
+    return this;
+  }
+
+   /**
+   * Get propertiesForIdenticalEntries
+   * @return propertiesForIdenticalEntries
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getPropertiesForIdenticalEntries() {
+    return propertiesForIdenticalEntries;
+  }
+
+  public void setPropertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
+    this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
+  }
+
   public UpdateApplicationRequest retentionMonths(Integer retentionMonths) {
     this.retentionMonths = retentionMonths;
     return this;
@@ -508,6 +651,24 @@ public class UpdateApplicationRequest {
 
   public void setSignatureVerificationPublicKeys(List<String> signatureVerificationPublicKeys) {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
+  }
+
+  public UpdateApplicationRequest sourceCategory(SourceCategoryEnum sourceCategory) {
+    this.sourceCategory = sourceCategory;
+    return this;
+  }
+
+   /**
+   * Get sourceCategory
+   * @return sourceCategory
+  **/
+  @ApiModelProperty(value = "")
+  public SourceCategoryEnum getSourceCategory() {
+    return sourceCategory;
+  }
+
+  public void setSourceCategory(SourceCategoryEnum sourceCategory) {
+    this.sourceCategory = sourceCategory;
   }
 
   public UpdateApplicationRequest storeHashesInEthereum(Boolean storeHashesInEthereum) {
@@ -601,11 +762,13 @@ public class UpdateApplicationRequest {
     }
     UpdateApplicationRequest updateApplicationRequest = (UpdateApplicationRequest) o;
     return Objects.equals(this.containsPersonalData, updateApplicationRequest.containsPersonalData) &&
+        Objects.equals(this.dataMaskingPatterns, updateApplicationRequest.dataMaskingPatterns) &&
         Objects.equals(this.detailsTransformationScript, updateApplicationRequest.detailsTransformationScript) &&
         Objects.equals(this.displayedDetailsFields, updateApplicationRequest.displayedDetailsFields) &&
         Objects.equals(this.id, updateApplicationRequest.id) &&
         Objects.equals(this.ipWhiteList, updateApplicationRequest.ipWhiteList) &&
         Objects.equals(this.latestHashRecipientEmails, updateApplicationRequest.latestHashRecipientEmails) &&
+        Objects.equals(this.logGroupingEnabled, updateApplicationRequest.logGroupingEnabled) &&
         Objects.equals(this.logLevelErrorReportRecipientEmails, updateApplicationRequest.logLevelErrorReportRecipientEmails) &&
         Objects.equals(this.logLevelRegexes, updateApplicationRequest.logLevelRegexes) &&
         Objects.equals(this.metadataExtractionPaths, updateApplicationRequest.metadataExtractionPaths) &&
@@ -615,8 +778,10 @@ public class UpdateApplicationRequest {
         Objects.equals(this.openDataEnabled, updateApplicationRequest.openDataEnabled) &&
         Objects.equals(this.openDataWhitelistRegexes, updateApplicationRequest.openDataWhitelistRegexes) &&
         Objects.equals(this.partialVerificationPeriodMinutes, updateApplicationRequest.partialVerificationPeriodMinutes) &&
+        Objects.equals(this.propertiesForIdenticalEntries, updateApplicationRequest.propertiesForIdenticalEntries) &&
         Objects.equals(this.retentionMonths, updateApplicationRequest.retentionMonths) &&
         Objects.equals(this.signatureVerificationPublicKeys, updateApplicationRequest.signatureVerificationPublicKeys) &&
+        Objects.equals(this.sourceCategory, updateApplicationRequest.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, updateApplicationRequest.storeHashesInEthereum) &&
         Objects.equals(this.verificationFailureReportRecipientEmails, updateApplicationRequest.verificationFailureReportRecipientEmails) &&
         Objects.equals(this.verificationPeriodMinutes, updateApplicationRequest.verificationPeriodMinutes) &&
@@ -625,7 +790,7 @@ public class UpdateApplicationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(containsPersonalData, detailsTransformationScript, displayedDetailsFields, id, ipWhiteList, latestHashRecipientEmails, logLevelErrorReportRecipientEmails, logLevelRegexes, metadataExtractionPaths, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, retentionMonths, signatureVerificationPublicKeys, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(containsPersonalData, dataMaskingPatterns, detailsTransformationScript, displayedDetailsFields, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelErrorReportRecipientEmails, logLevelRegexes, metadataExtractionPaths, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionMonths, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -635,11 +800,13 @@ public class UpdateApplicationRequest {
     sb.append("class UpdateApplicationRequest {\n");
     
     sb.append("    containsPersonalData: ").append(toIndentedString(containsPersonalData)).append("\n");
+    sb.append("    dataMaskingPatterns: ").append(toIndentedString(dataMaskingPatterns)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ipWhiteList: ").append(toIndentedString(ipWhiteList)).append("\n");
     sb.append("    latestHashRecipientEmails: ").append(toIndentedString(latestHashRecipientEmails)).append("\n");
+    sb.append("    logGroupingEnabled: ").append(toIndentedString(logGroupingEnabled)).append("\n");
     sb.append("    logLevelErrorReportRecipientEmails: ").append(toIndentedString(logLevelErrorReportRecipientEmails)).append("\n");
     sb.append("    logLevelRegexes: ").append(toIndentedString(logLevelRegexes)).append("\n");
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
@@ -649,8 +816,10 @@ public class UpdateApplicationRequest {
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");
     sb.append("    openDataWhitelistRegexes: ").append(toIndentedString(openDataWhitelistRegexes)).append("\n");
     sb.append("    partialVerificationPeriodMinutes: ").append(toIndentedString(partialVerificationPeriodMinutes)).append("\n");
+    sb.append("    propertiesForIdenticalEntries: ").append(toIndentedString(propertiesForIdenticalEntries)).append("\n");
     sb.append("    retentionMonths: ").append(toIndentedString(retentionMonths)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
+    sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");
     sb.append("    verificationPeriodMinutes: ").append(toIndentedString(verificationPeriodMinutes)).append("\n");

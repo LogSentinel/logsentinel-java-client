@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **aggregationPeriod** | **String** |  |  [optional]
 **aggregationType** | [**AggregationTypeEnum**](#AggregationTypeEnum) |  |  [optional]
 **alertDestinationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
-**applicationId** | [**UUID**](UUID.md) |  |  [optional]
+**applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
 **groupByField** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]

@@ -101,7 +101,7 @@ public class LoggingApiTest {
         String gdprCorrelationKey = null;
         String logLevel = null;
         String process = null;
-        LogResponse response = api.log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, 0L, process, Collections.emptyMap());
+        LogResponse response = api.log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, 0L, process, Collections.emptyMap(), Collections.emptyList());
 
         // TODO: test validations
     }
@@ -131,7 +131,7 @@ public class LoggingApiTest {
         List<String> encryptedKeywords = null;
         String gdprCorrelationKey = null;
         String process = null;
-        LogResponse response = api.logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, 0L, process, Collections.emptyMap());
+        LogResponse response = api.logAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, 0L, process, Collections.emptyMap(), Collections.emptyList());
 
         // TODO: test validations
     }
@@ -193,7 +193,7 @@ public class LoggingApiTest {
         List<String> encryptedKeywords = null;
         String gdprCorrelationKey = null;
         String process = null;
-        LogResponse response = api.logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, 0L, process, Collections.emptyMap());
+        LogResponse response = api.logDocument(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, 0L, process, Collections.emptyMap(), Collections.emptyList());
 
         // TODO: test validations
     }
@@ -225,7 +225,7 @@ public class LoggingApiTest {
         String gdprCorrelationKey = null;
         String logLevel = null;
         String process = null;
-        LogResponse response = api.logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, 0L, process, Collections.emptyMap());
+        LogResponse response = api.logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, 0L, process, Collections.emptyMap(), Collections.emptyList());
 
         // TODO: test validations
     }
@@ -248,7 +248,7 @@ public class LoggingApiTest {
         List<String> directExternalPush = null;
         List<String> encryptedKeywords = null;
         String logLevel = null;
-        LogResponse response = api.logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, null, null);
+        LogResponse response = api.logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, null, null, null);
 
         // TODO: test validations
     }

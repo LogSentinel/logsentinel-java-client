@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -37,8 +37,14 @@ public class AlertRuleRun {
   @JsonProperty("alertRuleName")
   private String alertRuleName = null;
 
+  @JsonProperty("applicationName")
+  private String applicationName = null;
+
   @JsonProperty("created")
   private LocalDateTime created = null;
+
+  @JsonProperty("details")
+  private String details = null;
 
   @JsonProperty("executionDuration")
   private Long executionDuration = null;
@@ -48,6 +54,9 @@ public class AlertRuleRun {
 
   @JsonProperty("id")
   private UUID id = null;
+
+  @JsonProperty("notified")
+  private Boolean notified = null;
 
   @JsonProperty("organizationId")
   private UUID organizationId = null;
@@ -149,6 +158,24 @@ public class AlertRuleRun {
     this.alertRuleName = alertRuleName;
   }
 
+  public AlertRuleRun applicationName(String applicationName) {
+    this.applicationName = applicationName;
+    return this;
+  }
+
+   /**
+   * Get applicationName
+   * @return applicationName
+  **/
+  @ApiModelProperty(value = "")
+  public String getApplicationName() {
+    return applicationName;
+  }
+
+  public void setApplicationName(String applicationName) {
+    this.applicationName = applicationName;
+  }
+
   public AlertRuleRun created(LocalDateTime created) {
     this.created = created;
     return this;
@@ -165,6 +192,24 @@ public class AlertRuleRun {
 
   public void setCreated(LocalDateTime created) {
     this.created = created;
+  }
+
+  public AlertRuleRun details(String details) {
+    this.details = details;
+    return this;
+  }
+
+   /**
+   * Get details
+   * @return details
+  **/
+  @ApiModelProperty(value = "")
+  public String getDetails() {
+    return details;
+  }
+
+  public void setDetails(String details) {
+    this.details = details;
   }
 
   public AlertRuleRun executionDuration(Long executionDuration) {
@@ -219,6 +264,24 @@ public class AlertRuleRun {
 
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  public AlertRuleRun notified(Boolean notified) {
+    this.notified = notified;
+    return this;
+  }
+
+   /**
+   * Get notified
+   * @return notified
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isNotified() {
+    return notified;
+  }
+
+  public void setNotified(Boolean notified) {
+    this.notified = notified;
   }
 
   public AlertRuleRun organizationId(UUID organizationId) {
@@ -288,10 +351,13 @@ public class AlertRuleRun {
     return Objects.equals(this.actualValue, alertRuleRun.actualValue) &&
         Objects.equals(this.alertRuleId, alertRuleRun.alertRuleId) &&
         Objects.equals(this.alertRuleName, alertRuleRun.alertRuleName) &&
+        Objects.equals(this.applicationName, alertRuleRun.applicationName) &&
         Objects.equals(this.created, alertRuleRun.created) &&
+        Objects.equals(this.details, alertRuleRun.details) &&
         Objects.equals(this.executionDuration, alertRuleRun.executionDuration) &&
         Objects.equals(this.fired, alertRuleRun.fired) &&
         Objects.equals(this.id, alertRuleRun.id) &&
+        Objects.equals(this.notified, alertRuleRun.notified) &&
         Objects.equals(this.organizationId, alertRuleRun.organizationId) &&
         Objects.equals(this.threshold, alertRuleRun.threshold) &&
         Objects.equals(this.thresholdType, alertRuleRun.thresholdType);
@@ -299,7 +365,7 @@ public class AlertRuleRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actualValue, alertRuleId, alertRuleName, created, executionDuration, fired, id, organizationId, threshold, thresholdType);
+    return Objects.hash(actualValue, alertRuleId, alertRuleName, applicationName, created, details, executionDuration, fired, id, notified, organizationId, threshold, thresholdType);
   }
 
 
@@ -311,10 +377,13 @@ public class AlertRuleRun {
     sb.append("    actualValue: ").append(toIndentedString(actualValue)).append("\n");
     sb.append("    alertRuleId: ").append(toIndentedString(alertRuleId)).append("\n");
     sb.append("    alertRuleName: ").append(toIndentedString(alertRuleName)).append("\n");
+    sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    executionDuration: ").append(toIndentedString(executionDuration)).append("\n");
     sb.append("    fired: ").append(toIndentedString(fired)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
     sb.append("    thresholdType: ").append(toIndentedString(thresholdType)).append("\n");

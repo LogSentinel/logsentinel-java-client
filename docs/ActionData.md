@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **entityType** | **String** |  |  [optional]
 **entryType** | [**EntryTypeEnum**](#EntryTypeEnum) |  |  [optional]
 **originalEventTimestamp** | **Long** |  |  [optional]
+**tags** | **List&lt;String&gt;** |  |  [optional]
 
 
 <a name="EntryTypeEnum"></a>
@@ -23,6 +24,7 @@ NETWORK_EVENT | &quot;NETWORK_EVENT&quot;
 ANONYMIZED_ENTRY | &quot;ANONYMIZED_ENTRY&quot;
 SPECIALIZED_BUSINESS_LOGIC_ENTRY | &quot;SPECIALIZED_BUSINESS_LOGIC_ENTRY&quot;
 DOCUMENT | &quot;DOCUMENT&quot;
+FLOW_LOG | &quot;FLOW_LOG&quot;
 
 
 

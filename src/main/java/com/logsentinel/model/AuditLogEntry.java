@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.logsentinel.enums.HashableContent;
-
+import com.logsentinel.model.IPDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
@@ -48,6 +48,7 @@ public class AuditLogEntry {
   @JsonProperty("actorRoles")
   private List<String> actorRoles = null;
 
+  @Deprecated
   @JsonProperty("additionalParams")
   private Map<String, String> additionalParams = null;
 
@@ -83,6 +84,9 @@ public class AuditLogEntry {
 
   @JsonProperty("ipAddress")
   private String ipAddress = null;
+
+  @JsonProperty("ipDetails")
+  private Map<String, IPDetails> ipDetails = null;
 
   /**
    * Gets or Sets logLevel
@@ -138,11 +142,17 @@ public class AuditLogEntry {
   @JsonProperty("originalEventTimestamp")
   private Long originalEventTimestamp = null;
 
+  @JsonProperty("params")
+  private Map<String, String> params = null;
+
   @JsonProperty("previousEntryId")
   private UUID previousEntryId = null;
 
   @JsonProperty("standaloneHash")
   private String standaloneHash = null;
+
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   @JsonProperty("timestamp")
   private Long timestamp = null;
@@ -471,6 +481,32 @@ public class AuditLogEntry {
     this.ipAddress = ipAddress;
   }
 
+  public AuditLogEntry ipDetails(Map<String, IPDetails> ipDetails) {
+    this.ipDetails = ipDetails;
+    return this;
+  }
+
+  public AuditLogEntry putIpDetailsItem(String key, IPDetails ipDetailsItem) {
+    if (this.ipDetails == null) {
+      this.ipDetails = new HashMap<>();
+    }
+    this.ipDetails.put(key, ipDetailsItem);
+    return this;
+  }
+
+   /**
+   * Get ipDetails
+   * @return ipDetails
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, IPDetails> getIpDetails() {
+    return ipDetails;
+  }
+
+  public void setIpDetails(Map<String, IPDetails> ipDetails) {
+    this.ipDetails = ipDetails;
+  }
+
   public AuditLogEntry logLevel(LogLevelEnum logLevel) {
     this.logLevel = logLevel;
     return this;
@@ -533,6 +569,32 @@ public class AuditLogEntry {
     this.originalEventTimestamp = originalEventTimestamp;
   }
 
+  public AuditLogEntry params(Map<String, String> params) {
+    this.params = params;
+    return this;
+  }
+
+  public AuditLogEntry putParamsItem(String key, String paramsItem) {
+    if (this.params == null) {
+      this.params = new HashMap<>();
+    }
+    this.params.put(key, paramsItem);
+    return this;
+  }
+
+   /**
+   * Get params
+   * @return params
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getParams() {
+    return params;
+  }
+
+  public void setParams(Map<String, String> params) {
+    this.params = params;
+  }
+
   public AuditLogEntry previousEntryId(UUID previousEntryId) {
     this.previousEntryId = previousEntryId;
     return this;
@@ -567,6 +629,32 @@ public class AuditLogEntry {
 
   public void setStandaloneHash(String standaloneHash) {
     this.standaloneHash = standaloneHash;
+  }
+
+  public AuditLogEntry tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public AuditLogEntry addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
   public AuditLogEntry timestamp(Long timestamp) {
@@ -673,7 +761,6 @@ public class AuditLogEntry {
         Objects.equals(this.actorDisplayName, auditLogEntry.actorDisplayName) &&
         Objects.equals(this.actorId, auditLogEntry.actorId) &&
         Objects.equals(this.actorRoles, auditLogEntry.actorRoles) &&
-        Objects.equals(this.additionalParams, auditLogEntry.additionalParams) &&
         Objects.equals(this.applicationId, auditLogEntry.applicationId) &&
         Objects.equals(this.details, auditLogEntry.details) &&
         Objects.equals(this.encryptedKeywordsList, auditLogEntry.encryptedKeywordsList) &&
@@ -685,11 +772,14 @@ public class AuditLogEntry {
         Objects.equals(this.id, auditLogEntry.id) &&
         Objects.equals(this.insideWorkingHours, auditLogEntry.insideWorkingHours) &&
         Objects.equals(this.ipAddress, auditLogEntry.ipAddress) &&
+        Objects.equals(this.ipDetails, auditLogEntry.ipDetails) &&
         Objects.equals(this.logLevel, auditLogEntry.logLevel) &&
         Objects.equals(this.numericParams, auditLogEntry.numericParams) &&
         Objects.equals(this.originalEventTimestamp, auditLogEntry.originalEventTimestamp) &&
+        Objects.equals(this.params, auditLogEntry.params) &&
         Objects.equals(this.previousEntryId, auditLogEntry.previousEntryId) &&
         Objects.equals(this.standaloneHash, auditLogEntry.standaloneHash) &&
+        Objects.equals(this.tags, auditLogEntry.tags) &&
         Objects.equals(this.timestamp, auditLogEntry.timestamp) &&
         Objects.equals(this.timestampGroupHash, auditLogEntry.timestampGroupHash) &&
         Objects.equals(this.timestampGroupSize, auditLogEntry.timestampGroupSize) &&
@@ -699,7 +789,7 @@ public class AuditLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, actorDisplayName, actorId, actorRoles, additionalParams, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, logLevel, numericParams, originalEventTimestamp, previousEntryId, standaloneHash, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
+    return Objects.hash(action, actorDisplayName, actorId, actorRoles, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, ipDetails, logLevel, numericParams, originalEventTimestamp, params, previousEntryId, standaloneHash, tags, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
   }
 
 
@@ -712,7 +802,6 @@ public class AuditLogEntry {
     sb.append("    actorDisplayName: ").append(toIndentedString(actorDisplayName)).append("\n");
     sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
     sb.append("    actorRoles: ").append(toIndentedString(actorRoles)).append("\n");
-    sb.append("    additionalParams: ").append(toIndentedString(additionalParams)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    encryptedKeywordsList: ").append(toIndentedString(encryptedKeywordsList)).append("\n");
@@ -724,11 +813,14 @@ public class AuditLogEntry {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    insideWorkingHours: ").append(toIndentedString(insideWorkingHours)).append("\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
+    sb.append("    ipDetails: ").append(toIndentedString(ipDetails)).append("\n");
     sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
     sb.append("    numericParams: ").append(toIndentedString(numericParams)).append("\n");
     sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
+    sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    previousEntryId: ").append(toIndentedString(previousEntryId)).append("\n");
     sb.append("    standaloneHash: ").append(toIndentedString(standaloneHash)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    timestamp: ").append(toIndentedString(timestamp)).append("\n");
     sb.append("    timestampGroupHash: ").append(toIndentedString(timestampGroupHash)).append("\n");
     sb.append("    timestampGroupSize: ").append(toIndentedString(timestampGroupSize)).append("\n");

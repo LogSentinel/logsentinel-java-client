@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -76,8 +76,8 @@ public class AlertRule {
   @JsonProperty("alertDestinationIds")
   private List<UUID> alertDestinationIds = null;
 
-  @JsonProperty("applicationId")
-  private UUID applicationId = null;
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
 
   @JsonProperty("created")
   private LocalDateTime created = null;
@@ -251,22 +251,30 @@ public class AlertRule {
     this.alertDestinationIds = alertDestinationIds;
   }
 
-  public AlertRule applicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public AlertRule applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public AlertRule addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
     return this;
   }
 
    /**
-   * Get applicationId
-   * @return applicationId
+   * Get applicationIds
+   * @return applicationIds
   **/
   @ApiModelProperty(value = "")
-  public UUID getApplicationId() {
-    return applicationId;
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
   }
 
-  public void setApplicationId(UUID applicationId) {
-    this.applicationId = applicationId;
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
   }
 
   public AlertRule created(LocalDateTime created) {
@@ -498,7 +506,7 @@ public class AlertRule {
     return Objects.equals(this.aggregationPeriod, alertRule.aggregationPeriod) &&
         Objects.equals(this.aggregationType, alertRule.aggregationType) &&
         Objects.equals(this.alertDestinationIds, alertRule.alertDestinationIds) &&
-        Objects.equals(this.applicationId, alertRule.applicationId) &&
+        Objects.equals(this.applicationIds, alertRule.applicationIds) &&
         Objects.equals(this.created, alertRule.created) &&
         Objects.equals(this.enabled, alertRule.enabled) &&
         Objects.equals(this.groupByField, alertRule.groupByField) &&
@@ -515,7 +523,7 @@ public class AlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationId, created, enabled, groupByField, id, insideWorkingHours, name, organizationId, searchPeriod, thresholdType, thresholdValue, type, updated);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, created, enabled, groupByField, id, insideWorkingHours, name, organizationId, searchPeriod, thresholdType, thresholdValue, type, updated);
   }
 
 
@@ -527,7 +535,7 @@ public class AlertRule {
     sb.append("    aggregationPeriod: ").append(toIndentedString(aggregationPeriod)).append("\n");
     sb.append("    aggregationType: ").append(toIndentedString(aggregationType)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
-    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");

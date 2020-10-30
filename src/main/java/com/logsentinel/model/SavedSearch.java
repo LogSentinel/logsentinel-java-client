@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -21,6 +21,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -28,6 +30,9 @@ import java.util.UUID;
  */
 
 public class SavedSearch {
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
+
   @JsonProperty("created")
   private LocalDateTime created = null;
 
@@ -60,6 +65,32 @@ public class SavedSearch {
 
   @JsonProperty("userId")
   private UUID userId = null;
+
+  public SavedSearch applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public SavedSearch addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * Get applicationIds
+   * @return applicationIds
+  **/
+  @ApiModelProperty(value = "")
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
+  }
+
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+  }
 
   public SavedSearch created(LocalDateTime created) {
     this.created = created;
@@ -269,7 +300,8 @@ public class SavedSearch {
       return false;
     }
     SavedSearch savedSearch = (SavedSearch) o;
-    return Objects.equals(this.created, savedSearch.created) &&
+    return Objects.equals(this.applicationIds, savedSearch.applicationIds) &&
+        Objects.equals(this.created, savedSearch.created) &&
         Objects.equals(this.end, savedSearch.end) &&
         Objects.equals(this.id, savedSearch.id) &&
         Objects.equals(this.name, savedSearch.name) &&
@@ -284,7 +316,7 @@ public class SavedSearch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(created, end, id, name, page, pageSize, query, relativePeriod, start, updated, userId);
+    return Objects.hash(applicationIds, created, end, id, name, page, pageSize, query, relativePeriod, start, updated, userId);
   }
 
 
@@ -293,6 +325,7 @@ public class SavedSearch {
     StringBuilder sb = new StringBuilder();
     sb.append("class SavedSearch {\n");
     
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

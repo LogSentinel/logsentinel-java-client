@@ -50,7 +50,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role** | **String**| role | [enum: ADMIN, AUDITOR, DEVELOPER, MANAGER, IT, PUBLIC_USER]
+ **role** | **String**| role | [enum: ADMIN, AUDITOR, DEVELOPER, MANAGER, IT, BUSINESS_ANALYST, PUBLIC_USER]
  **userId** | [**UUID**](.md)| userId |
 
 ### Return type

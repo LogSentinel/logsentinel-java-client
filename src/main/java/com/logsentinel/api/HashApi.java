@@ -132,7 +132,7 @@ public class HashApi {
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -154,7 +154,7 @@ public class HashApi {
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
@@ -233,7 +233,7 @@ if (signature != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -255,7 +255,7 @@ if (signature != null)
    * @param actorRoles The roles of the actor (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
@@ -337,7 +337,7 @@ if (userPublicKey != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -361,7 +361,7 @@ if (userPublicKey != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
@@ -447,7 +447,7 @@ if (signature != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return String
    * @throws ApiException if fails to make API call
    */
@@ -464,7 +464,7 @@ if (signature != null)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
    * @param additionalParams additional params
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
@@ -528,7 +528,7 @@ if (signature != null)
       }
       return getHashableContent(applicationId, actionData.getAction(), actorData.getActorId(), entryType, signature, actorData.getDepartment(), 
               actorData.getActorDisplayName(), actorData.getActorRoles(), 
-              bodyAndKeywords.getBody(), null, actionData.getOriginalEventTimestamp(), actionData.getAdditionalParams());
+              bodyAndKeywords.getBody(), null, actionData.getOriginalEventTimestamp(), actionData.getParams());
   }
   
   private <T> BodyAndKeywords preProcessBody(ActionData<T> actionData) {

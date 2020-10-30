@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -21,20 +21,35 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * MachineLearningSettings
  */
 
 public class MachineLearningSettings {
+  @JsonProperty("alertDestinations")
+  private List<UUID> alertDestinations = null;
+
   @JsonProperty("anomalyDetectionEnabled")
   private Boolean anomalyDetectionEnabled = null;
 
   @JsonProperty("anomalyDetectionEnabledDate")
   private OffsetDateTime anomalyDetectionEnabledDate = null;
 
+  @JsonProperty("anomalyScoreThreshold")
+  private Double anomalyScoreThreshold = null;
+
   @JsonProperty("includeEntityFields")
   private Boolean includeEntityFields = null;
+
+  @JsonProperty("includeParams")
+  private Boolean includeParams = null;
+
+  @JsonProperty("queryStringFormatFields")
+  private List<String> queryStringFormatFields = null;
 
   /**
    * Gets or Sets timestampField
@@ -74,6 +89,32 @@ public class MachineLearningSettings {
   @JsonProperty("timestampField")
   private TimestampFieldEnum timestampField = null;
 
+  public MachineLearningSettings alertDestinations(List<UUID> alertDestinations) {
+    this.alertDestinations = alertDestinations;
+    return this;
+  }
+
+  public MachineLearningSettings addAlertDestinationsItem(UUID alertDestinationsItem) {
+    if (this.alertDestinations == null) {
+      this.alertDestinations = new ArrayList<>();
+    }
+    this.alertDestinations.add(alertDestinationsItem);
+    return this;
+  }
+
+   /**
+   * Get alertDestinations
+   * @return alertDestinations
+  **/
+  @ApiModelProperty(value = "")
+  public List<UUID> getAlertDestinations() {
+    return alertDestinations;
+  }
+
+  public void setAlertDestinations(List<UUID> alertDestinations) {
+    this.alertDestinations = alertDestinations;
+  }
+
   public MachineLearningSettings anomalyDetectionEnabled(Boolean anomalyDetectionEnabled) {
     this.anomalyDetectionEnabled = anomalyDetectionEnabled;
     return this;
@@ -110,6 +151,24 @@ public class MachineLearningSettings {
     this.anomalyDetectionEnabledDate = anomalyDetectionEnabledDate;
   }
 
+  public MachineLearningSettings anomalyScoreThreshold(Double anomalyScoreThreshold) {
+    this.anomalyScoreThreshold = anomalyScoreThreshold;
+    return this;
+  }
+
+   /**
+   * Get anomalyScoreThreshold
+   * @return anomalyScoreThreshold
+  **/
+  @ApiModelProperty(value = "")
+  public Double getAnomalyScoreThreshold() {
+    return anomalyScoreThreshold;
+  }
+
+  public void setAnomalyScoreThreshold(Double anomalyScoreThreshold) {
+    this.anomalyScoreThreshold = anomalyScoreThreshold;
+  }
+
   public MachineLearningSettings includeEntityFields(Boolean includeEntityFields) {
     this.includeEntityFields = includeEntityFields;
     return this;
@@ -126,6 +185,50 @@ public class MachineLearningSettings {
 
   public void setIncludeEntityFields(Boolean includeEntityFields) {
     this.includeEntityFields = includeEntityFields;
+  }
+
+  public MachineLearningSettings includeParams(Boolean includeParams) {
+    this.includeParams = includeParams;
+    return this;
+  }
+
+   /**
+   * Get includeParams
+   * @return includeParams
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isIncludeParams() {
+    return includeParams;
+  }
+
+  public void setIncludeParams(Boolean includeParams) {
+    this.includeParams = includeParams;
+  }
+
+  public MachineLearningSettings queryStringFormatFields(List<String> queryStringFormatFields) {
+    this.queryStringFormatFields = queryStringFormatFields;
+    return this;
+  }
+
+  public MachineLearningSettings addQueryStringFormatFieldsItem(String queryStringFormatFieldsItem) {
+    if (this.queryStringFormatFields == null) {
+      this.queryStringFormatFields = new ArrayList<>();
+    }
+    this.queryStringFormatFields.add(queryStringFormatFieldsItem);
+    return this;
+  }
+
+   /**
+   * Get queryStringFormatFields
+   * @return queryStringFormatFields
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getQueryStringFormatFields() {
+    return queryStringFormatFields;
+  }
+
+  public void setQueryStringFormatFields(List<String> queryStringFormatFields) {
+    this.queryStringFormatFields = queryStringFormatFields;
   }
 
   public MachineLearningSettings timestampField(TimestampFieldEnum timestampField) {
@@ -156,15 +259,19 @@ public class MachineLearningSettings {
       return false;
     }
     MachineLearningSettings machineLearningSettings = (MachineLearningSettings) o;
-    return Objects.equals(this.anomalyDetectionEnabled, machineLearningSettings.anomalyDetectionEnabled) &&
+    return Objects.equals(this.alertDestinations, machineLearningSettings.alertDestinations) &&
+        Objects.equals(this.anomalyDetectionEnabled, machineLearningSettings.anomalyDetectionEnabled) &&
         Objects.equals(this.anomalyDetectionEnabledDate, machineLearningSettings.anomalyDetectionEnabledDate) &&
+        Objects.equals(this.anomalyScoreThreshold, machineLearningSettings.anomalyScoreThreshold) &&
         Objects.equals(this.includeEntityFields, machineLearningSettings.includeEntityFields) &&
+        Objects.equals(this.includeParams, machineLearningSettings.includeParams) &&
+        Objects.equals(this.queryStringFormatFields, machineLearningSettings.queryStringFormatFields) &&
         Objects.equals(this.timestampField, machineLearningSettings.timestampField);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(anomalyDetectionEnabled, anomalyDetectionEnabledDate, includeEntityFields, timestampField);
+    return Objects.hash(alertDestinations, anomalyDetectionEnabled, anomalyDetectionEnabledDate, anomalyScoreThreshold, includeEntityFields, includeParams, queryStringFormatFields, timestampField);
   }
 
 
@@ -173,9 +280,13 @@ public class MachineLearningSettings {
     StringBuilder sb = new StringBuilder();
     sb.append("class MachineLearningSettings {\n");
     
+    sb.append("    alertDestinations: ").append(toIndentedString(alertDestinations)).append("\n");
     sb.append("    anomalyDetectionEnabled: ").append(toIndentedString(anomalyDetectionEnabled)).append("\n");
     sb.append("    anomalyDetectionEnabledDate: ").append(toIndentedString(anomalyDetectionEnabledDate)).append("\n");
+    sb.append("    anomalyScoreThreshold: ").append(toIndentedString(anomalyScoreThreshold)).append("\n");
     sb.append("    includeEntityFields: ").append(toIndentedString(includeEntityFields)).append("\n");
+    sb.append("    includeParams: ").append(toIndentedString(includeParams)).append("\n");
+    sb.append("    queryStringFormatFields: ").append(toIndentedString(queryStringFormatFields)).append("\n");
     sb.append("    timestampField: ").append(toIndentedString(timestampField)).append("\n");
     sb.append("}");
     return sb.toString();

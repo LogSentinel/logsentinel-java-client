@@ -199,12 +199,13 @@ public class LoggingApi {
    * @param logLevel logLevel (optional)
    * @param originalEventTimestamp originalEventTimestamp (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse log(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
-    return logWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, additionalParams).getData();
+  public LogResponse log(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -224,13 +225,14 @@ public class LoggingApi {
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
     
@@ -265,10 +267,12 @@ public class LoggingApi {
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
     
-    if (additionalParams != null && !additionalParams.isEmpty()) {
-        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    if (params != null && !params.isEmpty()) {
+        params.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
     }
     
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags", tags));
+
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -309,14 +313,15 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
-    return logAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process, additionalParams).getData();
+  public LogResponse logAuthAction(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logAuthActionWithHttpInfo(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -336,14 +341,20 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<LogResponse> logAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
+    
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logAuthAction");
+    }
     
     // verify the required parameter 'actorId' is set
     if (actorId == null) {
@@ -374,10 +385,12 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-    if (additionalParams != null && !additionalParams.isEmpty()) {
-        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    if (params != null && !params.isEmpty()) {
+        params.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
     }
     
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags", tags));
+
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (signature != null)
@@ -437,6 +450,11 @@ if (userPublicKey != null)
   public <T> ApiResponse<LogResponse> logBatchWithHttpInfo(UUID applicationId, List<BatchLogRequestEntry<T>> requestData) throws ApiException {
     Object localVarPostBody = requestData;
     
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logBatch");
+    }
+    
     // verify the required parameter 'requestData' is set
     if (requestData == null) {
       throw new ApiException(400, "Missing the required parameter 'requestData' when calling logBatch");
@@ -471,8 +489,13 @@ if (userPublicKey != null)
       if (e.getAdditionalParams() == null) {
           e.setAdditionalParams(new HashMap<>());
       }
-      if (e.getActionData() != null && e.getActionData().getAdditionalParams() != null) {
-          e.getActionData().getAdditionalParams().forEach((k, v) -> e.getAdditionalParams().put(k, v));
+      if (e.getParams() == null) {
+          e.setParams(new HashMap<>());
+      }
+      e.getParams().putAll(e.getAdditionalParams());
+      
+      if (e.getActionData() != null && e.getActionData().getParams() != null) {
+          e.getActionData().getParams().forEach((k, v) -> e.getParams().put(k, v));
       }
     });
     GenericType<LogResponse> localVarReturnType = new GenericType<LogResponse>() {};
@@ -496,14 +519,15 @@ if (userPublicKey != null)
    * @param documentType documentType (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logDocument(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
-    return logDocumentWithHttpInfo(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process, additionalParams).getData();
+  public LogResponse logDocument(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logDocumentWithHttpInfo(applicationId, action, actorId, details, documentId, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, directExternalPush, documentName, documentType, encryptedKeywords, gdprCorrelationKey, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -524,13 +548,14 @@ if (userPublicKey != null)
    * @param documentType documentType (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logDocumentWithHttpInfo(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<LogResponse> logDocumentWithHttpInfo(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -580,10 +605,12 @@ if (userPublicKey != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "gdprCorrelationKey", gdprCorrelationKey));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-    if (additionalParams != null && !additionalParams.isEmpty()) {
-        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    if (params != null && !params.isEmpty()) {
+        params.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
     }
     
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags", tags));
+
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (signature != null)
@@ -624,14 +651,14 @@ if (signature != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
-    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, additionalParams).getData();
+  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -653,14 +680,20 @@ if (signature != null)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
-   * @param additionalParams additionalParams (optional)
+   * @param params params (optional)
+   * @param tags tags (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
+    
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logFull");
+    }
     
     // verify the required parameter 'action' is set
     if (action == null) {
@@ -704,9 +737,11 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "process", process));
-    if (additionalParams != null && !additionalParams.isEmpty()) {
-        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    if (params != null && !params.isEmpty()) {
+        params.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
     }
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags", tags));
+
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
 if (auditLogEntryType != null)
@@ -741,13 +776,14 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param logLevel logLevel (optional)
-   * @param additionalParams additionalParams (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param params params (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
+   * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logSimple(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
-    return logSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, additionalParams).getData();
+  public LogResponse logSimple(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
+    return logSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, params, tags).getData();
       }
 
   /**
@@ -761,13 +797,19 @@ if (signature != null)
    * @param directExternalPush directExternalPush (optional)
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param logLevel logLevel (optional)
-   * @param additionalParams additionalParams (optional) 
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param params params (optional) 
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
+   * @param tags tags (optional)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
+    
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logSimple");
+    }
     
     // create path and map variables
     String localVarPath = "/api/log/simple";
@@ -782,9 +824,10 @@ if (signature != null)
     localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "encryptedKeywords", encryptedKeywords));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "logLevel", logLevel));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "originalEventTimestamp", originalEventTimestamp));
+    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "tags", tags));
 
-    if (additionalParams != null && !additionalParams.isEmpty()) {
-        additionalParams.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
+    if (params != null && !params.isEmpty()) {
+        params.forEach((k, v) -> localVarQueryParams.add(new Pair(k, v)));
     }
     
     if (applicationId != null)
@@ -837,17 +880,17 @@ if (signature != null)
               entryType, signature, actorData.getDepartment(), 
               actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
               body, null, bodyAndKeywords.getKeywords(), null, null, actionData.getOriginalEventTimestamp(), null,
-              actionData.getAdditionalParams());
+              actionData.getParams(), actionData.getTags());
       } else if (actionData.getAction() != null && actorData.getActorId() != null) {
           return log(applicationId, actionData.getAction(), actorData.getActorId(), 
                   entryType, signature, actorData.getDepartment(), 
                   actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
                   body, null, bodyAndKeywords.getKeywords(), null, null, actionData.getOriginalEventTimestamp(), null, 
-                  actionData.getAdditionalParams());
+                  actionData.getParams(), actionData.getTags());
       } else {
           return logSimple(applicationId, entryType, signature, actionData.isBinaryContent(), 
                   body, null, bodyAndKeywords.getKeywords(), null, actionData.getOriginalEventTimestamp(), 
-                  actionData.getAdditionalParams());
+                  actionData.getParams(), actionData.getTags());
       }
   }
   

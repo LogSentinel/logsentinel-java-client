@@ -9,7 +9,9 @@ Name | Type | Description | Notes
 **additionalParams** | **Map&lt;String, String&gt;** |  |  [optional]
 **binaryContent** | **Boolean** |  |  [optional]
 **encryptedKeywordsList** | **List&lt;String&gt;** |  |  [optional]
+**params** | **Map&lt;String, String&gt;** |  |  [optional]
 **signature** | **String** |  |  [optional]
+**tags** | **List&lt;String&gt;** |  |  [optional]
 
 
 

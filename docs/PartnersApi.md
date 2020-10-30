@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**fetchAllOrganizations**](PartnersApi.md#fetchAllOrganizations) | **GET** /api/partner/organizations | Fetch all organizations
 [**getApiCredentials**](PartnersApi.md#getApiCredentials) | **GET** /api/partner/organizations/apiCredentials | API credentials per organization from organizations owned by partner
 [**getOrganizationByUserEmail**](PartnersApi.md#getOrganizationByUserEmail) | **GET** /api/partner/organizationByUserEmail | Get the organization for the supplied email
+[**getUserIdByEmail**](PartnersApi.md#getUserIdByEmail) | **GET** /api/partner/userIdByEmail | Get user id by user email
 [**registerUser**](PartnersApi.md#registerUser) | **POST** /api/partner/user/register | Register a user
 
 
@@ -200,6 +201,58 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**OrganizationDto**](OrganizationDto.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/xml, application/json
+
+<a name="getUserIdByEmail"></a>
+# **getUserIdByEmail**
+> UUID getUserIdByEmail(email)
+
+Get user id by user email
+
+### Example
+```java
+// Import classes:
+//import com.logsentinel.ApiClient;
+//import com.logsentinel.ApiException;
+//import com.logsentinel.Configuration;
+//import com.logsentinel.auth.*;
+//import com.logsentinel.api.PartnersApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+PartnersApi apiInstance = new PartnersApi();
+String email = "email_example"; // String | email
+try {
+    UUID result = apiInstance.getUserIdByEmail(email);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling PartnersApi#getUserIdByEmail");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| email |
+
+### Return type
+
+[**UUID**](UUID.md)
 
 ### Authorization
 

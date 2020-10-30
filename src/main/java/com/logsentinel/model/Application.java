@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -34,17 +34,26 @@ import java.util.UUID;
  */
 
 public class Application {
+  @JsonProperty("active")
+  private Boolean active = null;
+
   @JsonProperty("containsPersonalData")
   private Boolean containsPersonalData = null;
 
   @JsonProperty("created")
   private LocalDateTime created = null;
 
+  @JsonProperty("dataMaskingPatterns")
+  private List<String> dataMaskingPatterns = null;
+
   @JsonProperty("detailsTransformationScript")
   private String detailsTransformationScript = null;
 
   @JsonProperty("displayedDetailsFields")
   private String displayedDetailsFields = null;
+
+  @JsonProperty("generateMerkleTree")
+  private Boolean generateMerkleTree = null;
 
   @JsonProperty("genesisEntryId")
   private UUID genesisEntryId = null;
@@ -55,6 +64,9 @@ public class Application {
   @JsonProperty("ipWhiteList")
   private List<String> ipWhiteList = null;
 
+  @JsonProperty("lastMerkleTreeGenerationTimestamp")
+  private LocalDateTime lastMerkleTreeGenerationTimestamp = null;
+
   @JsonProperty("latestEthereumTxHash")
   private String latestEthereumTxHash = null;
 
@@ -63,6 +75,9 @@ public class Application {
 
   @JsonProperty("latestHashRecipientEmails")
   private List<String> latestHashRecipientEmails = null;
+
+  @JsonProperty("logGroupingEnabled")
+  private Boolean logGroupingEnabled = null;
 
   @JsonProperty("logLevelErrorReportRecipientEmails")
   private List<String> logLevelErrorReportRecipientEmails = null;
@@ -106,11 +121,78 @@ public class Application {
   @JsonProperty("performVerification")
   private Boolean performVerification = null;
 
+  @JsonProperty("propertiesForIdenticalEntries")
+  private List<String> propertiesForIdenticalEntries = null;
+
   @JsonProperty("retentionMonths")
   private Integer retentionMonths = null;
 
   @JsonProperty("signatureVerificationPublicKeys")
   private List<String> signatureVerificationPublicKeys = null;
+
+  /**
+   * Gets or Sets sourceCategory
+   */
+  public enum SourceCategoryEnum {
+    CLOUD_INFRASTRUCTURE("CLOUD_INFRASTRUCTURE"),
+    
+    NETWORK_APPLIANCE("NETWORK_APPLIANCE"),
+    
+    DATABASE("DATABASE"),
+    
+    ACTIVE_DIRECTORY("ACTIVE_DIRECTORY"),
+    
+    ERP("ERP"),
+    
+    ACCOUNTING("ACCOUNTING"),
+    
+    HR_AND_PAYROLL("HR_AND_PAYROLL"),
+    
+    SERVER_OS("SERVER_OS"),
+    
+    WORKSTATION("WORKSTATION"),
+    
+    WEB_SERVER("WEB_SERVER"),
+    
+    ANTIVIRUS("ANTIVIRUS"),
+    
+    VPN("VPN"),
+    
+    DOMAIN_SPECIFIC_APPLICATION("DOMAIN_SPECIFIC_APPLICATION"),
+    
+    OTHER_SAAS("OTHER_SAAS"),
+    
+    OTHER("OTHER");
+
+    private String value;
+
+    SourceCategoryEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static SourceCategoryEnum fromValue(String text) {
+      for (SourceCategoryEnum b : SourceCategoryEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("sourceCategory")
+  private SourceCategoryEnum sourceCategory = null;
 
   @JsonProperty("storeHashesInEthereum")
   private Boolean storeHashesInEthereum = null;
@@ -175,6 +257,24 @@ public class Application {
   @JsonProperty("warnLevel")
   private WarnLevelEnum warnLevel = null;
 
+  public Application active(Boolean active) {
+    this.active = active;
+    return this;
+  }
+
+   /**
+   * Get active
+   * @return active
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isActive() {
+    return active;
+  }
+
+  public void setActive(Boolean active) {
+    this.active = active;
+  }
+
   public Application containsPersonalData(Boolean containsPersonalData) {
     this.containsPersonalData = containsPersonalData;
     return this;
@@ -211,6 +311,32 @@ public class Application {
     this.created = created;
   }
 
+  public Application dataMaskingPatterns(List<String> dataMaskingPatterns) {
+    this.dataMaskingPatterns = dataMaskingPatterns;
+    return this;
+  }
+
+  public Application addDataMaskingPatternsItem(String dataMaskingPatternsItem) {
+    if (this.dataMaskingPatterns == null) {
+      this.dataMaskingPatterns = new ArrayList<>();
+    }
+    this.dataMaskingPatterns.add(dataMaskingPatternsItem);
+    return this;
+  }
+
+   /**
+   * Get dataMaskingPatterns
+   * @return dataMaskingPatterns
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getDataMaskingPatterns() {
+    return dataMaskingPatterns;
+  }
+
+  public void setDataMaskingPatterns(List<String> dataMaskingPatterns) {
+    this.dataMaskingPatterns = dataMaskingPatterns;
+  }
+
   public Application detailsTransformationScript(String detailsTransformationScript) {
     this.detailsTransformationScript = detailsTransformationScript;
     return this;
@@ -245,6 +371,24 @@ public class Application {
 
   public void setDisplayedDetailsFields(String displayedDetailsFields) {
     this.displayedDetailsFields = displayedDetailsFields;
+  }
+
+  public Application generateMerkleTree(Boolean generateMerkleTree) {
+    this.generateMerkleTree = generateMerkleTree;
+    return this;
+  }
+
+   /**
+   * Get generateMerkleTree
+   * @return generateMerkleTree
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isGenerateMerkleTree() {
+    return generateMerkleTree;
+  }
+
+  public void setGenerateMerkleTree(Boolean generateMerkleTree) {
+    this.generateMerkleTree = generateMerkleTree;
   }
 
   public Application genesisEntryId(UUID genesisEntryId) {
@@ -309,6 +453,24 @@ public class Application {
     this.ipWhiteList = ipWhiteList;
   }
 
+  public Application lastMerkleTreeGenerationTimestamp(LocalDateTime lastMerkleTreeGenerationTimestamp) {
+    this.lastMerkleTreeGenerationTimestamp = lastMerkleTreeGenerationTimestamp;
+    return this;
+  }
+
+   /**
+   * Get lastMerkleTreeGenerationTimestamp
+   * @return lastMerkleTreeGenerationTimestamp
+  **/
+  @ApiModelProperty(value = "")
+  public LocalDateTime getLastMerkleTreeGenerationTimestamp() {
+    return lastMerkleTreeGenerationTimestamp;
+  }
+
+  public void setLastMerkleTreeGenerationTimestamp(LocalDateTime lastMerkleTreeGenerationTimestamp) {
+    this.lastMerkleTreeGenerationTimestamp = lastMerkleTreeGenerationTimestamp;
+  }
+
   public Application latestEthereumTxHash(String latestEthereumTxHash) {
     this.latestEthereumTxHash = latestEthereumTxHash;
     return this;
@@ -369,6 +531,24 @@ public class Application {
 
   public void setLatestHashRecipientEmails(List<String> latestHashRecipientEmails) {
     this.latestHashRecipientEmails = latestHashRecipientEmails;
+  }
+
+  public Application logGroupingEnabled(Boolean logGroupingEnabled) {
+    this.logGroupingEnabled = logGroupingEnabled;
+    return this;
+  }
+
+   /**
+   * Get logGroupingEnabled
+   * @return logGroupingEnabled
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isLogGroupingEnabled() {
+    return logGroupingEnabled;
+  }
+
+  public void setLogGroupingEnabled(Boolean logGroupingEnabled) {
+    this.logGroupingEnabled = logGroupingEnabled;
   }
 
   public Application logLevelErrorReportRecipientEmails(List<String> logLevelErrorReportRecipientEmails) {
@@ -663,6 +843,32 @@ public class Application {
     this.performVerification = performVerification;
   }
 
+  public Application propertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
+    this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
+    return this;
+  }
+
+  public Application addPropertiesForIdenticalEntriesItem(String propertiesForIdenticalEntriesItem) {
+    if (this.propertiesForIdenticalEntries == null) {
+      this.propertiesForIdenticalEntries = new ArrayList<>();
+    }
+    this.propertiesForIdenticalEntries.add(propertiesForIdenticalEntriesItem);
+    return this;
+  }
+
+   /**
+   * Get propertiesForIdenticalEntries
+   * @return propertiesForIdenticalEntries
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getPropertiesForIdenticalEntries() {
+    return propertiesForIdenticalEntries;
+  }
+
+  public void setPropertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
+    this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
+  }
+
   public Application retentionMonths(Integer retentionMonths) {
     this.retentionMonths = retentionMonths;
     return this;
@@ -705,6 +911,24 @@ public class Application {
 
   public void setSignatureVerificationPublicKeys(List<String> signatureVerificationPublicKeys) {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
+  }
+
+  public Application sourceCategory(SourceCategoryEnum sourceCategory) {
+    this.sourceCategory = sourceCategory;
+    return this;
+  }
+
+   /**
+   * Get sourceCategory
+   * @return sourceCategory
+  **/
+  @ApiModelProperty(value = "")
+  public SourceCategoryEnum getSourceCategory() {
+    return sourceCategory;
+  }
+
+  public void setSourceCategory(SourceCategoryEnum sourceCategory) {
+    this.sourceCategory = sourceCategory;
   }
 
   public Application storeHashesInEthereum(Boolean storeHashesInEthereum) {
@@ -833,16 +1057,21 @@ public class Application {
       return false;
     }
     Application application = (Application) o;
-    return Objects.equals(this.containsPersonalData, application.containsPersonalData) &&
+    return Objects.equals(this.active, application.active) &&
+        Objects.equals(this.containsPersonalData, application.containsPersonalData) &&
         Objects.equals(this.created, application.created) &&
+        Objects.equals(this.dataMaskingPatterns, application.dataMaskingPatterns) &&
         Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
         Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
+        Objects.equals(this.generateMerkleTree, application.generateMerkleTree) &&
         Objects.equals(this.genesisEntryId, application.genesisEntryId) &&
         Objects.equals(this.id, application.id) &&
         Objects.equals(this.ipWhiteList, application.ipWhiteList) &&
+        Objects.equals(this.lastMerkleTreeGenerationTimestamp, application.lastMerkleTreeGenerationTimestamp) &&
         Objects.equals(this.latestEthereumTxHash, application.latestEthereumTxHash) &&
         Objects.equals(this.latestGlacierArchiveId, application.latestGlacierArchiveId) &&
         Objects.equals(this.latestHashRecipientEmails, application.latestHashRecipientEmails) &&
+        Objects.equals(this.logGroupingEnabled, application.logGroupingEnabled) &&
         Objects.equals(this.logLevelErrorReportRecipientEmails, application.logLevelErrorReportRecipientEmails) &&
         Objects.equals(this.logLevelRegexes, application.logLevelRegexes) &&
         Objects.equals(this.machineLearningSettings, application.machineLearningSettings) &&
@@ -857,8 +1086,10 @@ public class Application {
         Objects.equals(this.organizationId, application.organizationId) &&
         Objects.equals(this.partialVerificationPeriodMinutes, application.partialVerificationPeriodMinutes) &&
         Objects.equals(this.performVerification, application.performVerification) &&
+        Objects.equals(this.propertiesForIdenticalEntries, application.propertiesForIdenticalEntries) &&
         Objects.equals(this.retentionMonths, application.retentionMonths) &&
         Objects.equals(this.signatureVerificationPublicKeys, application.signatureVerificationPublicKeys) &&
+        Objects.equals(this.sourceCategory, application.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
         Objects.equals(this.syslogId, application.syslogId) &&
         Objects.equals(this.updated, application.updated) &&
@@ -869,7 +1100,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(containsPersonalData, created, detailsTransformationScript, displayedDetailsFields, genesisEntryId, id, ipWhiteList, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logLevelErrorReportRecipientEmails, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, retentionMonths, signatureVerificationPublicKeys, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, detailsTransformationScript, displayedDetailsFields, generateMerkleTree, genesisEntryId, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelErrorReportRecipientEmails, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionMonths, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -878,16 +1109,21 @@ public class Application {
     StringBuilder sb = new StringBuilder();
     sb.append("class Application {\n");
     
+    sb.append("    active: ").append(toIndentedString(active)).append("\n");
     sb.append("    containsPersonalData: ").append(toIndentedString(containsPersonalData)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    dataMaskingPatterns: ").append(toIndentedString(dataMaskingPatterns)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
+    sb.append("    generateMerkleTree: ").append(toIndentedString(generateMerkleTree)).append("\n");
     sb.append("    genesisEntryId: ").append(toIndentedString(genesisEntryId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ipWhiteList: ").append(toIndentedString(ipWhiteList)).append("\n");
+    sb.append("    lastMerkleTreeGenerationTimestamp: ").append(toIndentedString(lastMerkleTreeGenerationTimestamp)).append("\n");
     sb.append("    latestEthereumTxHash: ").append(toIndentedString(latestEthereumTxHash)).append("\n");
     sb.append("    latestGlacierArchiveId: ").append(toIndentedString(latestGlacierArchiveId)).append("\n");
     sb.append("    latestHashRecipientEmails: ").append(toIndentedString(latestHashRecipientEmails)).append("\n");
+    sb.append("    logGroupingEnabled: ").append(toIndentedString(logGroupingEnabled)).append("\n");
     sb.append("    logLevelErrorReportRecipientEmails: ").append(toIndentedString(logLevelErrorReportRecipientEmails)).append("\n");
     sb.append("    logLevelRegexes: ").append(toIndentedString(logLevelRegexes)).append("\n");
     sb.append("    machineLearningSettings: ").append(toIndentedString(machineLearningSettings)).append("\n");
@@ -902,8 +1138,10 @@ public class Application {
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    partialVerificationPeriodMinutes: ").append(toIndentedString(partialVerificationPeriodMinutes)).append("\n");
     sb.append("    performVerification: ").append(toIndentedString(performVerification)).append("\n");
+    sb.append("    propertiesForIdenticalEntries: ").append(toIndentedString(propertiesForIdenticalEntries)).append("\n");
     sb.append("    retentionMonths: ").append(toIndentedString(retentionMonths)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
+    sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");

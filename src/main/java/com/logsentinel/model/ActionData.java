@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -13,7 +13,9 @@
 
 package com.logsentinel.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -53,7 +55,7 @@ public class ActionData<T> {
   private boolean binaryContent;
   
   @JsonIgnore
-  private Map<String, String> additionalParams = new HashMap<>();
+  private Map<String, String> params = new HashMap<>();
 
   /**
    * Gets or Sets entryType
@@ -71,7 +73,9 @@ public class ActionData<T> {
     
     SPECIALIZED_BUSINESS_LOGIC_ENTRY("SPECIALIZED_BUSINESS_LOGIC_ENTRY"),
     
-    DOCUMENT("DOCUMENT");
+    DOCUMENT("DOCUMENT"),
+    
+    FLOW_LOG("FLOW_LOG");
 
     private String value;
 
@@ -119,6 +123,8 @@ public class ActionData<T> {
   public Long getOriginalEventTimestamp() {
     return originalEventTimestamp;
   }
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   public void setOriginalEventTimestamp(Long originalEventTimestamp) {
     this.originalEventTimestamp = originalEventTimestamp;
@@ -230,14 +236,40 @@ public class ActionData<T> {
   public void setDiffDetails(Diff diffDetails) {
     this.diffDetails = diffDetails;
   }
+
+  public ActionData<T> tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
   
   public boolean isBinaryContent() {
-    return binaryContent;
+      return binaryContent;
   }
-
   public void setBinaryContent(boolean binaryContent) {
     this.binaryContent = binaryContent;
   }
+  
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+  
+  public void setTags(List<String> tags) {
+      this.tags = tags;
+  }
+  
+  public ActionData<T> addTagsItem(String tagsItem) {
+      if (this.tags == null) {
+          this.tags = new ArrayList<>();
+      }
+      this.tags.add(tagsItem);
+      return this;
+  }
+
   
   public ActionData<T> binaryContent(boolean binaryContent) {
       setBinaryContent(binaryContent);
@@ -249,8 +281,8 @@ public class ActionData<T> {
    * Gets the additional params
    * @return map of params
    */
-  public Map<String, String> getAdditionalParams() {
-      return additionalParams;
+  public Map<String, String> getParams() {
+      return params;
   }
   
   /**
@@ -260,7 +292,7 @@ public class ActionData<T> {
    * @return this object
    */
   public ActionData<?> addAdditionalParam(String name, String value) {
-     additionalParams.put(name, value);
+     params.put(name, value);
      return this;
   }
   
@@ -278,12 +310,13 @@ public class ActionData<T> {
         Objects.equals(this.entityId, actionData.entityId) &&
         Objects.equals(this.entityType, actionData.entityType) &&
         Objects.equals(this.entryType, actionData.entryType) &&
-        Objects.equals(this.originalEventTimestamp, actionData.originalEventTimestamp);
+        Objects.equals(this.originalEventTimestamp, actionData.originalEventTimestamp) &&
+        Objects.equals(this.tags, actionData.tags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, details, entityId, entityType, entryType, originalEventTimestamp);
+    return Objects.hash(action, details, entityId, entityType, entryType, originalEventTimestamp, tags);
   }
 
 
@@ -298,6 +331,7 @@ public class ActionData<T> {
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entryType: ").append(toIndentedString(entryType)).append("\n");
     sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -17,17 +17,20 @@ import java.util.Objects;
 import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * LogResponse
  */
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class LogResponse {
+  @JsonProperty("failedLogIndexes")
+  private List<Integer> failedLogIndexes = null;
+
   @JsonProperty("lastKnownHash")
   private String lastKnownHash = null;
 
@@ -36,6 +39,32 @@ public class LogResponse {
 
   @JsonProperty("standaloneHash")
   private String standaloneHash = null;
+
+  public LogResponse failedLogIndexes(List<Integer> failedLogIndexes) {
+    this.failedLogIndexes = failedLogIndexes;
+    return this;
+  }
+
+  public LogResponse addFailedLogIndexesItem(Integer failedLogIndexesItem) {
+    if (this.failedLogIndexes == null) {
+      this.failedLogIndexes = new ArrayList<>();
+    }
+    this.failedLogIndexes.add(failedLogIndexesItem);
+    return this;
+  }
+
+   /**
+   * Get failedLogIndexes
+   * @return failedLogIndexes
+  **/
+  @ApiModelProperty(value = "")
+  public List<Integer> getFailedLogIndexes() {
+    return failedLogIndexes;
+  }
+
+  public void setFailedLogIndexes(List<Integer> failedLogIndexes) {
+    this.failedLogIndexes = failedLogIndexes;
+  }
 
   public LogResponse lastKnownHash(String lastKnownHash) {
     this.lastKnownHash = lastKnownHash;
@@ -101,14 +130,15 @@ public class LogResponse {
       return false;
     }
     LogResponse logResponse = (LogResponse) o;
-    return Objects.equals(this.lastKnownHash, logResponse.lastKnownHash) &&
+    return Objects.equals(this.failedLogIndexes, logResponse.failedLogIndexes) &&
+        Objects.equals(this.lastKnownHash, logResponse.lastKnownHash) &&
         Objects.equals(this.logEntryId, logResponse.logEntryId) &&
         Objects.equals(this.standaloneHash, logResponse.standaloneHash);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(lastKnownHash, logEntryId, standaloneHash);
+    return Objects.hash(failedLogIndexes, lastKnownHash, logEntryId, standaloneHash);
   }
 
 
@@ -117,6 +147,7 @@ public class LogResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class LogResponse {\n");
     
+    sb.append("    failedLogIndexes: ").append(toIndentedString(failedLogIndexes)).append("\n");
     sb.append("    lastKnownHash: ").append(toIndentedString(lastKnownHash)).append("\n");
     sb.append("    logEntryId: ").append(toIndentedString(logEntryId)).append("\n");
     sb.append("    standaloneHash: ").append(toIndentedString(standaloneHash)).append("\n");

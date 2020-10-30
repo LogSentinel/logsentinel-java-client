@@ -1,6 +1,6 @@
 /*
  * LogSentinel RESTful API
- * Read more at https://docs.logsentinel.com/en/latest/index.html
+ * Read more at https://docs.logsentinel.com/
  *
  * OpenAPI spec version: 1
  * 
@@ -21,7 +21,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * MetadataExtractionPaths
@@ -52,7 +54,9 @@ public class MetadataExtractionPaths {
   public enum PathTypeEnum {
     XPATH("XPATH"),
     
-    JSON_PATH("JSON_PATH");
+    JSON_PATH("JSON_PATH"),
+    
+    REGEX("REGEX");
 
     private String value;
 
@@ -86,6 +90,12 @@ public class MetadataExtractionPaths {
 
   @JsonProperty("set")
   private Boolean set = null;
+
+  @JsonProperty("userDefinedParams")
+  private Map<String, String> userDefinedParams = null;
+
+  @JsonProperty("userDefinedTags")
+  private Map<String, String> userDefinedTags = null;
 
   public MetadataExtractionPaths actionPaths(List<String> actionPaths) {
     this.actionPaths = actionPaths;
@@ -279,6 +289,58 @@ public class MetadataExtractionPaths {
     this.set = set;
   }
 
+  public MetadataExtractionPaths userDefinedParams(Map<String, String> userDefinedParams) {
+    this.userDefinedParams = userDefinedParams;
+    return this;
+  }
+
+  public MetadataExtractionPaths putUserDefinedParamsItem(String key, String userDefinedParamsItem) {
+    if (this.userDefinedParams == null) {
+      this.userDefinedParams = new HashMap<>();
+    }
+    this.userDefinedParams.put(key, userDefinedParamsItem);
+    return this;
+  }
+
+   /**
+   * Get userDefinedParams
+   * @return userDefinedParams
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getUserDefinedParams() {
+    return userDefinedParams;
+  }
+
+  public void setUserDefinedParams(Map<String, String> userDefinedParams) {
+    this.userDefinedParams = userDefinedParams;
+  }
+
+  public MetadataExtractionPaths userDefinedTags(Map<String, String> userDefinedTags) {
+    this.userDefinedTags = userDefinedTags;
+    return this;
+  }
+
+  public MetadataExtractionPaths putUserDefinedTagsItem(String key, String userDefinedTagsItem) {
+    if (this.userDefinedTags == null) {
+      this.userDefinedTags = new HashMap<>();
+    }
+    this.userDefinedTags.put(key, userDefinedTagsItem);
+    return this;
+  }
+
+   /**
+   * Get userDefinedTags
+   * @return userDefinedTags
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getUserDefinedTags() {
+    return userDefinedTags;
+  }
+
+  public void setUserDefinedTags(Map<String, String> userDefinedTags) {
+    this.userDefinedTags = userDefinedTags;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -296,12 +358,14 @@ public class MetadataExtractionPaths {
         Objects.equals(this.entityIdPaths, metadataExtractionPaths.entityIdPaths) &&
         Objects.equals(this.entityTypePaths, metadataExtractionPaths.entityTypePaths) &&
         Objects.equals(this.pathType, metadataExtractionPaths.pathType) &&
-        Objects.equals(this.set, metadataExtractionPaths.set);
+        Objects.equals(this.set, metadataExtractionPaths.set) &&
+        Objects.equals(this.userDefinedParams, metadataExtractionPaths.userDefinedParams) &&
+        Objects.equals(this.userDefinedTags, metadataExtractionPaths.userDefinedTags);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actionPaths, actorDisplayNamePaths, actorIdPaths, actorRolesPaths, entityIdPaths, entityTypePaths, pathType, set);
+    return Objects.hash(actionPaths, actorDisplayNamePaths, actorIdPaths, actorRolesPaths, entityIdPaths, entityTypePaths, pathType, set, userDefinedParams, userDefinedTags);
   }
 
 
@@ -318,6 +382,8 @@ public class MetadataExtractionPaths {
     sb.append("    entityTypePaths: ").append(toIndentedString(entityTypePaths)).append("\n");
     sb.append("    pathType: ").append(toIndentedString(pathType)).append("\n");
     sb.append("    set: ").append(toIndentedString(set)).append("\n");
+    sb.append("    userDefinedParams: ").append(toIndentedString(userDefinedParams)).append("\n");
+    sb.append("    userDefinedTags: ").append(toIndentedString(userDefinedTags)).append("\n");
     sb.append("}");
     return sb.toString();
   }

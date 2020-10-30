@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
+**applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **end** | **Long** |  |  [optional]
 **id** | [**UUID**](UUID.md) |  |  [optional]
 **name** | **String** |  |  [optional]

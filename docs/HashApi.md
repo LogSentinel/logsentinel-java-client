@@ -98,7 +98,7 @@ String actorDisplayName = "actorDisplayName_example"; // String | Display name o
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
-Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
+Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
     String result = apiInstance.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
@@ -115,14 +115,14 @@ Name | Type | Description  | Notes
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
  **action** | **String**| The name of the action being logged |
  **actorId** | **String**| ID of the actor performing the action being logged |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
- **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
+ **originalEventTimestamp** | **Long**| The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  | [optional]
 
 ### Return type
 
@@ -170,7 +170,7 @@ String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
-Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
+Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
     String result = apiInstance.getHashableContentForAuthAction(applicationId, actorId, authAction, signature, signedLoginChallenge, userPublicKey, actorDepartment, actorDisplayName, actorRoles, details, originalEventTimestamp);
     System.out.println(result);
@@ -194,7 +194,7 @@ Name | Type | Description  | Notes
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
- **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
+ **originalEventTimestamp** | **Long**| The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  | [optional]
 
 ### Return type
 
@@ -244,7 +244,7 @@ String actorDisplayName = "actorDisplayName_example"; // String | Display name o
 List<String> actorRoles = Arrays.asList("actorRoles_example"); // List<String> | The roles of the actor
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
-Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
+Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
     String result = apiInstance.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
@@ -263,14 +263,14 @@ Name | Type | Description  | Notes
  **actorId** | **String**| ID of the actor performing the action being logged |
  **entityId** | **String**| When the event is about a particular model entity, you can set its ID here |
  **entityType** | **String**| When the event is about a particular model entity, you can set its type here |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
  **actorRoles** | [**List&lt;String&gt;**](String.md)| The roles of the actor | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
- **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
+ **originalEventTimestamp** | **Long**| The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  | [optional]
 
 ### Return type
 
@@ -313,7 +313,7 @@ String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the e
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
-Long originalEventTimestamp = 789L; // Long | originalEventTimestamp
+Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
     String result = apiInstance.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp);
     System.out.println(result);
@@ -328,11 +328,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]
- **originalEventTimestamp** | **Long**| originalEventTimestamp | [optional]
+ **originalEventTimestamp** | **Long**| The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  | [optional]
 
 ### Return type
 

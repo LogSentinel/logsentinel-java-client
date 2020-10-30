@@ -235,6 +235,59 @@ public class PartnersApi {
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**
+   * Get user id by user email
+   * 
+   * @param email email (required)
+   * @return UUID
+   * @throws ApiException if fails to make API call
+   */
+  public UUID getUserIdByEmail(String email) throws ApiException {
+    return getUserIdByEmailWithHttpInfo(email).getData();
+      }
+
+  /**
+   * Get user id by user email
+   * 
+   * @param email email (required)
+   * @return ApiResponse&lt;UUID&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<UUID> getUserIdByEmailWithHttpInfo(String email) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'email' is set
+    if (email == null) {
+      throw new ApiException(400, "Missing the required parameter 'email' when calling getUserIdByEmail");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/api/partner/userIdByEmail";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "email", email));
+
+    
+    
+    final String[] localVarAccepts = {
+      "application/xml", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<UUID> localVarReturnType = new GenericType<UUID>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
    * Register a user
    * 
    * @param request request (required)

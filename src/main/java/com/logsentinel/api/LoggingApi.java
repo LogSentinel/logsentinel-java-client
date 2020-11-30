@@ -450,11 +450,6 @@ if (userPublicKey != null)
   public <T> ApiResponse<LogResponse> logBatchWithHttpInfo(UUID applicationId, List<BatchLogRequestEntry<T>> requestData) throws ApiException {
     Object localVarPostBody = requestData;
     
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logBatch");
-    }
-    
     // verify the required parameter 'requestData' is set
     if (requestData == null) {
       throw new ApiException(400, "Missing the required parameter 'requestData' when calling logBatch");

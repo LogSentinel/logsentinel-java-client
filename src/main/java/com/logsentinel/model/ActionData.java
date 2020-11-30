@@ -52,7 +52,7 @@ public class ActionData<T> {
   private Diff diffDetails;
   
   @JsonIgnore
-  private boolean binaryContent;
+  private Boolean binaryContent;
   
   @JsonIgnore
   private Map<String, String> params = new HashMap<>();
@@ -242,10 +242,10 @@ public class ActionData<T> {
     return this;
   }
   
-  public boolean isBinaryContent() {
+  public Boolean isBinaryContent() {
       return binaryContent;
   }
-  public void setBinaryContent(boolean binaryContent) {
+  public void setBinaryContent(Boolean binaryContent) {
     this.binaryContent = binaryContent;
   }
   

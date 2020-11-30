@@ -79,11 +79,6 @@ public class LoggingApi {
   public ApiResponse<AuditLogEntry> getEntryByIdWithHttpInfo(UUID applicationId, String entryId) throws ApiException {
     Object localVarPostBody = null;
     
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling getEntryById");
-    }
-    
     // verify the required parameter 'entryId' is set
     if (entryId == null) {
       throw new ApiException(400, "Missing the required parameter 'entryId' when calling getEntryById");
@@ -140,11 +135,6 @@ public class LoggingApi {
    */
   public ApiResponse<LogResponse> getHashByEntryIdWithHttpInfo(UUID applicationId, String entryId) throws ApiException {
     Object localVarPostBody = null;
-    
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling getHashByEntryId");
-    }
     
     // verify the required parameter 'entryId' is set
     if (entryId == null) {
@@ -351,11 +341,6 @@ if (signature != null)
   public ApiResponse<LogResponse> logAuthActionWithHttpInfo(UUID applicationId, String actorId, String authAction, String signature, String signedLoginChallenge, String userPublicKey, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logAuthAction");
-    }
-    
     // verify the required parameter 'actorId' is set
     if (actorId == null) {
       throw new ApiException(400, "Missing the required parameter 'actorId' when calling logAuthAction");
@@ -553,11 +538,6 @@ if (userPublicKey != null)
   public ApiResponse<LogResponse> logDocumentWithHttpInfo(UUID applicationId, String action, String actorId, byte[] details, String documentId, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, List<String> directExternalPush, String documentName, String documentType, List<String> encryptedKeywords, String gdprCorrelationKey, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logDocument");
-    }
-    
     // verify the required parameter 'action' is set
     if (action == null) {
       throw new ApiException(400, "Missing the required parameter 'action' when calling logDocument");
@@ -685,11 +665,6 @@ if (signature != null)
   public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logFull");
-    }
-    
     // verify the required parameter 'action' is set
     if (action == null) {
       throw new ApiException(400, "Missing the required parameter 'action' when calling logFull");
@@ -800,11 +775,6 @@ if (signature != null)
    */
   public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
-    
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logSimple");
-    }
     
     // create path and map variables
     String localVarPath = "/api/log/simple";

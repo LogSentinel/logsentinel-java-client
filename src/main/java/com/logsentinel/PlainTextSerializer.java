@@ -4,6 +4,9 @@ public class PlainTextSerializer implements BodySerializer {
 
     @Override
     public String serialize(Object object) {
+        if (object == null) {
+            return null;
+        }
         return object.toString();
     }
     

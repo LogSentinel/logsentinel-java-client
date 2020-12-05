@@ -540,7 +540,7 @@ if (signature != null)
               keywords = encryptingKeywordExtractor.extract(actionData.getDetails().toString());
           }
 
-      } else {
+      } else if (actionData.getDiffDetails() != null) {
           serialized = bodySerializer.serialize(actionData.getDiffDetails());
           if (encryptingKeywordExtractor != null) {
               keywords = encryptingKeywordExtractor.extract(actionData.getDiffDetails().toString());

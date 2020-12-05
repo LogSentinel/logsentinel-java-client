@@ -291,7 +291,19 @@ public class ActionData<T> {
    * @param value the param value
    * @return this object
    */
+  @Deprecated
   public ActionData<?> addAdditionalParam(String name, String value) {
+     params.put(name, value);
+     return this;
+  }
+  
+  /**
+   * Adds a param
+   * @param name the param name
+   * @param value the param value
+   * @return this object
+   */
+  public ActionData<?> addParam(String name, String value) {
      params.put(name, value);
      return this;
   }

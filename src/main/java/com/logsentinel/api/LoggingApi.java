@@ -873,7 +873,6 @@ if (signature != null)
           if (encryptingKeywordExtractor != null) {
               keywords = encryptingKeywordExtractor.extract(actionData.getDiffDetails().toString());
           }
-
       }
 
       // encrypting with per-action/per-user key. Note that if the serializer is

@@ -91,6 +91,6 @@ public class ApiException extends RuntimeException {
     
     @Override
     public String getMessage() {
-        return super.getMessage() + " : " + getResponseBody();
+        return super.getMessage() + " : " + getResponseBody() + " : " + getCode() + " : " + responseHeaders;
     }
 }

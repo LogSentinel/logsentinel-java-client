@@ -10,12 +10,16 @@ Name | Type | Description | Notes
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
+**filterBy** | **String** |  |  [optional]
 **groupByField** | **String** |  |  [optional]
 **id** | [**UUID**](UUID.md) |  |  [optional]
 **insideWorkingHours** | **Boolean** |  |  [optional]
 **name** | **String** |  |  [optional]
 **organizationId** | [**UUID**](UUID.md) |  |  [optional]
+**riskLevel** | **Integer** |  |  [optional]
+**ruleType** | [**RuleTypeEnum**](#RuleTypeEnum) |  |  [optional]
 **searchPeriod** | **String** |  |  [optional]
+**tags** | **List&lt;String&gt;** |  |  [optional]
 **thresholdType** | [**ThresholdTypeEnum**](#ThresholdTypeEnum) |  |  [optional]
 **thresholdValue** | **Double** |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
@@ -29,6 +33,15 @@ Name | Value
 COUNT | &quot;COUNT&quot;
 AVG | &quot;AVG&quot;
 SUM | &quot;SUM&quot;
+
+
+<a name="RuleTypeEnum"></a>
+## Enum: RuleTypeEnum
+Name | Value
+---- | -----
+REGULAR | &quot;REGULAR&quot;
+HEALTHCHECK | &quot;HEALTHCHECK&quot;
+BEHAVIOR | &quot;BEHAVIOR&quot;
 
 
 <a name="ThresholdTypeEnum"></a>

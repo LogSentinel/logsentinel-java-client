@@ -8,7 +8,6 @@ Name | Type | Description | Notes
 **actorDisplayName** | **String** |  |  [optional]
 **actorId** | **String** |  |  [optional]
 **actorRoles** | **List&lt;String&gt;** |  |  [optional]
-**additionalParams** | **Map&lt;String, String&gt;** |  |  [optional]
 **applicationId** | [**UUID**](UUID.md) |  |  [optional]
 **details** | **String** |  |  [optional]
 **encryptedKeywordsList** | **List&lt;String&gt;** |  |  [optional]

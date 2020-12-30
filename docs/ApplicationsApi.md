@@ -33,7 +33,7 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 ApplicationsApi apiInstance = new ApplicationsApi();
-UpdateApplicationRequest application = new UpdateApplicationRequest(); // UpdateApplicationRequest | application
+ApplicationRequest application = new ApplicationRequest(); // ApplicationRequest | application
 try {
     Application result = apiInstance.createApplication(application);
     System.out.println(result);
@@ -47,7 +47,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **application** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md)| application |
+ **application** | [**ApplicationRequest**](ApplicationRequest.md)| application |
 
 ### Return type
 
@@ -185,7 +185,7 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 ApplicationsApi apiInstance = new ApplicationsApi();
-UpdateApplicationRequest application = new UpdateApplicationRequest(); // UpdateApplicationRequest | application
+ApplicationRequest application = new ApplicationRequest(); // ApplicationRequest | application
 try {
     Application result = apiInstance.updateApplication(application);
     System.out.println(result);
@@ -199,7 +199,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **application** | [**UpdateApplicationRequest**](UpdateApplicationRequest.md)| application |
+ **application** | [**ApplicationRequest**](ApplicationRequest.md)| application |
 
 ### Return type
 

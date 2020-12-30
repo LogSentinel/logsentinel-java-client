@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getAlertDestinations**](AlertsApi.md#getAlertDestinations) | **GET** /api/alerts/destinations | Gets all Alert destinations in the organization
 [**getAlertRuleRuns**](AlertsApi.md#getAlertRuleRuns) | **GET** /api/alerts/runs | Gets all Alert rule runs in the organization
 [**getAlertRules**](AlertsApi.md#getAlertRules) | **GET** /api/alerts/rules | Gets all Alert rules in the organization
+[**getRulesByApplication**](AlertsApi.md#getRulesByApplication) | **GET** /api/alerts/application-rule-mapping | getRulesByApplication
 [**updateActionChainRule**](AlertsApi.md#updateActionChainRule) | **PUT** /api/alerts/actionChainRule | Updates Action Chain (Correlation) Alert Rule
 [**updateDestination**](AlertsApi.md#updateDestination) | **PUT** /api/alerts/destination | Updates Alert destination. Type cannot be changed
 [**updateRule**](AlertsApi.md#updateRule) | **PUT** /api/alerts/rule | Updates Alert rule. Type is ST_DEV or FIXED. Aggregation type is COUNT, AVG or SUM
@@ -520,6 +521,58 @@ This endpoint does not need any parameter.
 
  - **Content-Type**: */*
  - **Accept**: */*, application/json
+
+<a name="getRulesByApplication"></a>
+# **getRulesByApplication**
+> List&lt;UUID&gt; getRulesByApplication(applicationId)
+
+getRulesByApplication
+
+### Example
+```java
+// Import classes:
+//import com.logsentinel.ApiClient;
+//import com.logsentinel.ApiException;
+//import com.logsentinel.Configuration;
+//import com.logsentinel.auth.*;
+//import com.logsentinel.api.AlertsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+AlertsApi apiInstance = new AlertsApi();
+UUID applicationId = new UUID(); // UUID | applicationId
+try {
+    List<UUID> result = apiInstance.getRulesByApplication(applicationId);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling AlertsApi#getRulesByApplication");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | [**UUID**](.md)| applicationId |
+
+### Return type
+
+[**List&lt;UUID&gt;**](UUID.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*
 
 <a name="updateActionChainRule"></a>
 # **updateActionChainRule**

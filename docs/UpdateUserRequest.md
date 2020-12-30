@@ -20,6 +20,7 @@ Name | Value
 ---- | -----
 EN | &quot;EN&quot;
 BG | &quot;BG&quot;
+ZH | &quot;ZH&quot;
 
 
 

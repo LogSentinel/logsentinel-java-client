@@ -124,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="log"></a>
 # **log**
-> LogResponse log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags)
+> LogResponse log(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags)
 
 Log an event by a given actor
 
@@ -150,7 +150,7 @@ LoggingApi apiInstance = new LoggingApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
 String action = "action_example"; // String | The name of the action being logged
 String actorId = "actorId_example"; // String | ID of the actor performing the action being logged
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
@@ -165,7 +165,7 @@ Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch millisecon
 String process = "process_example"; // String | process
 List<String> tags = Arrays.asList("tags_example"); // List<String> | tags
 try {
-    LogResponse result = apiInstance.log(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags);
+    LogResponse result = apiInstance.log(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#log");
@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
  **action** | **String**| The name of the action being logged |
  **actorId** | **String**| ID of the actor performing the action being logged |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -438,7 +438,7 @@ Name | Type | Description  | Notes
 
 <a name="logFull"></a>
 # **logFull**
-> LogResponse logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags)
+> LogResponse logFull(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags)
 
 Log an event by providing full details. Action can be INSERT/UPDATE/DELETE/GET or any custom action
 
@@ -466,7 +466,7 @@ String action = "action_example"; // String | The name of the action being logge
 String actorId = "actorId_example"; // String | ID of the actor performing the action being logged
 String entityId = "entityId_example"; // String | When the event is about a particular model entity, you can set its ID here
 String entityType = "entityType_example"; // String | When the event is about a particular model entity, you can set its type here
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
@@ -481,7 +481,7 @@ Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch millisecon
 String process = "process_example"; // String | process
 List<String> tags = Arrays.asList("tags_example"); // List<String> | tags
 try {
-    LogResponse result = apiInstance.logFull(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags);
+    LogResponse result = apiInstance.logFull(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logFull");
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
  **actorId** | **String**| ID of the actor performing the action being logged |
  **entityId** | **String**| When the event is about a particular model entity, you can set its ID here |
  **entityType** | **String**| When the event is about a particular model entity, you can set its type here |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -528,7 +528,7 @@ Name | Type | Description  | Notes
 
 <a name="logSimple"></a>
 # **logSimple**
-> LogResponse logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, tags)
+> LogResponse logSimple(applicationId, logEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, tags)
 
 Log an event by providing just the body without any additional metadata. The body can be fully encrypted or can represent just the hash of the data/document
 
@@ -552,7 +552,7 @@ basicAuth.setPassword("YOUR PASSWORD");
 
 LoggingApi apiInstance = new LoggingApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 Boolean binaryContent = true; // Boolean | binaryContent
 byte[] details = BINARY_DATA_HERE; // byte[] | Any details in any format about the event that you want to store in the log
@@ -562,7 +562,7 @@ String logLevel = "logLevel_example"; // String | logLevel
 Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 List<String> tags = Arrays.asList("tags_example"); // List<String> | tags
 try {
-    LogResponse result = apiInstance.logSimple(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, tags);
+    LogResponse result = apiInstance.logSimple(applicationId, logEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, tags);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoggingApi#logSimple");
@@ -575,7 +575,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **binaryContent** | **Boolean**| binaryContent | [optional]
  **details** | **byte[]**| Any details in any format about the event that you want to store in the log | [optional]

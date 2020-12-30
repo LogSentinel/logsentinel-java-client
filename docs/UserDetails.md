@@ -41,6 +41,7 @@ Name | Value
 ---- | -----
 EN | &quot;EN&quot;
 BG | &quot;BG&quot;
+ZH | &quot;ZH&quot;
 
 
 <a name="OrganizationRoleEnum"></a>
@@ -49,6 +50,8 @@ Name | Value
 ---- | -----
 ADMIN | &quot;ADMIN&quot;
 AUDITOR | &quot;AUDITOR&quot;
+SECURITY_ANALYST | &quot;SECURITY_ANALYST&quot;
+SYSADMIN | &quot;SYSADMIN&quot;
 DEVELOPER | &quot;DEVELOPER&quot;
 MANAGER | &quot;MANAGER&quot;
 IT | &quot;IT&quot;

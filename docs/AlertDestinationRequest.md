@@ -16,6 +16,10 @@ Name | Value
 EMAIL | &quot;EMAIL&quot;
 TELEGRAM | &quot;TELEGRAM&quot;
 URL | &quot;URL&quot;
+IFTTT | &quot;IFTTT&quot;
+ZAPIER | &quot;ZAPIER&quot;
+COMMAND | &quot;COMMAND&quot;
+PYTHON_SCRIPT | &quot;PYTHON_SCRIPT&quot;
 
 
 

@@ -8,8 +8,11 @@ Name | Type | Description | Notes
 **containsPersonalData** | **Boolean** |  |  [optional]
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **dataMaskingPatterns** | **List&lt;String&gt;** |  |  [optional]
+**defaultAlertDestinations** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **detailsTransformationScript** | **String** |  |  [optional]
+**disabledThreatFeeds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **displayedDetailsFields** | **String** |  |  [optional]
+**generateHashChain** | **Boolean** |  |  [optional]
 **generateMerkleTree** | **Boolean** |  |  [optional]
 **genesisEntryId** | [**UUID**](UUID.md) |  |  [optional]
 **id** | [**UUID**](UUID.md) |  |  [optional]
@@ -19,7 +22,6 @@ Name | Type | Description | Notes
 **latestGlacierArchiveId** | **String** |  |  [optional]
 **latestHashRecipientEmails** | **List&lt;String&gt;** |  |  [optional]
 **logGroupingEnabled** | **Boolean** |  |  [optional]
-**logLevelErrorReportRecipientEmails** | **List&lt;String&gt;** |  |  [optional]
 **logLevelRegexes** | **Map&lt;String, String&gt;** |  |  [optional]
 **machineLearningSettings** | [**MachineLearningSettings**](MachineLearningSettings.md) |  |  [optional]
 **merkleTreeGenerationMinutes** | **Integer** |  |  [optional]
@@ -57,12 +59,17 @@ ERP | &quot;ERP&quot;
 ACCOUNTING | &quot;ACCOUNTING&quot;
 HR_AND_PAYROLL | &quot;HR_AND_PAYROLL&quot;
 SERVER_OS | &quot;SERVER_OS&quot;
+FILE_SERVER | &quot;FILE_SERVER&quot;
+EMAIL_SERVER | &quot;EMAIL_SERVER&quot;
 WORKSTATION | &quot;WORKSTATION&quot;
 WEB_SERVER | &quot;WEB_SERVER&quot;
 ANTIVIRUS | &quot;ANTIVIRUS&quot;
 VPN | &quot;VPN&quot;
 DOMAIN_SPECIFIC_APPLICATION | &quot;DOMAIN_SPECIFIC_APPLICATION&quot;
-OTHER_SAAS | &quot;OTHER_SAAS&quot;
+SAAS | &quot;SAAS&quot;
+IDS | &quot;IDS&quot;
+VIDEOCONFERENCING | &quot;VIDEOCONFERENCING&quot;
+CLOUD_OFFICE | &quot;CLOUD_OFFICE&quot;
 OTHER | &quot;OTHER&quot;
 
 

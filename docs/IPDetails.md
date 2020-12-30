@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **ipAddress** | **String** |  |  [optional]
 **latitude** | **String** |  |  [optional]
 **longitude** | **String** |  |  [optional]
+**region** | **String** |  |  [optional]
 **score** | **String** |  |  [optional]
 **sourceIpBlacklist** | **List&lt;String&gt;** |  |  [optional]
 **sourceIpIsQuarantined** | **String** |  |  [optional]

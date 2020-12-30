@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContent"></a>
 # **getHashableContent**
-> String getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
+> String getHashableContent(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request for simple (minimal metadata) actions
 
@@ -91,7 +91,7 @@ HashApi apiInstance = new HashApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
 String action = "action_example"; // String | The name of the action being logged
 String actorId = "actorId_example"; // String | ID of the actor performing the action being logged
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
@@ -100,7 +100,7 @@ String details = "details_example"; // String | Any details in any format about 
 String logLevel = "logLevel_example"; // String | logLevel
 Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
-    String result = apiInstance.getHashableContent(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
+    String result = apiInstance.getHashableContent(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContent");
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
  **action** | **String**| The name of the action being logged |
  **actorId** | **String**| ID of the actor performing the action being logged |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -211,7 +211,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContentForStandardAction"></a>
 # **getHashableContentForStandardAction**
-> String getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
+> String getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request for standard actions
 
@@ -237,7 +237,7 @@ String action = "action_example"; // String | The name of the action being logge
 String actorId = "actorId_example"; // String | ID of the actor performing the action being logged
 String entityId = "entityId_example"; // String | When the event is about a particular model entity, you can set its ID here
 String entityType = "entityType_example"; // String | When the event is about a particular model entity, you can set its type here
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String actorDepartment = "actorDepartment_example"; // String | actorDepartment
 String actorDisplayName = "actorDisplayName_example"; // String | Display name of the actor (e.g. a name, in case ID is not human-readable)
@@ -246,7 +246,7 @@ String details = "details_example"; // String | Any details in any format about 
 String logLevel = "logLevel_example"; // String | logLevel
 Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
-    String result = apiInstance.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
+    String result = apiInstance.getHashableContentForStandardAction(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContentForStandardAction");
@@ -263,7 +263,7 @@ Name | Type | Description  | Notes
  **actorId** | **String**| ID of the actor performing the action being logged |
  **entityId** | **String**| When the event is about a particular model entity, you can set its ID here |
  **entityType** | **String**| When the event is about a particular model entity, you can set its type here |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 <a name="getHashableContentSimple"></a>
 # **getHashableContentSimple**
-> String getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp)
+> String getHashableContentSimple(applicationId, logEntryType, signature, details, logLevel, originalEventTimestamp)
 
 Get the content over which to compute the hash of a request without any additional metadata (including encrypted request bodies)
 
@@ -309,13 +309,13 @@ basicAuth.setPassword("YOUR PASSWORD");
 
 HashApi apiInstance = new HashApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
-String auditLogEntryType = "BUSINESS_LOGIC_ENTRY"; // String | The type of the event
+String logEntryType = "AUDIT_LOG"; // String | Log-Entry-Type
 String signature = "signature_example"; // String | Base64-encoded digital signature on the entry details (the request body)
 String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
 String logLevel = "logLevel_example"; // String | logLevel
 Long originalEventTimestamp = 789L; // Long | The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it's received) 
 try {
-    String result = apiInstance.getHashableContentSimple(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp);
+    String result = apiInstance.getHashableContentSimple(applicationId, logEntryType, signature, details, logLevel, originalEventTimestamp);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling HashApi#getHashableContentSimple");
@@ -328,7 +328,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **auditLogEntryType** | **String**| The type of the event | [optional] [default to BUSINESS_LOGIC_ENTRY] [enum: BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, SYSTEM_EVENT, NETWORK_EVENT, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT, FLOW_LOG]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **details** | **String**| Any details in any format about the event that you want to store in the log | [optional]
  **logLevel** | **String**| logLevel | [optional] [enum: TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL, FATAL]

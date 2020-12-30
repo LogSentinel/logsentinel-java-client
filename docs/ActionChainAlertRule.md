@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **actions** | **List&lt;String&gt;** |  |  [optional]
-**advancedFilters** | **List&lt;String&gt;** |  |  [optional]
 **aggregationPeriod** | **String** |  |  [optional]
 **alertDestinationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
@@ -21,11 +20,13 @@ Name | Type | Description | Notes
 **organizationId** | [**UUID**](UUID.md) |  |  [optional]
 **percentage** | **Integer** |  |  [optional]
 **queries** | **List&lt;String&gt;** |  |  [optional]
+**riskLevel** | **Integer** |  |  [optional]
 **searchPeriod** | **String** |  |  [optional]
 **sumAction** | **String** |  |  [optional]
 **sumActionTypes** | **String** |  |  [optional]
 **sumTimeFrame** | **Long** |  |  [optional]
 **sumValuePath** | **String** |  |  [optional]
+**tags** | **List&lt;String&gt;** |  |  [optional]
 **timeFrames** | **List&lt;Long&gt;** |  |  [optional]
 **updated** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **withActorsOnly** | **Boolean** |  |  [optional]

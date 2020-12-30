@@ -16,7 +16,7 @@ package com.logsentinel.api;
 import com.logsentinel.ApiException;
 import com.logsentinel.model.Application;
 import java.util.UUID;
-import com.logsentinel.model.UpdateApplicationRequest;
+import com.logsentinel.model.ApplicationRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -44,7 +44,7 @@ public class ApplicationsApiTest {
      */
     @Test
     public void createApplicationTest() throws ApiException {
-        UpdateApplicationRequest application = null;
+        ApplicationRequest application = null;
         Application response = api.createApplication(application);
 
         // TODO: test validations
@@ -91,7 +91,7 @@ public class ApplicationsApiTest {
      */
     @Test
     public void updateApplicationTest() throws ApiException {
-        UpdateApplicationRequest application = null;
+        ApplicationRequest application = null;
         Application response = api.updateApplication(application);
 
         // TODO: test validations

@@ -10,6 +10,7 @@ import org.junit.Before;
 import com.logsentinel.api.ApplicationsApi;
 import com.logsentinel.api.OrganizationUsersApi;
 import com.logsentinel.model.Application;
+import com.logsentinel.model.ApplicationRequest;
 import com.logsentinel.model.UpdateApplicationRequest;
 import com.logsentinel.model.UpdateUserRequest;
 import com.logsentinel.model.UserDetails;
@@ -84,9 +85,9 @@ public class ManagementApisTest {
         }
     }
 
-    private UpdateApplicationRequest buildApplicationRequest(UUID id, String name) {
+    private ApplicationRequest buildApplicationRequest(UUID id, String name) {
 
-        UpdateApplicationRequest request = new UpdateApplicationRequest();
+        ApplicationRequest request = new ApplicationRequest();
         request.setId(id);
         request.setName(name);
 

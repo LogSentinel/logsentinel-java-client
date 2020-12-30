@@ -176,7 +176,7 @@ public class LoggingApi {
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
    * @param actorId ID of the actor performing the action being logged (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -194,8 +194,8 @@ public class LoggingApi {
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse log(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
-    return logWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
+  public LogResponse log(UUID applicationId, String action, String actorId, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logWithHttpInfo(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -204,7 +204,7 @@ public class LoggingApi {
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
    * @param actorId ID of the actor performing the action being logged (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -222,7 +222,7 @@ public class LoggingApi {
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+  public ApiResponse<LogResponse> logWithHttpInfo(UUID applicationId, String action, String actorId, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
     
@@ -265,8 +265,8 @@ public class LoggingApi {
 
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 
@@ -615,7 +615,7 @@ if (signature != null)
    * @param actorId ID of the actor performing the action being logged (required)
    * @param entityId When the event is about a particular model entity, you can set its ID here (required)
    * @param entityType When the event is about a particular model entity, you can set its type here (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -632,8 +632,8 @@ if (signature != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
-    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
+  public LogResponse logFull(UUID applicationId, String action, String actorId, String entityId, String entityType, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+    return logFullWithHttpInfo(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, binaryContent, details, directExternalPush, encryptedKeywords, gdprCorrelationKey, logLevel, originalEventTimestamp, process, params, tags).getData();
       }
 
   /**
@@ -644,7 +644,7 @@ if (signature != null)
    * @param actorId ID of the actor performing the action being logged (required)
    * @param entityId When the event is about a particular model entity, you can set its ID here (required)
    * @param entityType When the event is about a particular model entity, you can set its type here (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -662,7 +662,7 @@ if (signature != null)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
+  public ApiResponse<LogResponse> logFullWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String gdprCorrelationKey, String logLevel, Long originalEventTimestamp, String process, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'action' is set
@@ -714,8 +714,8 @@ if (signature != null)
 
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 
@@ -739,7 +739,7 @@ if (signature != null)
    * Log an event by providing just the body without any additional metadata. The body can be fully encrypted or can represent just the hash of the data/document
    * Log an event by just specifying the request body. There are no limitations to the structure of the request body.
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param binaryContent binaryContent (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
@@ -752,15 +752,15 @@ if (signature != null)
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logSimple(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
-    return logSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, params, tags).getData();
+  public LogResponse logSimple(UUID applicationId, String logEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
+    return logSimpleWithHttpInfo(applicationId, logEntryType, signature, binaryContent, details, directExternalPush, encryptedKeywords, logLevel, originalEventTimestamp, params, tags).getData();
       }
 
   /**
    * Log an event by providing just the body without any additional metadata. The body can be fully encrypted or can represent just the hash of the data/document
    * Log an event by just specifying the request body. There are no limitations to the structure of the request body.
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param binaryContent binaryContent (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
@@ -773,7 +773,7 @@ if (signature != null)
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
+  public ApiResponse<LogResponse> logSimpleWithHttpInfo(UUID applicationId, String logEntryType, String signature, Boolean binaryContent, byte[] details, List<String> directExternalPush, List<String> encryptedKeywords, String logLevel, Long originalEventTimestamp, Map<String, String> params, List<String> tags) throws ApiException {
     Object localVarPostBody = details;
     
     // create path and map variables
@@ -797,8 +797,8 @@ if (signature != null)
     
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 

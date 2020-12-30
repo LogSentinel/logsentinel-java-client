@@ -56,26 +56,33 @@ public class ActionData<T> {
   
   @JsonIgnore
   private Map<String, String> params = new HashMap<>();
-
   /**
    * Gets or Sets entryType
    */
   public enum EntryTypeEnum {
-    BUSINESS_LOGIC_ENTRY("BUSINESS_LOGIC_ENTRY"),
-    
-    DATABASE_QUERY("DATABASE_QUERY"),
-    
     SYSTEM_EVENT("SYSTEM_EVENT"),
     
     NETWORK_EVENT("NETWORK_EVENT"),
+    
+    AUTHENTICATION_EVENT("AUTHENTICATION_EVENT"),
+    
+    EXTERNAL_ALERT("EXTERNAL_ALERT"),
+    
+    AUDIT_LOG("AUDIT_LOG"),
+    
+    WEBSITE_LOG("WEBSITE_LOG"),
+    
+    FLOW_LOG("FLOW_LOG"),
+    
+    BUSINESS_LOGIC_ENTRY("BUSINESS_LOGIC_ENTRY"),
+    
+    DATABASE_QUERY("DATABASE_QUERY"),
     
     ANONYMIZED_ENTRY("ANONYMIZED_ENTRY"),
     
     SPECIALIZED_BUSINESS_LOGIC_ENTRY("SPECIALIZED_BUSINESS_LOGIC_ENTRY"),
     
-    DOCUMENT("DOCUMENT"),
-    
-    FLOW_LOG("FLOW_LOG");
+    DOCUMENT("DOCUMENT");
 
     private String value;
 

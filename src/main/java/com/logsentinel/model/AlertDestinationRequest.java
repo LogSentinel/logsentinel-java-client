@@ -42,7 +42,15 @@ public class AlertDestinationRequest {
     
     TELEGRAM("TELEGRAM"),
     
-    URL("URL");
+    URL("URL"),
+    
+    IFTTT("IFTTT"),
+    
+    ZAPIER("ZAPIER"),
+    
+    COMMAND("COMMAND"),
+    
+    PYTHON_SCRIPT("PYTHON_SCRIPT");
 
     private String value;
 

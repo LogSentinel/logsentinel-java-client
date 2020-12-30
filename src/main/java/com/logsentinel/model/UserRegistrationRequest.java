@@ -69,6 +69,10 @@ public class UserRegistrationRequest {
     
     AUDITOR("AUDITOR"),
     
+    SECURITY_ANALYST("SECURITY_ANALYST"),
+    
+    SYSADMIN("SYSADMIN"),
+    
     DEVELOPER("DEVELOPER"),
     
     MANAGER("MANAGER"),

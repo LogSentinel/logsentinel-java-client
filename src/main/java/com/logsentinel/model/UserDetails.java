@@ -77,7 +77,9 @@ public class UserDetails {
   public enum LanguageEnum {
     EN("EN"),
     
-    BG("BG");
+    BG("BG"),
+    
+    ZH("ZH");
 
     private String value;
 
@@ -128,6 +130,10 @@ public class UserDetails {
     ADMIN("ADMIN"),
     
     AUDITOR("AUDITOR"),
+    
+    SECURITY_ANALYST("SECURITY_ANALYST"),
+    
+    SYSADMIN("SYSADMIN"),
     
     DEVELOPER("DEVELOPER"),
     

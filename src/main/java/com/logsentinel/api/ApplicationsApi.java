@@ -9,8 +9,8 @@ import com.logsentinel.Pair;
 import javax.ws.rs.core.GenericType;
 
 import com.logsentinel.model.Application;
+import com.logsentinel.model.ApplicationRequest;
 import java.util.UUID;
-import com.logsentinel.model.UpdateApplicationRequest;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,7 +44,7 @@ public class ApplicationsApi {
    * @return Application
    * @throws ApiException if fails to make API call
    */
-  public Application createApplication(UpdateApplicationRequest application) throws ApiException {
+  public Application createApplication(ApplicationRequest application) throws ApiException {
     return createApplicationWithHttpInfo(application).getData();
       }
 
@@ -55,7 +55,7 @@ public class ApplicationsApi {
    * @return ApiResponse&lt;Application&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Application> createApplicationWithHttpInfo(UpdateApplicationRequest application) throws ApiException {
+  public ApiResponse<Application> createApplicationWithHttpInfo(ApplicationRequest application) throws ApiException {
     Object localVarPostBody = application;
     
     // verify the required parameter 'application' is set
@@ -194,7 +194,7 @@ public class ApplicationsApi {
    * @return Application
    * @throws ApiException if fails to make API call
    */
-  public Application updateApplication(UpdateApplicationRequest application) throws ApiException {
+  public Application updateApplication(ApplicationRequest application) throws ApiException {
     return updateApplicationWithHttpInfo(application).getData();
       }
 
@@ -205,7 +205,7 @@ public class ApplicationsApi {
    * @return ApiResponse&lt;Application&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Application> updateApplicationWithHttpInfo(UpdateApplicationRequest application) throws ApiException {
+  public ApiResponse<Application> updateApplicationWithHttpInfo(ApplicationRequest application) throws ApiException {
     Object localVarPostBody = application;
     
     // verify the required parameter 'application' is set

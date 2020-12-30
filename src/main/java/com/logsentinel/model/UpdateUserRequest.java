@@ -36,7 +36,9 @@ public class UpdateUserRequest {
   public enum LanguageEnum {
     EN("EN"),
     
-    BG("BG");
+    BG("BG"),
+    
+    ZH("ZH");
 
     private String value;
 

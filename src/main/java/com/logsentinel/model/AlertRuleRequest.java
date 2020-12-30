@@ -81,14 +81,63 @@ public class AlertRuleRequest {
   @JsonProperty("enabled")
   private Boolean enabled = null;
 
+  @JsonProperty("filterBy")
+  private String filterBy = null;
+
   @JsonProperty("groupByField")
   private String groupByField = null;
 
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("riskLevel")
+  private Integer riskLevel = null;
+
   @JsonProperty("searchPeriod")
   private String searchPeriod = null;
+
+  @JsonProperty("tags")
+  private List<String> tags = null;
+
+  /**
+   * Gets or Sets thresholdType
+   */
+  public enum ThresholdTypeEnum {
+    ABOVE("ABOVE"),
+    
+    BELOW("BELOW"),
+    
+    BOTH("BOTH");
+
+    private String value;
+
+    ThresholdTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static ThresholdTypeEnum fromValue(String text) {
+      for (ThresholdTypeEnum b : ThresholdTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("thresholdType")
+  private ThresholdTypeEnum thresholdType = null;
 
   @JsonProperty("thresholdValue")
   private Double thresholdValue = null;
@@ -239,6 +288,24 @@ public class AlertRuleRequest {
     this.enabled = enabled;
   }
 
+  public AlertRuleRequest filterBy(String filterBy) {
+    this.filterBy = filterBy;
+    return this;
+  }
+
+   /**
+   * Get filterBy
+   * @return filterBy
+  **/
+  @ApiModelProperty(value = "")
+  public String getFilterBy() {
+    return filterBy;
+  }
+
+  public void setFilterBy(String filterBy) {
+    this.filterBy = filterBy;
+  }
+
   public AlertRuleRequest groupByField(String groupByField) {
     this.groupByField = groupByField;
     return this;
@@ -275,6 +342,24 @@ public class AlertRuleRequest {
     this.name = name;
   }
 
+  public AlertRuleRequest riskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+    return this;
+  }
+
+   /**
+   * Get riskLevel
+   * @return riskLevel
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getRiskLevel() {
+    return riskLevel;
+  }
+
+  public void setRiskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+  }
+
   public AlertRuleRequest searchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
     return this;
@@ -291,6 +376,50 @@ public class AlertRuleRequest {
 
   public void setSearchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
+  }
+
+  public AlertRuleRequest tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public AlertRuleRequest addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
+  public AlertRuleRequest thresholdType(ThresholdTypeEnum thresholdType) {
+    this.thresholdType = thresholdType;
+    return this;
+  }
+
+   /**
+   * Get thresholdType
+   * @return thresholdType
+  **/
+  @ApiModelProperty(value = "")
+  public ThresholdTypeEnum getThresholdType() {
+    return thresholdType;
+  }
+
+  public void setThresholdType(ThresholdTypeEnum thresholdType) {
+    this.thresholdType = thresholdType;
   }
 
   public AlertRuleRequest thresholdValue(Double thresholdValue) {
@@ -344,16 +473,20 @@ public class AlertRuleRequest {
         Objects.equals(this.alertDestinationIds, alertRuleRequest.alertDestinationIds) &&
         Objects.equals(this.applicationIds, alertRuleRequest.applicationIds) &&
         Objects.equals(this.enabled, alertRuleRequest.enabled) &&
+        Objects.equals(this.filterBy, alertRuleRequest.filterBy) &&
         Objects.equals(this.groupByField, alertRuleRequest.groupByField) &&
         Objects.equals(this.name, alertRuleRequest.name) &&
+        Objects.equals(this.riskLevel, alertRuleRequest.riskLevel) &&
         Objects.equals(this.searchPeriod, alertRuleRequest.searchPeriod) &&
+        Objects.equals(this.tags, alertRuleRequest.tags) &&
+        Objects.equals(this.thresholdType, alertRuleRequest.thresholdType) &&
         Objects.equals(this.thresholdValue, alertRuleRequest.thresholdValue) &&
         Objects.equals(this.type, alertRuleRequest.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, enabled, groupByField, name, searchPeriod, thresholdValue, type);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, enabled, filterBy, groupByField, name, riskLevel, searchPeriod, tags, thresholdType, thresholdValue, type);
   }
 
 
@@ -367,9 +500,13 @@ public class AlertRuleRequest {
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    filterBy: ").append(toIndentedString(filterBy)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
+    sb.append("    thresholdType: ").append(toIndentedString(thresholdType)).append("\n");
     sb.append("    thresholdValue: ").append(toIndentedString(thresholdValue)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

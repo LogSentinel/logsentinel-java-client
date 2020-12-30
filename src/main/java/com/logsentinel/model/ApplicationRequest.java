@@ -18,11 +18,9 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.logsentinel.model.MachineLearningSettings;
 import com.logsentinel.model.MetadataExtractionPaths;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -30,18 +28,15 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Application
+ * ApplicationRequest
  */
 
-public class Application {
-  @JsonProperty("active")
-  private Boolean active = null;
+public class ApplicationRequest {
+  @JsonProperty("automaticBehaviorMonitoring")
+  private Boolean automaticBehaviorMonitoring = null;
 
   @JsonProperty("containsPersonalData")
   private Boolean containsPersonalData = null;
-
-  @JsonProperty("created")
-  private LocalDateTime created = null;
 
   @JsonProperty("dataMaskingPatterns")
   private List<String> dataMaskingPatterns = null;
@@ -64,23 +59,11 @@ public class Application {
   @JsonProperty("generateMerkleTree")
   private Boolean generateMerkleTree = null;
 
-  @JsonProperty("genesisEntryId")
-  private UUID genesisEntryId = null;
-
   @JsonProperty("id")
   private UUID id = null;
 
   @JsonProperty("ipWhiteList")
   private List<String> ipWhiteList = null;
-
-  @JsonProperty("lastMerkleTreeGenerationTimestamp")
-  private LocalDateTime lastMerkleTreeGenerationTimestamp = null;
-
-  @JsonProperty("latestEthereumTxHash")
-  private String latestEthereumTxHash = null;
-
-  @JsonProperty("latestGlacierArchiveId")
-  private String latestGlacierArchiveId = null;
 
   @JsonProperty("latestHashRecipientEmails")
   private List<String> latestHashRecipientEmails = null;
@@ -91,17 +74,8 @@ public class Application {
   @JsonProperty("logLevelRegexes")
   private Map<String, String> logLevelRegexes = null;
 
-  @JsonProperty("machineLearningSettings")
-  private MachineLearningSettings machineLearningSettings = null;
-
-  @JsonProperty("merkleTreeGenerationMinutes")
-  private Integer merkleTreeGenerationMinutes = null;
-
   @JsonProperty("metadataExtractionPaths")
   private MetadataExtractionPaths metadataExtractionPaths = null;
-
-  @JsonProperty("missingLogsAlertId")
-  private UUID missingLogsAlertId = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -118,14 +92,8 @@ public class Application {
   @JsonProperty("openDataWhitelistRegexes")
   private List<String> openDataWhitelistRegexes = null;
 
-  @JsonProperty("organizationId")
-  private UUID organizationId = null;
-
   @JsonProperty("partialVerificationPeriodMinutes")
   private Integer partialVerificationPeriodMinutes = null;
-
-  @JsonProperty("performVerification")
-  private Boolean performVerification = null;
 
   @JsonProperty("propertiesForIdenticalEntries")
   private List<String> propertiesForIdenticalEntries = null;
@@ -213,12 +181,6 @@ public class Application {
   @JsonProperty("storeHashesInEthereum")
   private Boolean storeHashesInEthereum = null;
 
-  @JsonProperty("syslogId")
-  private String syslogId = null;
-
-  @JsonProperty("updated")
-  private LocalDateTime updated = null;
-
   @JsonProperty("verificationFailureReportRecipientEmails")
   private List<String> verificationFailureReportRecipientEmails = null;
 
@@ -273,25 +235,25 @@ public class Application {
   @JsonProperty("warnLevel")
   private WarnLevelEnum warnLevel = null;
 
-  public Application active(Boolean active) {
-    this.active = active;
+  public ApplicationRequest automaticBehaviorMonitoring(Boolean automaticBehaviorMonitoring) {
+    this.automaticBehaviorMonitoring = automaticBehaviorMonitoring;
     return this;
   }
 
    /**
-   * Get active
-   * @return active
+   * Get automaticBehaviorMonitoring
+   * @return automaticBehaviorMonitoring
   **/
   @ApiModelProperty(value = "")
-  public Boolean isActive() {
-    return active;
+  public Boolean isAutomaticBehaviorMonitoring() {
+    return automaticBehaviorMonitoring;
   }
 
-  public void setActive(Boolean active) {
-    this.active = active;
+  public void setAutomaticBehaviorMonitoring(Boolean automaticBehaviorMonitoring) {
+    this.automaticBehaviorMonitoring = automaticBehaviorMonitoring;
   }
 
-  public Application containsPersonalData(Boolean containsPersonalData) {
+  public ApplicationRequest containsPersonalData(Boolean containsPersonalData) {
     this.containsPersonalData = containsPersonalData;
     return this;
   }
@@ -309,30 +271,12 @@ public class Application {
     this.containsPersonalData = containsPersonalData;
   }
 
-  public Application created(LocalDateTime created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * Get created
-   * @return created
-  **/
-  @ApiModelProperty(value = "")
-  public LocalDateTime getCreated() {
-    return created;
-  }
-
-  public void setCreated(LocalDateTime created) {
-    this.created = created;
-  }
-
-  public Application dataMaskingPatterns(List<String> dataMaskingPatterns) {
+  public ApplicationRequest dataMaskingPatterns(List<String> dataMaskingPatterns) {
     this.dataMaskingPatterns = dataMaskingPatterns;
     return this;
   }
 
-  public Application addDataMaskingPatternsItem(String dataMaskingPatternsItem) {
+  public ApplicationRequest addDataMaskingPatternsItem(String dataMaskingPatternsItem) {
     if (this.dataMaskingPatterns == null) {
       this.dataMaskingPatterns = new ArrayList<>();
     }
@@ -353,12 +297,12 @@ public class Application {
     this.dataMaskingPatterns = dataMaskingPatterns;
   }
 
-  public Application defaultAlertDestinations(List<UUID> defaultAlertDestinations) {
+  public ApplicationRequest defaultAlertDestinations(List<UUID> defaultAlertDestinations) {
     this.defaultAlertDestinations = defaultAlertDestinations;
     return this;
   }
 
-  public Application addDefaultAlertDestinationsItem(UUID defaultAlertDestinationsItem) {
+  public ApplicationRequest addDefaultAlertDestinationsItem(UUID defaultAlertDestinationsItem) {
     if (this.defaultAlertDestinations == null) {
       this.defaultAlertDestinations = new ArrayList<>();
     }
@@ -379,7 +323,7 @@ public class Application {
     this.defaultAlertDestinations = defaultAlertDestinations;
   }
 
-  public Application detailsTransformationScript(String detailsTransformationScript) {
+  public ApplicationRequest detailsTransformationScript(String detailsTransformationScript) {
     this.detailsTransformationScript = detailsTransformationScript;
     return this;
   }
@@ -397,12 +341,12 @@ public class Application {
     this.detailsTransformationScript = detailsTransformationScript;
   }
 
-  public Application disabledThreatFeeds(List<UUID> disabledThreatFeeds) {
+  public ApplicationRequest disabledThreatFeeds(List<UUID> disabledThreatFeeds) {
     this.disabledThreatFeeds = disabledThreatFeeds;
     return this;
   }
 
-  public Application addDisabledThreatFeedsItem(UUID disabledThreatFeedsItem) {
+  public ApplicationRequest addDisabledThreatFeedsItem(UUID disabledThreatFeedsItem) {
     if (this.disabledThreatFeeds == null) {
       this.disabledThreatFeeds = new ArrayList<>();
     }
@@ -423,7 +367,7 @@ public class Application {
     this.disabledThreatFeeds = disabledThreatFeeds;
   }
 
-  public Application displayedDetailsFields(String displayedDetailsFields) {
+  public ApplicationRequest displayedDetailsFields(String displayedDetailsFields) {
     this.displayedDetailsFields = displayedDetailsFields;
     return this;
   }
@@ -441,7 +385,7 @@ public class Application {
     this.displayedDetailsFields = displayedDetailsFields;
   }
 
-  public Application generateHashChain(Boolean generateHashChain) {
+  public ApplicationRequest generateHashChain(Boolean generateHashChain) {
     this.generateHashChain = generateHashChain;
     return this;
   }
@@ -459,7 +403,7 @@ public class Application {
     this.generateHashChain = generateHashChain;
   }
 
-  public Application generateMerkleTree(Boolean generateMerkleTree) {
+  public ApplicationRequest generateMerkleTree(Boolean generateMerkleTree) {
     this.generateMerkleTree = generateMerkleTree;
     return this;
   }
@@ -477,25 +421,7 @@ public class Application {
     this.generateMerkleTree = generateMerkleTree;
   }
 
-  public Application genesisEntryId(UUID genesisEntryId) {
-    this.genesisEntryId = genesisEntryId;
-    return this;
-  }
-
-   /**
-   * Get genesisEntryId
-   * @return genesisEntryId
-  **/
-  @ApiModelProperty(value = "")
-  public UUID getGenesisEntryId() {
-    return genesisEntryId;
-  }
-
-  public void setGenesisEntryId(UUID genesisEntryId) {
-    this.genesisEntryId = genesisEntryId;
-  }
-
-  public Application id(UUID id) {
+  public ApplicationRequest id(UUID id) {
     this.id = id;
     return this;
   }
@@ -513,12 +439,12 @@ public class Application {
     this.id = id;
   }
 
-  public Application ipWhiteList(List<String> ipWhiteList) {
+  public ApplicationRequest ipWhiteList(List<String> ipWhiteList) {
     this.ipWhiteList = ipWhiteList;
     return this;
   }
 
-  public Application addIpWhiteListItem(String ipWhiteListItem) {
+  public ApplicationRequest addIpWhiteListItem(String ipWhiteListItem) {
     if (this.ipWhiteList == null) {
       this.ipWhiteList = new ArrayList<>();
     }
@@ -539,66 +465,12 @@ public class Application {
     this.ipWhiteList = ipWhiteList;
   }
 
-  public Application lastMerkleTreeGenerationTimestamp(LocalDateTime lastMerkleTreeGenerationTimestamp) {
-    this.lastMerkleTreeGenerationTimestamp = lastMerkleTreeGenerationTimestamp;
-    return this;
-  }
-
-   /**
-   * Get lastMerkleTreeGenerationTimestamp
-   * @return lastMerkleTreeGenerationTimestamp
-  **/
-  @ApiModelProperty(value = "")
-  public LocalDateTime getLastMerkleTreeGenerationTimestamp() {
-    return lastMerkleTreeGenerationTimestamp;
-  }
-
-  public void setLastMerkleTreeGenerationTimestamp(LocalDateTime lastMerkleTreeGenerationTimestamp) {
-    this.lastMerkleTreeGenerationTimestamp = lastMerkleTreeGenerationTimestamp;
-  }
-
-  public Application latestEthereumTxHash(String latestEthereumTxHash) {
-    this.latestEthereumTxHash = latestEthereumTxHash;
-    return this;
-  }
-
-   /**
-   * Get latestEthereumTxHash
-   * @return latestEthereumTxHash
-  **/
-  @ApiModelProperty(value = "")
-  public String getLatestEthereumTxHash() {
-    return latestEthereumTxHash;
-  }
-
-  public void setLatestEthereumTxHash(String latestEthereumTxHash) {
-    this.latestEthereumTxHash = latestEthereumTxHash;
-  }
-
-  public Application latestGlacierArchiveId(String latestGlacierArchiveId) {
-    this.latestGlacierArchiveId = latestGlacierArchiveId;
-    return this;
-  }
-
-   /**
-   * Get latestGlacierArchiveId
-   * @return latestGlacierArchiveId
-  **/
-  @ApiModelProperty(value = "")
-  public String getLatestGlacierArchiveId() {
-    return latestGlacierArchiveId;
-  }
-
-  public void setLatestGlacierArchiveId(String latestGlacierArchiveId) {
-    this.latestGlacierArchiveId = latestGlacierArchiveId;
-  }
-
-  public Application latestHashRecipientEmails(List<String> latestHashRecipientEmails) {
+  public ApplicationRequest latestHashRecipientEmails(List<String> latestHashRecipientEmails) {
     this.latestHashRecipientEmails = latestHashRecipientEmails;
     return this;
   }
 
-  public Application addLatestHashRecipientEmailsItem(String latestHashRecipientEmailsItem) {
+  public ApplicationRequest addLatestHashRecipientEmailsItem(String latestHashRecipientEmailsItem) {
     if (this.latestHashRecipientEmails == null) {
       this.latestHashRecipientEmails = new ArrayList<>();
     }
@@ -619,7 +491,7 @@ public class Application {
     this.latestHashRecipientEmails = latestHashRecipientEmails;
   }
 
-  public Application logGroupingEnabled(Boolean logGroupingEnabled) {
+  public ApplicationRequest logGroupingEnabled(Boolean logGroupingEnabled) {
     this.logGroupingEnabled = logGroupingEnabled;
     return this;
   }
@@ -637,12 +509,12 @@ public class Application {
     this.logGroupingEnabled = logGroupingEnabled;
   }
 
-  public Application logLevelRegexes(Map<String, String> logLevelRegexes) {
+  public ApplicationRequest logLevelRegexes(Map<String, String> logLevelRegexes) {
     this.logLevelRegexes = logLevelRegexes;
     return this;
   }
 
-  public Application putLogLevelRegexesItem(String key, String logLevelRegexesItem) {
+  public ApplicationRequest putLogLevelRegexesItem(String key, String logLevelRegexesItem) {
     if (this.logLevelRegexes == null) {
       this.logLevelRegexes = new HashMap<>();
     }
@@ -663,43 +535,7 @@ public class Application {
     this.logLevelRegexes = logLevelRegexes;
   }
 
-  public Application machineLearningSettings(MachineLearningSettings machineLearningSettings) {
-    this.machineLearningSettings = machineLearningSettings;
-    return this;
-  }
-
-   /**
-   * Get machineLearningSettings
-   * @return machineLearningSettings
-  **/
-  @ApiModelProperty(value = "")
-  public MachineLearningSettings getMachineLearningSettings() {
-    return machineLearningSettings;
-  }
-
-  public void setMachineLearningSettings(MachineLearningSettings machineLearningSettings) {
-    this.machineLearningSettings = machineLearningSettings;
-  }
-
-  public Application merkleTreeGenerationMinutes(Integer merkleTreeGenerationMinutes) {
-    this.merkleTreeGenerationMinutes = merkleTreeGenerationMinutes;
-    return this;
-  }
-
-   /**
-   * Get merkleTreeGenerationMinutes
-   * @return merkleTreeGenerationMinutes
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getMerkleTreeGenerationMinutes() {
-    return merkleTreeGenerationMinutes;
-  }
-
-  public void setMerkleTreeGenerationMinutes(Integer merkleTreeGenerationMinutes) {
-    this.merkleTreeGenerationMinutes = merkleTreeGenerationMinutes;
-  }
-
-  public Application metadataExtractionPaths(MetadataExtractionPaths metadataExtractionPaths) {
+  public ApplicationRequest metadataExtractionPaths(MetadataExtractionPaths metadataExtractionPaths) {
     this.metadataExtractionPaths = metadataExtractionPaths;
     return this;
   }
@@ -717,25 +553,7 @@ public class Application {
     this.metadataExtractionPaths = metadataExtractionPaths;
   }
 
-  public Application missingLogsAlertId(UUID missingLogsAlertId) {
-    this.missingLogsAlertId = missingLogsAlertId;
-    return this;
-  }
-
-   /**
-   * Get missingLogsAlertId
-   * @return missingLogsAlertId
-  **/
-  @ApiModelProperty(value = "")
-  public UUID getMissingLogsAlertId() {
-    return missingLogsAlertId;
-  }
-
-  public void setMissingLogsAlertId(UUID missingLogsAlertId) {
-    this.missingLogsAlertId = missingLogsAlertId;
-  }
-
-  public Application name(String name) {
+  public ApplicationRequest name(String name) {
     this.name = name;
     return this;
   }
@@ -753,12 +571,12 @@ public class Application {
     this.name = name;
   }
 
-  public Application openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
+  public ApplicationRequest openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
     return this;
   }
 
-  public Application addOpenDataAnonymizationRegexesItem(String openDataAnonymizationRegexesItem) {
+  public ApplicationRequest addOpenDataAnonymizationRegexesItem(String openDataAnonymizationRegexesItem) {
     if (this.openDataAnonymizationRegexes == null) {
       this.openDataAnonymizationRegexes = new ArrayList<>();
     }
@@ -779,12 +597,12 @@ public class Application {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
   }
 
-  public Application openDataAnonymizeBodyFields(List<String> openDataAnonymizeBodyFields) {
+  public ApplicationRequest openDataAnonymizeBodyFields(List<String> openDataAnonymizeBodyFields) {
     this.openDataAnonymizeBodyFields = openDataAnonymizeBodyFields;
     return this;
   }
 
-  public Application addOpenDataAnonymizeBodyFieldsItem(String openDataAnonymizeBodyFieldsItem) {
+  public ApplicationRequest addOpenDataAnonymizeBodyFieldsItem(String openDataAnonymizeBodyFieldsItem) {
     if (this.openDataAnonymizeBodyFields == null) {
       this.openDataAnonymizeBodyFields = new ArrayList<>();
     }
@@ -805,7 +623,7 @@ public class Application {
     this.openDataAnonymizeBodyFields = openDataAnonymizeBodyFields;
   }
 
-  public Application openDataEnabled(Boolean openDataEnabled) {
+  public ApplicationRequest openDataEnabled(Boolean openDataEnabled) {
     this.openDataEnabled = openDataEnabled;
     return this;
   }
@@ -823,12 +641,12 @@ public class Application {
     this.openDataEnabled = openDataEnabled;
   }
 
-  public Application openDataWhitelistRegexes(List<String> openDataWhitelistRegexes) {
+  public ApplicationRequest openDataWhitelistRegexes(List<String> openDataWhitelistRegexes) {
     this.openDataWhitelistRegexes = openDataWhitelistRegexes;
     return this;
   }
 
-  public Application addOpenDataWhitelistRegexesItem(String openDataWhitelistRegexesItem) {
+  public ApplicationRequest addOpenDataWhitelistRegexesItem(String openDataWhitelistRegexesItem) {
     if (this.openDataWhitelistRegexes == null) {
       this.openDataWhitelistRegexes = new ArrayList<>();
     }
@@ -849,25 +667,7 @@ public class Application {
     this.openDataWhitelistRegexes = openDataWhitelistRegexes;
   }
 
-  public Application organizationId(UUID organizationId) {
-    this.organizationId = organizationId;
-    return this;
-  }
-
-   /**
-   * Get organizationId
-   * @return organizationId
-  **/
-  @ApiModelProperty(value = "")
-  public UUID getOrganizationId() {
-    return organizationId;
-  }
-
-  public void setOrganizationId(UUID organizationId) {
-    this.organizationId = organizationId;
-  }
-
-  public Application partialVerificationPeriodMinutes(Integer partialVerificationPeriodMinutes) {
+  public ApplicationRequest partialVerificationPeriodMinutes(Integer partialVerificationPeriodMinutes) {
     this.partialVerificationPeriodMinutes = partialVerificationPeriodMinutes;
     return this;
   }
@@ -885,30 +685,12 @@ public class Application {
     this.partialVerificationPeriodMinutes = partialVerificationPeriodMinutes;
   }
 
-  public Application performVerification(Boolean performVerification) {
-    this.performVerification = performVerification;
-    return this;
-  }
-
-   /**
-   * Get performVerification
-   * @return performVerification
-  **/
-  @ApiModelProperty(value = "")
-  public Boolean isPerformVerification() {
-    return performVerification;
-  }
-
-  public void setPerformVerification(Boolean performVerification) {
-    this.performVerification = performVerification;
-  }
-
-  public Application propertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
+  public ApplicationRequest propertiesForIdenticalEntries(List<String> propertiesForIdenticalEntries) {
     this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
     return this;
   }
 
-  public Application addPropertiesForIdenticalEntriesItem(String propertiesForIdenticalEntriesItem) {
+  public ApplicationRequest addPropertiesForIdenticalEntriesItem(String propertiesForIdenticalEntriesItem) {
     if (this.propertiesForIdenticalEntries == null) {
       this.propertiesForIdenticalEntries = new ArrayList<>();
     }
@@ -929,7 +711,7 @@ public class Application {
     this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
   }
 
-  public Application retentionMonths(Integer retentionMonths) {
+  public ApplicationRequest retentionMonths(Integer retentionMonths) {
     this.retentionMonths = retentionMonths;
     return this;
   }
@@ -947,12 +729,12 @@ public class Application {
     this.retentionMonths = retentionMonths;
   }
 
-  public Application signatureVerificationPublicKeys(List<String> signatureVerificationPublicKeys) {
+  public ApplicationRequest signatureVerificationPublicKeys(List<String> signatureVerificationPublicKeys) {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
     return this;
   }
 
-  public Application addSignatureVerificationPublicKeysItem(String signatureVerificationPublicKeysItem) {
+  public ApplicationRequest addSignatureVerificationPublicKeysItem(String signatureVerificationPublicKeysItem) {
     if (this.signatureVerificationPublicKeys == null) {
       this.signatureVerificationPublicKeys = new ArrayList<>();
     }
@@ -973,7 +755,7 @@ public class Application {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
   }
 
-  public Application sourceCategory(SourceCategoryEnum sourceCategory) {
+  public ApplicationRequest sourceCategory(SourceCategoryEnum sourceCategory) {
     this.sourceCategory = sourceCategory;
     return this;
   }
@@ -991,7 +773,7 @@ public class Application {
     this.sourceCategory = sourceCategory;
   }
 
-  public Application storeHashesInEthereum(Boolean storeHashesInEthereum) {
+  public ApplicationRequest storeHashesInEthereum(Boolean storeHashesInEthereum) {
     this.storeHashesInEthereum = storeHashesInEthereum;
     return this;
   }
@@ -1009,48 +791,12 @@ public class Application {
     this.storeHashesInEthereum = storeHashesInEthereum;
   }
 
-  public Application syslogId(String syslogId) {
-    this.syslogId = syslogId;
-    return this;
-  }
-
-   /**
-   * Get syslogId
-   * @return syslogId
-  **/
-  @ApiModelProperty(value = "")
-  public String getSyslogId() {
-    return syslogId;
-  }
-
-  public void setSyslogId(String syslogId) {
-    this.syslogId = syslogId;
-  }
-
-  public Application updated(LocalDateTime updated) {
-    this.updated = updated;
-    return this;
-  }
-
-   /**
-   * Get updated
-   * @return updated
-  **/
-  @ApiModelProperty(value = "")
-  public LocalDateTime getUpdated() {
-    return updated;
-  }
-
-  public void setUpdated(LocalDateTime updated) {
-    this.updated = updated;
-  }
-
-  public Application verificationFailureReportRecipientEmails(List<String> verificationFailureReportRecipientEmails) {
+  public ApplicationRequest verificationFailureReportRecipientEmails(List<String> verificationFailureReportRecipientEmails) {
     this.verificationFailureReportRecipientEmails = verificationFailureReportRecipientEmails;
     return this;
   }
 
-  public Application addVerificationFailureReportRecipientEmailsItem(String verificationFailureReportRecipientEmailsItem) {
+  public ApplicationRequest addVerificationFailureReportRecipientEmailsItem(String verificationFailureReportRecipientEmailsItem) {
     if (this.verificationFailureReportRecipientEmails == null) {
       this.verificationFailureReportRecipientEmails = new ArrayList<>();
     }
@@ -1071,7 +817,7 @@ public class Application {
     this.verificationFailureReportRecipientEmails = verificationFailureReportRecipientEmails;
   }
 
-  public Application verificationPeriodMinutes(Integer verificationPeriodMinutes) {
+  public ApplicationRequest verificationPeriodMinutes(Integer verificationPeriodMinutes) {
     this.verificationPeriodMinutes = verificationPeriodMinutes;
     return this;
   }
@@ -1089,7 +835,7 @@ public class Application {
     this.verificationPeriodMinutes = verificationPeriodMinutes;
   }
 
-  public Application warnLevel(WarnLevelEnum warnLevel) {
+  public ApplicationRequest warnLevel(WarnLevelEnum warnLevel) {
     this.warnLevel = warnLevel;
     return this;
   }
@@ -1116,64 +862,51 @@ public class Application {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Application application = (Application) o;
-    return Objects.equals(this.active, application.active) &&
-        Objects.equals(this.containsPersonalData, application.containsPersonalData) &&
-        Objects.equals(this.created, application.created) &&
-        Objects.equals(this.dataMaskingPatterns, application.dataMaskingPatterns) &&
-        Objects.equals(this.defaultAlertDestinations, application.defaultAlertDestinations) &&
-        Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
-        Objects.equals(this.disabledThreatFeeds, application.disabledThreatFeeds) &&
-        Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
-        Objects.equals(this.generateHashChain, application.generateHashChain) &&
-        Objects.equals(this.generateMerkleTree, application.generateMerkleTree) &&
-        Objects.equals(this.genesisEntryId, application.genesisEntryId) &&
-        Objects.equals(this.id, application.id) &&
-        Objects.equals(this.ipWhiteList, application.ipWhiteList) &&
-        Objects.equals(this.lastMerkleTreeGenerationTimestamp, application.lastMerkleTreeGenerationTimestamp) &&
-        Objects.equals(this.latestEthereumTxHash, application.latestEthereumTxHash) &&
-        Objects.equals(this.latestGlacierArchiveId, application.latestGlacierArchiveId) &&
-        Objects.equals(this.latestHashRecipientEmails, application.latestHashRecipientEmails) &&
-        Objects.equals(this.logGroupingEnabled, application.logGroupingEnabled) &&
-        Objects.equals(this.logLevelRegexes, application.logLevelRegexes) &&
-        Objects.equals(this.machineLearningSettings, application.machineLearningSettings) &&
-        Objects.equals(this.merkleTreeGenerationMinutes, application.merkleTreeGenerationMinutes) &&
-        Objects.equals(this.metadataExtractionPaths, application.metadataExtractionPaths) &&
-        Objects.equals(this.missingLogsAlertId, application.missingLogsAlertId) &&
-        Objects.equals(this.name, application.name) &&
-        Objects.equals(this.openDataAnonymizationRegexes, application.openDataAnonymizationRegexes) &&
-        Objects.equals(this.openDataAnonymizeBodyFields, application.openDataAnonymizeBodyFields) &&
-        Objects.equals(this.openDataEnabled, application.openDataEnabled) &&
-        Objects.equals(this.openDataWhitelistRegexes, application.openDataWhitelistRegexes) &&
-        Objects.equals(this.organizationId, application.organizationId) &&
-        Objects.equals(this.partialVerificationPeriodMinutes, application.partialVerificationPeriodMinutes) &&
-        Objects.equals(this.performVerification, application.performVerification) &&
-        Objects.equals(this.propertiesForIdenticalEntries, application.propertiesForIdenticalEntries) &&
-        Objects.equals(this.retentionMonths, application.retentionMonths) &&
-        Objects.equals(this.signatureVerificationPublicKeys, application.signatureVerificationPublicKeys) &&
-        Objects.equals(this.sourceCategory, application.sourceCategory) &&
-        Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
-        Objects.equals(this.syslogId, application.syslogId) &&
-        Objects.equals(this.updated, application.updated) &&
-        Objects.equals(this.verificationFailureReportRecipientEmails, application.verificationFailureReportRecipientEmails) &&
-        Objects.equals(this.verificationPeriodMinutes, application.verificationPeriodMinutes) &&
-        Objects.equals(this.warnLevel, application.warnLevel);
+    ApplicationRequest applicationRequest = (ApplicationRequest) o;
+    return Objects.equals(this.automaticBehaviorMonitoring, applicationRequest.automaticBehaviorMonitoring) &&
+        Objects.equals(this.containsPersonalData, applicationRequest.containsPersonalData) &&
+        Objects.equals(this.dataMaskingPatterns, applicationRequest.dataMaskingPatterns) &&
+        Objects.equals(this.defaultAlertDestinations, applicationRequest.defaultAlertDestinations) &&
+        Objects.equals(this.detailsTransformationScript, applicationRequest.detailsTransformationScript) &&
+        Objects.equals(this.disabledThreatFeeds, applicationRequest.disabledThreatFeeds) &&
+        Objects.equals(this.displayedDetailsFields, applicationRequest.displayedDetailsFields) &&
+        Objects.equals(this.generateHashChain, applicationRequest.generateHashChain) &&
+        Objects.equals(this.generateMerkleTree, applicationRequest.generateMerkleTree) &&
+        Objects.equals(this.id, applicationRequest.id) &&
+        Objects.equals(this.ipWhiteList, applicationRequest.ipWhiteList) &&
+        Objects.equals(this.latestHashRecipientEmails, applicationRequest.latestHashRecipientEmails) &&
+        Objects.equals(this.logGroupingEnabled, applicationRequest.logGroupingEnabled) &&
+        Objects.equals(this.logLevelRegexes, applicationRequest.logLevelRegexes) &&
+        Objects.equals(this.metadataExtractionPaths, applicationRequest.metadataExtractionPaths) &&
+        Objects.equals(this.name, applicationRequest.name) &&
+        Objects.equals(this.openDataAnonymizationRegexes, applicationRequest.openDataAnonymizationRegexes) &&
+        Objects.equals(this.openDataAnonymizeBodyFields, applicationRequest.openDataAnonymizeBodyFields) &&
+        Objects.equals(this.openDataEnabled, applicationRequest.openDataEnabled) &&
+        Objects.equals(this.openDataWhitelistRegexes, applicationRequest.openDataWhitelistRegexes) &&
+        Objects.equals(this.partialVerificationPeriodMinutes, applicationRequest.partialVerificationPeriodMinutes) &&
+        Objects.equals(this.propertiesForIdenticalEntries, applicationRequest.propertiesForIdenticalEntries) &&
+        Objects.equals(this.retentionMonths, applicationRequest.retentionMonths) &&
+        Objects.equals(this.signatureVerificationPublicKeys, applicationRequest.signatureVerificationPublicKeys) &&
+        Objects.equals(this.sourceCategory, applicationRequest.sourceCategory) &&
+        Objects.equals(this.storeHashesInEthereum, applicationRequest.storeHashesInEthereum) &&
+        Objects.equals(this.verificationFailureReportRecipientEmails, applicationRequest.verificationFailureReportRecipientEmails) &&
+        Objects.equals(this.verificationPeriodMinutes, applicationRequest.verificationPeriodMinutes) &&
+        Objects.equals(this.warnLevel, applicationRequest.warnLevel);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, genesisEntryId, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionMonths, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionMonths, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Application {\n");
+    sb.append("class ApplicationRequest {\n");
     
-    sb.append("    active: ").append(toIndentedString(active)).append("\n");
+    sb.append("    automaticBehaviorMonitoring: ").append(toIndentedString(automaticBehaviorMonitoring)).append("\n");
     sb.append("    containsPersonalData: ").append(toIndentedString(containsPersonalData)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    dataMaskingPatterns: ").append(toIndentedString(dataMaskingPatterns)).append("\n");
     sb.append("    defaultAlertDestinations: ").append(toIndentedString(defaultAlertDestinations)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
@@ -1181,34 +914,23 @@ public class Application {
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
     sb.append("    generateHashChain: ").append(toIndentedString(generateHashChain)).append("\n");
     sb.append("    generateMerkleTree: ").append(toIndentedString(generateMerkleTree)).append("\n");
-    sb.append("    genesisEntryId: ").append(toIndentedString(genesisEntryId)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ipWhiteList: ").append(toIndentedString(ipWhiteList)).append("\n");
-    sb.append("    lastMerkleTreeGenerationTimestamp: ").append(toIndentedString(lastMerkleTreeGenerationTimestamp)).append("\n");
-    sb.append("    latestEthereumTxHash: ").append(toIndentedString(latestEthereumTxHash)).append("\n");
-    sb.append("    latestGlacierArchiveId: ").append(toIndentedString(latestGlacierArchiveId)).append("\n");
     sb.append("    latestHashRecipientEmails: ").append(toIndentedString(latestHashRecipientEmails)).append("\n");
     sb.append("    logGroupingEnabled: ").append(toIndentedString(logGroupingEnabled)).append("\n");
     sb.append("    logLevelRegexes: ").append(toIndentedString(logLevelRegexes)).append("\n");
-    sb.append("    machineLearningSettings: ").append(toIndentedString(machineLearningSettings)).append("\n");
-    sb.append("    merkleTreeGenerationMinutes: ").append(toIndentedString(merkleTreeGenerationMinutes)).append("\n");
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
-    sb.append("    missingLogsAlertId: ").append(toIndentedString(missingLogsAlertId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");
     sb.append("    openDataWhitelistRegexes: ").append(toIndentedString(openDataWhitelistRegexes)).append("\n");
-    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    partialVerificationPeriodMinutes: ").append(toIndentedString(partialVerificationPeriodMinutes)).append("\n");
-    sb.append("    performVerification: ").append(toIndentedString(performVerification)).append("\n");
     sb.append("    propertiesForIdenticalEntries: ").append(toIndentedString(propertiesForIdenticalEntries)).append("\n");
     sb.append("    retentionMonths: ").append(toIndentedString(retentionMonths)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
-    sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");
-    sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");
     sb.append("    verificationPeriodMinutes: ").append(toIndentedString(verificationPeriodMinutes)).append("\n");
     sb.append("    warnLevel: ").append(toIndentedString(warnLevel)).append("\n");

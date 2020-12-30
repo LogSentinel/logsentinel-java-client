@@ -22,7 +22,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -30,6 +32,9 @@ import java.util.UUID;
  */
 
 public class AlertDestination {
+  @JsonProperty("automatedResponseSpecs")
+  private Map<String, String> automatedResponseSpecs = null;
+
   @JsonProperty("code")
   private String code = null;
 
@@ -41,6 +46,9 @@ public class AlertDestination {
 
   @JsonProperty("id")
   private UUID id = null;
+
+  @JsonProperty("manualAfterTriage")
+  private Boolean manualAfterTriage = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -62,7 +70,15 @@ public class AlertDestination {
     
     TELEGRAM("TELEGRAM"),
     
-    URL("URL");
+    URL("URL"),
+    
+    IFTTT("IFTTT"),
+    
+    ZAPIER("ZAPIER"),
+    
+    COMMAND("COMMAND"),
+    
+    PYTHON_SCRIPT("PYTHON_SCRIPT");
 
     private String value;
 
@@ -96,6 +112,32 @@ public class AlertDestination {
 
   @JsonProperty("updated")
   private LocalDateTime updated = null;
+
+  public AlertDestination automatedResponseSpecs(Map<String, String> automatedResponseSpecs) {
+    this.automatedResponseSpecs = automatedResponseSpecs;
+    return this;
+  }
+
+  public AlertDestination putAutomatedResponseSpecsItem(String key, String automatedResponseSpecsItem) {
+    if (this.automatedResponseSpecs == null) {
+      this.automatedResponseSpecs = new HashMap<>();
+    }
+    this.automatedResponseSpecs.put(key, automatedResponseSpecsItem);
+    return this;
+  }
+
+   /**
+   * Get automatedResponseSpecs
+   * @return automatedResponseSpecs
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getAutomatedResponseSpecs() {
+    return automatedResponseSpecs;
+  }
+
+  public void setAutomatedResponseSpecs(Map<String, String> automatedResponseSpecs) {
+    this.automatedResponseSpecs = automatedResponseSpecs;
+  }
 
   public AlertDestination code(String code) {
     this.code = code;
@@ -175,6 +217,24 @@ public class AlertDestination {
 
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  public AlertDestination manualAfterTriage(Boolean manualAfterTriage) {
+    this.manualAfterTriage = manualAfterTriage;
+    return this;
+  }
+
+   /**
+   * Get manualAfterTriage
+   * @return manualAfterTriage
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isManualAfterTriage() {
+    return manualAfterTriage;
+  }
+
+  public void setManualAfterTriage(Boolean manualAfterTriage) {
+    this.manualAfterTriage = manualAfterTriage;
   }
 
   public AlertDestination name(String name) {
@@ -311,10 +371,12 @@ public class AlertDestination {
       return false;
     }
     AlertDestination alertDestination = (AlertDestination) o;
-    return Objects.equals(this.code, alertDestination.code) &&
+    return Objects.equals(this.automatedResponseSpecs, alertDestination.automatedResponseSpecs) &&
+        Objects.equals(this.code, alertDestination.code) &&
         Objects.equals(this.created, alertDestination.created) &&
         Objects.equals(this.customHeaders, alertDestination.customHeaders) &&
         Objects.equals(this.id, alertDestination.id) &&
+        Objects.equals(this.manualAfterTriage, alertDestination.manualAfterTriage) &&
         Objects.equals(this.name, alertDestination.name) &&
         Objects.equals(this.organizationId, alertDestination.organizationId) &&
         Objects.equals(this.recipients, alertDestination.recipients) &&
@@ -325,7 +387,7 @@ public class AlertDestination {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, created, customHeaders, id, name, organizationId, recipients, recipientsNames, type, updated);
+    return Objects.hash(automatedResponseSpecs, code, created, customHeaders, id, manualAfterTriage, name, organizationId, recipients, recipientsNames, type, updated);
   }
 
 
@@ -334,10 +396,12 @@ public class AlertDestination {
     StringBuilder sb = new StringBuilder();
     sb.append("class AlertDestination {\n");
     
+    sb.append("    automatedResponseSpecs: ").append(toIndentedString(automatedResponseSpecs)).append("\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    manualAfterTriage: ").append(toIndentedString(manualAfterTriage)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");

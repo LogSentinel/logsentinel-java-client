@@ -14,6 +14,7 @@ import com.logsentinel.model.AlertDestinationRequest;
 import com.logsentinel.model.AlertRule;
 import com.logsentinel.model.AlertRuleRequest;
 import com.logsentinel.model.AlertRuleRun;
+import java.util.UUID;
 import com.logsentinel.model.WorkingHoursDto;
 
 import java.util.ArrayList;
@@ -534,6 +535,59 @@ public class AlertsApi {
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
     GenericType<List<AlertRule>> localVarReturnType = new GenericType<List<AlertRule>>() {};
+    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
+  /**
+   * getRulesByApplication
+   * 
+   * @param applicationId applicationId (required)
+   * @return List&lt;UUID&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public List<UUID> getRulesByApplication(UUID applicationId) throws ApiException {
+    return getRulesByApplicationWithHttpInfo(applicationId).getData();
+      }
+
+  /**
+   * getRulesByApplication
+   * 
+   * @param applicationId applicationId (required)
+   * @return ApiResponse&lt;List&lt;UUID&gt;&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<List<UUID>> getRulesByApplicationWithHttpInfo(UUID applicationId) throws ApiException {
+    Object localVarPostBody = null;
+    
+    // verify the required parameter 'applicationId' is set
+    if (applicationId == null) {
+      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling getRulesByApplication");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/api/alerts/application-rule-mapping";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+    localVarQueryParams.addAll(apiClient.parameterToPairs("", "applicationId", applicationId));
+
+    
+    
+    final String[] localVarAccepts = {
+      "*/*"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<List<UUID>> localVarReturnType = new GenericType<List<UUID>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
   /**

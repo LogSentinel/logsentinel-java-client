@@ -85,6 +85,9 @@ public class AlertRule {
   @JsonProperty("enabled")
   private Boolean enabled = null;
 
+  @JsonProperty("filterBy")
+  private String filterBy = null;
+
   @JsonProperty("groupByField")
   private String groupByField = null;
 
@@ -100,8 +103,54 @@ public class AlertRule {
   @JsonProperty("organizationId")
   private UUID organizationId = null;
 
+  @JsonProperty("riskLevel")
+  private Integer riskLevel = null;
+
+  /**
+   * Gets or Sets ruleType
+   */
+  public enum RuleTypeEnum {
+    REGULAR("REGULAR"),
+    
+    HEALTHCHECK("HEALTHCHECK"),
+    
+    BEHAVIOR("BEHAVIOR");
+
+    private String value;
+
+    RuleTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static RuleTypeEnum fromValue(String text) {
+      for (RuleTypeEnum b : RuleTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("ruleType")
+  private RuleTypeEnum ruleType = null;
+
   @JsonProperty("searchPeriod")
   private String searchPeriod = null;
+
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   /**
    * Gets or Sets thresholdType
@@ -313,6 +362,24 @@ public class AlertRule {
     this.enabled = enabled;
   }
 
+  public AlertRule filterBy(String filterBy) {
+    this.filterBy = filterBy;
+    return this;
+  }
+
+   /**
+   * Get filterBy
+   * @return filterBy
+  **/
+  @ApiModelProperty(value = "")
+  public String getFilterBy() {
+    return filterBy;
+  }
+
+  public void setFilterBy(String filterBy) {
+    this.filterBy = filterBy;
+  }
+
   public AlertRule groupByField(String groupByField) {
     this.groupByField = groupByField;
     return this;
@@ -403,6 +470,42 @@ public class AlertRule {
     this.organizationId = organizationId;
   }
 
+  public AlertRule riskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+    return this;
+  }
+
+   /**
+   * Get riskLevel
+   * @return riskLevel
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getRiskLevel() {
+    return riskLevel;
+  }
+
+  public void setRiskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+  }
+
+  public AlertRule ruleType(RuleTypeEnum ruleType) {
+    this.ruleType = ruleType;
+    return this;
+  }
+
+   /**
+   * Get ruleType
+   * @return ruleType
+  **/
+  @ApiModelProperty(value = "")
+  public RuleTypeEnum getRuleType() {
+    return ruleType;
+  }
+
+  public void setRuleType(RuleTypeEnum ruleType) {
+    this.ruleType = ruleType;
+  }
+
   public AlertRule searchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
     return this;
@@ -419,6 +522,32 @@ public class AlertRule {
 
   public void setSearchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
+  }
+
+  public AlertRule tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public AlertRule addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
   }
 
   public AlertRule thresholdType(ThresholdTypeEnum thresholdType) {
@@ -509,12 +638,16 @@ public class AlertRule {
         Objects.equals(this.applicationIds, alertRule.applicationIds) &&
         Objects.equals(this.created, alertRule.created) &&
         Objects.equals(this.enabled, alertRule.enabled) &&
+        Objects.equals(this.filterBy, alertRule.filterBy) &&
         Objects.equals(this.groupByField, alertRule.groupByField) &&
         Objects.equals(this.id, alertRule.id) &&
         Objects.equals(this.insideWorkingHours, alertRule.insideWorkingHours) &&
         Objects.equals(this.name, alertRule.name) &&
         Objects.equals(this.organizationId, alertRule.organizationId) &&
+        Objects.equals(this.riskLevel, alertRule.riskLevel) &&
+        Objects.equals(this.ruleType, alertRule.ruleType) &&
         Objects.equals(this.searchPeriod, alertRule.searchPeriod) &&
+        Objects.equals(this.tags, alertRule.tags) &&
         Objects.equals(this.thresholdType, alertRule.thresholdType) &&
         Objects.equals(this.thresholdValue, alertRule.thresholdValue) &&
         Objects.equals(this.type, alertRule.type) &&
@@ -523,7 +656,7 @@ public class AlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, created, enabled, groupByField, id, insideWorkingHours, name, organizationId, searchPeriod, thresholdType, thresholdValue, type, updated);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, created, enabled, filterBy, groupByField, id, insideWorkingHours, name, organizationId, riskLevel, ruleType, searchPeriod, tags, thresholdType, thresholdValue, type, updated);
   }
 
 
@@ -538,12 +671,16 @@ public class AlertRule {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
+    sb.append("    filterBy: ").append(toIndentedString(filterBy)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    insideWorkingHours: ").append(toIndentedString(insideWorkingHours)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
+    sb.append("    ruleType: ").append(toIndentedString(ruleType)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    thresholdType: ").append(toIndentedString(thresholdType)).append("\n");
     sb.append("    thresholdValue: ").append(toIndentedString(thresholdValue)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");

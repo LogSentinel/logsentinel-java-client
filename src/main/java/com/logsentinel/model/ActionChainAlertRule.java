@@ -33,9 +33,6 @@ public class ActionChainAlertRule {
   @JsonProperty("actions")
   private List<String> actions = null;
 
-  @JsonProperty("advancedFilters")
-  private List<String> advancedFilters = null;
-
   @JsonProperty("aggregationPeriod")
   private String aggregationPeriod = null;
 
@@ -81,6 +78,9 @@ public class ActionChainAlertRule {
   @JsonProperty("queries")
   private List<String> queries = null;
 
+  @JsonProperty("riskLevel")
+  private Integer riskLevel = null;
+
   @JsonProperty("searchPeriod")
   private String searchPeriod = null;
 
@@ -95,6 +95,9 @@ public class ActionChainAlertRule {
 
   @JsonProperty("sumValuePath")
   private String sumValuePath = null;
+
+  @JsonProperty("tags")
+  private List<String> tags = null;
 
   @JsonProperty("timeFrames")
   private List<Long> timeFrames = null;
@@ -129,32 +132,6 @@ public class ActionChainAlertRule {
 
   public void setActions(List<String> actions) {
     this.actions = actions;
-  }
-
-  public ActionChainAlertRule advancedFilters(List<String> advancedFilters) {
-    this.advancedFilters = advancedFilters;
-    return this;
-  }
-
-  public ActionChainAlertRule addAdvancedFiltersItem(String advancedFiltersItem) {
-    if (this.advancedFilters == null) {
-      this.advancedFilters = new ArrayList<>();
-    }
-    this.advancedFilters.add(advancedFiltersItem);
-    return this;
-  }
-
-   /**
-   * Get advancedFilters
-   * @return advancedFilters
-  **/
-  @ApiModelProperty(value = "")
-  public List<String> getAdvancedFilters() {
-    return advancedFilters;
-  }
-
-  public void setAdvancedFilters(List<String> advancedFilters) {
-    this.advancedFilters = advancedFilters;
   }
 
   public ActionChainAlertRule aggregationPeriod(String aggregationPeriod) {
@@ -467,6 +444,24 @@ public class ActionChainAlertRule {
     this.queries = queries;
   }
 
+  public ActionChainAlertRule riskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+    return this;
+  }
+
+   /**
+   * Get riskLevel
+   * @return riskLevel
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getRiskLevel() {
+    return riskLevel;
+  }
+
+  public void setRiskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+  }
+
   public ActionChainAlertRule searchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
     return this;
@@ -557,6 +552,32 @@ public class ActionChainAlertRule {
     this.sumValuePath = sumValuePath;
   }
 
+  public ActionChainAlertRule tags(List<String> tags) {
+    this.tags = tags;
+    return this;
+  }
+
+  public ActionChainAlertRule addTagsItem(String tagsItem) {
+    if (this.tags == null) {
+      this.tags = new ArrayList<>();
+    }
+    this.tags.add(tagsItem);
+    return this;
+  }
+
+   /**
+   * Get tags
+   * @return tags
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getTags() {
+    return tags;
+  }
+
+  public void setTags(List<String> tags) {
+    this.tags = tags;
+  }
+
   public ActionChainAlertRule timeFrames(List<Long> timeFrames) {
     this.timeFrames = timeFrames;
     return this;
@@ -630,7 +651,6 @@ public class ActionChainAlertRule {
     }
     ActionChainAlertRule actionChainAlertRule = (ActionChainAlertRule) o;
     return Objects.equals(this.actions, actionChainAlertRule.actions) &&
-        Objects.equals(this.advancedFilters, actionChainAlertRule.advancedFilters) &&
         Objects.equals(this.aggregationPeriod, actionChainAlertRule.aggregationPeriod) &&
         Objects.equals(this.alertDestinationIds, actionChainAlertRule.alertDestinationIds) &&
         Objects.equals(this.applicationIds, actionChainAlertRule.applicationIds) &&
@@ -646,11 +666,13 @@ public class ActionChainAlertRule {
         Objects.equals(this.organizationId, actionChainAlertRule.organizationId) &&
         Objects.equals(this.percentage, actionChainAlertRule.percentage) &&
         Objects.equals(this.queries, actionChainAlertRule.queries) &&
+        Objects.equals(this.riskLevel, actionChainAlertRule.riskLevel) &&
         Objects.equals(this.searchPeriod, actionChainAlertRule.searchPeriod) &&
         Objects.equals(this.sumAction, actionChainAlertRule.sumAction) &&
         Objects.equals(this.sumActionTypes, actionChainAlertRule.sumActionTypes) &&
         Objects.equals(this.sumTimeFrame, actionChainAlertRule.sumTimeFrame) &&
         Objects.equals(this.sumValuePath, actionChainAlertRule.sumValuePath) &&
+        Objects.equals(this.tags, actionChainAlertRule.tags) &&
         Objects.equals(this.timeFrames, actionChainAlertRule.timeFrames) &&
         Objects.equals(this.updated, actionChainAlertRule.updated) &&
         Objects.equals(this.withActorsOnly, actionChainAlertRule.withActorsOnly);
@@ -658,7 +680,7 @@ public class ActionChainAlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, advancedFilters, aggregationPeriod, alertDestinationIds, applicationIds, count, created, enabled, entityType, id, initialAction, insideWorkingHours, less, name, organizationId, percentage, queries, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, timeFrames, updated, withActorsOnly);
+    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, count, created, enabled, entityType, id, initialAction, insideWorkingHours, less, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
   }
 
 
@@ -668,7 +690,6 @@ public class ActionChainAlertRule {
     sb.append("class ActionChainAlertRule {\n");
     
     sb.append("    actions: ").append(toIndentedString(actions)).append("\n");
-    sb.append("    advancedFilters: ").append(toIndentedString(advancedFilters)).append("\n");
     sb.append("    aggregationPeriod: ").append(toIndentedString(aggregationPeriod)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
@@ -684,11 +705,13 @@ public class ActionChainAlertRule {
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
     sb.append("    queries: ").append(toIndentedString(queries)).append("\n");
+    sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
     sb.append("    sumAction: ").append(toIndentedString(sumAction)).append("\n");
     sb.append("    sumActionTypes: ").append(toIndentedString(sumActionTypes)).append("\n");
     sb.append("    sumTimeFrame: ").append(toIndentedString(sumTimeFrame)).append("\n");
     sb.append("    sumValuePath: ").append(toIndentedString(sumValuePath)).append("\n");
+    sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    timeFrames: ").append(toIndentedString(timeFrames)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    withActorsOnly: ").append(toIndentedString(withActorsOnly)).append("\n");

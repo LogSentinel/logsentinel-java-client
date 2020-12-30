@@ -61,6 +61,9 @@ public class IPDetails {
   @JsonProperty("longitude")
   private String longitude = null;
 
+  @JsonProperty("region")
+  private String region = null;
+
   @JsonProperty("score")
   private String score = null;
 
@@ -279,6 +282,24 @@ public class IPDetails {
     this.longitude = longitude;
   }
 
+  public IPDetails region(String region) {
+    this.region = region;
+    return this;
+  }
+
+   /**
+   * Get region
+   * @return region
+  **/
+  @ApiModelProperty(value = "")
+  public String getRegion() {
+    return region;
+  }
+
+  public void setRegion(String region) {
+    this.region = region;
+  }
+
   public IPDetails score(String score) {
     this.score = score;
     return this;
@@ -380,6 +401,7 @@ public class IPDetails {
         Objects.equals(this.ipAddress, ipDetails.ipAddress) &&
         Objects.equals(this.latitude, ipDetails.latitude) &&
         Objects.equals(this.longitude, ipDetails.longitude) &&
+        Objects.equals(this.region, ipDetails.region) &&
         Objects.equals(this.score, ipDetails.score) &&
         Objects.equals(this.sourceIpBlacklist, ipDetails.sourceIpBlacklist) &&
         Objects.equals(this.sourceIpIsQuarantined, ipDetails.sourceIpIsQuarantined) &&
@@ -388,7 +410,7 @@ public class IPDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(badDomainScore, badIpBlacklists, badIpScore, city, country, countryNamesEn, historyScore, hostname, ipAddress, latitude, longitude, score, sourceIpBlacklist, sourceIpIsQuarantined, sourceIpScore);
+    return Objects.hash(badDomainScore, badIpBlacklists, badIpScore, city, country, countryNamesEn, historyScore, hostname, ipAddress, latitude, longitude, region, score, sourceIpBlacklist, sourceIpIsQuarantined, sourceIpScore);
   }
 
 
@@ -408,6 +430,7 @@ public class IPDetails {
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
+    sb.append("    region: ").append(toIndentedString(region)).append("\n");
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    sourceIpBlacklist: ").append(toIndentedString(sourceIpBlacklist)).append("\n");
     sb.append("    sourceIpIsQuarantined: ").append(toIndentedString(sourceIpIsQuarantined)).append("\n");

@@ -124,7 +124,7 @@ public class HashApi {
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
    * @param actorId ID of the actor performing the action being logged (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -136,8 +136,8 @@ public class HashApi {
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContent(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentWithHttpInfo(applicationId, action, actorId, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
+  public String getHashableContent(UUID applicationId, String action, String actorId, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentWithHttpInfo(applicationId, action, actorId, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
@@ -146,7 +146,7 @@ public class HashApi {
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param action The name of the action being logged (required)
    * @param actorId ID of the actor performing the action being logged (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -158,7 +158,7 @@ public class HashApi {
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentWithHttpInfo(UUID applicationId, String action, String actorId, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -198,8 +198,8 @@ public class HashApi {
     
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 
@@ -329,7 +329,7 @@ if (userPublicKey != null)
    * @param actorId ID of the actor performing the action being logged (required)
    * @param entityId When the event is about a particular model entity, you can set its ID here (required)
    * @param entityType When the event is about a particular model entity, you can set its type here (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -341,8 +341,8 @@ if (userPublicKey != null)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, auditLogEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
+  public String getHashableContentForStandardAction(UUID applicationId, String action, String actorId, String entityId, String entityType, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentForStandardActionWithHttpInfo(applicationId, action, actorId, entityId, entityType, logEntryType, signature, actorDepartment, actorDisplayName, actorRoles, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
@@ -353,7 +353,7 @@ if (userPublicKey != null)
    * @param actorId ID of the actor performing the action being logged (required)
    * @param entityId When the event is about a particular model entity, you can set its ID here (required)
    * @param entityType When the event is about a particular model entity, you can set its type here (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param actorDepartment actorDepartment (optional)
    * @param actorDisplayName Display name of the actor (e.g. a name, in case ID is not human-readable) (optional)
@@ -365,7 +365,7 @@ if (userPublicKey != null)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String auditLogEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentForStandardActionWithHttpInfo(UUID applicationId, String action, String actorId, String entityId, String entityType, String logEntryType, String signature, String actorDepartment, String actorDisplayName, List<String> actorRoles, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -417,8 +417,8 @@ if (userPublicKey != null)
     
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 
@@ -442,7 +442,7 @@ if (signature != null)
    * Get the content over which to compute the hash of a request without any additional metadata (including encrypted request bodies)
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
@@ -451,15 +451,15 @@ if (signature != null)
    * @return String
    * @throws ApiException if fails to make API call
    */
-  public String getHashableContentSimple(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
-    return getHashableContentSimpleWithHttpInfo(applicationId, auditLogEntryType, signature, details, logLevel, originalEventTimestamp, additionalParams).getData();
+  public String getHashableContentSimple(UUID applicationId, String logEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+    return getHashableContentSimpleWithHttpInfo(applicationId, logEntryType, signature, details, logLevel, originalEventTimestamp, additionalParams).getData();
       }
 
   /**
    * Get the content over which to compute the hash of a request without any additional metadata (including encrypted request bodies)
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param auditLogEntryType The type of the event (optional, default to BUSINESS_LOGIC_ENTRY)
+   * @param logEntryType Log-Entry-Type (optional, default to AUDIT_LOG)
    * @param signature Base64-encoded digital signature on the entry details (the request body) (optional)
    * @param details Any details in any format about the event that you want to store in the log (optional)
    * @param logLevel logLevel (optional)
@@ -468,7 +468,7 @@ if (signature != null)
    * @return ApiResponse&lt;String&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String auditLogEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
+  public ApiResponse<String> getHashableContentSimpleWithHttpInfo(UUID applicationId, String logEntryType, String signature, String details, String logLevel, Long originalEventTimestamp, Map<String, String> additionalParams) throws ApiException {
     Object localVarPostBody = details;
     
     // verify the required parameter 'applicationId' is set
@@ -493,8 +493,8 @@ if (signature != null)
     
     if (applicationId != null)
       localVarHeaderParams.put("Application-Id", apiClient.parameterToString(applicationId));
-if (auditLogEntryType != null)
-      localVarHeaderParams.put("Audit-Log-Entry-Type", apiClient.parameterToString(auditLogEntryType));
+if (logEntryType != null)
+      localVarHeaderParams.put("Log-Entry-Type", apiClient.parameterToString(logEntryType));
 if (signature != null)
       localVarHeaderParams.put("Signature", apiClient.parameterToString(signature));
 

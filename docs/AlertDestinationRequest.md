@@ -20,6 +20,8 @@ IFTTT | &quot;IFTTT&quot;
 ZAPIER | &quot;ZAPIER&quot;
 COMMAND | &quot;COMMAND&quot;
 PYTHON_SCRIPT | &quot;PYTHON_SCRIPT&quot;
+SMS | &quot;SMS&quot;
+FILE_PUSH | &quot;FILE_PUSH&quot;
 
 
 

@@ -27,6 +27,8 @@ Name | Value
 COUNT | &quot;COUNT&quot;
 AVG | &quot;AVG&quot;
 SUM | &quot;SUM&quot;
+MAX | &quot;MAX&quot;
+MIN | &quot;MIN&quot;
 
 
 <a name="ThresholdTypeEnum"></a>

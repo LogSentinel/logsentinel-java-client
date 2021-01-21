@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createSavedSearch"></a>
 # **createSavedSearch**
-> List&lt;SavedSearch&gt; createSavedSearch(end, name, page, pageSize, query, start)
+> List&lt;SavedSearch&gt; createSavedSearch(end, name, query, start)
 
 Creates saved search
 
@@ -34,12 +34,10 @@ basicAuth.setPassword("YOUR PASSWORD");
 SavedSearchesApi apiInstance = new SavedSearchesApi();
 Long end = 789L; // Long | end
 String name = "name_example"; // String | name
-Integer page = 56; // Integer | page
-Integer pageSize = 56; // Integer | pageSize
 String query = "query_example"; // String | query
 Long start = 789L; // Long | start
 try {
-    List<SavedSearch> result = apiInstance.createSavedSearch(end, name, page, pageSize, query, start);
+    List<SavedSearch> result = apiInstance.createSavedSearch(end, name, query, start);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SavedSearchesApi#createSavedSearch");
@@ -53,8 +51,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **end** | **Long**| end |
  **name** | **String**| name |
- **page** | **Integer**| page |
- **pageSize** | **Integer**| pageSize |
  **query** | **String**| query |
  **start** | **Long**| start |
 

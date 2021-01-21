@@ -49,6 +49,9 @@ public class Application {
   @JsonProperty("defaultAlertDestinations")
   private List<UUID> defaultAlertDestinations = null;
 
+  @JsonProperty("description")
+  private String description = null;
+
   @JsonProperty("detailsTransformationScript")
   private String detailsTransformationScript = null;
 
@@ -66,6 +69,9 @@ public class Application {
 
   @JsonProperty("genesisEntryId")
   private UUID genesisEntryId = null;
+
+  @JsonProperty("groupIds")
+  private List<UUID> groupIds = null;
 
   @JsonProperty("id")
   private UUID id = null;
@@ -130,8 +136,11 @@ public class Application {
   @JsonProperty("propertiesForIdenticalEntries")
   private List<String> propertiesForIdenticalEntries = null;
 
-  @JsonProperty("retentionMonths")
-  private Integer retentionMonths = null;
+  @JsonProperty("retentionDays")
+  private Integer retentionDays = null;
+
+  @JsonProperty("riskLevel")
+  private Integer riskLevel = null;
 
   @JsonProperty("signatureVerificationPublicKeys")
   private List<String> signatureVerificationPublicKeys = null;
@@ -379,6 +388,24 @@ public class Application {
     this.defaultAlertDestinations = defaultAlertDestinations;
   }
 
+  public Application description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @ApiModelProperty(value = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
   public Application detailsTransformationScript(String detailsTransformationScript) {
     this.detailsTransformationScript = detailsTransformationScript;
     return this;
@@ -493,6 +520,32 @@ public class Application {
 
   public void setGenesisEntryId(UUID genesisEntryId) {
     this.genesisEntryId = genesisEntryId;
+  }
+
+  public Application groupIds(List<UUID> groupIds) {
+    this.groupIds = groupIds;
+    return this;
+  }
+
+  public Application addGroupIdsItem(UUID groupIdsItem) {
+    if (this.groupIds == null) {
+      this.groupIds = new ArrayList<>();
+    }
+    this.groupIds.add(groupIdsItem);
+    return this;
+  }
+
+   /**
+   * Get groupIds
+   * @return groupIds
+  **/
+  @ApiModelProperty(value = "")
+  public List<UUID> getGroupIds() {
+    return groupIds;
+  }
+
+  public void setGroupIds(List<UUID> groupIds) {
+    this.groupIds = groupIds;
   }
 
   public Application id(UUID id) {
@@ -929,22 +982,40 @@ public class Application {
     this.propertiesForIdenticalEntries = propertiesForIdenticalEntries;
   }
 
-  public Application retentionMonths(Integer retentionMonths) {
-    this.retentionMonths = retentionMonths;
+  public Application retentionDays(Integer retentionDays) {
+    this.retentionDays = retentionDays;
     return this;
   }
 
    /**
-   * Get retentionMonths
-   * @return retentionMonths
+   * Get retentionDays
+   * @return retentionDays
   **/
   @ApiModelProperty(value = "")
-  public Integer getRetentionMonths() {
-    return retentionMonths;
+  public Integer getRetentionDays() {
+    return retentionDays;
   }
 
-  public void setRetentionMonths(Integer retentionMonths) {
-    this.retentionMonths = retentionMonths;
+  public void setRetentionDays(Integer retentionDays) {
+    this.retentionDays = retentionDays;
+  }
+
+  public Application riskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
+    return this;
+  }
+
+   /**
+   * Get riskLevel
+   * @return riskLevel
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getRiskLevel() {
+    return riskLevel;
+  }
+
+  public void setRiskLevel(Integer riskLevel) {
+    this.riskLevel = riskLevel;
   }
 
   public Application signatureVerificationPublicKeys(List<String> signatureVerificationPublicKeys) {
@@ -1122,12 +1193,14 @@ public class Application {
         Objects.equals(this.created, application.created) &&
         Objects.equals(this.dataMaskingPatterns, application.dataMaskingPatterns) &&
         Objects.equals(this.defaultAlertDestinations, application.defaultAlertDestinations) &&
+        Objects.equals(this.description, application.description) &&
         Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
         Objects.equals(this.disabledThreatFeeds, application.disabledThreatFeeds) &&
         Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
         Objects.equals(this.generateHashChain, application.generateHashChain) &&
         Objects.equals(this.generateMerkleTree, application.generateMerkleTree) &&
         Objects.equals(this.genesisEntryId, application.genesisEntryId) &&
+        Objects.equals(this.groupIds, application.groupIds) &&
         Objects.equals(this.id, application.id) &&
         Objects.equals(this.ipWhiteList, application.ipWhiteList) &&
         Objects.equals(this.lastMerkleTreeGenerationTimestamp, application.lastMerkleTreeGenerationTimestamp) &&
@@ -1149,7 +1222,8 @@ public class Application {
         Objects.equals(this.partialVerificationPeriodMinutes, application.partialVerificationPeriodMinutes) &&
         Objects.equals(this.performVerification, application.performVerification) &&
         Objects.equals(this.propertiesForIdenticalEntries, application.propertiesForIdenticalEntries) &&
-        Objects.equals(this.retentionMonths, application.retentionMonths) &&
+        Objects.equals(this.retentionDays, application.retentionDays) &&
+        Objects.equals(this.riskLevel, application.riskLevel) &&
         Objects.equals(this.signatureVerificationPublicKeys, application.signatureVerificationPublicKeys) &&
         Objects.equals(this.sourceCategory, application.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
@@ -1162,7 +1236,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, genesisEntryId, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionMonths, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1176,12 +1250,14 @@ public class Application {
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    dataMaskingPatterns: ").append(toIndentedString(dataMaskingPatterns)).append("\n");
     sb.append("    defaultAlertDestinations: ").append(toIndentedString(defaultAlertDestinations)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    disabledThreatFeeds: ").append(toIndentedString(disabledThreatFeeds)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
     sb.append("    generateHashChain: ").append(toIndentedString(generateHashChain)).append("\n");
     sb.append("    generateMerkleTree: ").append(toIndentedString(generateMerkleTree)).append("\n");
     sb.append("    genesisEntryId: ").append(toIndentedString(genesisEntryId)).append("\n");
+    sb.append("    groupIds: ").append(toIndentedString(groupIds)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ipWhiteList: ").append(toIndentedString(ipWhiteList)).append("\n");
     sb.append("    lastMerkleTreeGenerationTimestamp: ").append(toIndentedString(lastMerkleTreeGenerationTimestamp)).append("\n");
@@ -1203,7 +1279,8 @@ public class Application {
     sb.append("    partialVerificationPeriodMinutes: ").append(toIndentedString(partialVerificationPeriodMinutes)).append("\n");
     sb.append("    performVerification: ").append(toIndentedString(performVerification)).append("\n");
     sb.append("    propertiesForIdenticalEntries: ").append(toIndentedString(propertiesForIdenticalEntries)).append("\n");
-    sb.append("    retentionMonths: ").append(toIndentedString(retentionMonths)).append("\n");
+    sb.append("    retentionDays: ").append(toIndentedString(retentionDays)).append("\n");
+    sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");

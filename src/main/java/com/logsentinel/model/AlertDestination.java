@@ -44,6 +44,48 @@ public class AlertDestination {
   @JsonProperty("customHeaders")
   private List<String> customHeaders = null;
 
+  /**
+   * Gets or Sets filePushTarget
+   */
+  public enum FilePushTargetEnum {
+    LOCAL("LOCAL"),
+    
+    FTP("FTP"),
+    
+    SCP("SCP"),
+    
+    S3("S3");
+
+    private String value;
+
+    FilePushTargetEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static FilePushTargetEnum fromValue(String text) {
+      for (FilePushTargetEnum b : FilePushTargetEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("filePushTarget")
+  private FilePushTargetEnum filePushTarget = null;
+
   @JsonProperty("id")
   private UUID id = null;
 
@@ -78,7 +120,11 @@ public class AlertDestination {
     
     COMMAND("COMMAND"),
     
-    PYTHON_SCRIPT("PYTHON_SCRIPT");
+    PYTHON_SCRIPT("PYTHON_SCRIPT"),
+    
+    SMS("SMS"),
+    
+    FILE_PUSH("FILE_PUSH");
 
     private String value;
 
@@ -199,6 +245,24 @@ public class AlertDestination {
 
   public void setCustomHeaders(List<String> customHeaders) {
     this.customHeaders = customHeaders;
+  }
+
+  public AlertDestination filePushTarget(FilePushTargetEnum filePushTarget) {
+    this.filePushTarget = filePushTarget;
+    return this;
+  }
+
+   /**
+   * Get filePushTarget
+   * @return filePushTarget
+  **/
+  @ApiModelProperty(value = "")
+  public FilePushTargetEnum getFilePushTarget() {
+    return filePushTarget;
+  }
+
+  public void setFilePushTarget(FilePushTargetEnum filePushTarget) {
+    this.filePushTarget = filePushTarget;
   }
 
   public AlertDestination id(UUID id) {
@@ -375,6 +439,7 @@ public class AlertDestination {
         Objects.equals(this.code, alertDestination.code) &&
         Objects.equals(this.created, alertDestination.created) &&
         Objects.equals(this.customHeaders, alertDestination.customHeaders) &&
+        Objects.equals(this.filePushTarget, alertDestination.filePushTarget) &&
         Objects.equals(this.id, alertDestination.id) &&
         Objects.equals(this.manualAfterTriage, alertDestination.manualAfterTriage) &&
         Objects.equals(this.name, alertDestination.name) &&
@@ -387,7 +452,7 @@ public class AlertDestination {
 
   @Override
   public int hashCode() {
-    return Objects.hash(automatedResponseSpecs, code, created, customHeaders, id, manualAfterTriage, name, organizationId, recipients, recipientsNames, type, updated);
+    return Objects.hash(automatedResponseSpecs, code, created, customHeaders, filePushTarget, id, manualAfterTriage, name, organizationId, recipients, recipientsNames, type, updated);
   }
 
 
@@ -400,6 +465,7 @@ public class AlertDestination {
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    customHeaders: ").append(toIndentedString(customHeaders)).append("\n");
+    sb.append("    filePushTarget: ").append(toIndentedString(filePushTarget)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    manualAfterTriage: ").append(toIndentedString(manualAfterTriage)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

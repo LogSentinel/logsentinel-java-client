@@ -20,23 +20,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * IPDetails
  */
 
 public class IPDetails {
-  @JsonProperty("badDomainScore")
-  private String badDomainScore = null;
-
-  @JsonProperty("badIpBlacklists")
-  private List<String> badIpBlacklists = null;
-
-  @JsonProperty("badIpScore")
-  private String badIpScore = null;
-
   @JsonProperty("city")
   private String city = null;
 
@@ -45,9 +34,6 @@ public class IPDetails {
 
   @JsonProperty("countryNamesEn")
   private String countryNamesEn = null;
-
-  @JsonProperty("historyScore")
-  private String historyScore = null;
 
   @JsonProperty("hostname")
   private String hostname = null;
@@ -63,80 +49,6 @@ public class IPDetails {
 
   @JsonProperty("region")
   private String region = null;
-
-  @JsonProperty("score")
-  private String score = null;
-
-  @JsonProperty("sourceIpBlacklist")
-  private List<String> sourceIpBlacklist = null;
-
-  @JsonProperty("sourceIpIsQuarantined")
-  private String sourceIpIsQuarantined = null;
-
-  @JsonProperty("sourceIpScore")
-  private String sourceIpScore = null;
-
-  public IPDetails badDomainScore(String badDomainScore) {
-    this.badDomainScore = badDomainScore;
-    return this;
-  }
-
-   /**
-   * Get badDomainScore
-   * @return badDomainScore
-  **/
-  @ApiModelProperty(value = "")
-  public String getBadDomainScore() {
-    return badDomainScore;
-  }
-
-  public void setBadDomainScore(String badDomainScore) {
-    this.badDomainScore = badDomainScore;
-  }
-
-  public IPDetails badIpBlacklists(List<String> badIpBlacklists) {
-    this.badIpBlacklists = badIpBlacklists;
-    return this;
-  }
-
-  public IPDetails addBadIpBlacklistsItem(String badIpBlacklistsItem) {
-    if (this.badIpBlacklists == null) {
-      this.badIpBlacklists = new ArrayList<>();
-    }
-    this.badIpBlacklists.add(badIpBlacklistsItem);
-    return this;
-  }
-
-   /**
-   * Get badIpBlacklists
-   * @return badIpBlacklists
-  **/
-  @ApiModelProperty(value = "")
-  public List<String> getBadIpBlacklists() {
-    return badIpBlacklists;
-  }
-
-  public void setBadIpBlacklists(List<String> badIpBlacklists) {
-    this.badIpBlacklists = badIpBlacklists;
-  }
-
-  public IPDetails badIpScore(String badIpScore) {
-    this.badIpScore = badIpScore;
-    return this;
-  }
-
-   /**
-   * Get badIpScore
-   * @return badIpScore
-  **/
-  @ApiModelProperty(value = "")
-  public String getBadIpScore() {
-    return badIpScore;
-  }
-
-  public void setBadIpScore(String badIpScore) {
-    this.badIpScore = badIpScore;
-  }
 
   public IPDetails city(String city) {
     this.city = city;
@@ -190,24 +102,6 @@ public class IPDetails {
 
   public void setCountryNamesEn(String countryNamesEn) {
     this.countryNamesEn = countryNamesEn;
-  }
-
-  public IPDetails historyScore(String historyScore) {
-    this.historyScore = historyScore;
-    return this;
-  }
-
-   /**
-   * Get historyScore
-   * @return historyScore
-  **/
-  @ApiModelProperty(value = "")
-  public String getHistoryScore() {
-    return historyScore;
-  }
-
-  public void setHistoryScore(String historyScore) {
-    this.historyScore = historyScore;
   }
 
   public IPDetails hostname(String hostname) {
@@ -300,86 +194,6 @@ public class IPDetails {
     this.region = region;
   }
 
-  public IPDetails score(String score) {
-    this.score = score;
-    return this;
-  }
-
-   /**
-   * Get score
-   * @return score
-  **/
-  @ApiModelProperty(value = "")
-  public String getScore() {
-    return score;
-  }
-
-  public void setScore(String score) {
-    this.score = score;
-  }
-
-  public IPDetails sourceIpBlacklist(List<String> sourceIpBlacklist) {
-    this.sourceIpBlacklist = sourceIpBlacklist;
-    return this;
-  }
-
-  public IPDetails addSourceIpBlacklistItem(String sourceIpBlacklistItem) {
-    if (this.sourceIpBlacklist == null) {
-      this.sourceIpBlacklist = new ArrayList<>();
-    }
-    this.sourceIpBlacklist.add(sourceIpBlacklistItem);
-    return this;
-  }
-
-   /**
-   * Get sourceIpBlacklist
-   * @return sourceIpBlacklist
-  **/
-  @ApiModelProperty(value = "")
-  public List<String> getSourceIpBlacklist() {
-    return sourceIpBlacklist;
-  }
-
-  public void setSourceIpBlacklist(List<String> sourceIpBlacklist) {
-    this.sourceIpBlacklist = sourceIpBlacklist;
-  }
-
-  public IPDetails sourceIpIsQuarantined(String sourceIpIsQuarantined) {
-    this.sourceIpIsQuarantined = sourceIpIsQuarantined;
-    return this;
-  }
-
-   /**
-   * Get sourceIpIsQuarantined
-   * @return sourceIpIsQuarantined
-  **/
-  @ApiModelProperty(value = "")
-  public String getSourceIpIsQuarantined() {
-    return sourceIpIsQuarantined;
-  }
-
-  public void setSourceIpIsQuarantined(String sourceIpIsQuarantined) {
-    this.sourceIpIsQuarantined = sourceIpIsQuarantined;
-  }
-
-  public IPDetails sourceIpScore(String sourceIpScore) {
-    this.sourceIpScore = sourceIpScore;
-    return this;
-  }
-
-   /**
-   * Get sourceIpScore
-   * @return sourceIpScore
-  **/
-  @ApiModelProperty(value = "")
-  public String getSourceIpScore() {
-    return sourceIpScore;
-  }
-
-  public void setSourceIpScore(String sourceIpScore) {
-    this.sourceIpScore = sourceIpScore;
-  }
-
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -390,27 +204,19 @@ public class IPDetails {
       return false;
     }
     IPDetails ipDetails = (IPDetails) o;
-    return Objects.equals(this.badDomainScore, ipDetails.badDomainScore) &&
-        Objects.equals(this.badIpBlacklists, ipDetails.badIpBlacklists) &&
-        Objects.equals(this.badIpScore, ipDetails.badIpScore) &&
-        Objects.equals(this.city, ipDetails.city) &&
+    return Objects.equals(this.city, ipDetails.city) &&
         Objects.equals(this.country, ipDetails.country) &&
         Objects.equals(this.countryNamesEn, ipDetails.countryNamesEn) &&
-        Objects.equals(this.historyScore, ipDetails.historyScore) &&
         Objects.equals(this.hostname, ipDetails.hostname) &&
         Objects.equals(this.ipAddress, ipDetails.ipAddress) &&
         Objects.equals(this.latitude, ipDetails.latitude) &&
         Objects.equals(this.longitude, ipDetails.longitude) &&
-        Objects.equals(this.region, ipDetails.region) &&
-        Objects.equals(this.score, ipDetails.score) &&
-        Objects.equals(this.sourceIpBlacklist, ipDetails.sourceIpBlacklist) &&
-        Objects.equals(this.sourceIpIsQuarantined, ipDetails.sourceIpIsQuarantined) &&
-        Objects.equals(this.sourceIpScore, ipDetails.sourceIpScore);
+        Objects.equals(this.region, ipDetails.region);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(badDomainScore, badIpBlacklists, badIpScore, city, country, countryNamesEn, historyScore, hostname, ipAddress, latitude, longitude, region, score, sourceIpBlacklist, sourceIpIsQuarantined, sourceIpScore);
+    return Objects.hash(city, country, countryNamesEn, hostname, ipAddress, latitude, longitude, region);
   }
 
 
@@ -419,22 +225,14 @@ public class IPDetails {
     StringBuilder sb = new StringBuilder();
     sb.append("class IPDetails {\n");
     
-    sb.append("    badDomainScore: ").append(toIndentedString(badDomainScore)).append("\n");
-    sb.append("    badIpBlacklists: ").append(toIndentedString(badIpBlacklists)).append("\n");
-    sb.append("    badIpScore: ").append(toIndentedString(badIpScore)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    country: ").append(toIndentedString(country)).append("\n");
     sb.append("    countryNamesEn: ").append(toIndentedString(countryNamesEn)).append("\n");
-    sb.append("    historyScore: ").append(toIndentedString(historyScore)).append("\n");
     sb.append("    hostname: ").append(toIndentedString(hostname)).append("\n");
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    latitude: ").append(toIndentedString(latitude)).append("\n");
     sb.append("    longitude: ").append(toIndentedString(longitude)).append("\n");
     sb.append("    region: ").append(toIndentedString(region)).append("\n");
-    sb.append("    score: ").append(toIndentedString(score)).append("\n");
-    sb.append("    sourceIpBlacklist: ").append(toIndentedString(sourceIpBlacklist)).append("\n");
-    sb.append("    sourceIpIsQuarantined: ").append(toIndentedString(sourceIpIsQuarantined)).append("\n");
-    sb.append("    sourceIpScore: ").append(toIndentedString(sourceIpScore)).append("\n");
     sb.append("}");
     return sb.toString();
   }

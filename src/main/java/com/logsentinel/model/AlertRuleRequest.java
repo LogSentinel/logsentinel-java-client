@@ -40,7 +40,11 @@ public class AlertRuleRequest {
     
     AVG("AVG"),
     
-    SUM("SUM");
+    SUM("SUM"),
+    
+    MAX("MAX"),
+    
+    MIN("MIN");
 
     private String value;
 

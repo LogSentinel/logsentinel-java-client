@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **code** | **String** |  |  [optional]
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **customHeaders** | **List&lt;String&gt;** |  |  [optional]
+**filePushTarget** | [**FilePushTargetEnum**](#FilePushTargetEnum) |  |  [optional]
 **id** | [**UUID**](UUID.md) |  |  [optional]
 **manualAfterTriage** | **Boolean** |  |  [optional]
 **name** | **String** |  |  [optional]
@@ -16,6 +17,16 @@ Name | Type | Description | Notes
 **recipientsNames** | **List&lt;String&gt;** |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 **updated** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+
+
+<a name="FilePushTargetEnum"></a>
+## Enum: FilePushTargetEnum
+Name | Value
+---- | -----
+LOCAL | &quot;LOCAL&quot;
+FTP | &quot;FTP&quot;
+SCP | &quot;SCP&quot;
+S3 | &quot;S3&quot;
 
 
 <a name="TypeEnum"></a>
@@ -29,6 +40,8 @@ IFTTT | &quot;IFTTT&quot;
 ZAPIER | &quot;ZAPIER&quot;
 COMMAND | &quot;COMMAND&quot;
 PYTHON_SCRIPT | &quot;PYTHON_SCRIPT&quot;
+SMS | &quot;SMS&quot;
+FILE_PUSH | &quot;FILE_PUSH&quot;
 
 
 

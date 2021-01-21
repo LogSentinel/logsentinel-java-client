@@ -49,7 +49,7 @@ public class SavedSearchesApiTest {
         Integer pageSize = null;
         String query = null;
         Long start = null;
-        List<SavedSearch> response = api.createSavedSearch(end, name, page, pageSize, query, start);
+        List<SavedSearch> response = api.createSavedSearch(end, name, query, start);
 
         // TODO: test validations
     }

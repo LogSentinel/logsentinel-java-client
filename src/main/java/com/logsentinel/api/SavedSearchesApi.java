@@ -41,15 +41,13 @@ public class SavedSearchesApi {
    * 
    * @param end end (required)
    * @param name name (required)
-   * @param page page (required)
-   * @param pageSize pageSize (required)
    * @param query query (required)
    * @param start start (required)
    * @return List&lt;SavedSearch&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<SavedSearch> createSavedSearch(Long end, String name, Integer page, Integer pageSize, String query, Long start) throws ApiException {
-    return createSavedSearchWithHttpInfo(end, name, page, pageSize, query, start).getData();
+  public List<SavedSearch> createSavedSearch(Long end, String name, String query, Long start) throws ApiException {
+    return createSavedSearchWithHttpInfo(end, name, query, start).getData();
       }
 
   /**
@@ -57,14 +55,12 @@ public class SavedSearchesApi {
    * 
    * @param end end (required)
    * @param name name (required)
-   * @param page page (required)
-   * @param pageSize pageSize (required)
    * @param query query (required)
    * @param start start (required)
    * @return ApiResponse&lt;List&lt;SavedSearch&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<SavedSearch>> createSavedSearchWithHttpInfo(Long end, String name, Integer page, Integer pageSize, String query, Long start) throws ApiException {
+  public ApiResponse<List<SavedSearch>> createSavedSearchWithHttpInfo(Long end, String name, String query, Long start) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'end' is set
@@ -75,16 +71,6 @@ public class SavedSearchesApi {
     // verify the required parameter 'name' is set
     if (name == null) {
       throw new ApiException(400, "Missing the required parameter 'name' when calling createSavedSearch");
-    }
-    
-    // verify the required parameter 'page' is set
-    if (page == null) {
-      throw new ApiException(400, "Missing the required parameter 'page' when calling createSavedSearch");
-    }
-    
-    // verify the required parameter 'pageSize' is set
-    if (pageSize == null) {
-      throw new ApiException(400, "Missing the required parameter 'pageSize' when calling createSavedSearch");
     }
     
     // verify the required parameter 'query' is set
@@ -107,8 +93,6 @@ public class SavedSearchesApi {
 
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "end", end));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "name", name));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "page", page));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "pageSize", pageSize));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "query", query));
     localVarQueryParams.addAll(apiClient.parameterToPairs("", "start", start));
 

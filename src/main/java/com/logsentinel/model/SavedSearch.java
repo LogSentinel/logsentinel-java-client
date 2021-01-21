@@ -45,11 +45,8 @@ public class SavedSearch {
   @JsonProperty("name")
   private String name = null;
 
-  @JsonProperty("page")
-  private Integer page = null;
-
-  @JsonProperty("pageSize")
-  private Integer pageSize = null;
+  @JsonProperty("organizationId")
+  private UUID organizationId = null;
 
   @JsonProperty("query")
   private String query = null;
@@ -164,40 +161,22 @@ public class SavedSearch {
     this.name = name;
   }
 
-  public SavedSearch page(Integer page) {
-    this.page = page;
+  public SavedSearch organizationId(UUID organizationId) {
+    this.organizationId = organizationId;
     return this;
   }
 
    /**
-   * Get page
-   * @return page
+   * Get organizationId
+   * @return organizationId
   **/
   @ApiModelProperty(value = "")
-  public Integer getPage() {
-    return page;
+  public UUID getOrganizationId() {
+    return organizationId;
   }
 
-  public void setPage(Integer page) {
-    this.page = page;
-  }
-
-  public SavedSearch pageSize(Integer pageSize) {
-    this.pageSize = pageSize;
-    return this;
-  }
-
-   /**
-   * Get pageSize
-   * @return pageSize
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getPageSize() {
-    return pageSize;
-  }
-
-  public void setPageSize(Integer pageSize) {
-    this.pageSize = pageSize;
+  public void setOrganizationId(UUID organizationId) {
+    this.organizationId = organizationId;
   }
 
   public SavedSearch query(String query) {
@@ -305,8 +284,7 @@ public class SavedSearch {
         Objects.equals(this.end, savedSearch.end) &&
         Objects.equals(this.id, savedSearch.id) &&
         Objects.equals(this.name, savedSearch.name) &&
-        Objects.equals(this.page, savedSearch.page) &&
-        Objects.equals(this.pageSize, savedSearch.pageSize) &&
+        Objects.equals(this.organizationId, savedSearch.organizationId) &&
         Objects.equals(this.query, savedSearch.query) &&
         Objects.equals(this.relativePeriod, savedSearch.relativePeriod) &&
         Objects.equals(this.start, savedSearch.start) &&
@@ -316,7 +294,7 @@ public class SavedSearch {
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationIds, created, end, id, name, page, pageSize, query, relativePeriod, start, updated, userId);
+    return Objects.hash(applicationIds, created, end, id, name, organizationId, query, relativePeriod, start, updated, userId);
   }
 
 
@@ -330,8 +308,7 @@ public class SavedSearch {
     sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    page: ").append(toIndentedString(page)).append("\n");
-    sb.append("    pageSize: ").append(toIndentedString(pageSize)).append("\n");
+    sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    query: ").append(toIndentedString(query)).append("\n");
     sb.append("    relativePeriod: ").append(toIndentedString(relativePeriod)).append("\n");
     sb.append("    start: ").append(toIndentedString(start)).append("\n");

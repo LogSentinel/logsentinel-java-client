@@ -50,7 +50,11 @@ public class AlertDestinationRequest {
     
     COMMAND("COMMAND"),
     
-    PYTHON_SCRIPT("PYTHON_SCRIPT");
+    PYTHON_SCRIPT("PYTHON_SCRIPT"),
+    
+    SMS("SMS"),
+    
+    FILE_PUSH("FILE_PUSH");
 
     private String value;
 

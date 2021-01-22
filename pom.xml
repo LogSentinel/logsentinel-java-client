@@ -396,7 +396,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <java.version>8</java.version>
+        <java.version>9</java.version>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <swagger-core-version>1.5.12</swagger-core-version>

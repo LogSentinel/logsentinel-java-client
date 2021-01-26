@@ -8,7 +8,8 @@ import com.logsentinel.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import java.util.UUID;
+import com.logsentinel.model.CollectorMetadataDto;
+import com.logsentinel.model.CollectorStatusDto;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,22 +39,27 @@ public class CollectorApi {
   /**
    * Invoked during Collector&#39;s operation. Publish statistics for (some of) collector&#39;s Agent(s)
    * 
-   * @param collectorId collectorId (optional)
+   * @param metadata metadata (required)
    * @throws ApiException if fails to make API call
    */
-  public void sendStatistics(UUID collectorId) throws ApiException {
+  public void sendStatistics(CollectorMetadataDto metadata) throws ApiException {
 
-    sendStatisticsWithHttpInfo(collectorId);
+    sendStatisticsWithHttpInfo(metadata);
   }
 
   /**
    * Invoked during Collector&#39;s operation. Publish statistics for (some of) collector&#39;s Agent(s)
    * 
-   * @param collectorId collectorId (optional)
+   * @param metadata metadata (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> sendStatisticsWithHttpInfo(UUID collectorId) throws ApiException {
-    Object localVarPostBody = null;
+  public ApiResponse<Void> sendStatisticsWithHttpInfo(CollectorMetadataDto metadata) throws ApiException {
+    Object localVarPostBody = metadata;
+    
+    // verify the required parameter 'metadata' is set
+    if (metadata == null) {
+      throw new ApiException(400, "Missing the required parameter 'metadata' when calling sendStatistics");
+    }
     
     // create path and map variables
     String localVarPath = "/api/collector/sendStatistics";
@@ -63,12 +69,11 @@ public class CollectorApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "collectorId", collectorId));
 
     
     
     final String[] localVarAccepts = {
-      "*/*"
+      "*/*", "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -85,34 +90,27 @@ public class CollectorApi {
   /**
    * Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
    * 
-   * @param collectorId collectorId (optional)
-   * @param info0AdditionalMessage  (optional)
-   * @param info0ConnectorId  (optional)
-   * @param info0ConnectorName  (optional)
-   * @param info0DataSourceIds  (optional)
-   * @param info0NewlyCreated  (optional)
-   * @param info0Status  (optional)
+   * @param data data (required)
    * @throws ApiException if fails to make API call
    */
-  public void sysInit(UUID collectorId, String info0AdditionalMessage, String info0ConnectorId, String info0ConnectorName, List<String> info0DataSourceIds, Boolean info0NewlyCreated, String info0Status) throws ApiException {
+  public void sysInit(CollectorStatusDto data) throws ApiException {
 
-    sysInitWithHttpInfo(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+    sysInitWithHttpInfo(data);
   }
 
   /**
    * Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
    * 
-   * @param collectorId collectorId (optional)
-   * @param info0AdditionalMessage  (optional)
-   * @param info0ConnectorId  (optional)
-   * @param info0ConnectorName  (optional)
-   * @param info0DataSourceIds  (optional)
-   * @param info0NewlyCreated  (optional)
-   * @param info0Status  (optional)
+   * @param data data (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> sysInitWithHttpInfo(UUID collectorId, String info0AdditionalMessage, String info0ConnectorId, String info0ConnectorName, List<String> info0DataSourceIds, Boolean info0NewlyCreated, String info0Status) throws ApiException {
-    Object localVarPostBody = null;
+  public ApiResponse<Void> sysInitWithHttpInfo(CollectorStatusDto data) throws ApiException {
+    Object localVarPostBody = data;
+    
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      throw new ApiException(400, "Missing the required parameter 'data' when calling sysInit");
+    }
     
     // create path and map variables
     String localVarPath = "/api/collector/sysInit";
@@ -122,18 +120,11 @@ public class CollectorApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "collectorId", collectorId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].additionalMessage", info0AdditionalMessage));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].connectorId", info0ConnectorId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].connectorName", info0ConnectorName));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "info[0].dataSourceIds", info0DataSourceIds));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].newlyCreated", info0NewlyCreated));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].status", info0Status));
 
     
     
     final String[] localVarAccepts = {
-      "*/*"
+      "*/*", "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -150,34 +141,27 @@ public class CollectorApi {
   /**
    * Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
    * 
-   * @param collectorId collectorId (optional)
-   * @param info0AdditionalMessage  (optional)
-   * @param info0ConnectorId  (optional)
-   * @param info0ConnectorName  (optional)
-   * @param info0DataSourceIds  (optional)
-   * @param info0NewlyCreated  (optional)
-   * @param info0Status  (optional)
+   * @param data data (required)
    * @throws ApiException if fails to make API call
    */
-  public void updateStatus(UUID collectorId, String info0AdditionalMessage, String info0ConnectorId, String info0ConnectorName, List<String> info0DataSourceIds, Boolean info0NewlyCreated, String info0Status) throws ApiException {
+  public void updateStatus(CollectorStatusDto data) throws ApiException {
 
-    updateStatusWithHttpInfo(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+    updateStatusWithHttpInfo(data);
   }
 
   /**
    * Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
    * 
-   * @param collectorId collectorId (optional)
-   * @param info0AdditionalMessage  (optional)
-   * @param info0ConnectorId  (optional)
-   * @param info0ConnectorName  (optional)
-   * @param info0DataSourceIds  (optional)
-   * @param info0NewlyCreated  (optional)
-   * @param info0Status  (optional)
+   * @param data data (required)
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateStatusWithHttpInfo(UUID collectorId, String info0AdditionalMessage, String info0ConnectorId, String info0ConnectorName, List<String> info0DataSourceIds, Boolean info0NewlyCreated, String info0Status) throws ApiException {
-    Object localVarPostBody = null;
+  public ApiResponse<Void> updateStatusWithHttpInfo(CollectorStatusDto data) throws ApiException {
+    Object localVarPostBody = data;
+    
+    // verify the required parameter 'data' is set
+    if (data == null) {
+      throw new ApiException(400, "Missing the required parameter 'data' when calling updateStatus");
+    }
     
     // create path and map variables
     String localVarPath = "/api/collector/updateStatus";
@@ -187,18 +171,11 @@ public class CollectorApi {
     Map<String, String> localVarHeaderParams = new HashMap<String, String>();
     Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "collectorId", collectorId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].additionalMessage", info0AdditionalMessage));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].connectorId", info0ConnectorId));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].connectorName", info0ConnectorName));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("multi", "info[0].dataSourceIds", info0DataSourceIds));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].newlyCreated", info0NewlyCreated));
-    localVarQueryParams.addAll(apiClient.parameterToPairs("", "info[0].status", info0Status));
 
     
     
     final String[] localVarAccepts = {
-      "*/*"
+      "*/*", "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 

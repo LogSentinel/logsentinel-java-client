@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="sendStatistics"></a>
 # **sendStatistics**
-> sendStatistics(collectorId)
+> sendStatistics(metadata)
 
 Invoked during Collector&#39;s operation. Publish statistics for (some of) collector&#39;s Agent(s)
 
@@ -32,9 +32,9 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 CollectorApi apiInstance = new CollectorApi();
-UUID collectorId = new UUID(); // UUID | collectorId
+CollectorMetadataDto metadata = new CollectorMetadataDto(); // CollectorMetadataDto | metadata
 try {
-    apiInstance.sendStatistics(collectorId);
+    apiInstance.sendStatistics(metadata);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectorApi#sendStatistics");
     e.printStackTrace();
@@ -45,7 +45,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectorId** | [**UUID**](.md)| collectorId | [optional]
+ **metadata** | [**CollectorMetadataDto**](CollectorMetadataDto.md)| metadata |
 
 ### Return type
 
@@ -58,11 +58,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 <a name="sysInit"></a>
 # **sysInit**
-> sysInit(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status)
+> sysInit(data)
 
 Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
 
@@ -83,15 +83,9 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 CollectorApi apiInstance = new CollectorApi();
-UUID collectorId = new UUID(); // UUID | collectorId
-String info0AdditionalMessage = "info0AdditionalMessage_example"; // String | 
-String info0ConnectorId = "info0ConnectorId_example"; // String | 
-String info0ConnectorName = "info0ConnectorName_example"; // String | 
-List<String> info0DataSourceIds = Arrays.asList("info0DataSourceIds_example"); // List<String> | 
-Boolean info0NewlyCreated = true; // Boolean | 
-String info0Status = "info0Status_example"; // String | 
+CollectorStatusDto data = new CollectorStatusDto(); // CollectorStatusDto | data
 try {
-    apiInstance.sysInit(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+    apiInstance.sysInit(data);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectorApi#sysInit");
     e.printStackTrace();
@@ -102,13 +96,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectorId** | [**UUID**](.md)| collectorId | [optional]
- **info0AdditionalMessage** | **String**|  | [optional]
- **info0ConnectorId** | **String**|  | [optional]
- **info0ConnectorName** | **String**|  | [optional]
- **info0DataSourceIds** | [**List&lt;String&gt;**](String.md)|  | [optional]
- **info0NewlyCreated** | **Boolean**|  | [optional]
- **info0Status** | **String**|  | [optional] [enum: SYS_INIT, STARTUP, UP, SOME_ISSUES, SEVERE_ERROR, SHUTDOWN, DOWN]
+ **data** | [**CollectorStatusDto**](CollectorStatusDto.md)| data |
 
 ### Return type
 
@@ -121,11 +109,11 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 
 <a name="updateStatus"></a>
 # **updateStatus**
-> updateStatus(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status)
+> updateStatus(data)
 
 Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
 
@@ -146,15 +134,9 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 CollectorApi apiInstance = new CollectorApi();
-UUID collectorId = new UUID(); // UUID | collectorId
-String info0AdditionalMessage = "info0AdditionalMessage_example"; // String | 
-String info0ConnectorId = "info0ConnectorId_example"; // String | 
-String info0ConnectorName = "info0ConnectorName_example"; // String | 
-List<String> info0DataSourceIds = Arrays.asList("info0DataSourceIds_example"); // List<String> | 
-Boolean info0NewlyCreated = true; // Boolean | 
-String info0Status = "info0Status_example"; // String | 
+CollectorStatusDto data = new CollectorStatusDto(); // CollectorStatusDto | data
 try {
-    apiInstance.updateStatus(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+    apiInstance.updateStatus(data);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectorApi#updateStatus");
     e.printStackTrace();
@@ -165,13 +147,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectorId** | [**UUID**](.md)| collectorId | [optional]
- **info0AdditionalMessage** | **String**|  | [optional]
- **info0ConnectorId** | **String**|  | [optional]
- **info0ConnectorName** | **String**|  | [optional]
- **info0DataSourceIds** | [**List&lt;String&gt;**](String.md)|  | [optional]
- **info0NewlyCreated** | **Boolean**|  | [optional]
- **info0Status** | **String**|  | [optional] [enum: SYS_INIT, STARTUP, UP, SOME_ISSUES, SEVERE_ERROR, SHUTDOWN, DOWN]
+ **data** | [**CollectorStatusDto**](CollectorStatusDto.md)| data |
 
 ### Return type
 
@@ -184,5 +160,5 @@ null (empty response body)
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: */*
+ - **Accept**: */*, application/json
 

@@ -42,8 +42,7 @@ public class CollectorApiTest {
      */
     @Test
     public void sendStatisticsTest() throws ApiException {
-        UUID collectorId = null;
-        api.sendStatistics(collectorId);
+        api.sendStatistics(null);
 
         // TODO: test validations
     }
@@ -58,14 +57,7 @@ public class CollectorApiTest {
      */
     @Test
     public void sysInitTest() throws ApiException {
-        UUID collectorId = null;
-        String info0AdditionalMessage = null;
-        String info0ConnectorId = null;
-        String info0ConnectorName = null;
-        List<String> info0DataSourceIds = null;
-        Boolean info0NewlyCreated = null;
-        String info0Status = null;
-        api.sysInit(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+        api.sysInit(null);
 
         // TODO: test validations
     }
@@ -80,14 +72,7 @@ public class CollectorApiTest {
      */
     @Test
     public void updateStatusTest() throws ApiException {
-        UUID collectorId = null;
-        String info0AdditionalMessage = null;
-        String info0ConnectorId = null;
-        String info0ConnectorName = null;
-        List<String> info0DataSourceIds = null;
-        Boolean info0NewlyCreated = null;
-        String info0Status = null;
-        api.updateStatus(collectorId, info0AdditionalMessage, info0ConnectorId, info0ConnectorName, info0DataSourceIds, info0NewlyCreated, info0Status);
+        api.updateStatus(null);
 
         // TODO: test validations
     }

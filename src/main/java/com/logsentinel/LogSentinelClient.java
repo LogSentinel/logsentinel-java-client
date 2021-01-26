@@ -2,6 +2,7 @@ package com.logsentinel;
 
 import com.logsentinel.api.AlertsApi;
 import com.logsentinel.api.ApplicationsApi;
+import com.logsentinel.api.CollectorApi;
 import com.logsentinel.api.GdprLoggingApi;
 import com.logsentinel.api.GdprRegisterApi;
 import com.logsentinel.api.HashApi;
@@ -37,13 +38,15 @@ public class LogSentinelClient {
     private SavedSearchesApi savedSearchesActions;
     private LeakedCredentialsApi leakedCredentialsActions;
     private ThreatIntelligenceApi threatIntelligenceActions;
+    private CollectorApi collectorActions;
     
     public LogSentinelClient(LoggingApi auditLogActions, HashApi hashActions, OrganizationUsersApi userActions,
             ApplicationsApi applicationActions, SearchApi searchActions, VerificationApi verificationActions,
             LogHealthcareApi healthcareActions, GdprLoggingApi gdprLoggingActions, GdprRegisterApi gdprRegisterActions,
             AlertsApi alertsActions, LogSpecialApi logSpecialActions, PartnersApi partnersActions,
             OrganizationUsersApi organizationsActions, SavedSearchesApi savedSearchesActions, 
-            LeakedCredentialsApi leakedCredentialsActions, ThreatIntelligenceApi threatIntelligenceActions) {
+            LeakedCredentialsApi leakedCredentialsActions, ThreatIntelligenceApi threatIntelligenceActions,
+            CollectorApi collectorActions) {
         super();
         this.auditLogActions = auditLogActions;
         this.hashActions = hashActions;
@@ -60,7 +63,8 @@ public class LogSentinelClient {
         this.organizationsActions = organizationsActions;
         this.savedSearchesActions = savedSearchesActions;
         this.leakedCredentialsActions = leakedCredentialsActions;
-        this.threatIntelligenceActions = this.threatIntelligenceActions;
+        this.threatIntelligenceActions = threatIntelligenceActions;
+        this.collectorActions = collectorActions;
     }
     
     public LoggingApi getAuditLogActions() {
@@ -110,5 +114,8 @@ public class LogSentinelClient {
     }
     public ThreatIntelligenceApi getThreatIntelligenceActions() {
         return threatIntelligenceActions;
+    }
+    public CollectorApi getCollectorActions() {
+        return collectorActions;
     }
 }

@@ -43,8 +43,7 @@ public class FlowLoggingApiTest {
     @Test
     public void logFlowTest() throws ApiException {
         String applicationId = null;
-        String details = null;
-        LogResponse response = api.logFlow(applicationId, details);
+        api.logFlow(applicationId, null);
 
         // TODO: test validations
     }

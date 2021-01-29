@@ -8,7 +8,7 @@ import com.logsentinel.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import com.logsentinel.model.LogResponse;
+import com.logsentinel.model.FlowEntry;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,36 +36,36 @@ public class FlowLoggingApi {
   }
 
   /**
-   * Log an event by a given actor
+   * Log a given flow event
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param details Any details in any format about the event that you want to store in the log (required)
-   * @return LogResponse
+   * @param flows flows (required)
+   * @return Boolean
    * @throws ApiException if fails to make API call
    */
-  public LogResponse logFlow(String applicationId, String details) throws ApiException {
-    return logFlowWithHttpInfo(applicationId, details).getData();
+  public Boolean logFlow(String applicationId, List<FlowEntry> flows) throws ApiException {
+    return logFlowWithHttpInfo(applicationId, flows).getData();
       }
 
   /**
-   * Log an event by a given actor
+   * Log a given flow event
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
-   * @param details Any details in any format about the event that you want to store in the log (required)
-   * @return ApiResponse&lt;LogResponse&gt;
+   * @param flows flows (required)
+   * @return ApiResponse&lt;Boolean&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> logFlowWithHttpInfo(String applicationId, String details) throws ApiException {
-    Object localVarPostBody = details;
+  public ApiResponse<Boolean> logFlowWithHttpInfo(String applicationId, List<FlowEntry> flows) throws ApiException {
+    Object localVarPostBody = flows;
     
     // verify the required parameter 'applicationId' is set
     if (applicationId == null) {
       throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logFlow");
     }
     
-    // verify the required parameter 'details' is set
-    if (details == null) {
-      throw new ApiException(400, "Missing the required parameter 'details' when calling logFlow");
+    // verify the required parameter 'flows' is set
+    if (flows == null) {
+      throw new ApiException(400, "Missing the required parameter 'flows' when calling logFlow");
     }
     
     // create path and map variables
@@ -93,7 +93,7 @@ public class FlowLoggingApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
-    GenericType<LogResponse> localVarReturnType = new GenericType<LogResponse>() {};
+    GenericType<Boolean> localVarReturnType = new GenericType<Boolean>() {};
     return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

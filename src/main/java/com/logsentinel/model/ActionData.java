@@ -72,8 +72,6 @@ public class ActionData<T> {
     
     WEBSITE_LOG("WEBSITE_LOG"),
     
-    FLOW_LOG("FLOW_LOG"),
-    
     BUSINESS_LOGIC_ENTRY("BUSINESS_LOGIC_ENTRY"),
     
     DATABASE_QUERY("DATABASE_QUERY"),

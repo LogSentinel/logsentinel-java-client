@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**logFlow**](FlowLoggingApi.md#logFlow) | **POST** /api/flow/log | Log an event by a given actor
+[**logFlow**](FlowLoggingApi.md#logFlow) | **POST** /api/flow/log | Log a given flow event
 
 
 <a name="logFlow"></a>
 # **logFlow**
-> LogResponse logFlow(applicationId, details)
+> Boolean logFlow(applicationId, flows)
 
-Log an event by a given actor
+Log a given flow event
 
 ### Example
 ```java
@@ -31,9 +31,9 @@ basicAuth.setPassword("YOUR PASSWORD");
 
 FlowLoggingApi apiInstance = new FlowLoggingApi();
 String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
-String details = "details_example"; // String | Any details in any format about the event that you want to store in the log
+List<FlowEntry> flows = Arrays.asList(new FlowEntry()); // List<FlowEntry> | flows
 try {
-    LogResponse result = apiInstance.logFlow(applicationId, details);
+    Boolean result = apiInstance.logFlow(applicationId, flows);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling FlowLoggingApi#logFlow");
@@ -46,11 +46,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **details** | **String**| Any details in any format about the event that you want to store in the log |
+ **flows** | [**List&lt;FlowEntry&gt;**](FlowEntry.md)| flows |
 
 ### Return type
 
-[**LogResponse**](LogResponse.md)
+**Boolean**
 
 ### Authorization
 

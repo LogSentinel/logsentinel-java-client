@@ -3,6 +3,7 @@ package com.logsentinel;
 import com.logsentinel.api.AlertsApi;
 import com.logsentinel.api.ApplicationsApi;
 import com.logsentinel.api.CollectorApi;
+import com.logsentinel.api.FlowLoggingApi;
 import com.logsentinel.api.GdprLoggingApi;
 import com.logsentinel.api.GdprRegisterApi;
 import com.logsentinel.api.HashApi;
@@ -39,6 +40,7 @@ public class LogSentinelClient {
     private LeakedCredentialsApi leakedCredentialsActions;
     private ThreatIntelligenceApi threatIntelligenceActions;
     private CollectorApi collectorActions;
+    private FlowLoggingApi flowActions;
     
     public LogSentinelClient(LoggingApi auditLogActions, HashApi hashActions, OrganizationUsersApi userActions,
             ApplicationsApi applicationActions, SearchApi searchActions, VerificationApi verificationActions,
@@ -46,7 +48,7 @@ public class LogSentinelClient {
             AlertsApi alertsActions, LogSpecialApi logSpecialActions, PartnersApi partnersActions,
             OrganizationUsersApi organizationsActions, SavedSearchesApi savedSearchesActions, 
             LeakedCredentialsApi leakedCredentialsActions, ThreatIntelligenceApi threatIntelligenceActions,
-            CollectorApi collectorActions) {
+            CollectorApi collectorActions, FlowLoggingApi flowActions) {
         super();
         this.auditLogActions = auditLogActions;
         this.hashActions = hashActions;
@@ -65,6 +67,7 @@ public class LogSentinelClient {
         this.leakedCredentialsActions = leakedCredentialsActions;
         this.threatIntelligenceActions = threatIntelligenceActions;
         this.collectorActions = collectorActions;
+        this.flowActions = flowActions;
     }
     
     public LoggingApi getAuditLogActions() {
@@ -117,5 +120,9 @@ public class LogSentinelClient {
     }
     public CollectorApi getCollectorActions() {
         return collectorActions;
+    }
+
+    public FlowLoggingApi getFlowActions() {
+        return flowActions;
     }
 }

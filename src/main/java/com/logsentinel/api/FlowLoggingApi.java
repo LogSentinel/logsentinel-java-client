@@ -43,6 +43,18 @@ public class FlowLoggingApi {
    * @return Boolean
    * @throws ApiException if fails to make API call
    */
+  public Boolean logFlow(List<FlowEntry> flows) throws ApiException {
+    return logFlowWithHttpInfo(null, flows).getData();
+      }
+  
+  /**
+   * Log a given flow event
+   * 
+   * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
+   * @param flows flows (required)
+   * @return Boolean
+   * @throws ApiException if fails to make API call
+   */
   public Boolean logFlow(String applicationId, List<FlowEntry> flows) throws ApiException {
     return logFlowWithHttpInfo(applicationId, flows).getData();
       }
@@ -57,11 +69,6 @@ public class FlowLoggingApi {
    */
   public ApiResponse<Boolean> logFlowWithHttpInfo(String applicationId, List<FlowEntry> flows) throws ApiException {
     Object localVarPostBody = flows;
-    
-    // verify the required parameter 'applicationId' is set
-    if (applicationId == null) {
-      throw new ApiException(400, "Missing the required parameter 'applicationId' when calling logFlow");
-    }
     
     // verify the required parameter 'flows' is set
     if (flows == null) {

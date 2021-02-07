@@ -5,6 +5,7 @@ import java.security.PrivateKey;
 import com.logsentinel.api.AlertsApi;
 import com.logsentinel.api.ApplicationsApi;
 import com.logsentinel.api.CollectorApi;
+import com.logsentinel.api.FlowLoggingApi;
 import com.logsentinel.api.GdprLoggingApi;
 import com.logsentinel.api.GdprRegisterApi;
 import com.logsentinel.api.HashApi;
@@ -84,11 +85,12 @@ public class LogSentinelClientBuilder {
         LeakedCredentialsApi leakedCredentialsApi = new LeakedCredentialsApi(apiClient);
         ThreatIntelligenceApi threatIntelligenceApi = new ThreatIntelligenceApi(apiClient);
         CollectorApi collectorApi = new CollectorApi(apiClient);
+        FlowLoggingApi flowApi = new FlowLoggingApi(apiClient);
         
         LogSentinelClient client = new LogSentinelClient(auditLogApi, hashApi, userApi,
                 applicationApi, searchApi, verificationApi, healthcareApi, gdprLoggingApi, 
                 registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi,
-                leakedCredentialsApi, threatIntelligenceApi, collectorApi);
+                leakedCredentialsApi, threatIntelligenceApi, collectorApi, flowApi);
         return client;
     }
 

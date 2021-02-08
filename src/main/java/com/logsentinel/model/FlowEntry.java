@@ -18,17 +18,22 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.IPDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * FlowEntry
  */
 
 public class FlowEntry {
+  @JsonProperty("applicationId")
+  private UUID applicationId = null;
+
   @JsonProperty("destinationIp")
   private String destinationIp = null;
 
@@ -75,8 +80,11 @@ public class FlowEntry {
   @JsonProperty("flowType")
   private FlowTypeEnum flowType = null;
 
+  @JsonProperty("ipDetails")
+  private Map<String, IPDetails> ipDetails = null;
+
   @JsonProperty("numericParams")
-  private Map<String, Double> numericParams = null;
+  private Map<String, Long> numericParams = null;
 
   @JsonProperty("originalEventTimestamp")
   private Long originalEventTimestamp = null;
@@ -87,11 +95,32 @@ public class FlowEntry {
   @JsonProperty("protocol")
   private String protocol = null;
 
+  @JsonProperty("sourceCountry")
+  private String sourceCountry = null;
+
   @JsonProperty("sourceIp")
   private String sourceIp = null;
 
   @JsonProperty("sourcePort")
   private Integer sourcePort = null;
+
+  public FlowEntry applicationId(UUID applicationId) {
+    this.applicationId = applicationId;
+    return this;
+  }
+
+   /**
+   * Get applicationId
+   * @return applicationId
+  **/
+  @ApiModelProperty(value = "")
+  public UUID getApplicationId() {
+    return applicationId;
+  }
+
+  public void setApplicationId(UUID applicationId) {
+    this.applicationId = applicationId;
+  }
 
   public FlowEntry destinationIp(String destinationIp) {
     this.destinationIp = destinationIp;
@@ -147,12 +176,38 @@ public class FlowEntry {
     this.flowType = flowType;
   }
 
-  public FlowEntry numericParams(Map<String, Double> numericParams) {
+  public FlowEntry ipDetails(Map<String, IPDetails> ipDetails) {
+    this.ipDetails = ipDetails;
+    return this;
+  }
+
+  public FlowEntry putIpDetailsItem(String key, IPDetails ipDetailsItem) {
+    if (this.ipDetails == null) {
+      this.ipDetails = new HashMap<>();
+    }
+    this.ipDetails.put(key, ipDetailsItem);
+    return this;
+  }
+
+   /**
+   * Get ipDetails
+   * @return ipDetails
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, IPDetails> getIpDetails() {
+    return ipDetails;
+  }
+
+  public void setIpDetails(Map<String, IPDetails> ipDetails) {
+    this.ipDetails = ipDetails;
+  }
+
+  public FlowEntry numericParams(Map<String, Long> numericParams) {
     this.numericParams = numericParams;
     return this;
   }
 
-  public FlowEntry putNumericParamsItem(String key, Double numericParamsItem) {
+  public FlowEntry putNumericParamsItem(String key, Long numericParamsItem) {
     if (this.numericParams == null) {
       this.numericParams = new HashMap<>();
     }
@@ -165,11 +220,11 @@ public class FlowEntry {
    * @return numericParams
   **/
   @ApiModelProperty(value = "")
-  public Map<String, Double> getNumericParams() {
+  public Map<String, Long> getNumericParams() {
     return numericParams;
   }
 
-  public void setNumericParams(Map<String, Double> numericParams) {
+  public void setNumericParams(Map<String, Long> numericParams) {
     this.numericParams = numericParams;
   }
 
@@ -235,6 +290,24 @@ public class FlowEntry {
     this.protocol = protocol;
   }
 
+  public FlowEntry sourceCountry(String sourceCountry) {
+    this.sourceCountry = sourceCountry;
+    return this;
+  }
+
+   /**
+   * Get sourceCountry
+   * @return sourceCountry
+  **/
+  @ApiModelProperty(value = "")
+  public String getSourceCountry() {
+    return sourceCountry;
+  }
+
+  public void setSourceCountry(String sourceCountry) {
+    this.sourceCountry = sourceCountry;
+  }
+
   public FlowEntry sourceIp(String sourceIp) {
     this.sourceIp = sourceIp;
     return this;
@@ -281,20 +354,23 @@ public class FlowEntry {
       return false;
     }
     FlowEntry flowEntry = (FlowEntry) o;
-    return Objects.equals(this.destinationIp, flowEntry.destinationIp) &&
+    return Objects.equals(this.applicationId, flowEntry.applicationId) &&
+        Objects.equals(this.destinationIp, flowEntry.destinationIp) &&
         Objects.equals(this.destinationPort, flowEntry.destinationPort) &&
         Objects.equals(this.flowType, flowEntry.flowType) &&
+        Objects.equals(this.ipDetails, flowEntry.ipDetails) &&
         Objects.equals(this.numericParams, flowEntry.numericParams) &&
         Objects.equals(this.originalEventTimestamp, flowEntry.originalEventTimestamp) &&
         Objects.equals(this.params, flowEntry.params) &&
         Objects.equals(this.protocol, flowEntry.protocol) &&
+        Objects.equals(this.sourceCountry, flowEntry.sourceCountry) &&
         Objects.equals(this.sourceIp, flowEntry.sourceIp) &&
         Objects.equals(this.sourcePort, flowEntry.sourcePort);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(destinationIp, destinationPort, flowType, numericParams, originalEventTimestamp, params, protocol, sourceIp, sourcePort);
+    return Objects.hash(applicationId, destinationIp, destinationPort, flowType, ipDetails, numericParams, originalEventTimestamp, params, protocol, sourceCountry, sourceIp, sourcePort);
   }
 
 
@@ -303,13 +379,16 @@ public class FlowEntry {
     StringBuilder sb = new StringBuilder();
     sb.append("class FlowEntry {\n");
     
+    sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    destinationIp: ").append(toIndentedString(destinationIp)).append("\n");
     sb.append("    destinationPort: ").append(toIndentedString(destinationPort)).append("\n");
     sb.append("    flowType: ").append(toIndentedString(flowType)).append("\n");
+    sb.append("    ipDetails: ").append(toIndentedString(ipDetails)).append("\n");
     sb.append("    numericParams: ").append(toIndentedString(numericParams)).append("\n");
     sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");
     sb.append("    protocol: ").append(toIndentedString(protocol)).append("\n");
+    sb.append("    sourceCountry: ").append(toIndentedString(sourceCountry)).append("\n");
     sb.append("    sourceIp: ").append(toIndentedString(sourceIp)).append("\n");
     sb.append("    sourcePort: ").append(toIndentedString(sourcePort)).append("\n");
     sb.append("}");

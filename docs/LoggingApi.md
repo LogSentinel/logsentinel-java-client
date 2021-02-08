@@ -180,7 +180,7 @@ Name | Type | Description  | Notes
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
  **action** | **String**| The name of the action being logged |
  **actorId** | **String**| ID of the actor performing the action being logged |
- **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
  **actorId** | **String**| ID of the actor performing the action being logged |
  **entityId** | **String**| When the event is about a particular model entity, you can set its ID here |
  **entityType** | **String**| When the event is about a particular model entity, you can set its type here |
- **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **actorDepartment** | **String**| actorDepartment | [optional]
  **actorDisplayName** | **String**| Display name of the actor (e.g. a name, in case ID is not human-readable) | [optional]
@@ -575,7 +575,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, FLOW_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
+ **logEntryType** | **String**| Log-Entry-Type | [optional] [default to AUDIT_LOG] [enum: SYSTEM_EVENT, NETWORK_EVENT, AUTHENTICATION_EVENT, EXTERNAL_ALERT, AUDIT_LOG, WEBSITE_LOG, BUSINESS_LOGIC_ENTRY, DATABASE_QUERY, ANONYMIZED_ENTRY, SPECIALIZED_BUSINESS_LOGIC_ENTRY, DOCUMENT]
  **signature** | **String**| Base64-encoded digital signature on the entry details (the request body) | [optional]
  **binaryContent** | **Boolean**| binaryContent | [optional]
  **details** | **byte[]**| Any details in any format about the event that you want to store in the log | [optional]

@@ -111,6 +111,9 @@ public class AlertRuleRun {
   @JsonProperty("ioc")
   private List<String> ioc = null;
 
+  @JsonProperty("iocTypes")
+  private List<String> iocTypes = null;
+
   @JsonProperty("notified")
   private Boolean notified = null;
 
@@ -445,6 +448,32 @@ public class AlertRuleRun {
     this.ioc = ioc;
   }
 
+  public AlertRuleRun iocTypes(List<String> iocTypes) {
+    this.iocTypes = iocTypes;
+    return this;
+  }
+
+  public AlertRuleRun addIocTypesItem(String iocTypesItem) {
+    if (this.iocTypes == null) {
+      this.iocTypes = new ArrayList<>();
+    }
+    this.iocTypes.add(iocTypesItem);
+    return this;
+  }
+
+   /**
+   * Get iocTypes
+   * @return iocTypes
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getIocTypes() {
+    return iocTypes;
+  }
+
+  public void setIocTypes(List<String> iocTypes) {
+    this.iocTypes = iocTypes;
+  }
+
   public AlertRuleRun notified(Boolean notified) {
     this.notified = notified;
     return this;
@@ -619,6 +648,7 @@ public class AlertRuleRun {
         Objects.equals(this.fired, alertRuleRun.fired) &&
         Objects.equals(this.id, alertRuleRun.id) &&
         Objects.equals(this.ioc, alertRuleRun.ioc) &&
+        Objects.equals(this.iocTypes, alertRuleRun.iocTypes) &&
         Objects.equals(this.notified, alertRuleRun.notified) &&
         Objects.equals(this.organizationId, alertRuleRun.organizationId) &&
         Objects.equals(this.riskLevel, alertRuleRun.riskLevel) &&
@@ -631,7 +661,7 @@ public class AlertRuleRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actualValue, alertRuleId, alertRuleName, alertType, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, notified, organizationId, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
+    return Objects.hash(actualValue, alertRuleId, alertRuleName, alertType, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
   }
 
 
@@ -652,6 +682,7 @@ public class AlertRuleRun {
     sb.append("    fired: ").append(toIndentedString(fired)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    ioc: ").append(toIndentedString(ioc)).append("\n");
+    sb.append("    iocTypes: ").append(toIndentedString(iocTypes)).append("\n");
     sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");

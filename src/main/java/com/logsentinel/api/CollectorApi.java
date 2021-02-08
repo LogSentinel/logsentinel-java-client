@@ -51,6 +51,7 @@ public class CollectorApi {
    * Invoked during Collector&#39;s operation. Publish statistics for (some of) collector&#39;s Agent(s)
    * 
    * @param metadata metadata (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> sendStatisticsWithHttpInfo(CollectorMetadataDto metadata) throws ApiException {
@@ -102,6 +103,7 @@ public class CollectorApi {
    * Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
    * 
    * @param data data (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> sysInitWithHttpInfo(CollectorStatusDto data) throws ApiException {
@@ -153,6 +155,7 @@ public class CollectorApi {
    * Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
    * 
    * @param data data (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> updateStatusWithHttpInfo(CollectorStatusDto data) throws ApiException {

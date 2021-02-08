@@ -38,7 +38,6 @@ public class FlowLoggingApi {
   /**
    * Log a given flow event
    * 
-   * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param flows flows (required)
    * @return Boolean
    * @throws ApiException if fails to make API call

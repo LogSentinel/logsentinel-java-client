@@ -406,6 +406,7 @@ if (userPublicKey != null)
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param requestData A list of log requests (required)
+   * @param <T> type of batch entry body
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -417,6 +418,7 @@ if (userPublicKey != null)
    * Log multiple events at the same time. This should rarely be used, but allows background processes to push multiple events at the same time
    * 
    * @param requestData A list of log requests (required)
+   * @param <T> type of batch entry body
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
@@ -429,6 +431,7 @@ if (userPublicKey != null)
    * 
    * @param applicationId Application ID, identifying a target application (obtained from the API credentials page) (required)
    * @param requestData A list of log requests (required)
+   * @param <T> type of batch entry body
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
@@ -628,6 +631,7 @@ if (signature != null)
    * @param logLevel logLevel (optional)
    * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
+   * @param params params (optional)
    * @param tags tags (optional)
    * @return LogResponse
    * @throws ApiException if fails to make API call

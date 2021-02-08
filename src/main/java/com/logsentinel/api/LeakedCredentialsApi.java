@@ -49,6 +49,7 @@ public class LeakedCredentialsApi {
    * Insert emails
    * 
    * @param emails emails (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> insertEmailsWithHttpInfo(List<String> emails) throws ApiException {

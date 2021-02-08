@@ -54,6 +54,7 @@ public class LogMiscellaneousApi {
    * 
    * @param applicationId applicationId (required)
    * @param request request (required)
+   * @return api response
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<Void> logKubernetesEventWithHttpInfo(UUID applicationId, KubernetesAuditLogRequest request) throws ApiException {

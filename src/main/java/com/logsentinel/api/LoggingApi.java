@@ -8,6 +8,8 @@ import java.util.UUID;
 
 import javax.ws.rs.core.GenericType;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.logsentinel.ApiClient;
 import com.logsentinel.ApiException;
 import com.logsentinel.ApiResponse;
@@ -679,11 +681,6 @@ if (signature != null)
       throw new ApiException(400, "Missing the required parameter 'actorId' when calling logFull");
     }
     
-    // verify the required parameter 'entityId' is set
-    if (entityId == null) {
-      throw new ApiException(400, "Missing the required parameter 'entityId' when calling logFull");
-    }
-    
     // verify the required parameter 'entityType' is set
     if (entityType == null) {
       throw new ApiException(400, "Missing the required parameter 'entityType' when calling logFull");
@@ -844,13 +841,13 @@ if (signature != null)
           entryType = actionData.getEntryType().getValue();
       }
       
-      if (actionData.getEntityType() != null && actionData.getEntityId() != null) {
+      if (StringUtils.isNotBlank(actionData.getEntityType())) {
           return logFull(applicationId, actionData.getAction(), actorData.getActorId(), actionData.getEntityId(), actionData.getEntityType(), 
               entryType, signature, actorData.getDepartment(), 
               actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 
               body, null, bodyAndKeywords.getKeywords(), null, null, actionData.getOriginalEventTimestamp(), null,
               actionData.getParams(), actionData.getTags());
-      } else if (actionData.getAction() != null && actorData.getActorId() != null) {
+      } else if (StringUtils.isNotBlank(actionData.getAction()) && StringUtils.isNotBlank(actorData.getActorId())) {
           return log(applicationId, actionData.getAction(), actorData.getActorId(), 
                   entryType, signature, actorData.getDepartment(), 
                   actorData.getActorDisplayName(), actorData.getActorRoles(), actionData.isBinaryContent(), 

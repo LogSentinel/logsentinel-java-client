@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
@@ -36,6 +38,7 @@ import javax.ws.rs.core.Form;
 import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.Response.Status;
 
 import org.glassfish.jersey.client.ClientConfig;
@@ -648,12 +651,19 @@ public class ApiClient {
 
     // Not using `.target(this.basePath).path(path)` below,
     // to support (constant) query string in `path`, e.g. "/posts?draft=1"
-    WebTarget target = httpClient.target(this.basePath + path);
+    WebTarget target;
+    try {
+        target = httpClient.target(new URI(this.basePath + path));
+    } catch (URISyntaxException e) {
+        throw new IllegalArgumentException(e);
+    }
 
     if (queryParams != null) {
       for (Pair queryParam : queryParams) {
         if (queryParam.getValue() != null) {
-          target = target.queryParam(queryParam.getName(), queryParam.getValue());
+          // we need to escape curly braces as they confuse the Jersey client
+          target = target.queryParam(queryParam.getName(), 
+                  queryParam.getValue().replace("{", "%7B").replace("}", "%7D"));
         }
       }
     }

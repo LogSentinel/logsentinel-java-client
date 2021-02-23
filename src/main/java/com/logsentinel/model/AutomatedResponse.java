@@ -44,6 +44,50 @@ public class AutomatedResponse {
   @JsonProperty("targetHost")
   private String targetHost = null;
 
+  /**
+   * Gets or Sets targetType
+   */
+  public enum TargetTypeEnum {
+    WINDOWS("WINDOWS"),
+    
+    MACOS("MACOS"),
+    
+    LINUX("LINUX"),
+    
+    FIREWALL("FIREWALL"),
+    
+    ACTIVE_DIRECTORY("ACTIVE_DIRECTORY");
+
+    private String value;
+
+    TargetTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static TargetTypeEnum fromValue(String text) {
+      for (TargetTypeEnum b : TargetTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("targetType")
+  private TargetTypeEnum targetType = null;
+
   public AutomatedResponse command(String command) {
     this.command = command;
     return this;
@@ -142,6 +186,24 @@ public class AutomatedResponse {
     this.targetHost = targetHost;
   }
 
+  public AutomatedResponse targetType(TargetTypeEnum targetType) {
+    this.targetType = targetType;
+    return this;
+  }
+
+   /**
+   * Get targetType
+   * @return targetType
+  **/
+  @ApiModelProperty(value = "")
+  public TargetTypeEnum getTargetType() {
+    return targetType;
+  }
+
+  public void setTargetType(TargetTypeEnum targetType) {
+    this.targetType = targetType;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -156,12 +218,13 @@ public class AutomatedResponse {
         Objects.equals(this.commandParameter, automatedResponse.commandParameter) &&
         Objects.equals(this.context, automatedResponse.context) &&
         Objects.equals(this.pythonScript, automatedResponse.pythonScript) &&
-        Objects.equals(this.targetHost, automatedResponse.targetHost);
+        Objects.equals(this.targetHost, automatedResponse.targetHost) &&
+        Objects.equals(this.targetType, automatedResponse.targetType);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(command, commandParameter, context, pythonScript, targetHost);
+    return Objects.hash(command, commandParameter, context, pythonScript, targetHost, targetType);
   }
 
 
@@ -175,6 +238,7 @@ public class AutomatedResponse {
     sb.append("    context: ").append(toIndentedString(context)).append("\n");
     sb.append("    pythonScript: ").append(toIndentedString(pythonScript)).append("\n");
     sb.append("    targetHost: ").append(toIndentedString(targetHost)).append("\n");
+    sb.append("    targetType: ").append(toIndentedString(targetType)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -2,23 +2,7 @@ package com.logsentinel;
 
 import java.security.PrivateKey;
 
-import com.logsentinel.api.AlertsApi;
-import com.logsentinel.api.ApplicationsApi;
-import com.logsentinel.api.CollectorApi;
-import com.logsentinel.api.FlowLoggingApi;
-import com.logsentinel.api.GdprLoggingApi;
-import com.logsentinel.api.GdprRegisterApi;
-import com.logsentinel.api.HashApi;
-import com.logsentinel.api.LeakedCredentialsApi;
-import com.logsentinel.api.LogHealthcareApi;
-import com.logsentinel.api.LogSpecialApi;
-import com.logsentinel.api.LoggingApi;
-import com.logsentinel.api.OrganizationUsersApi;
-import com.logsentinel.api.PartnersApi;
-import com.logsentinel.api.SavedSearchesApi;
-import com.logsentinel.api.SearchApi;
-import com.logsentinel.api.ThreatIntelligenceApi;
-import com.logsentinel.api.VerificationApi;
+import com.logsentinel.api.*;
 
 /**
  * Builder used to create an instance of the LogSentinel client.
@@ -86,11 +70,12 @@ public class LogSentinelClientBuilder {
         ThreatIntelligenceApi threatIntelligenceApi = new ThreatIntelligenceApi(apiClient);
         CollectorApi collectorApi = new CollectorApi(apiClient);
         FlowLoggingApi flowApi = new FlowLoggingApi(apiClient);
+        AssetsApi assetsApi = new AssetsApi(apiClient);
         
         LogSentinelClient client = new LogSentinelClient(auditLogApi, hashApi, userApi,
                 applicationApi, searchApi, verificationApi, healthcareApi, gdprLoggingApi, 
                 registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi,
-                leakedCredentialsApi, threatIntelligenceApi, collectorApi, flowApi);
+                leakedCredentialsApi, threatIntelligenceApi, collectorApi, flowApi, assetsApi);
         return client;
     }
 

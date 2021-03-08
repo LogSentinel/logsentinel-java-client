@@ -1,22 +1,6 @@
 package com.logsentinel;
 
-import com.logsentinel.api.AlertsApi;
-import com.logsentinel.api.ApplicationsApi;
-import com.logsentinel.api.CollectorApi;
-import com.logsentinel.api.FlowLoggingApi;
-import com.logsentinel.api.GdprLoggingApi;
-import com.logsentinel.api.GdprRegisterApi;
-import com.logsentinel.api.HashApi;
-import com.logsentinel.api.LeakedCredentialsApi;
-import com.logsentinel.api.LogHealthcareApi;
-import com.logsentinel.api.LogSpecialApi;
-import com.logsentinel.api.LoggingApi;
-import com.logsentinel.api.OrganizationUsersApi;
-import com.logsentinel.api.PartnersApi;
-import com.logsentinel.api.SavedSearchesApi;
-import com.logsentinel.api.SearchApi;
-import com.logsentinel.api.ThreatIntelligenceApi;
-import com.logsentinel.api.VerificationApi;
+import com.logsentinel.api.*;
 
 /**
  * Main entry point for interacting with LogSentinel APIs
@@ -41,14 +25,15 @@ public class LogSentinelClient {
     private ThreatIntelligenceApi threatIntelligenceActions;
     private CollectorApi collectorActions;
     private FlowLoggingApi flowActions;
-    
+    private AssetsApi assetsActions;
+
     public LogSentinelClient(LoggingApi auditLogActions, HashApi hashActions, OrganizationUsersApi userActions,
             ApplicationsApi applicationActions, SearchApi searchActions, VerificationApi verificationActions,
             LogHealthcareApi healthcareActions, GdprLoggingApi gdprLoggingActions, GdprRegisterApi gdprRegisterActions,
             AlertsApi alertsActions, LogSpecialApi logSpecialActions, PartnersApi partnersActions,
             OrganizationUsersApi organizationsActions, SavedSearchesApi savedSearchesActions, 
             LeakedCredentialsApi leakedCredentialsActions, ThreatIntelligenceApi threatIntelligenceActions,
-            CollectorApi collectorActions, FlowLoggingApi flowActions) {
+            CollectorApi collectorActions, FlowLoggingApi flowActions, AssetsApi assetsActions) {
         super();
         this.auditLogActions = auditLogActions;
         this.hashActions = hashActions;
@@ -68,6 +53,7 @@ public class LogSentinelClient {
         this.threatIntelligenceActions = threatIntelligenceActions;
         this.collectorActions = collectorActions;
         this.flowActions = flowActions;
+        this.assetsActions = assetsActions;
     }
     
     public LoggingApi getAuditLogActions() {
@@ -124,5 +110,8 @@ public class LogSentinelClient {
 
     public FlowLoggingApi getFlowActions() {
         return flowActions;
+    }
+    public AssetsApi getAssetsActions() {
+        return assetsActions;
     }
 }

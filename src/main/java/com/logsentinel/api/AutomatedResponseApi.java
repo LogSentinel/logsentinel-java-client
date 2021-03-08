@@ -39,7 +39,7 @@ public class AutomatedResponseApi {
   /**
    * connect
    * 
-   * @param collectorId collectorId (optional)
+   * @param collectorId collectorId (required)
    * @return DeferredResultOfAutomatedResponse
    * @throws ApiException if fails to make API call
    */
@@ -50,12 +50,17 @@ public class AutomatedResponseApi {
   /**
    * connect
    * 
-   * @param collectorId collectorId (optional)
+   * @param collectorId collectorId (required)
    * @return ApiResponse&lt;DeferredResultOfAutomatedResponse&gt;
    * @throws ApiException if fails to make API call
    */
   public ApiResponse<DeferredResultOfAutomatedResponse> connectWithHttpInfo(UUID collectorId) throws ApiException {
     Object localVarPostBody = null;
+    
+    // verify the required parameter 'collectorId' is set
+    if (collectorId == null) {
+      throw new ApiException(400, "Missing the required parameter 'collectorId' when calling connect");
+    }
     
     // create path and map variables
     String localVarPath = "/api/response/connect";

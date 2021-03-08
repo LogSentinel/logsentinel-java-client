@@ -44,7 +44,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **collectorId** | [**UUID**](.md)| collectorId | [optional]
+ **collectorId** | [**UUID**](.md)| collectorId |
 
 ### Return type
 

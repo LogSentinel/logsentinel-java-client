@@ -47,6 +47,9 @@ public class UserDetails {
   @JsonProperty("created")
   private LocalDateTime created = null;
 
+  @JsonProperty("darkThemeEnabled")
+  private Boolean darkThemeEnabled = null;
+
   @JsonProperty("demo")
   private Boolean demo = null;
 
@@ -301,6 +304,24 @@ public class UserDetails {
 
   public void setCreated(LocalDateTime created) {
     this.created = created;
+  }
+
+  public UserDetails darkThemeEnabled(Boolean darkThemeEnabled) {
+    this.darkThemeEnabled = darkThemeEnabled;
+    return this;
+  }
+
+   /**
+   * Get darkThemeEnabled
+   * @return darkThemeEnabled
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isDarkThemeEnabled() {
+    return darkThemeEnabled;
+  }
+
+  public void setDarkThemeEnabled(Boolean darkThemeEnabled) {
+    this.darkThemeEnabled = darkThemeEnabled;
   }
 
   public UserDetails demo(Boolean demo) {
@@ -758,6 +779,7 @@ public class UserDetails {
         Objects.equals(this.base64ProfilePicture, userDetails.base64ProfilePicture) &&
         Objects.equals(this.confirmed, userDetails.confirmed) &&
         Objects.equals(this.created, userDetails.created) &&
+        Objects.equals(this.darkThemeEnabled, userDetails.darkThemeEnabled) &&
         Objects.equals(this.demo, userDetails.demo) &&
         Objects.equals(this.email, userDetails.email) &&
         Objects.equals(this.expirationDate, userDetails.expirationDate) &&
@@ -786,7 +808,7 @@ public class UserDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(admin, allowedApplicationIds, base64ProfilePicture, confirmed, created, demo, email, expirationDate, expired, features, hasPassword, id, integratedCloudProviderId, language, ldapProvided, names, organizationId, organizationName, organizationRole, paymentsEnabled, position, profilePicture, publicUser, receiveUpdates, seasonedUser, timezone, twoFactorAuthEnabled, twoFactorAuthKey, whitelabelStyling);
+    return Objects.hash(admin, allowedApplicationIds, base64ProfilePicture, confirmed, created, darkThemeEnabled, demo, email, expirationDate, expired, features, hasPassword, id, integratedCloudProviderId, language, ldapProvided, names, organizationId, organizationName, organizationRole, paymentsEnabled, position, profilePicture, publicUser, receiveUpdates, seasonedUser, timezone, twoFactorAuthEnabled, twoFactorAuthKey, whitelabelStyling);
   }
 
 
@@ -800,6 +822,7 @@ public class UserDetails {
     sb.append("    base64ProfilePicture: ").append(toIndentedString(base64ProfilePicture)).append("\n");
     sb.append("    confirmed: ").append(toIndentedString(confirmed)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    darkThemeEnabled: ").append(toIndentedString(darkThemeEnabled)).append("\n");
     sb.append("    demo: ").append(toIndentedString(demo)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");

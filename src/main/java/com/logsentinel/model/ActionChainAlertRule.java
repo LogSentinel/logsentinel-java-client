@@ -48,6 +48,9 @@ public class ActionChainAlertRule {
   @JsonProperty("created")
   private LocalDateTime created = null;
 
+  @JsonProperty("distinctByFields")
+  private List<String> distinctByFields = null;
+
   @JsonProperty("enabled")
   private Boolean enabled = null;
 
@@ -65,6 +68,9 @@ public class ActionChainAlertRule {
 
   @JsonProperty("less")
   private List<Boolean> less = null;
+
+  @JsonProperty("matchParam")
+  private String matchParam = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -248,6 +254,32 @@ public class ActionChainAlertRule {
     this.created = created;
   }
 
+  public ActionChainAlertRule distinctByFields(List<String> distinctByFields) {
+    this.distinctByFields = distinctByFields;
+    return this;
+  }
+
+  public ActionChainAlertRule addDistinctByFieldsItem(String distinctByFieldsItem) {
+    if (this.distinctByFields == null) {
+      this.distinctByFields = new ArrayList<>();
+    }
+    this.distinctByFields.add(distinctByFieldsItem);
+    return this;
+  }
+
+   /**
+   * Get distinctByFields
+   * @return distinctByFields
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getDistinctByFields() {
+    return distinctByFields;
+  }
+
+  public void setDistinctByFields(List<String> distinctByFields) {
+    this.distinctByFields = distinctByFields;
+  }
+
   public ActionChainAlertRule enabled(Boolean enabled) {
     this.enabled = enabled;
     return this;
@@ -362,6 +394,24 @@ public class ActionChainAlertRule {
 
   public void setLess(List<Boolean> less) {
     this.less = less;
+  }
+
+  public ActionChainAlertRule matchParam(String matchParam) {
+    this.matchParam = matchParam;
+    return this;
+  }
+
+   /**
+   * Get matchParam
+   * @return matchParam
+  **/
+  @ApiModelProperty(value = "")
+  public String getMatchParam() {
+    return matchParam;
+  }
+
+  public void setMatchParam(String matchParam) {
+    this.matchParam = matchParam;
   }
 
   public ActionChainAlertRule name(String name) {
@@ -656,12 +706,14 @@ public class ActionChainAlertRule {
         Objects.equals(this.applicationIds, actionChainAlertRule.applicationIds) &&
         Objects.equals(this.count, actionChainAlertRule.count) &&
         Objects.equals(this.created, actionChainAlertRule.created) &&
+        Objects.equals(this.distinctByFields, actionChainAlertRule.distinctByFields) &&
         Objects.equals(this.enabled, actionChainAlertRule.enabled) &&
         Objects.equals(this.entityType, actionChainAlertRule.entityType) &&
         Objects.equals(this.id, actionChainAlertRule.id) &&
         Objects.equals(this.initialAction, actionChainAlertRule.initialAction) &&
         Objects.equals(this.insideWorkingHours, actionChainAlertRule.insideWorkingHours) &&
         Objects.equals(this.less, actionChainAlertRule.less) &&
+        Objects.equals(this.matchParam, actionChainAlertRule.matchParam) &&
         Objects.equals(this.name, actionChainAlertRule.name) &&
         Objects.equals(this.organizationId, actionChainAlertRule.organizationId) &&
         Objects.equals(this.percentage, actionChainAlertRule.percentage) &&
@@ -680,7 +732,7 @@ public class ActionChainAlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, count, created, enabled, entityType, id, initialAction, insideWorkingHours, less, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
+    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, count, created, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, less, matchParam, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
   }
 
 
@@ -695,12 +747,14 @@ public class ActionChainAlertRule {
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    distinctByFields: ").append(toIndentedString(distinctByFields)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    initialAction: ").append(toIndentedString(initialAction)).append("\n");
     sb.append("    insideWorkingHours: ").append(toIndentedString(insideWorkingHours)).append("\n");
     sb.append("    less: ").append(toIndentedString(less)).append("\n");
+    sb.append("    matchParam: ").append(toIndentedString(matchParam)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");

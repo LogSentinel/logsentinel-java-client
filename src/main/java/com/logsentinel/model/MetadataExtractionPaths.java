@@ -56,7 +56,9 @@ public class MetadataExtractionPaths {
     
     JSON_PATH("JSON_PATH"),
     
-    REGEX("REGEX");
+    REGEX("REGEX"),
+    
+    PARAMS("PARAMS");
 
     private String value;
 

@@ -61,6 +61,9 @@ public class Application {
   @JsonProperty("displayedDetailsFields")
   private String displayedDetailsFields = null;
 
+  @JsonProperty("extractionOverrideEnabled")
+  private Boolean extractionOverrideEnabled = null;
+
   @JsonProperty("generateHashChain")
   private Boolean generateHashChain = null;
 
@@ -112,6 +115,9 @@ public class Application {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("newThreatIntelAlertPeriodHours")
+  private Integer newThreatIntelAlertPeriodHours = null;
+
   @JsonProperty("openDataAnonymizationRegexes")
   private List<String> openDataAnonymizationRegexes = null;
 
@@ -144,6 +150,12 @@ public class Application {
 
   @JsonProperty("signatureVerificationPublicKeys")
   private List<String> signatureVerificationPublicKeys = null;
+
+  @JsonProperty("skipThreatIntelligenceParams")
+  private Map<String, String> skipThreatIntelligenceParams = null;
+
+  @JsonProperty("skipThreatIntelligenceRegex")
+  private String skipThreatIntelligenceRegex = null;
 
   /**
    * Gets or Sets sourceCategory
@@ -466,6 +478,24 @@ public class Application {
 
   public void setDisplayedDetailsFields(String displayedDetailsFields) {
     this.displayedDetailsFields = displayedDetailsFields;
+  }
+
+  public Application extractionOverrideEnabled(Boolean extractionOverrideEnabled) {
+    this.extractionOverrideEnabled = extractionOverrideEnabled;
+    return this;
+  }
+
+   /**
+   * Get extractionOverrideEnabled
+   * @return extractionOverrideEnabled
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isExtractionOverrideEnabled() {
+    return extractionOverrideEnabled;
+  }
+
+  public void setExtractionOverrideEnabled(Boolean extractionOverrideEnabled) {
+    this.extractionOverrideEnabled = extractionOverrideEnabled;
   }
 
   public Application generateHashChain(Boolean generateHashChain) {
@@ -806,6 +836,24 @@ public class Application {
     this.name = name;
   }
 
+  public Application newThreatIntelAlertPeriodHours(Integer newThreatIntelAlertPeriodHours) {
+    this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
+    return this;
+  }
+
+   /**
+   * Get newThreatIntelAlertPeriodHours
+   * @return newThreatIntelAlertPeriodHours
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getNewThreatIntelAlertPeriodHours() {
+    return newThreatIntelAlertPeriodHours;
+  }
+
+  public void setNewThreatIntelAlertPeriodHours(Integer newThreatIntelAlertPeriodHours) {
+    this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
+  }
+
   public Application openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
     return this;
@@ -1044,6 +1092,50 @@ public class Application {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
   }
 
+  public Application skipThreatIntelligenceParams(Map<String, String> skipThreatIntelligenceParams) {
+    this.skipThreatIntelligenceParams = skipThreatIntelligenceParams;
+    return this;
+  }
+
+  public Application putSkipThreatIntelligenceParamsItem(String key, String skipThreatIntelligenceParamsItem) {
+    if (this.skipThreatIntelligenceParams == null) {
+      this.skipThreatIntelligenceParams = new HashMap<>();
+    }
+    this.skipThreatIntelligenceParams.put(key, skipThreatIntelligenceParamsItem);
+    return this;
+  }
+
+   /**
+   * Get skipThreatIntelligenceParams
+   * @return skipThreatIntelligenceParams
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getSkipThreatIntelligenceParams() {
+    return skipThreatIntelligenceParams;
+  }
+
+  public void setSkipThreatIntelligenceParams(Map<String, String> skipThreatIntelligenceParams) {
+    this.skipThreatIntelligenceParams = skipThreatIntelligenceParams;
+  }
+
+  public Application skipThreatIntelligenceRegex(String skipThreatIntelligenceRegex) {
+    this.skipThreatIntelligenceRegex = skipThreatIntelligenceRegex;
+    return this;
+  }
+
+   /**
+   * Get skipThreatIntelligenceRegex
+   * @return skipThreatIntelligenceRegex
+  **/
+  @ApiModelProperty(value = "")
+  public String getSkipThreatIntelligenceRegex() {
+    return skipThreatIntelligenceRegex;
+  }
+
+  public void setSkipThreatIntelligenceRegex(String skipThreatIntelligenceRegex) {
+    this.skipThreatIntelligenceRegex = skipThreatIntelligenceRegex;
+  }
+
   public Application sourceCategory(SourceCategoryEnum sourceCategory) {
     this.sourceCategory = sourceCategory;
     return this;
@@ -1197,6 +1289,7 @@ public class Application {
         Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
         Objects.equals(this.disabledThreatFeeds, application.disabledThreatFeeds) &&
         Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
+        Objects.equals(this.extractionOverrideEnabled, application.extractionOverrideEnabled) &&
         Objects.equals(this.generateHashChain, application.generateHashChain) &&
         Objects.equals(this.generateMerkleTree, application.generateMerkleTree) &&
         Objects.equals(this.genesisEntryId, application.genesisEntryId) &&
@@ -1214,6 +1307,7 @@ public class Application {
         Objects.equals(this.metadataExtractionPaths, application.metadataExtractionPaths) &&
         Objects.equals(this.missingLogsAlertId, application.missingLogsAlertId) &&
         Objects.equals(this.name, application.name) &&
+        Objects.equals(this.newThreatIntelAlertPeriodHours, application.newThreatIntelAlertPeriodHours) &&
         Objects.equals(this.openDataAnonymizationRegexes, application.openDataAnonymizationRegexes) &&
         Objects.equals(this.openDataAnonymizeBodyFields, application.openDataAnonymizeBodyFields) &&
         Objects.equals(this.openDataEnabled, application.openDataEnabled) &&
@@ -1225,6 +1319,8 @@ public class Application {
         Objects.equals(this.retentionDays, application.retentionDays) &&
         Objects.equals(this.riskLevel, application.riskLevel) &&
         Objects.equals(this.signatureVerificationPublicKeys, application.signatureVerificationPublicKeys) &&
+        Objects.equals(this.skipThreatIntelligenceParams, application.skipThreatIntelligenceParams) &&
+        Objects.equals(this.skipThreatIntelligenceRegex, application.skipThreatIntelligenceRegex) &&
         Objects.equals(this.sourceCategory, application.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
         Objects.equals(this.syslogId, application.syslogId) &&
@@ -1236,7 +1332,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1254,6 +1350,7 @@ public class Application {
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    disabledThreatFeeds: ").append(toIndentedString(disabledThreatFeeds)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
+    sb.append("    extractionOverrideEnabled: ").append(toIndentedString(extractionOverrideEnabled)).append("\n");
     sb.append("    generateHashChain: ").append(toIndentedString(generateHashChain)).append("\n");
     sb.append("    generateMerkleTree: ").append(toIndentedString(generateMerkleTree)).append("\n");
     sb.append("    genesisEntryId: ").append(toIndentedString(genesisEntryId)).append("\n");
@@ -1271,6 +1368,7 @@ public class Application {
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
     sb.append("    missingLogsAlertId: ").append(toIndentedString(missingLogsAlertId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    newThreatIntelAlertPeriodHours: ").append(toIndentedString(newThreatIntelAlertPeriodHours)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");
@@ -1282,6 +1380,8 @@ public class Application {
     sb.append("    retentionDays: ").append(toIndentedString(retentionDays)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
+    sb.append("    skipThreatIntelligenceParams: ").append(toIndentedString(skipThreatIntelligenceParams)).append("\n");
+    sb.append("    skipThreatIntelligenceRegex: ").append(toIndentedString(skipThreatIntelligenceRegex)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");

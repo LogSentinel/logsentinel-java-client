@@ -23,6 +23,7 @@ Name | Value
 XPATH | &quot;XPATH&quot;
 JSON_PATH | &quot;JSON_PATH&quot;
 REGEX | &quot;REGEX&quot;
+PARAMS | &quot;PARAMS&quot;
 
 
 

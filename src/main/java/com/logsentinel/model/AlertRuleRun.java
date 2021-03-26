@@ -120,6 +120,9 @@ public class AlertRuleRun {
   @JsonProperty("organizationId")
   private UUID organizationId = null;
 
+  @JsonProperty("resolutionTime")
+  private Long resolutionTime = null;
+
   @JsonProperty("riskLevel")
   private Integer riskLevel = null;
 
@@ -510,6 +513,24 @@ public class AlertRuleRun {
     this.organizationId = organizationId;
   }
 
+  public AlertRuleRun resolutionTime(Long resolutionTime) {
+    this.resolutionTime = resolutionTime;
+    return this;
+  }
+
+   /**
+   * Get resolutionTime
+   * @return resolutionTime
+  **/
+  @ApiModelProperty(value = "")
+  public Long getResolutionTime() {
+    return resolutionTime;
+  }
+
+  public void setResolutionTime(Long resolutionTime) {
+    this.resolutionTime = resolutionTime;
+  }
+
   public AlertRuleRun riskLevel(Integer riskLevel) {
     this.riskLevel = riskLevel;
     return this;
@@ -651,6 +672,7 @@ public class AlertRuleRun {
         Objects.equals(this.iocTypes, alertRuleRun.iocTypes) &&
         Objects.equals(this.notified, alertRuleRun.notified) &&
         Objects.equals(this.organizationId, alertRuleRun.organizationId) &&
+        Objects.equals(this.resolutionTime, alertRuleRun.resolutionTime) &&
         Objects.equals(this.riskLevel, alertRuleRun.riskLevel) &&
         Objects.equals(this.status, alertRuleRun.status) &&
         Objects.equals(this.tags, alertRuleRun.tags) &&
@@ -661,7 +683,7 @@ public class AlertRuleRun {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actualValue, alertRuleId, alertRuleName, alertType, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
+    return Objects.hash(actualValue, alertRuleId, alertRuleName, alertType, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, resolutionTime, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
   }
 
 
@@ -685,6 +707,7 @@ public class AlertRuleRun {
     sb.append("    iocTypes: ").append(toIndentedString(iocTypes)).append("\n");
     sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    resolutionTime: ").append(toIndentedString(resolutionTime)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");

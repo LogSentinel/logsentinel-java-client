@@ -56,6 +56,9 @@ public class ApplicationRequest {
   @JsonProperty("displayedDetailsFields")
   private String displayedDetailsFields = null;
 
+  @JsonProperty("extractionOverrideEnabled")
+  private Boolean extractionOverrideEnabled = null;
+
   @JsonProperty("generateHashChain")
   private Boolean generateHashChain = null;
 
@@ -86,6 +89,9 @@ public class ApplicationRequest {
   @JsonProperty("name")
   private String name = null;
 
+  @JsonProperty("newThreatIntelAlertPeriodHours")
+  private Integer newThreatIntelAlertPeriodHours = null;
+
   @JsonProperty("openDataAnonymizationRegexes")
   private List<String> openDataAnonymizationRegexes = null;
 
@@ -112,6 +118,12 @@ public class ApplicationRequest {
 
   @JsonProperty("signatureVerificationPublicKeys")
   private List<String> signatureVerificationPublicKeys = null;
+
+  @JsonProperty("skipThreatIntelligenceParams")
+  private Map<String, String> skipThreatIntelligenceParams = null;
+
+  @JsonProperty("skipThreatIntelligenceRegex")
+  private String skipThreatIntelligenceRegex = null;
 
   /**
    * Gets or Sets sourceCategory
@@ -412,6 +424,24 @@ public class ApplicationRequest {
     this.displayedDetailsFields = displayedDetailsFields;
   }
 
+  public ApplicationRequest extractionOverrideEnabled(Boolean extractionOverrideEnabled) {
+    this.extractionOverrideEnabled = extractionOverrideEnabled;
+    return this;
+  }
+
+   /**
+   * Get extractionOverrideEnabled
+   * @return extractionOverrideEnabled
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isExtractionOverrideEnabled() {
+    return extractionOverrideEnabled;
+  }
+
+  public void setExtractionOverrideEnabled(Boolean extractionOverrideEnabled) {
+    this.extractionOverrideEnabled = extractionOverrideEnabled;
+  }
+
   public ApplicationRequest generateHashChain(Boolean generateHashChain) {
     this.generateHashChain = generateHashChain;
     return this;
@@ -624,6 +654,24 @@ public class ApplicationRequest {
     this.name = name;
   }
 
+  public ApplicationRequest newThreatIntelAlertPeriodHours(Integer newThreatIntelAlertPeriodHours) {
+    this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
+    return this;
+  }
+
+   /**
+   * Get newThreatIntelAlertPeriodHours
+   * @return newThreatIntelAlertPeriodHours
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getNewThreatIntelAlertPeriodHours() {
+    return newThreatIntelAlertPeriodHours;
+  }
+
+  public void setNewThreatIntelAlertPeriodHours(Integer newThreatIntelAlertPeriodHours) {
+    this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
+  }
+
   public ApplicationRequest openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
     return this;
@@ -826,6 +874,50 @@ public class ApplicationRequest {
     this.signatureVerificationPublicKeys = signatureVerificationPublicKeys;
   }
 
+  public ApplicationRequest skipThreatIntelligenceParams(Map<String, String> skipThreatIntelligenceParams) {
+    this.skipThreatIntelligenceParams = skipThreatIntelligenceParams;
+    return this;
+  }
+
+  public ApplicationRequest putSkipThreatIntelligenceParamsItem(String key, String skipThreatIntelligenceParamsItem) {
+    if (this.skipThreatIntelligenceParams == null) {
+      this.skipThreatIntelligenceParams = new HashMap<>();
+    }
+    this.skipThreatIntelligenceParams.put(key, skipThreatIntelligenceParamsItem);
+    return this;
+  }
+
+   /**
+   * Get skipThreatIntelligenceParams
+   * @return skipThreatIntelligenceParams
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getSkipThreatIntelligenceParams() {
+    return skipThreatIntelligenceParams;
+  }
+
+  public void setSkipThreatIntelligenceParams(Map<String, String> skipThreatIntelligenceParams) {
+    this.skipThreatIntelligenceParams = skipThreatIntelligenceParams;
+  }
+
+  public ApplicationRequest skipThreatIntelligenceRegex(String skipThreatIntelligenceRegex) {
+    this.skipThreatIntelligenceRegex = skipThreatIntelligenceRegex;
+    return this;
+  }
+
+   /**
+   * Get skipThreatIntelligenceRegex
+   * @return skipThreatIntelligenceRegex
+  **/
+  @ApiModelProperty(value = "")
+  public String getSkipThreatIntelligenceRegex() {
+    return skipThreatIntelligenceRegex;
+  }
+
+  public void setSkipThreatIntelligenceRegex(String skipThreatIntelligenceRegex) {
+    this.skipThreatIntelligenceRegex = skipThreatIntelligenceRegex;
+  }
+
   public ApplicationRequest sourceCategory(SourceCategoryEnum sourceCategory) {
     this.sourceCategory = sourceCategory;
     return this;
@@ -942,6 +1034,7 @@ public class ApplicationRequest {
         Objects.equals(this.detailsTransformationScript, applicationRequest.detailsTransformationScript) &&
         Objects.equals(this.disabledThreatFeeds, applicationRequest.disabledThreatFeeds) &&
         Objects.equals(this.displayedDetailsFields, applicationRequest.displayedDetailsFields) &&
+        Objects.equals(this.extractionOverrideEnabled, applicationRequest.extractionOverrideEnabled) &&
         Objects.equals(this.generateHashChain, applicationRequest.generateHashChain) &&
         Objects.equals(this.generateMerkleTree, applicationRequest.generateMerkleTree) &&
         Objects.equals(this.groupIds, applicationRequest.groupIds) &&
@@ -952,6 +1045,7 @@ public class ApplicationRequest {
         Objects.equals(this.logLevelRegexes, applicationRequest.logLevelRegexes) &&
         Objects.equals(this.metadataExtractionPaths, applicationRequest.metadataExtractionPaths) &&
         Objects.equals(this.name, applicationRequest.name) &&
+        Objects.equals(this.newThreatIntelAlertPeriodHours, applicationRequest.newThreatIntelAlertPeriodHours) &&
         Objects.equals(this.openDataAnonymizationRegexes, applicationRequest.openDataAnonymizationRegexes) &&
         Objects.equals(this.openDataAnonymizeBodyFields, applicationRequest.openDataAnonymizeBodyFields) &&
         Objects.equals(this.openDataEnabled, applicationRequest.openDataEnabled) &&
@@ -961,6 +1055,8 @@ public class ApplicationRequest {
         Objects.equals(this.retentionDays, applicationRequest.retentionDays) &&
         Objects.equals(this.riskLevel, applicationRequest.riskLevel) &&
         Objects.equals(this.signatureVerificationPublicKeys, applicationRequest.signatureVerificationPublicKeys) &&
+        Objects.equals(this.skipThreatIntelligenceParams, applicationRequest.skipThreatIntelligenceParams) &&
+        Objects.equals(this.skipThreatIntelligenceRegex, applicationRequest.skipThreatIntelligenceRegex) &&
         Objects.equals(this.sourceCategory, applicationRequest.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, applicationRequest.storeHashesInEthereum) &&
         Objects.equals(this.verificationFailureReportRecipientEmails, applicationRequest.verificationFailureReportRecipientEmails) &&
@@ -970,7 +1066,7 @@ public class ApplicationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, sourceCategory, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -987,6 +1083,7 @@ public class ApplicationRequest {
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    disabledThreatFeeds: ").append(toIndentedString(disabledThreatFeeds)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
+    sb.append("    extractionOverrideEnabled: ").append(toIndentedString(extractionOverrideEnabled)).append("\n");
     sb.append("    generateHashChain: ").append(toIndentedString(generateHashChain)).append("\n");
     sb.append("    generateMerkleTree: ").append(toIndentedString(generateMerkleTree)).append("\n");
     sb.append("    groupIds: ").append(toIndentedString(groupIds)).append("\n");
@@ -997,6 +1094,7 @@ public class ApplicationRequest {
     sb.append("    logLevelRegexes: ").append(toIndentedString(logLevelRegexes)).append("\n");
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    newThreatIntelAlertPeriodHours: ").append(toIndentedString(newThreatIntelAlertPeriodHours)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");
@@ -1006,6 +1104,8 @@ public class ApplicationRequest {
     sb.append("    retentionDays: ").append(toIndentedString(retentionDays)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    signatureVerificationPublicKeys: ").append(toIndentedString(signatureVerificationPublicKeys)).append("\n");
+    sb.append("    skipThreatIntelligenceParams: ").append(toIndentedString(skipThreatIntelligenceParams)).append("\n");
+    sb.append("    skipThreatIntelligenceRegex: ").append(toIndentedString(skipThreatIntelligenceRegex)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");

@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **iocTypes** | **List&lt;String&gt;** |  |  [optional]
 **notified** | **Boolean** |  |  [optional]
 **organizationId** | [**UUID**](UUID.md) |  |  [optional]
+**resolutionTime** | **Long** |  |  [optional]
 **riskLevel** | **Integer** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
 **tags** | **List&lt;String&gt;** |  |  [optional]

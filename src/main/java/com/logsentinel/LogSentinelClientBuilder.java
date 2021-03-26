@@ -15,6 +15,7 @@ import com.logsentinel.api.LogSpecialApi;
 import com.logsentinel.api.LoggingApi;
 import com.logsentinel.api.OrganizationUsersApi;
 import com.logsentinel.api.PartnersApi;
+import com.logsentinel.api.PhishingDetectionApi;
 import com.logsentinel.api.SavedSearchesApi;
 import com.logsentinel.api.SearchApi;
 import com.logsentinel.api.ThreatIntelligenceApi;
@@ -86,11 +87,12 @@ public class LogSentinelClientBuilder {
         ThreatIntelligenceApi threatIntelligenceApi = new ThreatIntelligenceApi(apiClient);
         CollectorApi collectorApi = new CollectorApi(apiClient);
         FlowLoggingApi flowApi = new FlowLoggingApi(apiClient);
+        PhishingDetectionApi phishingDetectionApi = new PhishingDetectionApi(apiClient);
         
         LogSentinelClient client = new LogSentinelClient(auditLogApi, hashApi, userApi,
                 applicationApi, searchApi, verificationApi, healthcareApi, gdprLoggingApi, 
                 registerApi, alertsApi, logSpecialApi, partnersApi, userApi, savedSearchApi,
-                leakedCredentialsApi, threatIntelligenceApi, collectorApi, flowApi);
+                leakedCredentialsApi, threatIntelligenceApi, collectorApi, flowApi, phishingDetectionApi);
         return client;
     }
 

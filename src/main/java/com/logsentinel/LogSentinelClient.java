@@ -13,6 +13,7 @@ import com.logsentinel.api.LogSpecialApi;
 import com.logsentinel.api.LoggingApi;
 import com.logsentinel.api.OrganizationUsersApi;
 import com.logsentinel.api.PartnersApi;
+import com.logsentinel.api.PhishingDetectionApi;
 import com.logsentinel.api.SavedSearchesApi;
 import com.logsentinel.api.SearchApi;
 import com.logsentinel.api.ThreatIntelligenceApi;
@@ -41,6 +42,7 @@ public class LogSentinelClient {
     private ThreatIntelligenceApi threatIntelligenceActions;
     private CollectorApi collectorActions;
     private FlowLoggingApi flowActions;
+    private PhishingDetectionApi phishingDetectionActions;
     
     public LogSentinelClient(LoggingApi auditLogActions, HashApi hashActions, OrganizationUsersApi userActions,
             ApplicationsApi applicationActions, SearchApi searchActions, VerificationApi verificationActions,
@@ -48,7 +50,7 @@ public class LogSentinelClient {
             AlertsApi alertsActions, LogSpecialApi logSpecialActions, PartnersApi partnersActions,
             OrganizationUsersApi organizationsActions, SavedSearchesApi savedSearchesActions, 
             LeakedCredentialsApi leakedCredentialsActions, ThreatIntelligenceApi threatIntelligenceActions,
-            CollectorApi collectorActions, FlowLoggingApi flowActions) {
+            CollectorApi collectorActions, FlowLoggingApi flowActions, PhishingDetectionApi phishingDetectionActions) {
         super();
         this.auditLogActions = auditLogActions;
         this.hashActions = hashActions;
@@ -68,6 +70,7 @@ public class LogSentinelClient {
         this.threatIntelligenceActions = threatIntelligenceActions;
         this.collectorActions = collectorActions;
         this.flowActions = flowActions;
+        this.phishingDetectionActions = phishingDetectionActions;
     }
     
     public LoggingApi getAuditLogActions() {
@@ -121,8 +124,10 @@ public class LogSentinelClient {
     public CollectorApi getCollectorActions() {
         return collectorActions;
     }
-
     public FlowLoggingApi getFlowActions() {
         return flowActions;
+    }
+    public PhishingDetectionApi getPhishingDetectionActions() {
+        return phishingDetectionActions;
     }
 }

@@ -479,6 +479,14 @@ if (userPublicKey != null)
       }
       e.getParams().putAll(e.getAdditionalParams());
       
+      try {
+          //remove null keys
+          e.getParams().remove(null);
+          e.getActionData().getParams().remove(null);
+      } catch (NullPointerException ex) {
+          // ignore
+      }
+      
       if (e.getActionData() != null && e.getActionData().getParams() != null) {
           e.getActionData().getParams().forEach((k, v) -> e.getParams().put(k, v));
       }

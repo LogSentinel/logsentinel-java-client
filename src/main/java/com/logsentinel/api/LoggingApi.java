@@ -66,7 +66,7 @@ public class LoggingApi {
    * @return AuditLogEntry
    * @throws ApiException if fails to make API call
    */
-  public AuditLogEntry getEntryById(UUID applicationId, String entryId) throws ApiException {
+  public AuditLogEntry getEntryById(UUID applicationId, UUID entryId) throws ApiException {
     return getEntryByIdWithHttpInfo(applicationId, entryId).getData();
       }
 
@@ -78,7 +78,7 @@ public class LoggingApi {
    * @return ApiResponse&lt;AuditLogEntry&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<AuditLogEntry> getEntryByIdWithHttpInfo(UUID applicationId, String entryId) throws ApiException {
+  public ApiResponse<AuditLogEntry> getEntryByIdWithHttpInfo(UUID applicationId, UUID entryId) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'entryId' is set
@@ -123,7 +123,7 @@ public class LoggingApi {
    * @return LogResponse
    * @throws ApiException if fails to make API call
    */
-  public LogResponse getHashByEntryId(UUID applicationId, String entryId) throws ApiException {
+  public LogResponse getHashByEntryId(String applicationId, String entryId) throws ApiException {
     return getHashByEntryIdWithHttpInfo(applicationId, entryId).getData();
       }
 
@@ -135,8 +135,9 @@ public class LoggingApi {
    * @return ApiResponse&lt;LogResponse&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<LogResponse> getHashByEntryIdWithHttpInfo(UUID applicationId, String entryId) throws ApiException {
+  public ApiResponse<LogResponse> getHashByEntryIdWithHttpInfo(String applicationId, String entryId) throws ApiException {
     Object localVarPostBody = null;
+    
     
     // verify the required parameter 'entryId' is set
     if (entryId == null) {

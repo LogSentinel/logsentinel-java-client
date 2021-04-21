@@ -62,7 +62,7 @@ null (empty response body)
 
 <a name="sysInit"></a>
 # **sysInit**
-> sysInit(data)
+> Map&lt;String, UUID&gt; sysInit(data)
 
 Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
 
@@ -85,7 +85,8 @@ basicAuth.setPassword("YOUR PASSWORD");
 CollectorApi apiInstance = new CollectorApi();
 CollectorStatusDto data = new CollectorStatusDto(); // CollectorStatusDto | data
 try {
-    apiInstance.sysInit(data);
+    Map<String, UUID> result = apiInstance.sysInit(data);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectorApi#sysInit");
     e.printStackTrace();
@@ -100,7 +101,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Map&lt;String, UUID&gt;**](UUID.md)
 
 ### Authorization
 
@@ -113,7 +114,7 @@ null (empty response body)
 
 <a name="updateStatus"></a>
 # **updateStatus**
-> updateStatus(data)
+> Map&lt;String, UUID&gt; updateStatus(data)
 
 Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
 
@@ -136,7 +137,8 @@ basicAuth.setPassword("YOUR PASSWORD");
 CollectorApi apiInstance = new CollectorApi();
 CollectorStatusDto data = new CollectorStatusDto(); // CollectorStatusDto | data
 try {
-    apiInstance.updateStatus(data);
+    Map<String, UUID> result = apiInstance.updateStatus(data);
+    System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CollectorApi#updateStatus");
     e.printStackTrace();
@@ -151,7 +153,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**Map&lt;String, UUID&gt;**](UUID.md)
 
 ### Authorization
 

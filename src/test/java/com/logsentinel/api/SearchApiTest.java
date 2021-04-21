@@ -81,13 +81,7 @@ public class SearchApiTest {
      */
     @Test
     public void searchTest() throws ApiException {
-        String applicationId = null;
-        Long endTime = null;
-        Integer page = null;
-        Integer pageSize = null;
-        String query = null;
-        Long startTime = null;
-        List<AuditLogEntry> response = api.search(applicationId, null);
+        List<AuditLogEntry> response = api.search(null);
 
         // TODO: test validations
     }

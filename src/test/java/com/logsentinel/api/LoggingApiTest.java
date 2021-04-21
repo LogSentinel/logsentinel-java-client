@@ -53,7 +53,7 @@ public class LoggingApiTest {
     @Test
     public void getEntryByIdTest() throws ApiException {
         UUID applicationId = null;
-        String entryId = null;
+        UUID entryId = null;
         AuditLogEntry response = api.getEntryById(applicationId, entryId);
 
         // TODO: test validations
@@ -69,7 +69,7 @@ public class LoggingApiTest {
      */
     @Test
     public void getHashByEntryIdTest() throws ApiException {
-        UUID applicationId = null;
+        String applicationId = null;
         String entryId = null;
         LogResponse response = api.getHashByEntryId(applicationId, entryId);
 

@@ -91,6 +91,9 @@ public class ConnectorStatusDto {
   @JsonProperty("status")
   private StatusEnum status = null;
 
+  @JsonProperty("type")
+  private String type = null;
+
   public ConnectorStatusDto additionalMessage(String additionalMessage) {
     this.additionalMessage = additionalMessage;
     return this;
@@ -207,6 +210,24 @@ public class ConnectorStatusDto {
     this.status = status;
   }
 
+  public ConnectorStatusDto type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -222,12 +243,13 @@ public class ConnectorStatusDto {
         Objects.equals(this.connectorName, connectorStatusDto.connectorName) &&
         Objects.equals(this.dataSourceIds, connectorStatusDto.dataSourceIds) &&
         Objects.equals(this.newlyCreated, connectorStatusDto.newlyCreated) &&
-        Objects.equals(this.status, connectorStatusDto.status);
+        Objects.equals(this.status, connectorStatusDto.status) &&
+        Objects.equals(this.type, connectorStatusDto.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(additionalMessage, connectorId, connectorName, dataSourceIds, newlyCreated, status);
+    return Objects.hash(additionalMessage, connectorId, connectorName, dataSourceIds, newlyCreated, status, type);
   }
 
 
@@ -242,6 +264,7 @@ public class ConnectorStatusDto {
     sb.append("    dataSourceIds: ").append(toIndentedString(dataSourceIds)).append("\n");
     sb.append("    newlyCreated: ").append(toIndentedString(newlyCreated)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

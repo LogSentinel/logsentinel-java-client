@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getBatch**](SearchApi.md#getBatch) | **GET** /api/search/batch | Search entries in batches by field
 [**getEntityHistory**](SearchApi.md#getEntityHistory) | **GET** /api/search/entityHistory | Get entity history
 [**search**](SearchApi.md#search) | **POST** /api/search | Search logged entries
+[**searchByParam**](SearchApi.md#searchByParam) | **GET** /api/search | Search logged entries via a GET request
 
 
 <a name="getBatch"></a>
@@ -133,7 +134,7 @@ Name | Type | Description  | Notes
 
 <a name="search"></a>
 # **search**
-> List&lt;AuditLogEntry&gt; search(applicationId, searchRequest)
+> List&lt;AuditLogEntry&gt; search(searchRequest)
 
 Search logged entries
 
@@ -156,10 +157,9 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 SearchApi apiInstance = new SearchApi();
-String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
 SearchRequest searchRequest = new SearchRequest(); // SearchRequest | searchRequest
 try {
-    List<AuditLogEntry> result = apiInstance.search(applicationId, searchRequest);
+    List<AuditLogEntry> result = apiInstance.search(searchRequest);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SearchApi#search");
@@ -171,7 +171,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
  **searchRequest** | [**SearchRequest**](SearchRequest.md)| searchRequest |
 
 ### Return type
@@ -185,5 +184,69 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/xml, application/json
+
+<a name="searchByParam"></a>
+# **searchByParam**
+> List&lt;AuditLogEntry&gt; searchByParam(applicationId, endTime, page, pageSize, query, startTime, applicationIds)
+
+Search logged entries via a GET request
+
+### Example
+```java
+// Import classes:
+//import com.logsentinel.ApiClient;
+//import com.logsentinel.ApiException;
+//import com.logsentinel.Configuration;
+//import com.logsentinel.auth.*;
+//import com.logsentinel.api.SearchApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure HTTP basic authorization: basicAuth
+HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+basicAuth.setUsername("YOUR USERNAME");
+basicAuth.setPassword("YOUR PASSWORD");
+
+SearchApi apiInstance = new SearchApi();
+String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
+Long endTime = 789L; // Long | endTime
+Integer page = 56; // Integer | page
+Integer pageSize = 56; // Integer | pageSize
+String query = "query_example"; // String | query
+Long startTime = 789L; // Long | startTime
+List<UUID> applicationIds = Arrays.asList(new UUID()); // List<UUID> | applicationIds
+try {
+    List<AuditLogEntry> result = apiInstance.searchByParam(applicationId, endTime, page, pageSize, query, startTime, applicationIds);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SearchApi#searchByParam");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
+ **endTime** | **Long**| endTime |
+ **page** | **Integer**| page |
+ **pageSize** | **Integer**| pageSize |
+ **query** | **String**| query |
+ **startTime** | **Long**| startTime |
+ **applicationIds** | [**List&lt;UUID&gt;**](UUID.md)| applicationIds | [optional]
+
+### Return type
+
+[**List&lt;AuditLogEntry&gt;**](AuditLogEntry.md)
+
+### Authorization
+
+[basicAuth](../README.md#basicAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: */*
  - **Accept**: application/xml, application/json
 

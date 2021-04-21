@@ -83,8 +83,14 @@ public class AlertRule {
   @JsonProperty("applicationIds")
   private List<UUID> applicationIds = null;
 
+  @JsonProperty("automaticCase")
+  private Boolean automaticCase = null;
+
   @JsonProperty("created")
   private LocalDateTime created = null;
+
+  @JsonProperty("description")
+  private String description = null;
 
   @JsonProperty("enabled")
   private Boolean enabled = null;
@@ -100,6 +106,57 @@ public class AlertRule {
 
   @JsonProperty("insideWorkingHours")
   private Boolean insideWorkingHours = null;
+
+  @JsonProperty("joinAlertsPeriod")
+  private Integer joinAlertsPeriod = null;
+
+  /**
+   * Gets or Sets joinAlertsPeriodType
+   */
+  public enum JoinAlertsPeriodTypeEnum {
+    SECOND("SECOND"),
+    
+    MINUTE("MINUTE"),
+    
+    HOUR("HOUR"),
+    
+    DAY("DAY"),
+    
+    WEEK("WEEK"),
+    
+    MONTH("MONTH"),
+    
+    YEAR("YEAR");
+
+    private String value;
+
+    JoinAlertsPeriodTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static JoinAlertsPeriodTypeEnum fromValue(String text) {
+      for (JoinAlertsPeriodTypeEnum b : JoinAlertsPeriodTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("joinAlertsPeriodType")
+  private JoinAlertsPeriodTypeEnum joinAlertsPeriodType = null;
 
   @JsonProperty("name")
   private String name = null;
@@ -330,6 +387,24 @@ public class AlertRule {
     this.applicationIds = applicationIds;
   }
 
+  public AlertRule automaticCase(Boolean automaticCase) {
+    this.automaticCase = automaticCase;
+    return this;
+  }
+
+   /**
+   * Get automaticCase
+   * @return automaticCase
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isAutomaticCase() {
+    return automaticCase;
+  }
+
+  public void setAutomaticCase(Boolean automaticCase) {
+    this.automaticCase = automaticCase;
+  }
+  
   public AlertRule created(LocalDateTime created) {
     this.created = created;
     return this;
@@ -346,6 +421,24 @@ public class AlertRule {
 
   public void setCreated(LocalDateTime created) {
     this.created = created;
+  }
+
+  public AlertRule description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @ApiModelProperty(value = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public AlertRule enabled(Boolean enabled) {
@@ -436,6 +529,42 @@ public class AlertRule {
 
   public void setInsideWorkingHours(Boolean insideWorkingHours) {
     this.insideWorkingHours = insideWorkingHours;
+  }
+
+  public AlertRule joinAlertsPeriod(Integer joinAlertsPeriod) {
+    this.joinAlertsPeriod = joinAlertsPeriod;
+    return this;
+  }
+
+   /**
+   * Get joinAlertsPeriod
+   * @return joinAlertsPeriod
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getJoinAlertsPeriod() {
+    return joinAlertsPeriod;
+  }
+
+  public void setJoinAlertsPeriod(Integer joinAlertsPeriod) {
+    this.joinAlertsPeriod = joinAlertsPeriod;
+  }
+
+  public AlertRule joinAlertsPeriodType(JoinAlertsPeriodTypeEnum joinAlertsPeriodType) {
+    this.joinAlertsPeriodType = joinAlertsPeriodType;
+    return this;
+  }
+
+   /**
+   * Get joinAlertsPeriodType
+   * @return joinAlertsPeriodType
+  **/
+  @ApiModelProperty(value = "")
+  public JoinAlertsPeriodTypeEnum getJoinAlertsPeriodType() {
+    return joinAlertsPeriodType;
+  }
+
+  public void setJoinAlertsPeriodType(JoinAlertsPeriodTypeEnum joinAlertsPeriodType) {
+    this.joinAlertsPeriodType = joinAlertsPeriodType;
   }
 
   public AlertRule name(String name) {
@@ -640,12 +769,16 @@ public class AlertRule {
         Objects.equals(this.aggregationType, alertRule.aggregationType) &&
         Objects.equals(this.alertDestinationIds, alertRule.alertDestinationIds) &&
         Objects.equals(this.applicationIds, alertRule.applicationIds) &&
+        Objects.equals(this.automaticCase, alertRule.automaticCase) &&
         Objects.equals(this.created, alertRule.created) &&
+        Objects.equals(this.description, alertRule.description) &&
         Objects.equals(this.enabled, alertRule.enabled) &&
         Objects.equals(this.filterBy, alertRule.filterBy) &&
         Objects.equals(this.groupByField, alertRule.groupByField) &&
         Objects.equals(this.id, alertRule.id) &&
         Objects.equals(this.insideWorkingHours, alertRule.insideWorkingHours) &&
+        Objects.equals(this.joinAlertsPeriod, alertRule.joinAlertsPeriod) &&
+        Objects.equals(this.joinAlertsPeriodType, alertRule.joinAlertsPeriodType) &&
         Objects.equals(this.name, alertRule.name) &&
         Objects.equals(this.organizationId, alertRule.organizationId) &&
         Objects.equals(this.riskLevel, alertRule.riskLevel) &&
@@ -660,7 +793,7 @@ public class AlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, created, enabled, filterBy, groupByField, id, insideWorkingHours, name, organizationId, riskLevel, ruleType, searchPeriod, tags, thresholdType, thresholdValue, type, updated);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, automaticCase, created, description, enabled, filterBy, groupByField, id, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, name, organizationId, riskLevel, ruleType, searchPeriod, tags, thresholdType, thresholdValue, type, updated);
   }
 
 
@@ -673,12 +806,16 @@ public class AlertRule {
     sb.append("    aggregationType: ").append(toIndentedString(aggregationType)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
+    sb.append("    automaticCase: ").append(toIndentedString(automaticCase)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    filterBy: ").append(toIndentedString(filterBy)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    insideWorkingHours: ").append(toIndentedString(insideWorkingHours)).append("\n");
+    sb.append("    joinAlertsPeriod: ").append(toIndentedString(joinAlertsPeriod)).append("\n");
+    sb.append("    joinAlertsPeriodType: ").append(toIndentedString(joinAlertsPeriodType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");

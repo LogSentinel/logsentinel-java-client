@@ -42,11 +42,17 @@ public class ActionChainAlertRule {
   @JsonProperty("applicationIds")
   private List<UUID> applicationIds = null;
 
+  @JsonProperty("automaticCase")
+  private Boolean automaticCase = null;
+
   @JsonProperty("count")
   private List<Integer> count = null;
 
   @JsonProperty("created")
   private LocalDateTime created = null;
+
+  @JsonProperty("description")
+  private String description = null;
 
   @JsonProperty("distinctByFields")
   private List<String> distinctByFields = null;
@@ -65,6 +71,57 @@ public class ActionChainAlertRule {
 
   @JsonProperty("insideWorkingHours")
   private Boolean insideWorkingHours = null;
+
+  @JsonProperty("joinAlertsPeriod")
+  private Integer joinAlertsPeriod = null;
+
+  /**
+   * Gets or Sets joinAlertsPeriodType
+   */
+  public enum JoinAlertsPeriodTypeEnum {
+    SECOND("SECOND"),
+    
+    MINUTE("MINUTE"),
+    
+    HOUR("HOUR"),
+    
+    DAY("DAY"),
+    
+    WEEK("WEEK"),
+    
+    MONTH("MONTH"),
+    
+    YEAR("YEAR");
+
+    private String value;
+
+    JoinAlertsPeriodTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static JoinAlertsPeriodTypeEnum fromValue(String text) {
+      for (JoinAlertsPeriodTypeEnum b : JoinAlertsPeriodTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("joinAlertsPeriodType")
+  private JoinAlertsPeriodTypeEnum joinAlertsPeriodType = null;
 
   @JsonProperty("less")
   private List<Boolean> less = null;
@@ -210,6 +267,24 @@ public class ActionChainAlertRule {
     this.applicationIds = applicationIds;
   }
 
+  public ActionChainAlertRule automaticCase(Boolean automaticCase) {
+    this.automaticCase = automaticCase;
+    return this;
+  }
+
+   /**
+   * Get automaticCase
+   * @return automaticCase
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean isAutomaticCase() {
+    return automaticCase;
+  }
+
+  public void setAutomaticCase(Boolean automaticCase) {
+    this.automaticCase = automaticCase;
+  }
+
   public ActionChainAlertRule count(List<Integer> count) {
     this.count = count;
     return this;
@@ -252,6 +327,24 @@ public class ActionChainAlertRule {
 
   public void setCreated(LocalDateTime created) {
     this.created = created;
+  }
+
+  public ActionChainAlertRule description(String description) {
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * Get description
+   * @return description
+  **/
+  @ApiModelProperty(value = "")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   public ActionChainAlertRule distinctByFields(List<String> distinctByFields) {
@@ -368,6 +461,42 @@ public class ActionChainAlertRule {
 
   public void setInsideWorkingHours(Boolean insideWorkingHours) {
     this.insideWorkingHours = insideWorkingHours;
+  }
+
+  public ActionChainAlertRule joinAlertsPeriod(Integer joinAlertsPeriod) {
+    this.joinAlertsPeriod = joinAlertsPeriod;
+    return this;
+  }
+
+   /**
+   * Get joinAlertsPeriod
+   * @return joinAlertsPeriod
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getJoinAlertsPeriod() {
+    return joinAlertsPeriod;
+  }
+
+  public void setJoinAlertsPeriod(Integer joinAlertsPeriod) {
+    this.joinAlertsPeriod = joinAlertsPeriod;
+  }
+
+  public ActionChainAlertRule joinAlertsPeriodType(JoinAlertsPeriodTypeEnum joinAlertsPeriodType) {
+    this.joinAlertsPeriodType = joinAlertsPeriodType;
+    return this;
+  }
+
+   /**
+   * Get joinAlertsPeriodType
+   * @return joinAlertsPeriodType
+  **/
+  @ApiModelProperty(value = "")
+  public JoinAlertsPeriodTypeEnum getJoinAlertsPeriodType() {
+    return joinAlertsPeriodType;
+  }
+
+  public void setJoinAlertsPeriodType(JoinAlertsPeriodTypeEnum joinAlertsPeriodType) {
+    this.joinAlertsPeriodType = joinAlertsPeriodType;
   }
 
   public ActionChainAlertRule less(List<Boolean> less) {
@@ -704,14 +833,18 @@ public class ActionChainAlertRule {
         Objects.equals(this.aggregationPeriod, actionChainAlertRule.aggregationPeriod) &&
         Objects.equals(this.alertDestinationIds, actionChainAlertRule.alertDestinationIds) &&
         Objects.equals(this.applicationIds, actionChainAlertRule.applicationIds) &&
+        Objects.equals(this.automaticCase, actionChainAlertRule.automaticCase) &&
         Objects.equals(this.count, actionChainAlertRule.count) &&
         Objects.equals(this.created, actionChainAlertRule.created) &&
+        Objects.equals(this.description, actionChainAlertRule.description) &&
         Objects.equals(this.distinctByFields, actionChainAlertRule.distinctByFields) &&
         Objects.equals(this.enabled, actionChainAlertRule.enabled) &&
         Objects.equals(this.entityType, actionChainAlertRule.entityType) &&
         Objects.equals(this.id, actionChainAlertRule.id) &&
         Objects.equals(this.initialAction, actionChainAlertRule.initialAction) &&
         Objects.equals(this.insideWorkingHours, actionChainAlertRule.insideWorkingHours) &&
+        Objects.equals(this.joinAlertsPeriod, actionChainAlertRule.joinAlertsPeriod) &&
+        Objects.equals(this.joinAlertsPeriodType, actionChainAlertRule.joinAlertsPeriodType) &&
         Objects.equals(this.less, actionChainAlertRule.less) &&
         Objects.equals(this.matchParam, actionChainAlertRule.matchParam) &&
         Objects.equals(this.name, actionChainAlertRule.name) &&
@@ -732,7 +865,7 @@ public class ActionChainAlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, count, created, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, less, matchParam, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
+    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, automaticCase, count, created, description, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, less, matchParam, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
   }
 
 
@@ -745,14 +878,18 @@ public class ActionChainAlertRule {
     sb.append("    aggregationPeriod: ").append(toIndentedString(aggregationPeriod)).append("\n");
     sb.append("    alertDestinationIds: ").append(toIndentedString(alertDestinationIds)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
+    sb.append("    automaticCase: ").append(toIndentedString(automaticCase)).append("\n");
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    distinctByFields: ").append(toIndentedString(distinctByFields)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    initialAction: ").append(toIndentedString(initialAction)).append("\n");
     sb.append("    insideWorkingHours: ").append(toIndentedString(insideWorkingHours)).append("\n");
+    sb.append("    joinAlertsPeriod: ").append(toIndentedString(joinAlertsPeriod)).append("\n");
+    sb.append("    joinAlertsPeriodType: ").append(toIndentedString(joinAlertsPeriodType)).append("\n");
     sb.append("    less: ").append(toIndentedString(less)).append("\n");
     sb.append("    matchParam: ").append(toIndentedString(matchParam)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");

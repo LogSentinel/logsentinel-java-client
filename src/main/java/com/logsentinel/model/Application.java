@@ -58,6 +58,9 @@ public class Application {
   @JsonProperty("disabledThreatFeeds")
   private List<UUID> disabledThreatFeeds = null;
 
+  @JsonProperty("discardLogConditions")
+  private List<String> discardLogConditions = null;
+
   @JsonProperty("displayedDetailsFields")
   private String displayedDetailsFields = null;
 
@@ -460,6 +463,32 @@ public class Application {
 
   public void setDisabledThreatFeeds(List<UUID> disabledThreatFeeds) {
     this.disabledThreatFeeds = disabledThreatFeeds;
+  }
+
+  public Application discardLogConditions(List<String> discardLogConditions) {
+    this.discardLogConditions = discardLogConditions;
+    return this;
+  }
+
+  public Application addDiscardLogConditionsItem(String discardLogConditionsItem) {
+    if (this.discardLogConditions == null) {
+      this.discardLogConditions = new ArrayList<>();
+    }
+    this.discardLogConditions.add(discardLogConditionsItem);
+    return this;
+  }
+
+   /**
+   * Get discardLogConditions
+   * @return discardLogConditions
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getDiscardLogConditions() {
+    return discardLogConditions;
+  }
+
+  public void setDiscardLogConditions(List<String> discardLogConditions) {
+    this.discardLogConditions = discardLogConditions;
   }
 
   public Application displayedDetailsFields(String displayedDetailsFields) {
@@ -1288,6 +1317,7 @@ public class Application {
         Objects.equals(this.description, application.description) &&
         Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
         Objects.equals(this.disabledThreatFeeds, application.disabledThreatFeeds) &&
+        Objects.equals(this.discardLogConditions, application.discardLogConditions) &&
         Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
         Objects.equals(this.extractionOverrideEnabled, application.extractionOverrideEnabled) &&
         Objects.equals(this.generateHashChain, application.generateHashChain) &&
@@ -1332,7 +1362,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1349,6 +1379,7 @@ public class Application {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
     sb.append("    disabledThreatFeeds: ").append(toIndentedString(disabledThreatFeeds)).append("\n");
+    sb.append("    discardLogConditions: ").append(toIndentedString(discardLogConditions)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
     sb.append("    extractionOverrideEnabled: ").append(toIndentedString(extractionOverrideEnabled)).append("\n");
     sb.append("    generateHashChain: ").append(toIndentedString(generateHashChain)).append("\n");

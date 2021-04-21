@@ -37,8 +37,8 @@ basicAuth.setUsername("YOUR USERNAME");
 basicAuth.setPassword("YOUR PASSWORD");
 
 LoggingApi apiInstance = new LoggingApi();
-String applicationId = "applicationId_example"; // String | Application ID, identifying a target application (obtained from the API credentials page)
-String entryId = "entryId_example"; // String | ID of the audit log entry to verify
+UUID applicationId = new UUID(); // UUID | Application ID, identifying a target application (obtained from the API credentials page)
+UUID entryId = new UUID(); // UUID | ID of the audit log entry to verify
 try {
     AuditLogEntry result = apiInstance.getEntryById(applicationId, entryId);
     System.out.println(result);
@@ -52,8 +52,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicationId** | **String**| Application ID, identifying a target application (obtained from the API credentials page) |
- **entryId** | **String**| ID of the audit log entry to verify |
+ **applicationId** | [**UUID**](.md)| Application ID, identifying a target application (obtained from the API credentials page) |
+ **entryId** | [**UUID**](.md)| ID of the audit log entry to verify |
 
 ### Return type
 

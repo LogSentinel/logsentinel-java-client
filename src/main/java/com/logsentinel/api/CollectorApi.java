@@ -10,6 +10,7 @@ import javax.ws.rs.core.GenericType;
 
 import com.logsentinel.model.CollectorMetadataDto;
 import com.logsentinel.model.CollectorStatusDto;
+import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -91,20 +92,21 @@ public class CollectorApi {
    * Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
    * 
    * @param data data (required)
+   * @return Map&lt;String, UUID&gt;
    * @throws ApiException if fails to make API call
    */
-  public void sysInit(CollectorStatusDto data) throws ApiException {
-
-    sysInitWithHttpInfo(data);
-  }
+  public Map<String, UUID> sysInit(CollectorStatusDto data) throws ApiException {
+    return sysInitWithHttpInfo(data).getData();
+      }
 
   /**
    * Invoked during Collector instance startup. Publish all configured Agent(s)together with their respective dataSourceId(s)
    * 
    * @param data data (required)
+   * @return ApiResponse&lt;Map&lt;String, UUID&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> sysInitWithHttpInfo(CollectorStatusDto data) throws ApiException {
+  public ApiResponse<Map<String, UUID>> sysInitWithHttpInfo(CollectorStatusDto data) throws ApiException {
     Object localVarPostBody = data;
     
     // verify the required parameter 'data' is set
@@ -135,27 +137,28 @@ public class CollectorApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
-
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-  }
+    GenericType<Map<String, UUID>> localVarReturnType = new GenericType<Map<String, UUID>>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
    * 
    * @param data data (required)
+   * @return Map&lt;String, UUID&gt;
    * @throws ApiException if fails to make API call
    */
-  public void updateStatus(CollectorStatusDto data) throws ApiException {
-
-    updateStatusWithHttpInfo(data);
-  }
+  public Map<String, UUID> updateStatus(CollectorStatusDto data) throws ApiException {
+    return updateStatusWithHttpInfo(data).getData();
+      }
 
   /**
    * Invoked during Collector&#39;s operation. Publish current status of (some of) collector&#39;s Agent(s)(no dataSourceIds included)
    * 
    * @param data data (required)
+   * @return ApiResponse&lt;Map&lt;String, UUID&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Void> updateStatusWithHttpInfo(CollectorStatusDto data) throws ApiException {
+  public ApiResponse<Map<String, UUID>> updateStatusWithHttpInfo(CollectorStatusDto data) throws ApiException {
     Object localVarPostBody = data;
     
     // verify the required parameter 'data' is set
@@ -186,7 +189,7 @@ public class CollectorApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
-
-    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, null);
-  }
+    GenericType<Map<String, UUID>> localVarReturnType = new GenericType<Map<String, UUID>>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
 }

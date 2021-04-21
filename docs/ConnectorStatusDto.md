@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **dataSourceIds** | **List&lt;String&gt;** |  |  [optional]
 **newlyCreated** | **Boolean** |  |  [optional]
 **status** | [**StatusEnum**](#StatusEnum) |  |  [optional]
+**type** | **String** |  |  [optional]
 
 
 <a name="StatusEnum"></a>

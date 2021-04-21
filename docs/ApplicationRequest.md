@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **detailsTransformationScript** | **String** |  |  [optional]
 **disabledThreatFeeds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
+**discardLogConditions** | **List&lt;String&gt;** |  |  [optional]
 **displayedDetailsFields** | **String** |  |  [optional]
 **extractionOverrideEnabled** | **Boolean** |  |  [optional]
 **generateHashChain** | **Boolean** |  |  [optional]

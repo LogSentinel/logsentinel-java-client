@@ -9,11 +9,15 @@ Name | Type | Description | Notes
 **alertDestinationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
+**automaticCase** | **Boolean** |  |  [optional]
+**description** | **String** |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
 **filterBy** | **String** |  |  [optional]
 **groupByField** | **String** |  |  [optional]
 **id** | [**UUID**](UUID.md) |  |  [optional]
 **insideWorkingHours** | **Boolean** |  |  [optional]
+**joinAlertsPeriod** | **Integer** |  |  [optional]
+**joinAlertsPeriodType** | [**JoinAlertsPeriodTypeEnum**](#JoinAlertsPeriodTypeEnum) |  |  [optional]
 **name** | **String** |  |  [optional]
 **organizationId** | [**UUID**](UUID.md) |  |  [optional]
 **riskLevel** | **Integer** |  |  [optional]
@@ -35,6 +39,19 @@ AVG | &quot;AVG&quot;
 SUM | &quot;SUM&quot;
 MAX | &quot;MAX&quot;
 MIN | &quot;MIN&quot;
+
+
+<a name="JoinAlertsPeriodTypeEnum"></a>
+## Enum: JoinAlertsPeriodTypeEnum
+Name | Value
+---- | -----
+SECOND | &quot;SECOND&quot;
+MINUTE | &quot;MINUTE&quot;
+HOUR | &quot;HOUR&quot;
+DAY | &quot;DAY&quot;
+WEEK | &quot;WEEK&quot;
+MONTH | &quot;MONTH&quot;
+YEAR | &quot;YEAR&quot;
 
 
 <a name="RuleTypeEnum"></a>

@@ -205,6 +205,15 @@ public class ApplicationRequest {
   @JsonProperty("storeHashesInEthereum")
   private Boolean storeHashesInEthereum = null;
 
+  @JsonProperty("syslogHost")
+  private String syslogHost = null;
+
+  @JsonProperty("syslogIdentificationParamName")
+  private String syslogIdentificationParamName = null;
+
+  @JsonProperty("syslogIdentificationParamValue")
+  private String syslogIdentificationParamValue = null;
+
   @JsonProperty("verificationFailureReportRecipientEmails")
   private List<String> verificationFailureReportRecipientEmails = null;
 
@@ -983,6 +992,60 @@ public class ApplicationRequest {
     this.storeHashesInEthereum = storeHashesInEthereum;
   }
 
+  public ApplicationRequest syslogHost(String syslogHost) {
+    this.syslogHost = syslogHost;
+    return this;
+  }
+
+   /**
+   * Get syslogHost
+   * @return syslogHost
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogHost() {
+    return syslogHost;
+  }
+
+  public void setSyslogHost(String syslogHost) {
+    this.syslogHost = syslogHost;
+  }
+
+  public ApplicationRequest syslogIdentificationParamName(String syslogIdentificationParamName) {
+    this.syslogIdentificationParamName = syslogIdentificationParamName;
+    return this;
+  }
+
+   /**
+   * Get syslogIdentificationParamName
+   * @return syslogIdentificationParamName
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogIdentificationParamName() {
+    return syslogIdentificationParamName;
+  }
+
+  public void setSyslogIdentificationParamName(String syslogIdentificationParamName) {
+    this.syslogIdentificationParamName = syslogIdentificationParamName;
+  }
+
+  public ApplicationRequest syslogIdentificationParamValue(String syslogIdentificationParamValue) {
+    this.syslogIdentificationParamValue = syslogIdentificationParamValue;
+    return this;
+  }
+
+   /**
+   * Get syslogIdentificationParamValue
+   * @return syslogIdentificationParamValue
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogIdentificationParamValue() {
+    return syslogIdentificationParamValue;
+  }
+
+  public void setSyslogIdentificationParamValue(String syslogIdentificationParamValue) {
+    this.syslogIdentificationParamValue = syslogIdentificationParamValue;
+  }
+
   public ApplicationRequest verificationFailureReportRecipientEmails(List<String> verificationFailureReportRecipientEmails) {
     this.verificationFailureReportRecipientEmails = verificationFailureReportRecipientEmails;
     return this;
@@ -1089,6 +1152,9 @@ public class ApplicationRequest {
         Objects.equals(this.skipThreatIntelligenceRegex, applicationRequest.skipThreatIntelligenceRegex) &&
         Objects.equals(this.sourceCategory, applicationRequest.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, applicationRequest.storeHashesInEthereum) &&
+        Objects.equals(this.syslogHost, applicationRequest.syslogHost) &&
+        Objects.equals(this.syslogIdentificationParamName, applicationRequest.syslogIdentificationParamName) &&
+        Objects.equals(this.syslogIdentificationParamValue, applicationRequest.syslogIdentificationParamValue) &&
         Objects.equals(this.verificationFailureReportRecipientEmails, applicationRequest.verificationFailureReportRecipientEmails) &&
         Objects.equals(this.verificationPeriodMinutes, applicationRequest.verificationPeriodMinutes) &&
         Objects.equals(this.warnLevel, applicationRequest.warnLevel);
@@ -1096,7 +1162,7 @@ public class ApplicationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogHost, syslogIdentificationParamName, syslogIdentificationParamValue, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1139,6 +1205,9 @@ public class ApplicationRequest {
     sb.append("    skipThreatIntelligenceRegex: ").append(toIndentedString(skipThreatIntelligenceRegex)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
+    sb.append("    syslogHost: ").append(toIndentedString(syslogHost)).append("\n");
+    sb.append("    syslogIdentificationParamName: ").append(toIndentedString(syslogIdentificationParamName)).append("\n");
+    sb.append("    syslogIdentificationParamValue: ").append(toIndentedString(syslogIdentificationParamValue)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");
     sb.append("    verificationPeriodMinutes: ").append(toIndentedString(verificationPeriodMinutes)).append("\n");
     sb.append("    warnLevel: ").append(toIndentedString(warnLevel)).append("\n");

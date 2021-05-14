@@ -14,13 +14,9 @@
 package com.logsentinel.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.logsentinel.model.MachineLearningSettings;
-import com.logsentinel.model.MetadataExtractionPaths;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -237,8 +233,17 @@ public class Application {
   @JsonProperty("storeHashesInEthereum")
   private Boolean storeHashesInEthereum = null;
 
+  @JsonProperty("syslogHost")
+  private String syslogHost = null;
+
   @JsonProperty("syslogId")
   private String syslogId = null;
+
+  @JsonProperty("syslogIdentificationParamName")
+  private String syslogIdentificationParamName = null;
+
+  @JsonProperty("syslogIdentificationParamValue")
+  private String syslogIdentificationParamValue = null;
 
   @JsonProperty("updated")
   private LocalDateTime updated = null;
@@ -1201,6 +1206,24 @@ public class Application {
     this.storeHashesInEthereum = storeHashesInEthereum;
   }
 
+  public Application syslogHost(String syslogHost) {
+    this.syslogHost = syslogHost;
+    return this;
+  }
+
+   /**
+   * Get syslogHost
+   * @return syslogHost
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogHost() {
+    return syslogHost;
+  }
+
+  public void setSyslogHost(String syslogHost) {
+    this.syslogHost = syslogHost;
+  }
+
   public Application syslogId(String syslogId) {
     this.syslogId = syslogId;
     return this;
@@ -1217,6 +1240,42 @@ public class Application {
 
   public void setSyslogId(String syslogId) {
     this.syslogId = syslogId;
+  }
+
+  public Application syslogIdentificationParamName(String syslogIdentificationParamName) {
+    this.syslogIdentificationParamName = syslogIdentificationParamName;
+    return this;
+  }
+
+   /**
+   * Get syslogIdentificationParamName
+   * @return syslogIdentificationParamName
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogIdentificationParamName() {
+    return syslogIdentificationParamName;
+  }
+
+  public void setSyslogIdentificationParamName(String syslogIdentificationParamName) {
+    this.syslogIdentificationParamName = syslogIdentificationParamName;
+  }
+
+  public Application syslogIdentificationParamValue(String syslogIdentificationParamValue) {
+    this.syslogIdentificationParamValue = syslogIdentificationParamValue;
+    return this;
+  }
+
+   /**
+   * Get syslogIdentificationParamValue
+   * @return syslogIdentificationParamValue
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogIdentificationParamValue() {
+    return syslogIdentificationParamValue;
+  }
+
+  public void setSyslogIdentificationParamValue(String syslogIdentificationParamValue) {
+    this.syslogIdentificationParamValue = syslogIdentificationParamValue;
   }
 
   public Application updated(LocalDateTime updated) {
@@ -1353,7 +1412,10 @@ public class Application {
         Objects.equals(this.skipThreatIntelligenceRegex, application.skipThreatIntelligenceRegex) &&
         Objects.equals(this.sourceCategory, application.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
+        Objects.equals(this.syslogHost, application.syslogHost) &&
         Objects.equals(this.syslogId, application.syslogId) &&
+        Objects.equals(this.syslogIdentificationParamName, application.syslogIdentificationParamName) &&
+        Objects.equals(this.syslogIdentificationParamValue, application.syslogIdentificationParamValue) &&
         Objects.equals(this.updated, application.updated) &&
         Objects.equals(this.verificationFailureReportRecipientEmails, application.verificationFailureReportRecipientEmails) &&
         Objects.equals(this.verificationPeriodMinutes, application.verificationPeriodMinutes) &&
@@ -1362,7 +1424,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogId, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogHost, syslogId, syslogIdentificationParamName, syslogIdentificationParamValue, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1415,7 +1477,10 @@ public class Application {
     sb.append("    skipThreatIntelligenceRegex: ").append(toIndentedString(skipThreatIntelligenceRegex)).append("\n");
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
+    sb.append("    syslogHost: ").append(toIndentedString(syslogHost)).append("\n");
     sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");
+    sb.append("    syslogIdentificationParamName: ").append(toIndentedString(syslogIdentificationParamName)).append("\n");
+    sb.append("    syslogIdentificationParamValue: ").append(toIndentedString(syslogIdentificationParamValue)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");
     sb.append("    verificationPeriodMinutes: ").append(toIndentedString(verificationPeriodMinutes)).append("\n");

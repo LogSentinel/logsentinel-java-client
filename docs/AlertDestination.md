@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**applicationGroupIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **automatedResponseSpecs** | **Map&lt;String, String&gt;** |  |  [optional]
 **code** | **String** |  |  [optional]
 **created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]

@@ -4,7 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**actorIds** | **List&lt;String&gt;** |  |  [optional]
 **actualValue** | **Double** |  |  [optional]
+**affectedHosts** | **List&lt;String&gt;** |  |  [optional]
 **alertRuleId** | [**UUID**](UUID.md) |  |  [optional]
 **alertRuleName** | **String** |  |  [optional]
 **alertType** | [**AlertTypeEnum**](#AlertTypeEnum) |  |  [optional]

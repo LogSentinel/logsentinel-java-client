@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **disabledThreatFeeds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **discardLogConditions** | **List&lt;String&gt;** |  |  [optional]
 **displayedDetailsFields** | **String** |  |  [optional]
+**extractAllFields** | **Boolean** |  |  [optional]
 **extractionOverrideEnabled** | **Boolean** |  |  [optional]
 **generateHashChain** | **Boolean** |  |  [optional]
 **generateMerkleTree** | **Boolean** |  |  [optional]

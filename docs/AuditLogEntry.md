@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **actorDisplayName** | **String** |  |  [optional]
 **actorId** | **String** |  |  [optional]
 **actorRoles** | **List&lt;String&gt;** |  |  [optional]
+**alerts** | [**List&lt;FiredAlert&gt;**](FiredAlert.md) |  |  [optional]
 **applicationId** | [**UUID**](UUID.md) |  |  [optional]
 **details** | **String** |  |  [optional]
 **encryptedKeywordsList** | **List&lt;String&gt;** |  |  [optional]

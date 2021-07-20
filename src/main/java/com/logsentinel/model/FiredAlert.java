@@ -20,16 +20,16 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
 /**
- * AlertRuleRun
+ * FiredAlert
  */
 
-public class AlertRuleRun {
+public class FiredAlert {
   @JsonProperty("actorIds")
   private List<String> actorIds = null;
 
@@ -93,11 +93,14 @@ public class AlertRuleRun {
   @JsonProperty("alertType")
   private AlertTypeEnum alertType = null;
 
+  @JsonProperty("applicationIds")
+  private List<UUID> applicationIds = null;
+
   @JsonProperty("applicationName")
   private String applicationName = null;
 
   @JsonProperty("created")
-  private LocalDateTime created = null;
+  private OffsetDateTime created = null;
 
   @JsonProperty("details")
   private String details = null;
@@ -125,9 +128,6 @@ public class AlertRuleRun {
 
   @JsonProperty("organizationId")
   private UUID organizationId = null;
-
-  @JsonProperty("resolutionTime")
-  private Long resolutionTime = null;
 
   @JsonProperty("riskLevel")
   private Integer riskLevel = null;
@@ -223,14 +223,14 @@ public class AlertRuleRun {
   private ThresholdTypeEnum thresholdType = null;
 
   @JsonProperty("triageStartTime")
-  private LocalDateTime triageStartTime = null;
+  private OffsetDateTime triageStartTime = null;
 
-  public AlertRuleRun actorIds(List<String> actorIds) {
+  public FiredAlert actorIds(List<String> actorIds) {
     this.actorIds = actorIds;
     return this;
   }
 
-  public AlertRuleRun addActorIdsItem(String actorIdsItem) {
+  public FiredAlert addActorIdsItem(String actorIdsItem) {
     if (this.actorIds == null) {
       this.actorIds = new ArrayList<>();
     }
@@ -251,7 +251,7 @@ public class AlertRuleRun {
     this.actorIds = actorIds;
   }
 
-  public AlertRuleRun actualValue(Double actualValue) {
+  public FiredAlert actualValue(Double actualValue) {
     this.actualValue = actualValue;
     return this;
   }
@@ -269,12 +269,12 @@ public class AlertRuleRun {
     this.actualValue = actualValue;
   }
 
-  public AlertRuleRun affectedHosts(List<String> affectedHosts) {
+  public FiredAlert affectedHosts(List<String> affectedHosts) {
     this.affectedHosts = affectedHosts;
     return this;
   }
 
-  public AlertRuleRun addAffectedHostsItem(String affectedHostsItem) {
+  public FiredAlert addAffectedHostsItem(String affectedHostsItem) {
     if (this.affectedHosts == null) {
       this.affectedHosts = new ArrayList<>();
     }
@@ -295,7 +295,7 @@ public class AlertRuleRun {
     this.affectedHosts = affectedHosts;
   }
 
-  public AlertRuleRun alertRuleId(UUID alertRuleId) {
+  public FiredAlert alertRuleId(UUID alertRuleId) {
     this.alertRuleId = alertRuleId;
     return this;
   }
@@ -313,7 +313,7 @@ public class AlertRuleRun {
     this.alertRuleId = alertRuleId;
   }
 
-  public AlertRuleRun alertRuleName(String alertRuleName) {
+  public FiredAlert alertRuleName(String alertRuleName) {
     this.alertRuleName = alertRuleName;
     return this;
   }
@@ -331,7 +331,7 @@ public class AlertRuleRun {
     this.alertRuleName = alertRuleName;
   }
 
-  public AlertRuleRun alertType(AlertTypeEnum alertType) {
+  public FiredAlert alertType(AlertTypeEnum alertType) {
     this.alertType = alertType;
     return this;
   }
@@ -349,7 +349,33 @@ public class AlertRuleRun {
     this.alertType = alertType;
   }
 
-  public AlertRuleRun applicationName(String applicationName) {
+  public FiredAlert applicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+    return this;
+  }
+
+  public FiredAlert addApplicationIdsItem(UUID applicationIdsItem) {
+    if (this.applicationIds == null) {
+      this.applicationIds = new ArrayList<>();
+    }
+    this.applicationIds.add(applicationIdsItem);
+    return this;
+  }
+
+   /**
+   * Get applicationIds
+   * @return applicationIds
+  **/
+  @ApiModelProperty(value = "")
+  public List<UUID> getApplicationIds() {
+    return applicationIds;
+  }
+
+  public void setApplicationIds(List<UUID> applicationIds) {
+    this.applicationIds = applicationIds;
+  }
+
+  public FiredAlert applicationName(String applicationName) {
     this.applicationName = applicationName;
     return this;
   }
@@ -367,7 +393,7 @@ public class AlertRuleRun {
     this.applicationName = applicationName;
   }
 
-  public AlertRuleRun created(LocalDateTime created) {
+  public FiredAlert created(OffsetDateTime created) {
     this.created = created;
     return this;
   }
@@ -377,15 +403,15 @@ public class AlertRuleRun {
    * @return created
   **/
   @ApiModelProperty(value = "")
-  public LocalDateTime getCreated() {
+  public OffsetDateTime getCreated() {
     return created;
   }
 
-  public void setCreated(LocalDateTime created) {
+  public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
-  public AlertRuleRun details(String details) {
+  public FiredAlert details(String details) {
     this.details = details;
     return this;
   }
@@ -403,12 +429,12 @@ public class AlertRuleRun {
     this.details = details;
   }
 
-  public AlertRuleRun entryIds(List<UUID> entryIds) {
+  public FiredAlert entryIds(List<UUID> entryIds) {
     this.entryIds = entryIds;
     return this;
   }
 
-  public AlertRuleRun addEntryIdsItem(UUID entryIdsItem) {
+  public FiredAlert addEntryIdsItem(UUID entryIdsItem) {
     if (this.entryIds == null) {
       this.entryIds = new ArrayList<>();
     }
@@ -429,7 +455,7 @@ public class AlertRuleRun {
     this.entryIds = entryIds;
   }
 
-  public AlertRuleRun executionDuration(Long executionDuration) {
+  public FiredAlert executionDuration(Long executionDuration) {
     this.executionDuration = executionDuration;
     return this;
   }
@@ -447,7 +473,7 @@ public class AlertRuleRun {
     this.executionDuration = executionDuration;
   }
 
-  public AlertRuleRun fired(Boolean fired) {
+  public FiredAlert fired(Boolean fired) {
     this.fired = fired;
     return this;
   }
@@ -465,7 +491,7 @@ public class AlertRuleRun {
     this.fired = fired;
   }
 
-  public AlertRuleRun id(UUID id) {
+  public FiredAlert id(UUID id) {
     this.id = id;
     return this;
   }
@@ -483,12 +509,12 @@ public class AlertRuleRun {
     this.id = id;
   }
 
-  public AlertRuleRun ioc(List<String> ioc) {
+  public FiredAlert ioc(List<String> ioc) {
     this.ioc = ioc;
     return this;
   }
 
-  public AlertRuleRun addIocItem(String iocItem) {
+  public FiredAlert addIocItem(String iocItem) {
     if (this.ioc == null) {
       this.ioc = new ArrayList<>();
     }
@@ -509,12 +535,12 @@ public class AlertRuleRun {
     this.ioc = ioc;
   }
 
-  public AlertRuleRun iocTypes(List<String> iocTypes) {
+  public FiredAlert iocTypes(List<String> iocTypes) {
     this.iocTypes = iocTypes;
     return this;
   }
 
-  public AlertRuleRun addIocTypesItem(String iocTypesItem) {
+  public FiredAlert addIocTypesItem(String iocTypesItem) {
     if (this.iocTypes == null) {
       this.iocTypes = new ArrayList<>();
     }
@@ -535,7 +561,7 @@ public class AlertRuleRun {
     this.iocTypes = iocTypes;
   }
 
-  public AlertRuleRun notified(Boolean notified) {
+  public FiredAlert notified(Boolean notified) {
     this.notified = notified;
     return this;
   }
@@ -553,7 +579,7 @@ public class AlertRuleRun {
     this.notified = notified;
   }
 
-  public AlertRuleRun organizationId(UUID organizationId) {
+  public FiredAlert organizationId(UUID organizationId) {
     this.organizationId = organizationId;
     return this;
   }
@@ -571,25 +597,7 @@ public class AlertRuleRun {
     this.organizationId = organizationId;
   }
 
-  public AlertRuleRun resolutionTime(Long resolutionTime) {
-    this.resolutionTime = resolutionTime;
-    return this;
-  }
-
-   /**
-   * Get resolutionTime
-   * @return resolutionTime
-  **/
-  @ApiModelProperty(value = "")
-  public Long getResolutionTime() {
-    return resolutionTime;
-  }
-
-  public void setResolutionTime(Long resolutionTime) {
-    this.resolutionTime = resolutionTime;
-  }
-
-  public AlertRuleRun riskLevel(Integer riskLevel) {
+  public FiredAlert riskLevel(Integer riskLevel) {
     this.riskLevel = riskLevel;
     return this;
   }
@@ -607,7 +615,7 @@ public class AlertRuleRun {
     this.riskLevel = riskLevel;
   }
 
-  public AlertRuleRun status(StatusEnum status) {
+  public FiredAlert status(StatusEnum status) {
     this.status = status;
     return this;
   }
@@ -625,12 +633,12 @@ public class AlertRuleRun {
     this.status = status;
   }
 
-  public AlertRuleRun tags(List<String> tags) {
+  public FiredAlert tags(List<String> tags) {
     this.tags = tags;
     return this;
   }
 
-  public AlertRuleRun addTagsItem(String tagsItem) {
+  public FiredAlert addTagsItem(String tagsItem) {
     if (this.tags == null) {
       this.tags = new ArrayList<>();
     }
@@ -651,7 +659,7 @@ public class AlertRuleRun {
     this.tags = tags;
   }
 
-  public AlertRuleRun threshold(Double threshold) {
+  public FiredAlert threshold(Double threshold) {
     this.threshold = threshold;
     return this;
   }
@@ -669,7 +677,7 @@ public class AlertRuleRun {
     this.threshold = threshold;
   }
 
-  public AlertRuleRun thresholdType(ThresholdTypeEnum thresholdType) {
+  public FiredAlert thresholdType(ThresholdTypeEnum thresholdType) {
     this.thresholdType = thresholdType;
     return this;
   }
@@ -687,7 +695,7 @@ public class AlertRuleRun {
     this.thresholdType = thresholdType;
   }
 
-  public AlertRuleRun triageStartTime(LocalDateTime triageStartTime) {
+  public FiredAlert triageStartTime(OffsetDateTime triageStartTime) {
     this.triageStartTime = triageStartTime;
     return this;
   }
@@ -697,11 +705,11 @@ public class AlertRuleRun {
    * @return triageStartTime
   **/
   @ApiModelProperty(value = "")
-  public LocalDateTime getTriageStartTime() {
+  public OffsetDateTime getTriageStartTime() {
     return triageStartTime;
   }
 
-  public void setTriageStartTime(LocalDateTime triageStartTime) {
+  public void setTriageStartTime(OffsetDateTime triageStartTime) {
     this.triageStartTime = triageStartTime;
   }
 
@@ -714,43 +722,43 @@ public class AlertRuleRun {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    AlertRuleRun alertRuleRun = (AlertRuleRun) o;
-    return Objects.equals(this.actorIds, alertRuleRun.actorIds) &&
-        Objects.equals(this.actualValue, alertRuleRun.actualValue) &&
-        Objects.equals(this.affectedHosts, alertRuleRun.affectedHosts) &&
-        Objects.equals(this.alertRuleId, alertRuleRun.alertRuleId) &&
-        Objects.equals(this.alertRuleName, alertRuleRun.alertRuleName) &&
-        Objects.equals(this.alertType, alertRuleRun.alertType) &&
-        Objects.equals(this.applicationName, alertRuleRun.applicationName) &&
-        Objects.equals(this.created, alertRuleRun.created) &&
-        Objects.equals(this.details, alertRuleRun.details) &&
-        Objects.equals(this.entryIds, alertRuleRun.entryIds) &&
-        Objects.equals(this.executionDuration, alertRuleRun.executionDuration) &&
-        Objects.equals(this.fired, alertRuleRun.fired) &&
-        Objects.equals(this.id, alertRuleRun.id) &&
-        Objects.equals(this.ioc, alertRuleRun.ioc) &&
-        Objects.equals(this.iocTypes, alertRuleRun.iocTypes) &&
-        Objects.equals(this.notified, alertRuleRun.notified) &&
-        Objects.equals(this.organizationId, alertRuleRun.organizationId) &&
-        Objects.equals(this.resolutionTime, alertRuleRun.resolutionTime) &&
-        Objects.equals(this.riskLevel, alertRuleRun.riskLevel) &&
-        Objects.equals(this.status, alertRuleRun.status) &&
-        Objects.equals(this.tags, alertRuleRun.tags) &&
-        Objects.equals(this.threshold, alertRuleRun.threshold) &&
-        Objects.equals(this.thresholdType, alertRuleRun.thresholdType) &&
-        Objects.equals(this.triageStartTime, alertRuleRun.triageStartTime);
+    FiredAlert firedAlert = (FiredAlert) o;
+    return Objects.equals(this.actorIds, firedAlert.actorIds) &&
+        Objects.equals(this.actualValue, firedAlert.actualValue) &&
+        Objects.equals(this.affectedHosts, firedAlert.affectedHosts) &&
+        Objects.equals(this.alertRuleId, firedAlert.alertRuleId) &&
+        Objects.equals(this.alertRuleName, firedAlert.alertRuleName) &&
+        Objects.equals(this.alertType, firedAlert.alertType) &&
+        Objects.equals(this.applicationIds, firedAlert.applicationIds) &&
+        Objects.equals(this.applicationName, firedAlert.applicationName) &&
+        Objects.equals(this.created, firedAlert.created) &&
+        Objects.equals(this.details, firedAlert.details) &&
+        Objects.equals(this.entryIds, firedAlert.entryIds) &&
+        Objects.equals(this.executionDuration, firedAlert.executionDuration) &&
+        Objects.equals(this.fired, firedAlert.fired) &&
+        Objects.equals(this.id, firedAlert.id) &&
+        Objects.equals(this.ioc, firedAlert.ioc) &&
+        Objects.equals(this.iocTypes, firedAlert.iocTypes) &&
+        Objects.equals(this.notified, firedAlert.notified) &&
+        Objects.equals(this.organizationId, firedAlert.organizationId) &&
+        Objects.equals(this.riskLevel, firedAlert.riskLevel) &&
+        Objects.equals(this.status, firedAlert.status) &&
+        Objects.equals(this.tags, firedAlert.tags) &&
+        Objects.equals(this.threshold, firedAlert.threshold) &&
+        Objects.equals(this.thresholdType, firedAlert.thresholdType) &&
+        Objects.equals(this.triageStartTime, firedAlert.triageStartTime);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, resolutionTime, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
+    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationIds, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class AlertRuleRun {\n");
+    sb.append("class FiredAlert {\n");
     
     sb.append("    actorIds: ").append(toIndentedString(actorIds)).append("\n");
     sb.append("    actualValue: ").append(toIndentedString(actualValue)).append("\n");
@@ -758,6 +766,7 @@ public class AlertRuleRun {
     sb.append("    alertRuleId: ").append(toIndentedString(alertRuleId)).append("\n");
     sb.append("    alertRuleName: ").append(toIndentedString(alertRuleName)).append("\n");
     sb.append("    alertType: ").append(toIndentedString(alertType)).append("\n");
+    sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
@@ -769,7 +778,6 @@ public class AlertRuleRun {
     sb.append("    iocTypes: ").append(toIndentedString(iocTypes)).append("\n");
     sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
-    sb.append("    resolutionTime: ").append(toIndentedString(resolutionTime)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");

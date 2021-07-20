@@ -190,7 +190,7 @@ public class LoggingApi {
    * @param encryptedKeywords If you are encrypting the parameters in your request, you can extract and encrypt keywords client-side and send them to us in order to make use of our search functionality over encrypted text (optional)
    * @param gdprCorrelationKey If the event is about GDPR-related action, you can correlate it with a process in the GDPR register (optional)
    * @param logLevel logLevel (optional)
-   * @param originalEventTimestamp originalEventTimestamp (optional)
+   * @param originalEventTimestamp The timestamp (in epoch milliseconds) of the event as it originally happened (as opposed to the time when it&#39;s received)  (optional)
    * @param process process (optional)
    * @param params params (optional)
    * @param tags tags (optional)

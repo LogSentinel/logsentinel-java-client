@@ -8,8 +8,7 @@ import com.logsentinel.Pair;
 
 import javax.ws.rs.core.GenericType;
 
-import com.logsentinel.model.Bundle;
-import com.logsentinel.model.TaxiiCollections;
+import com.logsentinel.model.ThreatIntel;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,32 +38,40 @@ public class ThreatIntelligenceApi {
   /**
    * getCollectionObjects
    * 
-   * @param id id (required)
-   * @return Bundle
+   * @param ioc ioc (required)
+   * @param iocType iocType (required)
+   * @return List&lt;ThreatIntel&gt;
    * @throws ApiException if fails to make API call
    */
-  public Bundle getCollectionObjects(String id) throws ApiException {
-    return getCollectionObjectsWithHttpInfo(id).getData();
+  public List<ThreatIntel> getCollectionObjects1(String ioc, String iocType) throws ApiException {
+    return getCollectionObjects1WithHttpInfo(ioc, iocType).getData();
       }
 
   /**
    * getCollectionObjects
    * 
-   * @param id id (required)
-   * @return ApiResponse&lt;Bundle&gt;
+   * @param ioc ioc (required)
+   * @param iocType iocType (required)
+   * @return ApiResponse&lt;List&lt;ThreatIntel&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<Bundle> getCollectionObjectsWithHttpInfo(String id) throws ApiException {
+  public ApiResponse<List<ThreatIntel>> getCollectionObjects1WithHttpInfo(String ioc, String iocType) throws ApiException {
     Object localVarPostBody = null;
     
-    // verify the required parameter 'id' is set
-    if (id == null) {
-      throw new ApiException(400, "Missing the required parameter 'id' when calling getCollectionObjects");
+    // verify the required parameter 'ioc' is set
+    if (ioc == null) {
+      throw new ApiException(400, "Missing the required parameter 'ioc' when calling getCollectionObjects1");
+    }
+    
+    // verify the required parameter 'iocType' is set
+    if (iocType == null) {
+      throw new ApiException(400, "Missing the required parameter 'iocType' when calling getCollectionObjects1");
     }
     
     // create path and map variables
-    String localVarPath = "/api/taxii/collections/{id}/objects"
-      .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+    String localVarPath = "/api/threat-intel/{iocType}/{ioc}"
+      .replaceAll("\\{" + "ioc" + "\\}", apiClient.escapeString(ioc.toString()))
+      .replaceAll("\\{" + "iocType" + "\\}", apiClient.escapeString(iocType.toString()));
 
     // query params
     List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -75,7 +82,7 @@ public class ThreatIntelligenceApi {
     
     
     final String[] localVarAccepts = {
-      "application/json", "application/vnd.oasis.stix+json"
+      "application/json"
     };
     final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
 
@@ -86,52 +93,7 @@ public class ThreatIntelligenceApi {
 
     String[] localVarAuthNames = new String[] { "basicAuth" };
 
-    GenericType<Bundle> localVarReturnType = new GenericType<Bundle>() {};
-    return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
-      }
-  /**
-   * getCollections
-   * 
-   * @return TaxiiCollections
-   * @throws ApiException if fails to make API call
-   */
-  public TaxiiCollections getCollections() throws ApiException {
-    return getCollectionsWithHttpInfo().getData();
-      }
-
-  /**
-   * getCollections
-   * 
-   * @return ApiResponse&lt;TaxiiCollections&gt;
-   * @throws ApiException if fails to make API call
-   */
-  public ApiResponse<TaxiiCollections> getCollectionsWithHttpInfo() throws ApiException {
-    Object localVarPostBody = null;
-    
-    // create path and map variables
-    String localVarPath = "/api/taxii/collections";
-
-    // query params
-    List<Pair> localVarQueryParams = new ArrayList<Pair>();
-    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-
-    
-    
-    final String[] localVarAccepts = {
-      "application/json", "application/vnd.oasis.taxii+json"
-    };
-    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
-
-    final String[] localVarContentTypes = {
-      
-    };
-    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
-
-    String[] localVarAuthNames = new String[] { "basicAuth" };
-
-    GenericType<TaxiiCollections> localVarReturnType = new GenericType<TaxiiCollections>() {};
+    GenericType<List<ThreatIntel>> localVarReturnType = new GenericType<List<ThreatIntel>>() {};
     return apiClient.invokeAPI(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
       }
 }

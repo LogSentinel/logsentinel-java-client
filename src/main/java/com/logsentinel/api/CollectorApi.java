@@ -8,6 +8,7 @@ import com.logsentinel.Pair;
 
 import javax.ws.rs.core.GenericType;
 
+import com.logsentinel.model.ApplicationRequest;
 import com.logsentinel.model.CollectorMetadataDto;
 import com.logsentinel.model.CollectorStatusDto;
 import java.util.UUID;
@@ -37,6 +38,58 @@ public class CollectorApi {
     this.apiClient = apiClient;
   }
 
+  /**
+   * Invoked during Collector&#39;s operation. Creates a new data source if a connector gets data from an unrecognized source
+   * 
+   * @param application application (required)
+   * @return UUID
+   * @throws ApiException if fails to make API call
+   */
+  public UUID createBlankApplication(ApplicationRequest application) throws ApiException {
+    return createBlankApplicationWithHttpInfo(application).getData();
+      }
+
+  /**
+   * Invoked during Collector&#39;s operation. Creates a new data source if a connector gets data from an unrecognized source
+   * 
+   * @param application application (required)
+   * @return ApiResponse&lt;UUID&gt;
+   * @throws ApiException if fails to make API call
+   */
+  public ApiResponse<UUID> createBlankApplicationWithHttpInfo(ApplicationRequest application) throws ApiException {
+    Object localVarPostBody = application;
+    
+    // verify the required parameter 'application' is set
+    if (application == null) {
+      throw new ApiException(400, "Missing the required parameter 'application' when calling createBlankApplication");
+    }
+    
+    // create path and map variables
+    String localVarPath = "/api/collector/createApplication";
+
+    // query params
+    List<Pair> localVarQueryParams = new ArrayList<Pair>();
+    Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+    Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+
+    
+    
+    final String[] localVarAccepts = {
+      "*/*", "application/json"
+    };
+    final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+
+    final String[] localVarContentTypes = {
+      "application/json"
+    };
+    final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+
+    String[] localVarAuthNames = new String[] { "basicAuth" };
+
+    GenericType<UUID> localVarReturnType = new GenericType<UUID>() {};
+    return apiClient.invokeAPI(localVarPath, "POST", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAccept, localVarContentType, localVarAuthNames, localVarReturnType);
+      }
   /**
    * Invoked during Collector&#39;s operation. Publish statistics for (some of) collector&#39;s Agent(s)
    * 

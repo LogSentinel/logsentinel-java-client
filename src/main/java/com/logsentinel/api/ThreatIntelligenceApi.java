@@ -36,36 +36,36 @@ public class ThreatIntelligenceApi {
   }
 
   /**
-   * getCollectionObjects
+   * getThreatIntelligence
    * 
    * @param ioc ioc (required)
    * @param iocType iocType (required)
    * @return List&lt;ThreatIntel&gt;
    * @throws ApiException if fails to make API call
    */
-  public List<ThreatIntel> getCollectionObjects1(String ioc, String iocType) throws ApiException {
-    return getCollectionObjects1WithHttpInfo(ioc, iocType).getData();
+  public List<ThreatIntel> getThreatIntelligence(String ioc, String iocType) throws ApiException {
+    return getThreatIntelligenceWithHttpInfo(ioc, iocType).getData();
       }
 
   /**
-   * getCollectionObjects
+   * getThreatIntelligence
    * 
    * @param ioc ioc (required)
    * @param iocType iocType (required)
    * @return ApiResponse&lt;List&lt;ThreatIntel&gt;&gt;
    * @throws ApiException if fails to make API call
    */
-  public ApiResponse<List<ThreatIntel>> getCollectionObjects1WithHttpInfo(String ioc, String iocType) throws ApiException {
+  public ApiResponse<List<ThreatIntel>> getThreatIntelligenceWithHttpInfo(String ioc, String iocType) throws ApiException {
     Object localVarPostBody = null;
     
     // verify the required parameter 'ioc' is set
     if (ioc == null) {
-      throw new ApiException(400, "Missing the required parameter 'ioc' when calling getCollectionObjects1");
+      throw new ApiException(400, "Missing the required parameter 'ioc' when calling getThreatIntelligence");
     }
     
     // verify the required parameter 'iocType' is set
     if (iocType == null) {
-      throw new ApiException(400, "Missing the required parameter 'iocType' when calling getCollectionObjects1");
+      throw new ApiException(400, "Missing the required parameter 'iocType' when calling getThreatIntelligence");
     }
     
     // create path and map variables

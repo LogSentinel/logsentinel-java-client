@@ -43,23 +43,7 @@ public class ThreatIntelligenceApiTest {
      */
     @Test
     public void getCollectionObjectsTest() throws ApiException {
-        String id = null;
-        Bundle response = api.getCollectionObjects(id);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * getCollections
-     *
-     * 
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getCollectionsTest() throws ApiException {
-        TaxiiCollections response = api.getCollections();
+        api.getThreatIntelligence(null, null);
 
         // TODO: test validations
     }

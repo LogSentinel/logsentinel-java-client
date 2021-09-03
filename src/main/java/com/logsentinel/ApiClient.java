@@ -574,7 +574,12 @@ public class ApiClient {
     if (contentTypes != null && !contentTypes.isEmpty())
       contentType = String.valueOf(contentTypes.get(0));
 
-    return response.readEntity(returnType);
+    try {
+        return response.readEntity(returnType);
+    } catch (RuntimeException ex) {
+        String raw = response.readEntity(String.class);
+        throw new RuntimeException("Failed to process response " + raw, ex);
+    }
   }
 
   /**

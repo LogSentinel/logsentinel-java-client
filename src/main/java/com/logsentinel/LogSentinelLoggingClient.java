@@ -5,6 +5,7 @@ import java.util.List;
 import com.logsentinel.model.ActionData;
 import com.logsentinel.model.ActorData;
 import com.logsentinel.model.BatchLogRequestEntry;
+import com.logsentinel.model.LogResponse;
 
 /**
  * Default, LogSentinel SIEM output client
@@ -19,7 +20,11 @@ public class LogSentinelLoggingClient implements LoggingClient {
 
     @Override
     public <T> String logBatch(List<BatchLogRequestEntry<T>> requestData) {
-        return client.getAuditLogActions().logBatch(requestData).getLogEntryId();
+        LogResponse result = client.getAuditLogActions().logBatch(requestData);
+        if (result == null) {
+            return null;
+        }
+        return result.getLogEntryId();
         
     }
 

@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**allowedApplicationGroupIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **allowedApplicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **attributes** | **Map&lt;String, String&gt;** |  |  [optional]
 **awsCustomerId** | **String** |  |  [optional]

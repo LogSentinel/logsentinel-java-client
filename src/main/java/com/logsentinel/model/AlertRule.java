@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.SuppressionSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
@@ -164,6 +165,9 @@ public class AlertRule {
   @JsonProperty("organizationId")
   private UUID organizationId = null;
 
+  @JsonProperty("resultDisplayAggregationField")
+  private String resultDisplayAggregationField = null;
+
   @JsonProperty("riskLevel")
   private Integer riskLevel = null;
 
@@ -210,6 +214,9 @@ public class AlertRule {
   @JsonProperty("searchPeriod")
   private String searchPeriod = null;
 
+  @JsonProperty("suppressionSettings")
+  private SuppressionSettings suppressionSettings = null;
+
   @JsonProperty("tags")
   private List<String> tags = null;
 
@@ -255,6 +262,9 @@ public class AlertRule {
 
   @JsonProperty("thresholdValue")
   private Double thresholdValue = null;
+
+  @JsonProperty("topFieldsCount")
+  private Integer topFieldsCount = null;
 
   /**
    * Gets or Sets type
@@ -603,6 +613,24 @@ public class AlertRule {
     this.organizationId = organizationId;
   }
 
+  public AlertRule resultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
+    return this;
+  }
+
+   /**
+   * Get resultDisplayAggregationField
+   * @return resultDisplayAggregationField
+  **/
+  @ApiModelProperty(value = "")
+  public String getResultDisplayAggregationField() {
+    return resultDisplayAggregationField;
+  }
+
+  public void setResultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
+  }
+
   public AlertRule riskLevel(Integer riskLevel) {
     this.riskLevel = riskLevel;
     return this;
@@ -655,6 +683,24 @@ public class AlertRule {
 
   public void setSearchPeriod(String searchPeriod) {
     this.searchPeriod = searchPeriod;
+  }
+
+  public AlertRule suppressionSettings(SuppressionSettings suppressionSettings) {
+    this.suppressionSettings = suppressionSettings;
+    return this;
+  }
+
+   /**
+   * Get suppressionSettings
+   * @return suppressionSettings
+  **/
+  @ApiModelProperty(value = "")
+  public SuppressionSettings getSuppressionSettings() {
+    return suppressionSettings;
+  }
+
+  public void setSuppressionSettings(SuppressionSettings suppressionSettings) {
+    this.suppressionSettings = suppressionSettings;
   }
 
   public AlertRule tags(List<String> tags) {
@@ -719,6 +765,24 @@ public class AlertRule {
     this.thresholdValue = thresholdValue;
   }
 
+  public AlertRule topFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
+    return this;
+  }
+
+   /**
+   * Get topFieldsCount
+   * @return topFieldsCount
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getTopFieldsCount() {
+    return topFieldsCount;
+  }
+
+  public void setTopFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
+  }
+
   public AlertRule type(TypeEnum type) {
     this.type = type;
     return this;
@@ -781,19 +845,22 @@ public class AlertRule {
         Objects.equals(this.joinAlertsPeriodType, alertRule.joinAlertsPeriodType) &&
         Objects.equals(this.name, alertRule.name) &&
         Objects.equals(this.organizationId, alertRule.organizationId) &&
+        Objects.equals(this.resultDisplayAggregationField, alertRule.resultDisplayAggregationField) &&
         Objects.equals(this.riskLevel, alertRule.riskLevel) &&
         Objects.equals(this.ruleType, alertRule.ruleType) &&
         Objects.equals(this.searchPeriod, alertRule.searchPeriod) &&
+        Objects.equals(this.suppressionSettings, alertRule.suppressionSettings) &&
         Objects.equals(this.tags, alertRule.tags) &&
         Objects.equals(this.thresholdType, alertRule.thresholdType) &&
         Objects.equals(this.thresholdValue, alertRule.thresholdValue) &&
+        Objects.equals(this.topFieldsCount, alertRule.topFieldsCount) &&
         Objects.equals(this.type, alertRule.type) &&
         Objects.equals(this.updated, alertRule.updated);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, automaticCase, created, description, enabled, filterBy, groupByField, id, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, name, organizationId, riskLevel, ruleType, searchPeriod, tags, thresholdType, thresholdValue, type, updated);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, automaticCase, created, description, enabled, filterBy, groupByField, id, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, name, organizationId, resultDisplayAggregationField, riskLevel, ruleType, searchPeriod, suppressionSettings, tags, thresholdType, thresholdValue, topFieldsCount, type, updated);
   }
 
 
@@ -818,12 +885,15 @@ public class AlertRule {
     sb.append("    joinAlertsPeriodType: ").append(toIndentedString(joinAlertsPeriodType)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    resultDisplayAggregationField: ").append(toIndentedString(resultDisplayAggregationField)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    ruleType: ").append(toIndentedString(ruleType)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
+    sb.append("    suppressionSettings: ").append(toIndentedString(suppressionSettings)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    thresholdType: ").append(toIndentedString(thresholdType)).append("\n");
     sb.append("    thresholdValue: ").append(toIndentedString(thresholdValue)).append("\n");
+    sb.append("    topFieldsCount: ").append(toIndentedString(topFieldsCount)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("}");

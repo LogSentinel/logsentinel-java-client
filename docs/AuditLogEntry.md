@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ipAddress** | **String** |  |  [optional]
 **ipDetails** | [**Map&lt;String, IPDetails&gt;**](IPDetails.md) |  |  [optional]
 **logLevel** | [**LogLevelEnum**](#LogLevelEnum) |  |  [optional]
+**normalizedAction** | **String** |  |  [optional]
 **numericParams** | **Map&lt;String, Double&gt;** |  |  [optional]
 **originalEventTimestamp** | **Long** |  |  [optional]
 **params** | **Map&lt;String, String&gt;** |  |  [optional]

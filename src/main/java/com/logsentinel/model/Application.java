@@ -14,9 +14,13 @@
 package com.logsentinel.model;
 
 import java.util.Objects;
+import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.MachineLearningSettings;
+import com.logsentinel.model.MetadataExtractionPaths;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -50,6 +54,84 @@ public class Application {
 
   @JsonProperty("detailsTransformationScript")
   private String detailsTransformationScript = null;
+
+  /**
+   * Gets or Sets detectedSourceType
+   */
+  public enum DetectedSourceTypeEnum {
+    ACTIVE_DIRECTORY("ACTIVE_DIRECTORY"),
+    
+    AWS("AWS"),
+    
+    APACHE("APACHE"),
+    
+    ACCESS_LOG("ACCESS_LOG"),
+    
+    AUDITD("AUDITD"),
+    
+    CHECKPOINT("CHECKPOINT"),
+    
+    CISCO_ASA("CISCO_ASA"),
+    
+    DOVECOT("DOVECOT"),
+    
+    FORTIGATE("FORTIGATE"),
+    
+    KASPERSKY("KASPERSKY"),
+    
+    MYSQL("MYSQL"),
+    
+    MYSQL_AUDIT("MYSQL_AUDIT"),
+    
+    NETSCALER("NETSCALER"),
+    
+    NGINX("NGINX"),
+    
+    PALOALTO("PALOALTO"),
+    
+    SONICWALL("SONICWALL"),
+    
+    SENTINEL_ONE("SENTINEL_ONE"),
+    
+    VMWARE("VMWARE"),
+    
+    MSDTC("MSDTC"),
+    
+    WINDOWS_FIREWALL("WINDOWS_FIREWALL"),
+    
+    WINDOWS_DEFENDER("WINDOWS_DEFENDER"),
+    
+    REMOTE_ACCESS_TOOLS("REMOTE_ACCESS_TOOLS");
+
+    private String value;
+
+    DetectedSourceTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static DetectedSourceTypeEnum fromValue(String text) {
+      for (DetectedSourceTypeEnum b : DetectedSourceTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("detectedSourceType")
+  private DetectedSourceTypeEnum detectedSourceType = null;
 
   @JsonProperty("disabledThreatFeeds")
   private List<UUID> disabledThreatFeeds = null;
@@ -119,6 +201,9 @@ public class Application {
 
   @JsonProperty("newThreatIntelAlertPeriodHours")
   private Integer newThreatIntelAlertPeriodHours = null;
+
+  @JsonProperty("normalizedActionsMap")
+  private Map<String, String> normalizedActionsMap = null;
 
   @JsonProperty("openDataAnonymizationRegexes")
   private List<String> openDataAnonymizationRegexes = null;
@@ -239,6 +324,9 @@ public class Application {
   @JsonProperty("storeInDatabase")
   private Boolean storeInDatabase = null;
 
+  @JsonProperty("syslogCertificate")
+  private String syslogCertificate = null;
+
   @JsonProperty("syslogHost")
   private String syslogHost = null;
 
@@ -250,6 +338,9 @@ public class Application {
 
   @JsonProperty("syslogIdentificationParamValue")
   private String syslogIdentificationParamValue = null;
+
+  @JsonProperty("syslogPrivateKey")
+  private String syslogPrivateKey = null;
 
   @JsonProperty("updated")
   private LocalDateTime updated = null;
@@ -448,6 +539,24 @@ public class Application {
 
   public void setDetailsTransformationScript(String detailsTransformationScript) {
     this.detailsTransformationScript = detailsTransformationScript;
+  }
+
+  public Application detectedSourceType(DetectedSourceTypeEnum detectedSourceType) {
+    this.detectedSourceType = detectedSourceType;
+    return this;
+  }
+
+   /**
+   * Get detectedSourceType
+   * @return detectedSourceType
+  **/
+  @ApiModelProperty(value = "")
+  public DetectedSourceTypeEnum getDetectedSourceType() {
+    return detectedSourceType;
+  }
+
+  public void setDetectedSourceType(DetectedSourceTypeEnum detectedSourceType) {
+    this.detectedSourceType = detectedSourceType;
   }
 
   public Application disabledThreatFeeds(List<UUID> disabledThreatFeeds) {
@@ -912,6 +1021,32 @@ public class Application {
     this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
   }
 
+  public Application normalizedActionsMap(Map<String, String> normalizedActionsMap) {
+    this.normalizedActionsMap = normalizedActionsMap;
+    return this;
+  }
+
+  public Application putNormalizedActionsMapItem(String key, String normalizedActionsMapItem) {
+    if (this.normalizedActionsMap == null) {
+      this.normalizedActionsMap = new HashMap<>();
+    }
+    this.normalizedActionsMap.put(key, normalizedActionsMapItem);
+    return this;
+  }
+
+   /**
+   * Get normalizedActionsMap
+   * @return normalizedActionsMap
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, String> getNormalizedActionsMap() {
+    return normalizedActionsMap;
+  }
+
+  public void setNormalizedActionsMap(Map<String, String> normalizedActionsMap) {
+    this.normalizedActionsMap = normalizedActionsMap;
+  }
+
   public Application openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
     return this;
@@ -1248,6 +1383,24 @@ public class Application {
     this.storeInDatabase = storeInDatabase;
   }
 
+  public Application syslogCertificate(String syslogCertificate) {
+    this.syslogCertificate = syslogCertificate;
+    return this;
+  }
+
+   /**
+   * Get syslogCertificate
+   * @return syslogCertificate
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogCertificate() {
+    return syslogCertificate;
+  }
+
+  public void setSyslogCertificate(String syslogCertificate) {
+    this.syslogCertificate = syslogCertificate;
+  }
+
   public Application syslogHost(String syslogHost) {
     this.syslogHost = syslogHost;
     return this;
@@ -1318,6 +1471,24 @@ public class Application {
 
   public void setSyslogIdentificationParamValue(String syslogIdentificationParamValue) {
     this.syslogIdentificationParamValue = syslogIdentificationParamValue;
+  }
+
+  public Application syslogPrivateKey(String syslogPrivateKey) {
+    this.syslogPrivateKey = syslogPrivateKey;
+    return this;
+  }
+
+   /**
+   * Get syslogPrivateKey
+   * @return syslogPrivateKey
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogPrivateKey() {
+    return syslogPrivateKey;
+  }
+
+  public void setSyslogPrivateKey(String syslogPrivateKey) {
+    this.syslogPrivateKey = syslogPrivateKey;
   }
 
   public Application updated(LocalDateTime updated) {
@@ -1417,6 +1588,7 @@ public class Application {
         Objects.equals(this.defaultAlertDestinations, application.defaultAlertDestinations) &&
         Objects.equals(this.description, application.description) &&
         Objects.equals(this.detailsTransformationScript, application.detailsTransformationScript) &&
+        Objects.equals(this.detectedSourceType, application.detectedSourceType) &&
         Objects.equals(this.disabledThreatFeeds, application.disabledThreatFeeds) &&
         Objects.equals(this.discardLogConditions, application.discardLogConditions) &&
         Objects.equals(this.displayedDetailsFields, application.displayedDetailsFields) &&
@@ -1440,6 +1612,7 @@ public class Application {
         Objects.equals(this.missingLogsAlertId, application.missingLogsAlertId) &&
         Objects.equals(this.name, application.name) &&
         Objects.equals(this.newThreatIntelAlertPeriodHours, application.newThreatIntelAlertPeriodHours) &&
+        Objects.equals(this.normalizedActionsMap, application.normalizedActionsMap) &&
         Objects.equals(this.openDataAnonymizationRegexes, application.openDataAnonymizationRegexes) &&
         Objects.equals(this.openDataAnonymizeBodyFields, application.openDataAnonymizeBodyFields) &&
         Objects.equals(this.openDataEnabled, application.openDataEnabled) &&
@@ -1456,10 +1629,12 @@ public class Application {
         Objects.equals(this.sourceCategory, application.sourceCategory) &&
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
         Objects.equals(this.storeInDatabase, application.storeInDatabase) &&
+        Objects.equals(this.syslogCertificate, application.syslogCertificate) &&
         Objects.equals(this.syslogHost, application.syslogHost) &&
         Objects.equals(this.syslogId, application.syslogId) &&
         Objects.equals(this.syslogIdentificationParamName, application.syslogIdentificationParamName) &&
         Objects.equals(this.syslogIdentificationParamValue, application.syslogIdentificationParamValue) &&
+        Objects.equals(this.syslogPrivateKey, application.syslogPrivateKey) &&
         Objects.equals(this.updated, application.updated) &&
         Objects.equals(this.verificationFailureReportRecipientEmails, application.verificationFailureReportRecipientEmails) &&
         Objects.equals(this.verificationPeriodMinutes, application.verificationPeriodMinutes) &&
@@ -1468,7 +1643,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, storeInDatabase, syslogHost, syslogId, syslogIdentificationParamName, syslogIdentificationParamValue, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, detectedSourceType, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, normalizedActionsMap, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, storeInDatabase, syslogCertificate, syslogHost, syslogId, syslogIdentificationParamName, syslogIdentificationParamValue, syslogPrivateKey, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1484,6 +1659,7 @@ public class Application {
     sb.append("    defaultAlertDestinations: ").append(toIndentedString(defaultAlertDestinations)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    detailsTransformationScript: ").append(toIndentedString(detailsTransformationScript)).append("\n");
+    sb.append("    detectedSourceType: ").append(toIndentedString(detectedSourceType)).append("\n");
     sb.append("    disabledThreatFeeds: ").append(toIndentedString(disabledThreatFeeds)).append("\n");
     sb.append("    discardLogConditions: ").append(toIndentedString(discardLogConditions)).append("\n");
     sb.append("    displayedDetailsFields: ").append(toIndentedString(displayedDetailsFields)).append("\n");
@@ -1507,6 +1683,7 @@ public class Application {
     sb.append("    missingLogsAlertId: ").append(toIndentedString(missingLogsAlertId)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    newThreatIntelAlertPeriodHours: ").append(toIndentedString(newThreatIntelAlertPeriodHours)).append("\n");
+    sb.append("    normalizedActionsMap: ").append(toIndentedString(normalizedActionsMap)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");
@@ -1523,10 +1700,12 @@ public class Application {
     sb.append("    sourceCategory: ").append(toIndentedString(sourceCategory)).append("\n");
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    storeInDatabase: ").append(toIndentedString(storeInDatabase)).append("\n");
+    sb.append("    syslogCertificate: ").append(toIndentedString(syslogCertificate)).append("\n");
     sb.append("    syslogHost: ").append(toIndentedString(syslogHost)).append("\n");
     sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");
     sb.append("    syslogIdentificationParamName: ").append(toIndentedString(syslogIdentificationParamName)).append("\n");
     sb.append("    syslogIdentificationParamValue: ").append(toIndentedString(syslogIdentificationParamValue)).append("\n");
+    sb.append("    syslogPrivateKey: ").append(toIndentedString(syslogPrivateKey)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    verificationFailureReportRecipientEmails: ").append(toIndentedString(verificationFailureReportRecipientEmails)).append("\n");
     sb.append("    verificationPeriodMinutes: ").append(toIndentedString(verificationPeriodMinutes)).append("\n");

@@ -18,11 +18,14 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.ExternalDetails;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -99,11 +102,20 @@ public class FiredAlert {
   @JsonProperty("applicationName")
   private String applicationName = null;
 
+  @JsonProperty("countryCodes")
+  private List<String> countryCodes = null;
+
   @JsonProperty("created")
   private OffsetDateTime created = null;
 
   @JsonProperty("details")
   private String details = null;
+
+  @JsonProperty("domains")
+  private List<String> domains = null;
+
+  @JsonProperty("emails")
+  private List<String> emails = null;
 
   @JsonProperty("entryIds")
   private List<UUID> entryIds = null;
@@ -111,11 +123,23 @@ public class FiredAlert {
   @JsonProperty("executionDuration")
   private Long executionDuration = null;
 
+  @JsonProperty("externalDetails")
+  private List<ExternalDetails> externalDetails = null;
+
+  @JsonProperty("externalIps")
+  private List<String> externalIps = null;
+
+  @JsonProperty("fileHashes")
+  private List<String> fileHashes = null;
+
   @JsonProperty("fired")
   private Boolean fired = null;
 
   @JsonProperty("id")
   private UUID id = null;
+
+  @JsonProperty("internalIps")
+  private List<String> internalIps = null;
 
   @JsonProperty("ioc")
   private List<String> ioc = null;
@@ -128,6 +152,9 @@ public class FiredAlert {
 
   @JsonProperty("organizationId")
   private UUID organizationId = null;
+
+  @JsonProperty("resultDisplayAggregationField")
+  private String resultDisplayAggregationField = null;
 
   @JsonProperty("riskLevel")
   private Integer riskLevel = null;
@@ -222,8 +249,17 @@ public class FiredAlert {
   @JsonProperty("thresholdType")
   private ThresholdTypeEnum thresholdType = null;
 
+  @JsonProperty("topFields")
+  private Map<String, Long> topFields = null;
+
+  @JsonProperty("topFieldsCount")
+  private Integer topFieldsCount = null;
+
   @JsonProperty("triageStartTime")
   private OffsetDateTime triageStartTime = null;
+
+  @JsonProperty("urls")
+  private List<String> urls = null;
 
   public FiredAlert actorIds(List<String> actorIds) {
     this.actorIds = actorIds;
@@ -393,6 +429,32 @@ public class FiredAlert {
     this.applicationName = applicationName;
   }
 
+  public FiredAlert countryCodes(List<String> countryCodes) {
+    this.countryCodes = countryCodes;
+    return this;
+  }
+
+  public FiredAlert addCountryCodesItem(String countryCodesItem) {
+    if (this.countryCodes == null) {
+      this.countryCodes = new ArrayList<>();
+    }
+    this.countryCodes.add(countryCodesItem);
+    return this;
+  }
+
+   /**
+   * Get countryCodes
+   * @return countryCodes
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getCountryCodes() {
+    return countryCodes;
+  }
+
+  public void setCountryCodes(List<String> countryCodes) {
+    this.countryCodes = countryCodes;
+  }
+
   public FiredAlert created(OffsetDateTime created) {
     this.created = created;
     return this;
@@ -427,6 +489,58 @@ public class FiredAlert {
 
   public void setDetails(String details) {
     this.details = details;
+  }
+
+  public FiredAlert domains(List<String> domains) {
+    this.domains = domains;
+    return this;
+  }
+
+  public FiredAlert addDomainsItem(String domainsItem) {
+    if (this.domains == null) {
+      this.domains = new ArrayList<>();
+    }
+    this.domains.add(domainsItem);
+    return this;
+  }
+
+   /**
+   * Get domains
+   * @return domains
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getDomains() {
+    return domains;
+  }
+
+  public void setDomains(List<String> domains) {
+    this.domains = domains;
+  }
+
+  public FiredAlert emails(List<String> emails) {
+    this.emails = emails;
+    return this;
+  }
+
+  public FiredAlert addEmailsItem(String emailsItem) {
+    if (this.emails == null) {
+      this.emails = new ArrayList<>();
+    }
+    this.emails.add(emailsItem);
+    return this;
+  }
+
+   /**
+   * Get emails
+   * @return emails
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getEmails() {
+    return emails;
+  }
+
+  public void setEmails(List<String> emails) {
+    this.emails = emails;
   }
 
   public FiredAlert entryIds(List<UUID> entryIds) {
@@ -473,6 +587,84 @@ public class FiredAlert {
     this.executionDuration = executionDuration;
   }
 
+  public FiredAlert externalDetails(List<ExternalDetails> externalDetails) {
+    this.externalDetails = externalDetails;
+    return this;
+  }
+
+  public FiredAlert addExternalDetailsItem(ExternalDetails externalDetailsItem) {
+    if (this.externalDetails == null) {
+      this.externalDetails = new ArrayList<>();
+    }
+    this.externalDetails.add(externalDetailsItem);
+    return this;
+  }
+
+   /**
+   * Get externalDetails
+   * @return externalDetails
+  **/
+  @ApiModelProperty(value = "")
+  public List<ExternalDetails> getExternalDetails() {
+    return externalDetails;
+  }
+
+  public void setExternalDetails(List<ExternalDetails> externalDetails) {
+    this.externalDetails = externalDetails;
+  }
+
+  public FiredAlert externalIps(List<String> externalIps) {
+    this.externalIps = externalIps;
+    return this;
+  }
+
+  public FiredAlert addExternalIpsItem(String externalIpsItem) {
+    if (this.externalIps == null) {
+      this.externalIps = new ArrayList<>();
+    }
+    this.externalIps.add(externalIpsItem);
+    return this;
+  }
+
+   /**
+   * Get externalIps
+   * @return externalIps
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getExternalIps() {
+    return externalIps;
+  }
+
+  public void setExternalIps(List<String> externalIps) {
+    this.externalIps = externalIps;
+  }
+
+  public FiredAlert fileHashes(List<String> fileHashes) {
+    this.fileHashes = fileHashes;
+    return this;
+  }
+
+  public FiredAlert addFileHashesItem(String fileHashesItem) {
+    if (this.fileHashes == null) {
+      this.fileHashes = new ArrayList<>();
+    }
+    this.fileHashes.add(fileHashesItem);
+    return this;
+  }
+
+   /**
+   * Get fileHashes
+   * @return fileHashes
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getFileHashes() {
+    return fileHashes;
+  }
+
+  public void setFileHashes(List<String> fileHashes) {
+    this.fileHashes = fileHashes;
+  }
+
   public FiredAlert fired(Boolean fired) {
     this.fired = fired;
     return this;
@@ -507,6 +699,32 @@ public class FiredAlert {
 
   public void setId(UUID id) {
     this.id = id;
+  }
+
+  public FiredAlert internalIps(List<String> internalIps) {
+    this.internalIps = internalIps;
+    return this;
+  }
+
+  public FiredAlert addInternalIpsItem(String internalIpsItem) {
+    if (this.internalIps == null) {
+      this.internalIps = new ArrayList<>();
+    }
+    this.internalIps.add(internalIpsItem);
+    return this;
+  }
+
+   /**
+   * Get internalIps
+   * @return internalIps
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getInternalIps() {
+    return internalIps;
+  }
+
+  public void setInternalIps(List<String> internalIps) {
+    this.internalIps = internalIps;
   }
 
   public FiredAlert ioc(List<String> ioc) {
@@ -595,6 +813,24 @@ public class FiredAlert {
 
   public void setOrganizationId(UUID organizationId) {
     this.organizationId = organizationId;
+  }
+
+  public FiredAlert resultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
+    return this;
+  }
+
+   /**
+   * Get resultDisplayAggregationField
+   * @return resultDisplayAggregationField
+  **/
+  @ApiModelProperty(value = "")
+  public String getResultDisplayAggregationField() {
+    return resultDisplayAggregationField;
+  }
+
+  public void setResultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
   }
 
   public FiredAlert riskLevel(Integer riskLevel) {
@@ -695,6 +931,50 @@ public class FiredAlert {
     this.thresholdType = thresholdType;
   }
 
+  public FiredAlert topFields(Map<String, Long> topFields) {
+    this.topFields = topFields;
+    return this;
+  }
+
+  public FiredAlert putTopFieldsItem(String key, Long topFieldsItem) {
+    if (this.topFields == null) {
+      this.topFields = new HashMap<>();
+    }
+    this.topFields.put(key, topFieldsItem);
+    return this;
+  }
+
+   /**
+   * Get topFields
+   * @return topFields
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, Long> getTopFields() {
+    return topFields;
+  }
+
+  public void setTopFields(Map<String, Long> topFields) {
+    this.topFields = topFields;
+  }
+
+  public FiredAlert topFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
+    return this;
+  }
+
+   /**
+   * Get topFieldsCount
+   * @return topFieldsCount
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getTopFieldsCount() {
+    return topFieldsCount;
+  }
+
+  public void setTopFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
+  }
+
   public FiredAlert triageStartTime(OffsetDateTime triageStartTime) {
     this.triageStartTime = triageStartTime;
     return this;
@@ -711,6 +991,32 @@ public class FiredAlert {
 
   public void setTriageStartTime(OffsetDateTime triageStartTime) {
     this.triageStartTime = triageStartTime;
+  }
+
+  public FiredAlert urls(List<String> urls) {
+    this.urls = urls;
+    return this;
+  }
+
+  public FiredAlert addUrlsItem(String urlsItem) {
+    if (this.urls == null) {
+      this.urls = new ArrayList<>();
+    }
+    this.urls.add(urlsItem);
+    return this;
+  }
+
+   /**
+   * Get urls
+   * @return urls
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getUrls() {
+    return urls;
+  }
+
+  public void setUrls(List<String> urls) {
+    this.urls = urls;
   }
 
 
@@ -731,27 +1037,38 @@ public class FiredAlert {
         Objects.equals(this.alertType, firedAlert.alertType) &&
         Objects.equals(this.applicationIds, firedAlert.applicationIds) &&
         Objects.equals(this.applicationName, firedAlert.applicationName) &&
+        Objects.equals(this.countryCodes, firedAlert.countryCodes) &&
         Objects.equals(this.created, firedAlert.created) &&
         Objects.equals(this.details, firedAlert.details) &&
+        Objects.equals(this.domains, firedAlert.domains) &&
+        Objects.equals(this.emails, firedAlert.emails) &&
         Objects.equals(this.entryIds, firedAlert.entryIds) &&
         Objects.equals(this.executionDuration, firedAlert.executionDuration) &&
+        Objects.equals(this.externalDetails, firedAlert.externalDetails) &&
+        Objects.equals(this.externalIps, firedAlert.externalIps) &&
+        Objects.equals(this.fileHashes, firedAlert.fileHashes) &&
         Objects.equals(this.fired, firedAlert.fired) &&
         Objects.equals(this.id, firedAlert.id) &&
+        Objects.equals(this.internalIps, firedAlert.internalIps) &&
         Objects.equals(this.ioc, firedAlert.ioc) &&
         Objects.equals(this.iocTypes, firedAlert.iocTypes) &&
         Objects.equals(this.notified, firedAlert.notified) &&
         Objects.equals(this.organizationId, firedAlert.organizationId) &&
+        Objects.equals(this.resultDisplayAggregationField, firedAlert.resultDisplayAggregationField) &&
         Objects.equals(this.riskLevel, firedAlert.riskLevel) &&
         Objects.equals(this.status, firedAlert.status) &&
         Objects.equals(this.tags, firedAlert.tags) &&
         Objects.equals(this.threshold, firedAlert.threshold) &&
         Objects.equals(this.thresholdType, firedAlert.thresholdType) &&
-        Objects.equals(this.triageStartTime, firedAlert.triageStartTime);
+        Objects.equals(this.topFields, firedAlert.topFields) &&
+        Objects.equals(this.topFieldsCount, firedAlert.topFieldsCount) &&
+        Objects.equals(this.triageStartTime, firedAlert.triageStartTime) &&
+        Objects.equals(this.urls, firedAlert.urls);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationIds, applicationName, created, details, entryIds, executionDuration, fired, id, ioc, iocTypes, notified, organizationId, riskLevel, status, tags, threshold, thresholdType, triageStartTime);
+    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationIds, applicationName, countryCodes, created, details, domains, emails, entryIds, executionDuration, externalDetails, externalIps, fileHashes, fired, id, internalIps, ioc, iocTypes, notified, organizationId, resultDisplayAggregationField, riskLevel, status, tags, threshold, thresholdType, topFields, topFieldsCount, triageStartTime, urls);
   }
 
 
@@ -768,22 +1085,33 @@ public class FiredAlert {
     sb.append("    alertType: ").append(toIndentedString(alertType)).append("\n");
     sb.append("    applicationIds: ").append(toIndentedString(applicationIds)).append("\n");
     sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
+    sb.append("    countryCodes: ").append(toIndentedString(countryCodes)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
+    sb.append("    domains: ").append(toIndentedString(domains)).append("\n");
+    sb.append("    emails: ").append(toIndentedString(emails)).append("\n");
     sb.append("    entryIds: ").append(toIndentedString(entryIds)).append("\n");
     sb.append("    executionDuration: ").append(toIndentedString(executionDuration)).append("\n");
+    sb.append("    externalDetails: ").append(toIndentedString(externalDetails)).append("\n");
+    sb.append("    externalIps: ").append(toIndentedString(externalIps)).append("\n");
+    sb.append("    fileHashes: ").append(toIndentedString(fileHashes)).append("\n");
     sb.append("    fired: ").append(toIndentedString(fired)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    internalIps: ").append(toIndentedString(internalIps)).append("\n");
     sb.append("    ioc: ").append(toIndentedString(ioc)).append("\n");
     sb.append("    iocTypes: ").append(toIndentedString(iocTypes)).append("\n");
     sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    resultDisplayAggregationField: ").append(toIndentedString(resultDisplayAggregationField)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    threshold: ").append(toIndentedString(threshold)).append("\n");
     sb.append("    thresholdType: ").append(toIndentedString(thresholdType)).append("\n");
+    sb.append("    topFields: ").append(toIndentedString(topFields)).append("\n");
+    sb.append("    topFieldsCount: ").append(toIndentedString(topFieldsCount)).append("\n");
     sb.append("    triageStartTime: ").append(toIndentedString(triageStartTime)).append("\n");
+    sb.append("    urls: ").append(toIndentedString(urls)).append("\n");
     sb.append("}");
     return sb.toString();
   }

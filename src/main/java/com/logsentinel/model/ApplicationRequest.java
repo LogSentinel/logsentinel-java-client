@@ -98,6 +98,9 @@ public class ApplicationRequest {
   @JsonProperty("newThreatIntelAlertPeriodHours")
   private Integer newThreatIntelAlertPeriodHours = null;
 
+  @JsonProperty("normalizedActions")
+  private String normalizedActions = null;
+
   @JsonProperty("openDataAnonymizationRegexes")
   private List<String> openDataAnonymizationRegexes = null;
 
@@ -731,6 +734,24 @@ public class ApplicationRequest {
     this.newThreatIntelAlertPeriodHours = newThreatIntelAlertPeriodHours;
   }
 
+  public ApplicationRequest normalizedActions(String normalizedActions) {
+    this.normalizedActions = normalizedActions;
+    return this;
+  }
+
+   /**
+   * Get normalizedActions
+   * @return normalizedActions
+  **/
+  @ApiModelProperty(value = "")
+  public String getNormalizedActions() {
+    return normalizedActions;
+  }
+
+  public void setNormalizedActions(String normalizedActions) {
+    this.normalizedActions = normalizedActions;
+  }
+
   public ApplicationRequest openDataAnonymizationRegexes(List<String> openDataAnonymizationRegexes) {
     this.openDataAnonymizationRegexes = openDataAnonymizationRegexes;
     return this;
@@ -1161,6 +1182,7 @@ public class ApplicationRequest {
         Objects.equals(this.metadataExtractionPaths, applicationRequest.metadataExtractionPaths) &&
         Objects.equals(this.name, applicationRequest.name) &&
         Objects.equals(this.newThreatIntelAlertPeriodHours, applicationRequest.newThreatIntelAlertPeriodHours) &&
+        Objects.equals(this.normalizedActions, applicationRequest.normalizedActions) &&
         Objects.equals(this.openDataAnonymizationRegexes, applicationRequest.openDataAnonymizationRegexes) &&
         Objects.equals(this.openDataAnonymizeBodyFields, applicationRequest.openDataAnonymizeBodyFields) &&
         Objects.equals(this.openDataEnabled, applicationRequest.openDataEnabled) &&
@@ -1184,7 +1206,7 @@ public class ApplicationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, newThreatIntelAlertPeriodHours, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogHost, syslogIdentificationParamName, syslogIdentificationParamValue, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(automaticBehaviorMonitoring, containsPersonalData, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, groupIds, id, ipWhiteList, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, metadataExtractionPaths, name, newThreatIntelAlertPeriodHours, normalizedActions, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, partialVerificationPeriodMinutes, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, syslogHost, syslogIdentificationParamName, syslogIdentificationParamValue, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1215,6 +1237,7 @@ public class ApplicationRequest {
     sb.append("    metadataExtractionPaths: ").append(toIndentedString(metadataExtractionPaths)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    newThreatIntelAlertPeriodHours: ").append(toIndentedString(newThreatIntelAlertPeriodHours)).append("\n");
+    sb.append("    normalizedActions: ").append(toIndentedString(normalizedActions)).append("\n");
     sb.append("    openDataAnonymizationRegexes: ").append(toIndentedString(openDataAnonymizationRegexes)).append("\n");
     sb.append("    openDataAnonymizeBodyFields: ").append(toIndentedString(openDataAnonymizeBodyFields)).append("\n");
     sb.append("    openDataEnabled: ").append(toIndentedString(openDataEnabled)).append("\n");

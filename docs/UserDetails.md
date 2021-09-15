@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **admin** | **Boolean** |  |  [optional]
+**allowedApplicationGroupIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **allowedApplicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **base64ProfilePicture** | **String** |  |  [optional]
 **confirmed** | **Boolean** |  |  [optional]

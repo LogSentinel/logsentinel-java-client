@@ -26,6 +26,7 @@ Name | Type | Description | Notes
 **metadataExtractionPaths** | [**MetadataExtractionPaths**](MetadataExtractionPaths.md) |  |  [optional]
 **name** | **String** |  |  [optional]
 **newThreatIntelAlertPeriodHours** | **Integer** |  |  [optional]
+**normalizedActions** | **String** |  |  [optional]
 **openDataAnonymizationRegexes** | **List&lt;String&gt;** |  |  [optional]
 **openDataAnonymizeBodyFields** | **List&lt;String&gt;** |  |  [optional]
 **openDataEnabled** | **Boolean** |  |  [optional]

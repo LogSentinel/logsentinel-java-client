@@ -14,15 +14,11 @@
 package com.logsentinel.model;
 
 import java.util.Objects;
-import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonValue;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.logsentinel.enums.HashableContent;
-import com.logsentinel.model.IPDetails;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -51,6 +47,8 @@ public class AuditLogEntry {
   @Deprecated
   @JsonProperty("additionalParams")
   private Map<String, String> additionalParams = null;
+  @JsonProperty("alerts")
+  private List<FiredAlert> alerts = null;
 
   @JsonProperty("applicationId")
   private UUID applicationId = null;
@@ -135,6 +133,9 @@ public class AuditLogEntry {
 
   @JsonProperty("logLevel")
   private LogLevelEnum logLevel = null;
+
+  @JsonProperty("normalizedAction")
+  private String normalizedAction = null;
 
   @JsonProperty("numericParams")
   private Map<String, Double> numericParams = null;
@@ -525,6 +526,24 @@ public class AuditLogEntry {
     this.logLevel = logLevel;
   }
 
+  public AuditLogEntry normalizedAction(String normalizedAction) {
+    this.normalizedAction = normalizedAction;
+    return this;
+  }
+
+   /**
+   * Get normalizedAction
+   * @return normalizedAction
+  **/
+  @ApiModelProperty(value = "")
+  public String getNormalizedAction() {
+    return normalizedAction;
+  }
+
+  public void setNormalizedAction(String normalizedAction) {
+    this.normalizedAction = normalizedAction;
+  }
+
   public AuditLogEntry numericParams(Map<String, Double> numericParams) {
     this.numericParams = numericParams;
     return this;
@@ -747,6 +766,13 @@ public class AuditLogEntry {
     this.timestampTokenId = timestampTokenId;
   }
 
+  public List<FiredAlert> getAlerts() {
+    return alerts;
+  }
+
+  public void setAlerts(List<FiredAlert> alerts) {
+    this.alerts = alerts;
+  }
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -761,6 +787,7 @@ public class AuditLogEntry {
         Objects.equals(this.actorDisplayName, auditLogEntry.actorDisplayName) &&
         Objects.equals(this.actorId, auditLogEntry.actorId) &&
         Objects.equals(this.actorRoles, auditLogEntry.actorRoles) &&
+        Objects.equals(this.alerts, auditLogEntry.alerts) &&
         Objects.equals(this.applicationId, auditLogEntry.applicationId) &&
         Objects.equals(this.details, auditLogEntry.details) &&
         Objects.equals(this.encryptedKeywordsList, auditLogEntry.encryptedKeywordsList) &&
@@ -774,6 +801,7 @@ public class AuditLogEntry {
         Objects.equals(this.ipAddress, auditLogEntry.ipAddress) &&
         Objects.equals(this.ipDetails, auditLogEntry.ipDetails) &&
         Objects.equals(this.logLevel, auditLogEntry.logLevel) &&
+        Objects.equals(this.normalizedAction, auditLogEntry.normalizedAction) &&
         Objects.equals(this.numericParams, auditLogEntry.numericParams) &&
         Objects.equals(this.originalEventTimestamp, auditLogEntry.originalEventTimestamp) &&
         Objects.equals(this.params, auditLogEntry.params) &&
@@ -789,7 +817,7 @@ public class AuditLogEntry {
 
   @Override
   public int hashCode() {
-    return Objects.hash(action, actorDisplayName, actorId, actorRoles, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, ipDetails, logLevel, numericParams, originalEventTimestamp, params, previousEntryId, standaloneHash, tags, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
+    return Objects.hash(action, actorDisplayName, actorId, actorRoles, alerts, applicationId, details, encryptedKeywordsList, entityId, entityType, entryType, hash, hashVersion, id, insideWorkingHours, ipAddress, ipDetails, logLevel, normalizedAction, numericParams, originalEventTimestamp, params, previousEntryId, standaloneHash, tags, timestamp, timestampGroupHash, timestampGroupSize, timestampTime, timestampTokenId);
   }
 
 
@@ -802,6 +830,7 @@ public class AuditLogEntry {
     sb.append("    actorDisplayName: ").append(toIndentedString(actorDisplayName)).append("\n");
     sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
     sb.append("    actorRoles: ").append(toIndentedString(actorRoles)).append("\n");
+    sb.append("    alerts: ").append(toIndentedString(alerts)).append("\n");
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    details: ").append(toIndentedString(details)).append("\n");
     sb.append("    encryptedKeywordsList: ").append(toIndentedString(encryptedKeywordsList)).append("\n");
@@ -815,6 +844,7 @@ public class AuditLogEntry {
     sb.append("    ipAddress: ").append(toIndentedString(ipAddress)).append("\n");
     sb.append("    ipDetails: ").append(toIndentedString(ipDetails)).append("\n");
     sb.append("    logLevel: ").append(toIndentedString(logLevel)).append("\n");
+    sb.append("    normalizedAction: ").append(toIndentedString(normalizedAction)).append("\n");
     sb.append("    numericParams: ").append(toIndentedString(numericParams)).append("\n");
     sb.append("    originalEventTimestamp: ").append(toIndentedString(originalEventTimestamp)).append("\n");
     sb.append("    params: ").append(toIndentedString(params)).append("\n");

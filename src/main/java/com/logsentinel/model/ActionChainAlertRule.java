@@ -18,6 +18,7 @@ import java.util.Arrays;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
+import com.logsentinel.model.SuppressionSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.time.LocalDateTime;
@@ -141,6 +142,9 @@ public class ActionChainAlertRule {
   @JsonProperty("queries")
   private List<String> queries = null;
 
+  @JsonProperty("resultDisplayAggregationField")
+  private String resultDisplayAggregationField = null;
+
   @JsonProperty("riskLevel")
   private Integer riskLevel = null;
 
@@ -159,11 +163,17 @@ public class ActionChainAlertRule {
   @JsonProperty("sumValuePath")
   private String sumValuePath = null;
 
+  @JsonProperty("suppressionSettings")
+  private SuppressionSettings suppressionSettings = null;
+
   @JsonProperty("tags")
   private List<String> tags = null;
 
   @JsonProperty("timeFrames")
   private List<Long> timeFrames = null;
+
+  @JsonProperty("topFieldsCount")
+  private Integer topFieldsCount = null;
 
   @JsonProperty("updated")
   private LocalDateTime updated = null;
@@ -623,6 +633,24 @@ public class ActionChainAlertRule {
     this.queries = queries;
   }
 
+  public ActionChainAlertRule resultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
+    return this;
+  }
+
+   /**
+   * Get resultDisplayAggregationField
+   * @return resultDisplayAggregationField
+  **/
+  @ApiModelProperty(value = "")
+  public String getResultDisplayAggregationField() {
+    return resultDisplayAggregationField;
+  }
+
+  public void setResultDisplayAggregationField(String resultDisplayAggregationField) {
+    this.resultDisplayAggregationField = resultDisplayAggregationField;
+  }
+
   public ActionChainAlertRule riskLevel(Integer riskLevel) {
     this.riskLevel = riskLevel;
     return this;
@@ -731,6 +759,24 @@ public class ActionChainAlertRule {
     this.sumValuePath = sumValuePath;
   }
 
+  public ActionChainAlertRule suppressionSettings(SuppressionSettings suppressionSettings) {
+    this.suppressionSettings = suppressionSettings;
+    return this;
+  }
+
+   /**
+   * Get suppressionSettings
+   * @return suppressionSettings
+  **/
+  @ApiModelProperty(value = "")
+  public SuppressionSettings getSuppressionSettings() {
+    return suppressionSettings;
+  }
+
+  public void setSuppressionSettings(SuppressionSettings suppressionSettings) {
+    this.suppressionSettings = suppressionSettings;
+  }
+
   public ActionChainAlertRule tags(List<String> tags) {
     this.tags = tags;
     return this;
@@ -781,6 +827,24 @@ public class ActionChainAlertRule {
 
   public void setTimeFrames(List<Long> timeFrames) {
     this.timeFrames = timeFrames;
+  }
+
+  public ActionChainAlertRule topFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
+    return this;
+  }
+
+   /**
+   * Get topFieldsCount
+   * @return topFieldsCount
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getTopFieldsCount() {
+    return topFieldsCount;
+  }
+
+  public void setTopFieldsCount(Integer topFieldsCount) {
+    this.topFieldsCount = topFieldsCount;
   }
 
   public ActionChainAlertRule updated(LocalDateTime updated) {
@@ -851,21 +915,24 @@ public class ActionChainAlertRule {
         Objects.equals(this.organizationId, actionChainAlertRule.organizationId) &&
         Objects.equals(this.percentage, actionChainAlertRule.percentage) &&
         Objects.equals(this.queries, actionChainAlertRule.queries) &&
+        Objects.equals(this.resultDisplayAggregationField, actionChainAlertRule.resultDisplayAggregationField) &&
         Objects.equals(this.riskLevel, actionChainAlertRule.riskLevel) &&
         Objects.equals(this.searchPeriod, actionChainAlertRule.searchPeriod) &&
         Objects.equals(this.sumAction, actionChainAlertRule.sumAction) &&
         Objects.equals(this.sumActionTypes, actionChainAlertRule.sumActionTypes) &&
         Objects.equals(this.sumTimeFrame, actionChainAlertRule.sumTimeFrame) &&
         Objects.equals(this.sumValuePath, actionChainAlertRule.sumValuePath) &&
+        Objects.equals(this.suppressionSettings, actionChainAlertRule.suppressionSettings) &&
         Objects.equals(this.tags, actionChainAlertRule.tags) &&
         Objects.equals(this.timeFrames, actionChainAlertRule.timeFrames) &&
+        Objects.equals(this.topFieldsCount, actionChainAlertRule.topFieldsCount) &&
         Objects.equals(this.updated, actionChainAlertRule.updated) &&
         Objects.equals(this.withActorsOnly, actionChainAlertRule.withActorsOnly);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, automaticCase, count, created, description, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, less, matchParam, name, organizationId, percentage, queries, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, tags, timeFrames, updated, withActorsOnly);
+    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, automaticCase, count, created, description, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, less, matchParam, name, organizationId, percentage, queries, resultDisplayAggregationField, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, suppressionSettings, tags, timeFrames, topFieldsCount, updated, withActorsOnly);
   }
 
 
@@ -896,14 +963,17 @@ public class ActionChainAlertRule {
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
     sb.append("    percentage: ").append(toIndentedString(percentage)).append("\n");
     sb.append("    queries: ").append(toIndentedString(queries)).append("\n");
+    sb.append("    resultDisplayAggregationField: ").append(toIndentedString(resultDisplayAggregationField)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    searchPeriod: ").append(toIndentedString(searchPeriod)).append("\n");
     sb.append("    sumAction: ").append(toIndentedString(sumAction)).append("\n");
     sb.append("    sumActionTypes: ").append(toIndentedString(sumActionTypes)).append("\n");
     sb.append("    sumTimeFrame: ").append(toIndentedString(sumTimeFrame)).append("\n");
     sb.append("    sumValuePath: ").append(toIndentedString(sumValuePath)).append("\n");
+    sb.append("    suppressionSettings: ").append(toIndentedString(suppressionSettings)).append("\n");
     sb.append("    tags: ").append(toIndentedString(tags)).append("\n");
     sb.append("    timeFrames: ").append(toIndentedString(timeFrames)).append("\n");
+    sb.append("    topFieldsCount: ").append(toIndentedString(topFieldsCount)).append("\n");
     sb.append("    updated: ").append(toIndentedString(updated)).append("\n");
     sb.append("    withActorsOnly: ").append(toIndentedString(withActorsOnly)).append("\n");
     sb.append("}");

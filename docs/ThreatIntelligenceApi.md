@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost:8080*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getCollectionObjects1**](ThreatIntelligenceApi.md#getCollectionObjects1) | **GET** /api/threat-intel/{iocType}/{ioc} | getCollectionObjects
+[**getThreatIntelligence**](ThreatIntelligenceApi.md#getThreatIntelligence) | **GET** /api/threat-intel/{iocType}/{ioc} | getThreatIntelligence
 
 
-<a name="getCollectionObjects1"></a>
-# **getCollectionObjects1**
-> List&lt;ThreatIntel&gt; getCollectionObjects1(ioc, iocType)
+<a name="getThreatIntelligence"></a>
+# **getThreatIntelligence**
+> List&lt;ThreatIntel&gt; getThreatIntelligence(ioc, iocType)
 
-getCollectionObjects
+getThreatIntelligence
 
 ### Example
 ```java
@@ -33,10 +33,10 @@ ThreatIntelligenceApi apiInstance = new ThreatIntelligenceApi();
 String ioc = "ioc_example"; // String | ioc
 String iocType = "iocType_example"; // String | iocType
 try {
-    List<ThreatIntel> result = apiInstance.getCollectionObjects1(ioc, iocType);
+    List<ThreatIntel> result = apiInstance.getThreatIntelligence(ioc, iocType);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ThreatIntelligenceApi#getCollectionObjects1");
+    System.err.println("Exception when calling ThreatIntelligenceApi#getThreatIntelligence");
     e.printStackTrace();
 }
 ```
@@ -46,7 +46,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ioc** | **String**| ioc |
- **iocType** | **String**| iocType | [enum: IPV4, IPV6, EMAIL_ADDRESS, DOMAIN, URL]
+ **iocType** | **String**| iocType | [enum: IPV4, IPV6, EMAIL_ADDRESS, DOMAIN, URL, FILE_HASH]
 
 ### Return type
 

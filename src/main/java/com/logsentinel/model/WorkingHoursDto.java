@@ -35,8 +35,8 @@ public class WorkingHoursDto {
   @JsonProperty("applicationName")
   private String applicationName = null;
 
-  @JsonProperty("endStr")
-  private String endStr = null;
+  @JsonProperty("end")
+  private String end = null;
 
   @JsonProperty("holidays")
   private List<String> holidays = null;
@@ -98,8 +98,8 @@ public class WorkingHoursDto {
   @JsonProperty("organizationId")
   private UUID organizationId = null;
 
-  @JsonProperty("startStr")
-  private String startStr = null;
+  @JsonProperty("start")
+  private String start = null;
 
   public WorkingHoursDto applicationId(UUID applicationId) {
     this.applicationId = applicationId;
@@ -137,22 +137,22 @@ public class WorkingHoursDto {
     this.applicationName = applicationName;
   }
 
-  public WorkingHoursDto endStr(String endStr) {
-    this.endStr = endStr;
+  public WorkingHoursDto end(String end) {
+    this.end = end;
     return this;
   }
 
    /**
-   * Get endStr
-   * @return endStr
+   * Get end
+   * @return end
   **/
   @ApiModelProperty(value = "")
-  public String getEndStr() {
-    return endStr;
+  public String getEnd() {
+    return end;
   }
 
-  public void setEndStr(String endStr) {
-    this.endStr = endStr;
+  public void setEnd(String end) {
+    this.end = end;
   }
 
   public WorkingHoursDto holidays(List<String> holidays) {
@@ -261,22 +261,22 @@ public class WorkingHoursDto {
     this.organizationId = organizationId;
   }
 
-  public WorkingHoursDto startStr(String startStr) {
-    this.startStr = startStr;
+  public WorkingHoursDto start(String start) {
+    this.start = start;
     return this;
   }
 
    /**
-   * Get startStr
-   * @return startStr
+   * Get start
+   * @return start
   **/
   @ApiModelProperty(value = "")
-  public String getStartStr() {
-    return startStr;
+  public String getStart() {
+    return start;
   }
 
-  public void setStartStr(String startStr) {
-    this.startStr = startStr;
+  public void setStart(String start) {
+    this.start = start;
   }
 
 
@@ -291,18 +291,18 @@ public class WorkingHoursDto {
     WorkingHoursDto workingHoursDto = (WorkingHoursDto) o;
     return Objects.equals(this.applicationId, workingHoursDto.applicationId) &&
         Objects.equals(this.applicationName, workingHoursDto.applicationName) &&
-        Objects.equals(this.endStr, workingHoursDto.endStr) &&
+        Objects.equals(this.end, workingHoursDto.end) &&
         Objects.equals(this.holidays, workingHoursDto.holidays) &&
         Objects.equals(this.id, workingHoursDto.id) &&
         Objects.equals(this.nonWorking, workingHoursDto.nonWorking) &&
         Objects.equals(this.offset, workingHoursDto.offset) &&
         Objects.equals(this.organizationId, workingHoursDto.organizationId) &&
-        Objects.equals(this.startStr, workingHoursDto.startStr);
+        Objects.equals(this.start, workingHoursDto.start);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(applicationId, applicationName, endStr, holidays, id, nonWorking, offset, organizationId, startStr);
+    return Objects.hash(applicationId, applicationName, end, holidays, id, nonWorking, offset, organizationId, start);
   }
 
 
@@ -313,13 +313,13 @@ public class WorkingHoursDto {
     
     sb.append("    applicationId: ").append(toIndentedString(applicationId)).append("\n");
     sb.append("    applicationName: ").append(toIndentedString(applicationName)).append("\n");
-    sb.append("    endStr: ").append(toIndentedString(endStr)).append("\n");
+    sb.append("    end: ").append(toIndentedString(end)).append("\n");
     sb.append("    holidays: ").append(toIndentedString(holidays)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    nonWorking: ").append(toIndentedString(nonWorking)).append("\n");
     sb.append("    offset: ").append(toIndentedString(offset)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
-    sb.append("    startStr: ").append(toIndentedString(startStr)).append("\n");
+    sb.append("    start: ").append(toIndentedString(start)).append("\n");
     sb.append("}");
     return sb.toString();
   }

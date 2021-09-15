@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **defaultAlertDestinations** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **description** | **String** |  |  [optional]
 **detailsTransformationScript** | **String** |  |  [optional]
+**detectedSourceType** | [**DetectedSourceTypeEnum**](#DetectedSourceTypeEnum) |  |  [optional]
 **disabledThreatFeeds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **discardLogConditions** | **List&lt;String&gt;** |  |  [optional]
 **displayedDetailsFields** | **String** |  |  [optional]
@@ -34,6 +35,7 @@ Name | Type | Description | Notes
 **missingLogsAlertId** | [**UUID**](UUID.md) |  |  [optional]
 **name** | **String** |  |  [optional]
 **newThreatIntelAlertPeriodHours** | **Integer** |  |  [optional]
+**normalizedActionsMap** | **Map&lt;String, String&gt;** |  |  [optional]
 **openDataAnonymizationRegexes** | **List&lt;String&gt;** |  |  [optional]
 **openDataAnonymizeBodyFields** | **List&lt;String&gt;** |  |  [optional]
 **openDataEnabled** | **Boolean** |  |  [optional]
@@ -50,14 +52,44 @@ Name | Type | Description | Notes
 **sourceCategory** | [**SourceCategoryEnum**](#SourceCategoryEnum) |  |  [optional]
 **storeHashesInEthereum** | **Boolean** |  |  [optional]
 **storeInDatabase** | **Boolean** |  |  [optional]
+**syslogCertificate** | **String** |  |  [optional]
 **syslogHost** | **String** |  |  [optional]
 **syslogId** | **String** |  |  [optional]
 **updated** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **syslogIdentificationParamName** | **String** |  |  [optional]
 **syslogIdentificationParamValue** | **String** |  |  [optional]
+**syslogPrivateKey** | **String** |  |  [optional]
 **verificationFailureReportRecipientEmails** | **List&lt;String&gt;** |  |  [optional]
 **verificationPeriodMinutes** | **Integer** |  |  [optional]
 **warnLevel** | [**WarnLevelEnum**](#WarnLevelEnum) |  |  [optional]
+
+
+<a name="DetectedSourceTypeEnum"></a>
+## Enum: DetectedSourceTypeEnum
+Name | Value
+---- | -----
+ACTIVE_DIRECTORY | &quot;ACTIVE_DIRECTORY&quot;
+AWS | &quot;AWS&quot;
+APACHE | &quot;APACHE&quot;
+ACCESS_LOG | &quot;ACCESS_LOG&quot;
+AUDITD | &quot;AUDITD&quot;
+CHECKPOINT | &quot;CHECKPOINT&quot;
+CISCO_ASA | &quot;CISCO_ASA&quot;
+DOVECOT | &quot;DOVECOT&quot;
+FORTIGATE | &quot;FORTIGATE&quot;
+KASPERSKY | &quot;KASPERSKY&quot;
+MYSQL | &quot;MYSQL&quot;
+MYSQL_AUDIT | &quot;MYSQL_AUDIT&quot;
+NETSCALER | &quot;NETSCALER&quot;
+NGINX | &quot;NGINX&quot;
+PALOALTO | &quot;PALOALTO&quot;
+SONICWALL | &quot;SONICWALL&quot;
+SENTINEL_ONE | &quot;SENTINEL_ONE&quot;
+VMWARE | &quot;VMWARE&quot;
+MSDTC | &quot;MSDTC&quot;
+WINDOWS_FIREWALL | &quot;WINDOWS_FIREWALL&quot;
+WINDOWS_DEFENDER | &quot;WINDOWS_DEFENDER&quot;
+REMOTE_ACCESS_TOOLS | &quot;REMOTE_ACCESS_TOOLS&quot;
 
 
 <a name="SourceCategoryEnum"></a>

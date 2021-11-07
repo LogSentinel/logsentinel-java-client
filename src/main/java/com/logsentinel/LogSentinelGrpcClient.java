@@ -33,6 +33,8 @@ public class LogSentinelGrpcClient {
     
     private LogServiceGrpc.LogServiceStub stub;
     
+    private static final StreamObserver<LogServiceOuterClass.LogResponse> OBSERVER = new ResponseObserver<>();
+    
     public LogSentinelGrpcClient(String server, int port, boolean encrypted, 
             String organizationId, String secret) {
         ManagedChannelBuilder<?> builder = ManagedChannelBuilder.forAddress(server, port).userAgent("LogSentinel-gRPC-Client");
@@ -53,7 +55,7 @@ public class LogSentinelGrpcClient {
             requestBuilder.addEntries(logEntry);
         }
         
-        stub.logBatch(requestBuilder.build(), null);
+        stub.logBatch(requestBuilder.build(), OBSERVER);
         
         return null;
         
@@ -111,7 +113,7 @@ public class LogSentinelGrpcClient {
         BatchLogRequestEntry<Object> wrapper = new BatchLogRequestEntry<>();
         wrapper.setActorData(actorData);
         wrapper.setActionData(actionData);
-        stub.log(toGrpcLogEntry(wrapper, applicationId), new ResponseObserver<LogServiceOuterClass.LogResponse>());
+        stub.log(toGrpcLogEntry(wrapper, applicationId), OBSERVER);
         return null;
     }
     

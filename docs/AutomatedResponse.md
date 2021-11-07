@@ -6,10 +6,19 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **command** | **String** |  |  [optional]
 **commandParameter** | **String** |  |  [optional]
+**commandType** | [**CommandTypeEnum**](#CommandTypeEnum) |  |  [optional]
 **context** | [**List&lt;AuditLogEntry&gt;**](AuditLogEntry.md) |  |  [optional]
 **pythonScript** | **String** |  |  [optional]
 **targetHost** | **String** |  |  [optional]
 **targetType** | [**TargetTypeEnum**](#TargetTypeEnum) |  |  [optional]
+
+
+<a name="CommandTypeEnum"></a>
+## Enum: CommandTypeEnum
+Name | Value
+---- | -----
+COLLECTOR | &quot;COLLECTOR&quot;
+AGENT | &quot;AGENT&quot;
 
 
 <a name="TargetTypeEnum"></a>

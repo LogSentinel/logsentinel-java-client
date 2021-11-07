@@ -35,6 +35,44 @@ public class AutomatedResponse {
   @JsonProperty("commandParameter")
   private String commandParameter = null;
 
+  /**
+   * Gets or Sets commandType
+   */
+  public enum CommandTypeEnum {
+    COLLECTOR("COLLECTOR"),
+    
+    AGENT("AGENT");
+
+    private String value;
+
+    CommandTypeEnum(String value) {
+      this.value = value;
+    }
+
+    @JsonValue
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    @JsonCreator
+    public static CommandTypeEnum fromValue(String text) {
+      for (CommandTypeEnum b : CommandTypeEnum.values()) {
+        if (String.valueOf(b.value).equals(text)) {
+          return b;
+        }
+      }
+      return null;
+    }
+  }
+
+  @JsonProperty("commandType")
+  private CommandTypeEnum commandType = null;
+
   @JsonProperty("context")
   private List<AuditLogEntry> context = null;
 
@@ -122,6 +160,24 @@ public class AutomatedResponse {
 
   public void setCommandParameter(String commandParameter) {
     this.commandParameter = commandParameter;
+  }
+
+  public AutomatedResponse commandType(CommandTypeEnum commandType) {
+    this.commandType = commandType;
+    return this;
+  }
+
+   /**
+   * Get commandType
+   * @return commandType
+  **/
+  @ApiModelProperty(value = "")
+  public CommandTypeEnum getCommandType() {
+    return commandType;
+  }
+
+  public void setCommandType(CommandTypeEnum commandType) {
+    this.commandType = commandType;
   }
 
   public AutomatedResponse context(List<AuditLogEntry> context) {
@@ -216,6 +272,7 @@ public class AutomatedResponse {
     AutomatedResponse automatedResponse = (AutomatedResponse) o;
     return Objects.equals(this.command, automatedResponse.command) &&
         Objects.equals(this.commandParameter, automatedResponse.commandParameter) &&
+        Objects.equals(this.commandType, automatedResponse.commandType) &&
         Objects.equals(this.context, automatedResponse.context) &&
         Objects.equals(this.pythonScript, automatedResponse.pythonScript) &&
         Objects.equals(this.targetHost, automatedResponse.targetHost) &&
@@ -224,7 +281,7 @@ public class AutomatedResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(command, commandParameter, context, pythonScript, targetHost, targetType);
+    return Objects.hash(command, commandParameter, commandType, context, pythonScript, targetHost, targetType);
   }
 
 
@@ -235,6 +292,7 @@ public class AutomatedResponse {
     
     sb.append("    command: ").append(toIndentedString(command)).append("\n");
     sb.append("    commandParameter: ").append(toIndentedString(commandParameter)).append("\n");
+    sb.append("    commandType: ").append(toIndentedString(commandType)).append("\n");
     sb.append("    context: ").append(toIndentedString(context)).append("\n");
     sb.append("    pythonScript: ").append(toIndentedString(pythonScript)).append("\n");
     sb.append("    targetHost: ").append(toIndentedString(targetHost)).append("\n");

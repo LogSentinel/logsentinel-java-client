@@ -53,12 +53,14 @@ Name | Type | Description | Notes
 **storeHashesInEthereum** | **Boolean** |  |  [optional]
 **storeInDatabase** | **Boolean** |  |  [optional]
 **syslogCertificate** | **String** |  |  [optional]
+**syslogDetectedFormat** | **String** |  |  [optional]
+**syslogDetectedVendor** | **String** |  |  [optional]
 **syslogHost** | **String** |  |  [optional]
 **syslogId** | **String** |  |  [optional]
-**updated** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **syslogIdentificationParamName** | **String** |  |  [optional]
 **syslogIdentificationParamValue** | **String** |  |  [optional]
 **syslogPrivateKey** | **String** |  |  [optional]
+**updated** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **verificationFailureReportRecipientEmails** | **List&lt;String&gt;** |  |  [optional]
 **verificationPeriodMinutes** | **Integer** |  |  [optional]
 **warnLevel** | [**WarnLevelEnum**](#WarnLevelEnum) |  |  [optional]
@@ -69,7 +71,9 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 ACTIVE_DIRECTORY | &quot;ACTIVE_DIRECTORY&quot;
+WIN_SECURITY | &quot;WIN_SECURITY&quot;
 AWS | &quot;AWS&quot;
+GCP | &quot;GCP&quot;
 APACHE | &quot;APACHE&quot;
 ACCESS_LOG | &quot;ACCESS_LOG&quot;
 AUDITD | &quot;AUDITD&quot;
@@ -90,6 +94,11 @@ MSDTC | &quot;MSDTC&quot;
 WINDOWS_FIREWALL | &quot;WINDOWS_FIREWALL&quot;
 WINDOWS_DEFENDER | &quot;WINDOWS_DEFENDER&quot;
 REMOTE_ACCESS_TOOLS | &quot;REMOTE_ACCESS_TOOLS&quot;
+SCA | &quot;SCA&quot;
+ROOTCHECK | &quot;ROOTCHECK&quot;
+SYSCHECK | &quot;SYSCHECK&quot;
+HONEYPOT | &quot;HONEYPOT&quot;
+OSSEC | &quot;OSSEC&quot;
 
 
 <a name="SourceCategoryEnum"></a>

@@ -153,6 +153,9 @@ public class FiredAlert {
   @JsonProperty("organizationId")
   private UUID organizationId = null;
 
+  @JsonProperty("previousAlerts")
+  private Map<String, List<UUID>> previousAlerts = null;
+
   @JsonProperty("resultDisplayAggregationField")
   private String resultDisplayAggregationField = null;
 
@@ -815,6 +818,32 @@ public class FiredAlert {
     this.organizationId = organizationId;
   }
 
+  public FiredAlert previousAlerts(Map<String, List<UUID>> previousAlerts) {
+    this.previousAlerts = previousAlerts;
+    return this;
+  }
+
+  public FiredAlert putPreviousAlertsItem(String key, List<UUID> previousAlertsItem) {
+    if (this.previousAlerts == null) {
+      this.previousAlerts = new HashMap<>();
+    }
+    this.previousAlerts.put(key, previousAlertsItem);
+    return this;
+  }
+
+   /**
+   * Get previousAlerts
+   * @return previousAlerts
+  **/
+  @ApiModelProperty(value = "")
+  public Map<String, List<UUID>> getPreviousAlerts() {
+    return previousAlerts;
+  }
+
+  public void setPreviousAlerts(Map<String, List<UUID>> previousAlerts) {
+    this.previousAlerts = previousAlerts;
+  }
+
   public FiredAlert resultDisplayAggregationField(String resultDisplayAggregationField) {
     this.resultDisplayAggregationField = resultDisplayAggregationField;
     return this;
@@ -1054,6 +1083,7 @@ public class FiredAlert {
         Objects.equals(this.iocTypes, firedAlert.iocTypes) &&
         Objects.equals(this.notified, firedAlert.notified) &&
         Objects.equals(this.organizationId, firedAlert.organizationId) &&
+        Objects.equals(this.previousAlerts, firedAlert.previousAlerts) &&
         Objects.equals(this.resultDisplayAggregationField, firedAlert.resultDisplayAggregationField) &&
         Objects.equals(this.riskLevel, firedAlert.riskLevel) &&
         Objects.equals(this.status, firedAlert.status) &&
@@ -1068,7 +1098,7 @@ public class FiredAlert {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationIds, applicationName, countryCodes, created, details, domains, emails, entryIds, executionDuration, externalDetails, externalIps, fileHashes, fired, id, internalIps, ioc, iocTypes, notified, organizationId, resultDisplayAggregationField, riskLevel, status, tags, threshold, thresholdType, topFields, topFieldsCount, triageStartTime, urls);
+    return Objects.hash(actorIds, actualValue, affectedHosts, alertRuleId, alertRuleName, alertType, applicationIds, applicationName, countryCodes, created, details, domains, emails, entryIds, executionDuration, externalDetails, externalIps, fileHashes, fired, id, internalIps, ioc, iocTypes, notified, organizationId, previousAlerts, resultDisplayAggregationField, riskLevel, status, tags, threshold, thresholdType, topFields, topFieldsCount, triageStartTime, urls);
   }
 
 
@@ -1102,6 +1132,7 @@ public class FiredAlert {
     sb.append("    iocTypes: ").append(toIndentedString(iocTypes)).append("\n");
     sb.append("    notified: ").append(toIndentedString(notified)).append("\n");
     sb.append("    organizationId: ").append(toIndentedString(organizationId)).append("\n");
+    sb.append("    previousAlerts: ").append(toIndentedString(previousAlerts)).append("\n");
     sb.append("    resultDisplayAggregationField: ").append(toIndentedString(resultDisplayAggregationField)).append("\n");
     sb.append("    riskLevel: ").append(toIndentedString(riskLevel)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");

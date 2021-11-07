@@ -61,7 +61,11 @@ public class Application {
   public enum DetectedSourceTypeEnum {
     ACTIVE_DIRECTORY("ACTIVE_DIRECTORY"),
     
+    WIN_SECURITY("WIN_SECURITY"),
+    
     AWS("AWS"),
+    
+    GCP("GCP"),
     
     APACHE("APACHE"),
     
@@ -101,7 +105,17 @@ public class Application {
     
     WINDOWS_DEFENDER("WINDOWS_DEFENDER"),
     
-    REMOTE_ACCESS_TOOLS("REMOTE_ACCESS_TOOLS");
+    REMOTE_ACCESS_TOOLS("REMOTE_ACCESS_TOOLS"),
+    
+    SCA("SCA"),
+    
+    ROOTCHECK("ROOTCHECK"),
+    
+    SYSCHECK("SYSCHECK"),
+    
+    HONEYPOT("HONEYPOT"),
+    
+    OSSEC("OSSEC");
 
     private String value;
 
@@ -326,6 +340,12 @@ public class Application {
 
   @JsonProperty("syslogCertificate")
   private String syslogCertificate = null;
+
+  @JsonProperty("syslogDetectedFormat")
+  private String syslogDetectedFormat = null;
+
+  @JsonProperty("syslogDetectedVendor")
+  private String syslogDetectedVendor = null;
 
   @JsonProperty("syslogHost")
   private String syslogHost = null;
@@ -1401,6 +1421,42 @@ public class Application {
     this.syslogCertificate = syslogCertificate;
   }
 
+  public Application syslogDetectedFormat(String syslogDetectedFormat) {
+    this.syslogDetectedFormat = syslogDetectedFormat;
+    return this;
+  }
+
+   /**
+   * Get syslogDetectedFormat
+   * @return syslogDetectedFormat
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogDetectedFormat() {
+    return syslogDetectedFormat;
+  }
+
+  public void setSyslogDetectedFormat(String syslogDetectedFormat) {
+    this.syslogDetectedFormat = syslogDetectedFormat;
+  }
+
+  public Application syslogDetectedVendor(String syslogDetectedVendor) {
+    this.syslogDetectedVendor = syslogDetectedVendor;
+    return this;
+  }
+
+   /**
+   * Get syslogDetectedVendor
+   * @return syslogDetectedVendor
+  **/
+  @ApiModelProperty(value = "")
+  public String getSyslogDetectedVendor() {
+    return syslogDetectedVendor;
+  }
+
+  public void setSyslogDetectedVendor(String syslogDetectedVendor) {
+    this.syslogDetectedVendor = syslogDetectedVendor;
+  }
+
   public Application syslogHost(String syslogHost) {
     this.syslogHost = syslogHost;
     return this;
@@ -1630,6 +1686,8 @@ public class Application {
         Objects.equals(this.storeHashesInEthereum, application.storeHashesInEthereum) &&
         Objects.equals(this.storeInDatabase, application.storeInDatabase) &&
         Objects.equals(this.syslogCertificate, application.syslogCertificate) &&
+        Objects.equals(this.syslogDetectedFormat, application.syslogDetectedFormat) &&
+        Objects.equals(this.syslogDetectedVendor, application.syslogDetectedVendor) &&
         Objects.equals(this.syslogHost, application.syslogHost) &&
         Objects.equals(this.syslogId, application.syslogId) &&
         Objects.equals(this.syslogIdentificationParamName, application.syslogIdentificationParamName) &&
@@ -1643,7 +1701,7 @@ public class Application {
 
   @Override
   public int hashCode() {
-    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, detectedSourceType, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, normalizedActionsMap, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, storeInDatabase, syslogCertificate, syslogHost, syslogId, syslogIdentificationParamName, syslogIdentificationParamValue, syslogPrivateKey, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
+    return Objects.hash(active, containsPersonalData, created, dataMaskingPatterns, defaultAlertDestinations, description, detailsTransformationScript, detectedSourceType, disabledThreatFeeds, discardLogConditions, displayedDetailsFields, extractAllFields, extractionOverrideEnabled, generateHashChain, generateMerkleTree, genesisEntryId, groupIds, id, ipWhiteList, lastMerkleTreeGenerationTimestamp, latestEthereumTxHash, latestGlacierArchiveId, latestHashRecipientEmails, logGroupingEnabled, logLevelRegexes, machineLearningSettings, merkleTreeGenerationMinutes, metadataExtractionPaths, missingLogsAlertId, name, newThreatIntelAlertPeriodHours, normalizedActionsMap, openDataAnonymizationRegexes, openDataAnonymizeBodyFields, openDataEnabled, openDataWhitelistRegexes, organizationId, partialVerificationPeriodMinutes, performVerification, propertiesForIdenticalEntries, retentionDays, riskLevel, signatureVerificationPublicKeys, skipThreatIntelligenceParams, skipThreatIntelligenceRegex, sourceCategory, storeHashesInEthereum, storeInDatabase, syslogCertificate, syslogDetectedFormat, syslogDetectedVendor, syslogHost, syslogId, syslogIdentificationParamName, syslogIdentificationParamValue, syslogPrivateKey, updated, verificationFailureReportRecipientEmails, verificationPeriodMinutes, warnLevel);
   }
 
 
@@ -1701,6 +1759,8 @@ public class Application {
     sb.append("    storeHashesInEthereum: ").append(toIndentedString(storeHashesInEthereum)).append("\n");
     sb.append("    storeInDatabase: ").append(toIndentedString(storeInDatabase)).append("\n");
     sb.append("    syslogCertificate: ").append(toIndentedString(syslogCertificate)).append("\n");
+    sb.append("    syslogDetectedFormat: ").append(toIndentedString(syslogDetectedFormat)).append("\n");
+    sb.append("    syslogDetectedVendor: ").append(toIndentedString(syslogDetectedVendor)).append("\n");
     sb.append("    syslogHost: ").append(toIndentedString(syslogHost)).append("\n");
     sb.append("    syslogId: ").append(toIndentedString(syslogId)).append("\n");
     sb.append("    syslogIdentificationParamName: ").append(toIndentedString(syslogIdentificationParamName)).append("\n");

@@ -7,10 +7,11 @@ Name | Type | Description | Notes
 **aggregationPeriod** | **String** |  |  [optional]
 **aggregationType** | [**AggregationTypeEnum**](#AggregationTypeEnum) |  |  [optional]
 **alertDestinationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
-**created** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
 **applicationIds** | [**List&lt;UUID&gt;**](UUID.md) |  |  [optional]
 **automaticCase** | **Boolean** |  |  [optional]
+**created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **description** | **String** |  |  [optional]
+**displayPreviousAlertsSearchDays** | **Integer** |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
 **filterBy** | **String** |  |  [optional]
 **groupByField** | **String** |  |  [optional]
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 **thresholdValue** | **Double** |  |  [optional]
 **topFieldsCount** | **Integer** |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**updated** | [**LocalDateTime**](LocalDateTime.md) |  |  [optional]
+**updated** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 <a name="AggregationTypeEnum"></a>

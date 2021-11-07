@@ -55,6 +55,9 @@ public class ActionChainAlertRule {
   @JsonProperty("description")
   private String description = null;
 
+  @JsonProperty("displayPreviousAlertsSearchDays")
+  private Integer displayPreviousAlertsSearchDays = null;
+
   @JsonProperty("distinctByFields")
   private List<String> distinctByFields = null;
 
@@ -355,6 +358,24 @@ public class ActionChainAlertRule {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public ActionChainAlertRule displayPreviousAlertsSearchDays(Integer displayPreviousAlertsSearchDays) {
+    this.displayPreviousAlertsSearchDays = displayPreviousAlertsSearchDays;
+    return this;
+  }
+
+   /**
+   * Get displayPreviousAlertsSearchDays
+   * @return displayPreviousAlertsSearchDays
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getDisplayPreviousAlertsSearchDays() {
+    return displayPreviousAlertsSearchDays;
+  }
+
+  public void setDisplayPreviousAlertsSearchDays(Integer displayPreviousAlertsSearchDays) {
+    this.displayPreviousAlertsSearchDays = displayPreviousAlertsSearchDays;
   }
 
   public ActionChainAlertRule distinctByFields(List<String> distinctByFields) {
@@ -901,6 +922,7 @@ public class ActionChainAlertRule {
         Objects.equals(this.count, actionChainAlertRule.count) &&
         Objects.equals(this.created, actionChainAlertRule.created) &&
         Objects.equals(this.description, actionChainAlertRule.description) &&
+        Objects.equals(this.displayPreviousAlertsSearchDays, actionChainAlertRule.displayPreviousAlertsSearchDays) &&
         Objects.equals(this.distinctByFields, actionChainAlertRule.distinctByFields) &&
         Objects.equals(this.enabled, actionChainAlertRule.enabled) &&
         Objects.equals(this.entityType, actionChainAlertRule.entityType) &&
@@ -932,7 +954,7 @@ public class ActionChainAlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, automaticCase, count, created, description, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, less, matchParam, name, organizationId, percentage, queries, resultDisplayAggregationField, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, suppressionSettings, tags, timeFrames, topFieldsCount, updated, withActorsOnly);
+    return Objects.hash(actions, aggregationPeriod, alertDestinationIds, applicationIds, automaticCase, count, created, description, displayPreviousAlertsSearchDays, distinctByFields, enabled, entityType, id, initialAction, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, less, matchParam, name, organizationId, percentage, queries, resultDisplayAggregationField, riskLevel, searchPeriod, sumAction, sumActionTypes, sumTimeFrame, sumValuePath, suppressionSettings, tags, timeFrames, topFieldsCount, updated, withActorsOnly);
   }
 
 
@@ -949,6 +971,7 @@ public class ActionChainAlertRule {
     sb.append("    count: ").append(toIndentedString(count)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    displayPreviousAlertsSearchDays: ").append(toIndentedString(displayPreviousAlertsSearchDays)).append("\n");
     sb.append("    distinctByFields: ").append(toIndentedString(distinctByFields)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");

@@ -93,6 +93,9 @@ public class AlertRule {
   @JsonProperty("description")
   private String description = null;
 
+  @JsonProperty("displayPreviousAlertsSearchDays")
+  private Integer displayPreviousAlertsSearchDays = null;
+
   @JsonProperty("enabled")
   private Boolean enabled = null;
 
@@ -449,6 +452,24 @@ public class AlertRule {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public AlertRule displayPreviousAlertsSearchDays(Integer displayPreviousAlertsSearchDays) {
+    this.displayPreviousAlertsSearchDays = displayPreviousAlertsSearchDays;
+    return this;
+  }
+
+   /**
+   * Get displayPreviousAlertsSearchDays
+   * @return displayPreviousAlertsSearchDays
+  **/
+  @ApiModelProperty(value = "")
+  public Integer getDisplayPreviousAlertsSearchDays() {
+    return displayPreviousAlertsSearchDays;
+  }
+
+  public void setDisplayPreviousAlertsSearchDays(Integer displayPreviousAlertsSearchDays) {
+    this.displayPreviousAlertsSearchDays = displayPreviousAlertsSearchDays;
   }
 
   public AlertRule enabled(Boolean enabled) {
@@ -836,6 +857,7 @@ public class AlertRule {
         Objects.equals(this.automaticCase, alertRule.automaticCase) &&
         Objects.equals(this.created, alertRule.created) &&
         Objects.equals(this.description, alertRule.description) &&
+        Objects.equals(this.displayPreviousAlertsSearchDays, alertRule.displayPreviousAlertsSearchDays) &&
         Objects.equals(this.enabled, alertRule.enabled) &&
         Objects.equals(this.filterBy, alertRule.filterBy) &&
         Objects.equals(this.groupByField, alertRule.groupByField) &&
@@ -860,7 +882,7 @@ public class AlertRule {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, automaticCase, created, description, enabled, filterBy, groupByField, id, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, name, organizationId, resultDisplayAggregationField, riskLevel, ruleType, searchPeriod, suppressionSettings, tags, thresholdType, thresholdValue, topFieldsCount, type, updated);
+    return Objects.hash(aggregationPeriod, aggregationType, alertDestinationIds, applicationIds, automaticCase, created, description, displayPreviousAlertsSearchDays, enabled, filterBy, groupByField, id, insideWorkingHours, joinAlertsPeriod, joinAlertsPeriodType, name, organizationId, resultDisplayAggregationField, riskLevel, ruleType, searchPeriod, suppressionSettings, tags, thresholdType, thresholdValue, topFieldsCount, type, updated);
   }
 
 
@@ -876,6 +898,7 @@ public class AlertRule {
     sb.append("    automaticCase: ").append(toIndentedString(automaticCase)).append("\n");
     sb.append("    created: ").append(toIndentedString(created)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    displayPreviousAlertsSearchDays: ").append(toIndentedString(displayPreviousAlertsSearchDays)).append("\n");
     sb.append("    enabled: ").append(toIndentedString(enabled)).append("\n");
     sb.append("    filterBy: ").append(toIndentedString(filterBy)).append("\n");
     sb.append("    groupByField: ").append(toIndentedString(groupByField)).append("\n");

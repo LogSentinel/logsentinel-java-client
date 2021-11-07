@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **count** | **List&lt;Integer&gt;** |  |  [optional]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **description** | **String** |  |  [optional]
+**displayPreviousAlertsSearchDays** | **Integer** |  |  [optional]
 **distinctByFields** | **List&lt;String&gt;** |  |  [optional]
 **enabled** | **Boolean** |  |  [optional]
 **entityType** | **String** |  |  [optional]

@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **iocTypes** | **List&lt;String&gt;** |  |  [optional]
 **notified** | **Boolean** |  |  [optional]
 **organizationId** | [**UUID**](UUID.md) |  |  [optional]
+**previousAlerts** | [**Map&lt;String, List&lt;UUID&gt;&gt;**](List.md) |  |  [optional]
 **resolutionTime** | **Long** |  |  [optional]
 **resultDisplayAggregationField** | **String** |  |  [optional]
 **riskLevel** | **Integer** |  |  [optional]

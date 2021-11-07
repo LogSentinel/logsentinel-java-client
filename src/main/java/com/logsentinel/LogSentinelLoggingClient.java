@@ -13,24 +13,47 @@ import com.logsentinel.model.LogResponse;
 public class LogSentinelLoggingClient implements LoggingClient {
 
     private LogSentinelClient client;
+    private LogSentinelGrpcClient grpcClient;
+    
+    private boolean grpc;
+    private String applicationId;
     
     public LogSentinelLoggingClient(LogSentinelClient client) {
         this.client = client;
+        this.grpc = false;
+    }
+    
+    public LogSentinelLoggingClient(LogSentinelClient client, 
+            LogSentinelGrpcClient grpcClient, 
+            boolean grpc,
+            String applicationId) {
+        this.client = client;
+        this.grpcClient = grpcClient;
+        this.grpc = grpc;
+        this.applicationId = applicationId;
     }
 
     @Override
     public <T> String logBatch(List<BatchLogRequestEntry<T>> requestData) {
-        LogResponse result = client.getAuditLogActions().logBatch(requestData);
-        if (result == null) {
-            return null;
+        if (grpc) {
+            return grpcClient.logBatch(requestData, applicationId);
+        } else {
+            LogResponse result = client.getAuditLogActions().logBatch(requestData);
+            if (result == null) {
+                return null;
+            }
+            return result.getLogEntryId();
         }
-        return result.getLogEntryId();
         
     }
 
     @Override
     public String log(ActorData actorData, ActionData<?> actionData) {
-        return client.getAuditLogActions().log(actorData, actionData).getLogEntryId();
+        if (grpc) {
+            return grpcClient.log(actorData, (ActionData<Object>) actionData, applicationId);
+        } else {
+            return client.getAuditLogActions().log(actorData, actionData).getLogEntryId();
+        }
     }
     
     @Override

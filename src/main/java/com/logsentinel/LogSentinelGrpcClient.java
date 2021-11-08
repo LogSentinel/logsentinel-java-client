@@ -4,6 +4,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.concurrent.Executor;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -82,7 +83,7 @@ public class LogSentinelGrpcClient {
                 logEntry.setDetails(entry.getActionData().getDetails().toString());
             }
             if (entry.getTags() != null) {
-                entry.getTags().forEach(tag -> logEntry.addTags(tag));
+                entry.getTags().forEach(tag -> logEntry.addTags(StringUtils.trimToEmpty(tag)));
             }
             if (entry.getActionData().getEntryType() != null) {
                 logEntry.setEntryType(entry.getActionData().getEntryType().toString());
@@ -94,15 +95,23 @@ public class LogSentinelGrpcClient {
                 logEntry.setEntityId(entry.getActionData().getEntityId());
             }
             if (entry.getActionData().getParams() != null) {
-                logEntry.putAllParams(entry.getActionData().getParams());
+                entry.getActionData().getParams().forEach((k, v) -> {
+                    if (k != null && v != null) {
+                        logEntry.putParams(k, v);    
+                    }
+                });
             }
             if (entry.getActionData().getTags() != null) {
-                entry.getActionData().getTags().forEach(tag -> logEntry.addTags(tag));
+                entry.getActionData().getTags().forEach(tag -> logEntry.addTags(StringUtils.trimToEmpty(tag)));
             }
         }
         
         if (entry.getParams() != null) {
-            logEntry.putAllParams(entry.getParams());
+            entry.getParams().forEach((k, v) -> {
+                if (k != null && v != null) {
+                    logEntry.putParams(k, v);    
+                }
+            });
         }
         logEntry.setApplicationId(applicationId);
         
@@ -155,6 +164,5 @@ public class LogSentinelGrpcClient {
         @Override
         public void onCompleted() {
         }
-        
     }
 }

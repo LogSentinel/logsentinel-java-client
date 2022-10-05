@@ -232,7 +232,7 @@
                                         </goals>
                                     </pluginExecutionFilter>
                                     <action>
-                                        <ignore></ignore>
+                                        <ignore/>
                                     </action>
                                 </pluginExecution>
                             </pluginExecutions>
@@ -308,7 +308,7 @@
 		<dependency>
 		    <groupId>io.grpc</groupId>
 		    <artifactId>grpc-protobuf</artifactId>
-		    <version>1.42.0</version>
+		    <version>1.48.2</version>
 		</dependency>
 		<dependency>
 		    <groupId>io.grpc</groupId>
